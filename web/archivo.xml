@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+DTE/Documento/invoiceIdentification
+<DTE xsi:noNamespaceSchemaLocation="http://www.mysuitemex.com/fact/schema/gt/DTEgt.xsd" xmlns:gs1="urn:ean.ucc:pay:2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Documento Id="paraFirmarConEFACE">
+        <gs1:invoice creationDateTime="2014-02-04T06:00:00" documentStatus="ORIGINAL">
+            <documentStructureVersion>
+                <versionIdentification>1</versionIdentification>
+            </documentStructureVersion>
+            <invoiceIdentification>
+                <uniqueCreatorIdentification>FACE63-U15-001-140000026214</uniqueCreatorIdentification>
+                <contentOwner>
+                    <gln>0000000000000</gln>
+                </contentOwner>
+            </invoiceIdentification>
+            <invoiceCurrency>
+                <currencyISOCode>GTQ</currencyISOCode>
+            </invoiceCurrency>
+            <invoiceType>INVOICE</invoiceType>
+            <buyer>
+                <partyIdentification>
+                    <gln>0000000000000</gln>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>2473-3474</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_1</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                </partyIdentification>
+                <nameAndAddress>
+                    <city>1</city>
+                    <countryCode>
+                        <countryISOCode>GT</countryISOCode>
+                    </countryCode>
+                    <languageOfTheParty>
+                        <languageISOCode>es</languageISOCode>
+                    </languageOfTheParty>
+                    <name>AVELAR,,,FELIPE,ALFREDO</name>
+                    <postalCode>00000</postalCode>
+                    <state>1</state>
+                    <streetAddressOne>19 CALLE FINAL 16-94</streetAddressOne>
+                    <streetAddressTwo>Zona 12</streetAddressTwo>
+                </nameAndAddress>
+                <companyRegistrationNumber>4821513</companyRegistrationNumber>
+            </buyer>
+            <seller>
+                <partyIdentification>
+                    <gln>0000000000000</gln>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>G4S DOCUMENTA TEST</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_1</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>224</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_2</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                </partyIdentification>
+                <nameAndAddress>
+                    <city>MUNICIPIO</city>
+                    <countryCode>
+                        <countryISOCode>GT</countryISOCode>
+                    </countryCode>
+                    <languageOfTheParty>
+                        <languageISOCode>es</languageISOCode>
+                    </languageOfTheParty>
+                    <name>INVERSIONES R.M. 2</name>
+                    <postalCode>00000</postalCode>
+                    <state>DEPARTAMENTO</state>
+                    <streetAddressOne>CALLE</streetAddressOne>
+                    <streetAddressTwo>Zona 10 COLONIA</streetAddressTwo>
+                </nameAndAddress>
+                <companyRegistrationNumber>123456</companyRegistrationNumber>
+            </seller>
+            <invoiceLineItem number="1">
+                <tradeItemIdentification>
+                    <gtin>00000000000000</gtin>
+                    <additionalTradeItemIdentification>
+                        <additionalTradeItemIdentificationValue>BIEN</additionalTradeItemIdentificationValue>
+                        <additionalTradeItemIdentificationType>FOR_INTERNAL_USE_1</additionalTradeItemIdentificationType>
+                    </additionalTradeItemIdentification>
+                </tradeItemIdentification>
+                <invoicedQuantity>
+                    <value>1.500000</value>
+                    <unitOfMeasure>
+                        <measurementUnitCodeValue>UNI</measurementUnitCodeValue>
+                    </unitOfMeasure>
+                </invoicedQuantity>
+                <transferOfOwnershipDate>2009-09-09</transferOfOwnershipDate>
+                <amountExclusiveAllowancesCharges>64.42</amountExclusiveAllowancesCharges>
+                <amountInclusiveAllowancesCharges>64.42</amountInclusiveAllowancesCharges>
+                <itemDescription>
+                    <language>
+                        <languageISOCode>es</languageISOCode>
+                    </language>
+                    <text>BARRA REDONDA ACERO INOXIDABLE 304 2 1/2 "</text>
+                </itemDescription>
+                <itemPriceBaseQuantity>
+                    <value>42.9466666666667</value>
+                    <unitOfMeasure>
+                        <measurementUnitCodeValue>UNI</measurementUnitCodeValue>
+                    </unitOfMeasure>
+                </itemPriceBaseQuantity>
+                <itemPriceExclusiveAllowancesCharges>42.9466666666667</itemPriceExclusiveAllowancesCharges>
+                <itemPriceInclusiveAllowancesCharges>42.9466666666667</itemPriceInclusiveAllowancesCharges>
+                <invoiceLineItemInformationAfterTaxes>
+                    <amountExclusiveAllowancesCharges>72.1504</amountExclusiveAllowancesCharges>
+                    <amountInclusiveAllowancesCharges>72.1504</amountInclusiveAllowancesCharges>
+                </invoiceLineItemInformationAfterTaxes>
+                <invoiceLineTaxInformation>
+                    <dutyTaxFeeType>IVA</dutyTaxFeeType>
+                    <taxableAmount>64.42</taxableAmount>
+                    <taxAmount>7.7304</taxAmount>
+                    <taxPercentage>12</taxPercentage>
+                </invoiceLineTaxInformation>
+            </invoiceLineItem>
+            <invoiceTotals>
+                <totalInvoiceAmount>64.42</totalInvoiceAmount>
+                <totalAmountInvoiceAllowancesCharges>0</totalAmountInvoiceAllowancesCharges>
+                <totalAmountLineAllowancesCharges>0</totalAmountLineAllowancesCharges>
+                <totalLineAmountExclusiveAllowancesCharges>64.42</totalLineAmountExclusiveAllowancesCharges>
+                <totalLineAmountInclusiveAllowancesCharges>64.42</totalLineAmountInclusiveAllowancesCharges>
+                <totalTaxAmount>7.7304</totalTaxAmount>
+                <taxSubTotal>
+                    <dutyTaxFeeType>IVA</dutyTaxFeeType>
+                    <taxableAmount>64.42</taxableAmount>
+                    <taxAmount>7.73</taxAmount>
+                    <taxPercentage>12</taxPercentage>
+                </taxSubTotal>
+                <totalInvoiceAmountPayable>72.15</totalInvoiceAmountPayable>
+                <baseAmount>64.42</baseAmount>
+            </invoiceTotals>
+            <taxCurrencyInformation>
+                <currencyConversionFrom>
+                    <currencyISOCode>GTQ</currencyISOCode>
+                </currencyConversionFrom>
+                <currencyConversionTo>
+                    <currencyISOCode>GTQ</currencyISOCode>
+                </currencyConversionTo>
+                <exchangeRate>1</exchangeRate>
+            </taxCurrencyInformation>
+            <invoice creationDateTime="2014-02-04T06:00:00">
+                <uniqueCreatorIdentification>FACE63-U15-001-140000026214</uniqueCreatorIdentification>
+                <contentOwner>
+                    <gln>0000000000000</gln>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>SETENTA Y DOS QUETZALES 15/100 QUETZALES</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_1</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>0</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_2</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                </contentOwner>
+            </invoice>
+            <despatchAdvice>
+                <uniqueCreatorIdentification>SOLO PARA INFORMAR CAMPOS DE TEXTO DE PIE</uniqueCreatorIdentification>
+                <contentOwner>
+                    <gln>0000000000000</gln>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>Facturas clientes - C482151-3</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_1</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>Tornos Industriales Avelar</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_1</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                    <additionalPartyIdentification>
+                        <additionalPartyIdentificationValue>xxxxxxxxxxxxx</additionalPartyIdentificationValue>
+                        <additionalPartyIdentificationType>FOR_INTERNAL_USE_1</additionalPartyIdentificationType>
+                    </additionalPartyIdentification>
+                </contentOwner>
+            </despatchAdvice>
+            <extension>
+                <fechaResolucion>2014-03-17</fechaResolucion>
+                <serieAutorizada>U15</serieAutorizada>
+                <rangoInicialAutorizado>1</rangoInicialAutorizado>
+                <rangoFinalAutorizado>100000</rangoFinalAutorizado>
+                <informacionRegimenIsr>RET_DEFINITIVA</informacionRegimenIsr>
+            </extension>
+        </gs1:invoice>
+        <CAE>
+            <DCAE>
+                <TipoCAE>CAE</TipoCAE>
+                <NITGFACE>60010207</NITGFACE>
+                <NITEmisor>123456</NITEmisor>
+                <NITReceptor>4821513</NITReceptor>
+                <Serie>U15</Serie>
+                <NumeroDocumento>26214</NumeroDocumento>
+                <FechaEmision>2014-02-04</FechaEmision>
+                <NumeroAutorizacion>2013-5-20222-0551</NumeroAutorizacion>
+                <IngresosNetosGravados>64.42</IngresosNetosGravados>
+                <IVA>7.7304</IVA>
+                <ImporteTotal>72.15</ImporteTotal>
+            </DCAE>
+            <FCAE>
+                <SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+                    <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                    <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1" />
+                    <Reference URI="">
+                        <Transforms>
+                            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                        </Transforms>
+                        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                        <DigestValue>//pnc+AcPZqs1OoXv411BhS57MU=</DigestValue>
+                    </Reference>
+                </SignedInfo>
+                <SignatureValue xmlns="http://www.w3.org/2000/09/xmldsig#">Ue0z3JS2YM3PfpMDzX4MxLjB20l2g0EED/eq3U/q4y9d4jH5zKklEQ==</SignatureValue>
+                <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyValue>
+                        <DSAKeyValue>
+                            <P>uwvbjoqZI15ad/kJrpRr9uEn76AUCLuLGD0+0JHHDTkyClRsixNqSafwuyHC357K74R67idVGzuoiK7/v5Cwu0mpl+j/h9yvqPmW863bYKvltdk+bW42DmDdfoaowrgpThelFrklP0cfNbU+QLhtMZFA0xIqH+k4n36lJ+g/u9E=</P>
+                            <Q>wjGewmMAP7TVSNYymWRuaNTHfAM=</Q>
+                            <G>PoQt17zo5pmUpCTwqdGPFacQY5fEwsc2BxetEpZLLOVms02ysvn8HFP68qNeAlv5UIn0EiuAzp5VKR/jiA7kCVdKcBuG5HQ8E1lxaFqDP3gvL4E7q8m9S/ppfkWckfBylYzNxohBciq6vx0nAccdE/zdyct9OpnMY2T37/0WlXU=</G>
+                            <Y>Y8/B4IIEV0S8Tz+E8spzQcRBZJ3aELGUlEV/geeUN9jc0xtfvXpqFlY6YTv5DNfnL8KejtZ1qlk/7SH1qm89GrCRbu6aOJwskK5gGXPmc9Ubb3fL7UDC1kjlIj54oh2qVLFU9+OipmoOW/3cXQz+FsEaanZkd1zD3ET96fTh64k=</Y>
+                        </DSAKeyValue>
+                    </KeyValue>
+                    <X509Data>
+                        <X509Certificate>Zm9v</X509Certificate>
+                    </X509Data>
+                </KeyInfo>
+            </FCAE>
+        </CAE>
+    </Documento>
+</DTE>

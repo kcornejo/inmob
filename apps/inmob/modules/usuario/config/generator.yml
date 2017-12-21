@@ -1,0 +1,41 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           Usuario
+    theme:                 admin15
+    non_verbose_templates: true
+    with_show:             false
+    singular:              Usuario
+    plural:                Usuarios
+    route_prefix:          usuario
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+          usuario: 
+              attributes:
+                  class: form-control input-medium
+              label:       Usuario
+          clave: 
+              attributes:
+                  class: form-control input-medium
+              label:       Clave
+      list: 
+        title:   Listado de Usuarios
+        display: [usuario, activo]
+        object_actions:
+          _edit: 
+            attributes:  class=btn btn-xs btn-warning
+          _delete: 
+            attributes:  class=btn btn-xs btn-danger
+      filter:
+        display: [usuario, activo]
+      form:    ~
+      edit: 
+        title:   " Edicion de Usuario [%%USUARIO%%]"
+        display:  [usuario, activo]
+      new: 
+        title:   Creacion de Usuario
+        display:  [usuario, clave,activo]

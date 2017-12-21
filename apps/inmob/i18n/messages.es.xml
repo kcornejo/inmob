@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit>
+        <source>Project setup successful</source>
+        <target>Configuracion del proyecto exitoso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>This is a temporary page</source>
+        <target>Esta es una página temporal</target>
+      </trans-unit>
+      <trans-unit>
+        <source>What's next</source>
+        <target>Qué sigue</target>
+      </trans-unit>
+
+      <trans-unit>
+        <source>How to access this page</source>
+        <target>Cómo Accesar esta Página</target>
+      </trans-unit>
+
+
+      <trans-unit>
+        <source>Login Required</source>
+        <target>Identificación Requerida</target>
+      </trans-unit>
+      <trans-unit>
+        <source>is empty</source>
+        <target>Está Vacio</target>
+      </trans-unit>
+      <trans-unit>
+        <source>from</source>
+        <target>de</target>
+      </trans-unit>
+      <trans-unit>
+        <source>to</source>
+        <target>a</target>
+      </trans-unit>
+      <trans-unit>
+        <source>yes or no</source>
+        <target>si o no</target>
+      </trans-unit>
+      <trans-unit>
+        <source>yes</source>
+        <target>si</target>
+      </trans-unit>
+      <trans-unit>
+        <source>This page is not public.</source>
+        <target>Esta no es una página pública.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You must proceed to the login page and enter your id and password.</source>
+        <target>Ud. debe proceder a la página de identificación e ingresar su identificación de usuario y clave</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Proceed to login</source>
+        <target>Identificación</target>
+      </trans-unit>
+      <trans-unit>
+        <source></source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit>
+        <source>Create your data model</source>
+        <target>Crear su modelo de datos</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Customize the layout of the generated templates</source>
+        <target>Configure la plantilla de presentación generada</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Learn more from the online documentation</source>
+        <target>Aprenda más de la documentación en línea</target>
+      </trans-unit>
+      <trans-unit>
+        <source>This page is part of the symfony <code>default</code> module. It will disappear as soon as you define a <code>homepage</code> route in your <code>routing.yml</code>.</source>
+        <target>Esta es parte del modulo default. Desaparecerá tan pronto tenga defina su ruta "inicio" en el routing.yml</target>
+      </trans-unit>
+
+
+      <trans-unit>
+        <source>Did you type the URL?</source>
+        <target>Tecleo el URL?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You may have typed the address (URL) incorrectly. Check it to make sure you've got the exact right spelling, capitalization, etc.</source>
+        <target>Ud. puede haber escrito la dirección (URL) incorrectamente. Chequee para aseguarse que este correctamente escrita, mayúsculas, etc.</target>
+      </trans-unit>
+
+      <trans-unit>
+        <source>The server returned a 404 response.</source>
+        <target>El Servidor retornó una repuesta 404.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Oops! Page Not Found</source>
+        <target>Oops! Página no Encontrada</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Did you follow a link from somewhere else at this site?</source>
+        <target>Es el resultado de seguir un enlace de alguna parte de este sitio?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>If you reached this page from another part of this site, please email us at</source>
+        <target>Si Ud. llego a esta página desde otra parte del sitio, por favor envienos un correo a</target>
+      </trans-unit>
+
+      <trans-unit>
+        <source>Did you follow a link from another site?</source>
+        <target>Es el resultado de seguir un enlace desde otro sitio?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Links from other sites can sometimes be outdated or misspelled. Email us at</source>
+        <target>Enlaces desde otros sitios pueden estar vencidos o mal escritos. Envienos un correo a</target>
+      </trans-unit>
+
+
+      <trans-unit>
+        <source>so we can correct our mistake.</source>
+        <target>para poder correguir el error.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>where you came from and we can try to contact the other site in order to fix the problem.</source>
+        <target>de donde viene para contactar el otro sitio y arreglar el problema.</target>
+      </trans-unit>
+
+
+
+      <trans-unit>
+        <source>Back to previous page</source>
+        <target>Retorno a la Página Anterior</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Back to list</source>
+        <target>Retorno a la Lista</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go to Homepage</source>
+        <target>Ir a página de inicio</target>
+      </trans-unit>
+
+
+      <trans-unit>
+        <source>Congratulations! You have successfully created your symfony project.</source>
+        <target>Felicitaciones! Ud. ha creado un proyecto exitosamente</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Symfony Project Created</source>
+        <target>Proyecto Creado</target>
+      </trans-unit>
+
+     <trans-unit>
+        <source>create</source>
+        <target>Crear</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>list</source>
+        <target>Listado</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>save</source>
+        <target>Grabar</target>
+      </trans-unit>	  
+	  <trans-unit>
+        <source>save and add</source>
+        <target>Grabar y agregar</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>delete</source>
+        <target>Borrar</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>edit</source>
+        <target>Editar</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>filters</source>
+        <target>Filtros</target>
+      </trans-unit>
+	  
+	  <trans-unit>
+        <source>username</source>
+        <target>Usuario</target>
+      </trans-unit>	  
+	  <trans-unit>
+        <source>password</source>
+        <target>Clave</target>
+      </trans-unit>	 
+	  <trans-unit>
+        <source>Username / Password Invalid</source>
+        <target>Usuario / Clave Inválido</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Your username is required</source>
+        <target>Nombre de usuario es requerido</target>
+      </trans-unit>	
+	  <trans-unit>
+        <source>Your password is required</source>
+        <target>Clave es requerida</target>
+      </trans-unit>	 	   
+	  <trans-unit>
+        <source>sign in</source>
+        <target>Entrar</target>
+      </trans-unit>	 	   	  
+	  <trans-unit>
+        <source>Group list</source>
+        <target>Grupos</target>
+      </trans-unit>	
+	  <trans-unit>
+        <source>Name</source>
+        <target>Nombre</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Description</source>
+        <target>Descripción</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>User list</source>
+        <target>Usuarios</target>
+      </trans-unit>	
+	  <trans-unit>
+        <source>Username</source>
+        <target>Usuario</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Last login</source>
+        <target>Último ingreso</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Edit "%%name%%" group</source>
+        <target>Edita el grupo "%%name%%"</target>
+      </trans-unit>	  
+	  <trans-unit>
+        <source>Name:</source>
+        <target>Nombre:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Description:</source>
+        <target>Descripción:</target>
+      </trans-unit>	 
+	  <trans-unit>
+        <source>Permissions:</source>
+        <target>Permisos:</target>
+      </trans-unit>	 
+	  <trans-unit>
+        <source>Unassociated</source>
+        <target>Disponibles</target>
+      </trans-unit>	 	  
+	  <trans-unit>
+        <source>Associated</source>
+        <target>Asignados</target>
+      </trans-unit>		
+	  
+	  <trans-unit>
+        <source>Edit "%%username%%" user</source>
+        <target>Edita el usuario "%%username%%"</target>
+      </trans-unit>	  
+	  <trans-unit>
+        <source>Username:</source>
+        <target>Usuario:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Password:</source>
+        <target>Clave:</target>
+      </trans-unit>	 
+	  <trans-unit>
+        <source>Password (again):</source>
+        <target>Confirmar clave:</target>
+      </trans-unit>	 
+	  <trans-unit>
+        <source>Information</source>
+        <target>Información</target>
+      </trans-unit>	 	  
+	  <trans-unit>
+        <source>Last login:</source>
+        <target>Último ingreso</target>
+      </trans-unit>		
+	  <trans-unit>
+        <source>Permissions and groups</source>
+        <target>Permisos y grupos</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Is Active:</source>
+        <target>Activo</target>
+      </trans-unit>		
+	  <trans-unit>
+        <source>Groups/Roles:</source>
+        <target>Grupos/Roles:</target>
+      </trans-unit>		    			    
+	  <trans-unit>
+        <source>permissions:</source>
+        <target>Permisos:</target>
+      </trans-unit>	
+	  
+	  <trans-unit>
+        <source>Permission list</source>
+        <target>Permisos</target>
+      </trans-unit>	
+	  <trans-unit>
+        <source>Edit "%%name%%" permission</source>
+        <target>Edita permiso "%%name%%"</target>
+      </trans-unit>	  	  	  
+	  	  
+	  <trans-unit>
+        <source>Could not delete the selected %name%</source>
+        <target>No se ha podido eliminar el registro seleccionado</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>Could not delete the selected Aviones. Make sure it does not have any associated items.</source>
+        <target>No se ha podido eliminar el registro seleccionado. Asegúrese de que no tiene elementos asociados.</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Could not delete the selected Pilotos. Make sure it does not have any associated items.</source>
+        <target>No se ha podido eliminar el registro seleccionado. Asegúrese de que no tiene elementos asociados.</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Could not delete the selected Reservaciones. Make sure it does not have any associated items.</source>
+        <target>No se ha podido eliminar el registro seleccionado. Asegúrese de que no tiene elementos asociados.</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>The form is not valid because it contains some errors.</source>
+        <target>El formulario no es válido porque contiene algunos errores.</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Your modifications have been saved</source>
+        <target>Sus cambios han sido guardados</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>This field is required.</source>
+        <target>Este campo es requerido.</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Required.</source>
+        <target>Obligatorio.</target>
+      </trans-unit>
+	  
+	  <trans-unit>
+        <source>Actions</source>
+        <target>Acciones</target>
+      </trans-unit>	  
+	  <trans-unit>
+        <source>Created at</source>
+        <target>Creado</target>
+      </trans-unit>	  
+	  <trans-unit>
+        <source>Updated at</source>
+        <target>Actualizado</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>filter</source>
+        <target>filtrar</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>reset</source>
+        <target>reiniciar</target>
+      </trans-unit>	 	
+	  <trans-unit>
+        <source>no result</source>
+        <target>Sin resultados</target>
+      </trans-unit>	 	
+	
+	  	  
+	  <trans-unit>
+        <source>Created at:</source>
+        <target>Creado:</target>
+      </trans-unit>	  
+	  <trans-unit>
+        <source>Updated at:</source>
+        <target>Actualizado:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Are you sure?</source>
+        <target>¿Esta usted seguro?</target>
+      </trans-unit>	  	    	  
+
+	  <trans-unit>
+        <source>Welcome to ARView</source>
+        <target>Bienvenido a :: ARView ::</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Admin panel</source>
+        <target>Panel Administrativo</target>
+      </trans-unit>	 
+	  <trans-unit>
+        <source>Error Messages</source>
+        <target>Mensajes de error</target>
+      </trans-unit>	 
+
+	  <trans-unit>
+        <source>Contact us</source>
+        <target>Contáctenos</target>
+      </trans-unit>	 
+	  <trans-unit>
+        <source>Logged in as</source>
+        <target>Conectado como</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>View Site</source>
+        <target>Ver sitio Web</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Catalogs</source>
+        <target>Catálogos</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Categories</source>
+        <target>Categorías</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Sub Categories</source>
+        <target>Sub Categorías</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Local Products</source>
+        <target>Productos Locales</target>
+      </trans-unit>
+
+
+	  <trans-unit>
+        <source>Orders</source>
+        <target>Pedidos</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Orders List</source>
+        <target>Pedidos</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Visit site</source>
+        <target>Ir al sitio Web</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Recent Orders</source>
+        <target>Pedidos Recientes</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Open Orders</source>
+        <target>Pedidos Abiertos</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Close Orders</source>
+        <target>Pedidos Cerrados</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>Security</source>
+        <target>Seguridad</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Users</source>
+        <target>Usuarios</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Groups</source>
+        <target>Grupos</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Permissions</source>
+        <target>Permisos</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>Theme Switcher</source>
+        <target>Cambiar plantilla</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Layout Options</source>
+        <target>Opciones de diseño</target>
+      </trans-unit>
+	  <trans-unit>
+	    <source>Here, you can set the page width, either fixed or fluid. You decide!</source>
+		<target>Aquí, puede configurar el ancho de página, ya sea fijo o fluido. ¡Usted decide!</target>
+	  </trans-unit>
+	  <trans-unit>
+	    <source>Switch to</source>
+		<target>Cambiar a</target>
+	  </trans-unit>
+	  <trans-unit>
+	    <source>Fluid Layout</source>
+		<target>Diseño fluido</target>
+	  </trans-unit>
+	  <trans-unit>
+	    <source>Fixed Layout</source>
+		<target>Diseño fijo</target>
+	  </trans-unit>
+
+	  <trans-unit>
+        <source>Today is</source>
+        <target>Hoy es</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>categories list</source>
+        <target>Listado de Categorías</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>edit categories</source>
+        <target>Modificar Categoría</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>subcategories list</source>
+        <target>Listado de sub Categorías</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>edit subcategories</source>
+        <target>Modificar sub Categoría</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>products list</source>
+        <target>Listado de Productos</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>edit products</source>
+        <target>Modificar Producto</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Subcategory:</source>
+        <target>Sub categoría:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Subcategories</source>
+        <target>Sub categoría</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Code:</source>
+        <target>Código:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Code</source>
+        <target>Código</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Abbreviation:</source>
+        <target>Abreviatura:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Price:</source>
+        <target>Precio:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Sale price:</source>
+        <target>Precio venta:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Qty:</source>
+        <target>Cantidad:</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Price</source>
+        <target>Precio</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Sale price</source>
+        <target>Precio venta</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Qty</source>
+        <target>Cantidad</target>
+      </trans-unit>
+
+	  <trans-unit id="3">
+	    <source>[0] no result|[1] 1 result|(1,+Inf] %1% results</source>
+		<target>[0] sin registros|[1] 1 registro|(1,+Inf] %1% registros</target>
+	  </trans-unit>
+
+	  <trans-unit>
+        <source>Help</source>
+        <target>Ayuda</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Next tip</source>
+        <target>Siguiente</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Order</source>
+        <target>Pedido</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Comments</source>
+        <target>Comentarios</target>
+      </trans-unit>
+	  <trans-unit>
+        <source>Response message</source>
+        <target>Contestar</target>
+      </trans-unit>
+
+	  <trans-unit>
+        <source>Administration Options</source>
+        <target>Opciones Administrativas</target>
+      </trans-unit>
+
+      <trans-unit>
+        <source>Change Password</source>
+        <target>Cambio de Clave</target>
+      </trans-unit>
+
+      <trans-unit>
+        <source>Balance</source>
+        <target>Saldo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Client Profile</source>
+        <target>Ficha Cliente</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Unconfirmed Transfers</source>
+        <target>Transferencia en Tránsito</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Transfers</source>
+        <target>Transferencias</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Logout</source>
+        <target>Salir</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Commisions</source>
+        <target>Comisiones</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Date</source>
+        <target>Fecha</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Amount</source>
+        <target>Monto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Transfer Amount</source>
+        <target>Monto Transf</target>
+      </trans-unit>
+      <trans-unit>
+        <source>ARec Amount</source>
+        <target>Monto CtaCte</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Status</source>
+        <target>Estado</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Recent Transfers</source>
+        <target>Transferencias Recientes</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Notice</source>
+        <target>Noticias</target>
+      </trans-unit>
+      <trans-unit>
+        <source></source>
+        <target></target>
+      </trans-unit>
+
+
+	</body>
+  </file>
+</xliff>

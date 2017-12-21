@@ -1,0 +1,17 @@
+/cache
+/cache/*
+/log/
+/log/*
+/logs/*
+/logs/
+/web/upload/
+/web/upload/*
+/config/databases.yml
+cache/*
+cache/
+log/
+log/*
+logs/*
+web/upload/*
+web/upload
+config/databases.yml

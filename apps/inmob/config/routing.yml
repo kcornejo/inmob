@@ -1,0 +1,512 @@
+profesores:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                profesores
+    module:               profesores
+    prefix_path:          /profesores
+    column:               id
+    with_wildcard_routes: true
+
+carrera:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                carrera
+    module:               carrera
+    prefix_path:          /carrera
+    column:               id
+    with_wildcard_routes: true
+
+universidad:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                universidad
+    module:               universidad
+    prefix_path:          /universidad
+    column:               id
+    with_wildcard_routes: true
+
+archivo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                archivo
+    module:               archivo
+    prefix_path:          /archivo
+    column:               id
+    with_wildcard_routes: true
+
+materia:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                materia
+    module:               materia
+    prefix_path:          /materia
+    column:               id
+    with_wildcard_routes: true
+
+categoria_materia:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                categoriaMateria
+    module:               categoria_materia
+    prefix_path:          /categoria_materia
+    column:               id
+    with_wildcard_routes: true
+
+formato_correo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                formatoCorreo
+    module:               formato_correo
+    prefix_path:          /formato_correo
+    column:               id
+    with_wildcard_routes: true
+
+parametro:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Parametro
+    module:               parametro
+    prefix_path:          /parametro
+    column:               id
+    with_wildcard_routes: true
+
+configuracion_correo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                configuracionCorreo
+    module:               configuracion_correo
+    prefix_path:          /configuracion_correo
+    column:               id
+    with_wildcard_routes: true
+
+tipo_tarjeta:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoTarjeta
+    module:               tipo_tarjeta
+    prefix_path:          /tipo_tarjeta
+    column:               id
+    with_wildcard_routes: true
+
+caracteristica:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Caracteristica
+    module:               caracteristica
+    prefix_path:          /caracteristica
+    column:               id
+    with_wildcard_routes: true
+
+banco:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Banco
+    module:               banco
+    prefix_path:          /banco
+    column:               id
+    with_wildcard_routes: true
+modelo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                modelo
+    module:               modelo
+    prefix_path:          /modelo
+    column:               id
+    with_wildcard_routes: true
+
+marca:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                marca
+    module:               marca
+    prefix_path:          /marca
+    column:               id
+    with_wildcard_routes: true
+
+tipo_dispositivo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoDispositivo
+    module:               tipo_dispositivo
+    prefix_path:          /tipo_dispositivo
+    column:               id
+    with_wildcard_routes: true
+
+cargo_servicio:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                CargoServicio
+    module:               cargo_servicio
+    prefix_path:          /cargo_servicio
+    column:               id
+    with_wildcard_routes: true
+
+tipificacion_medio:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipificacionMedio
+    module:               tipificacion_medio
+    prefix_path:          /tipificacion_medio
+    column:               id
+    with_wildcard_routes: true
+
+referido:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Referido
+    module:               referido
+    prefix_path:          /referido
+    column:               id
+    with_wildcard_routes: true
+
+departamento:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Departamento
+    module:               departamento
+    prefix_path:          /departamento
+    column:               id
+    with_wildcard_routes: true
+
+tipo_aparato:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipoAparato
+    module:               tipo_aparato
+    prefix_path:          /tipo_aparato
+    column:               id
+    with_wildcard_routes: true
+
+menu_seguridad:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                menuSeguridad
+    module:               menu_seguridad
+    prefix_path:          /menu_seguridad
+    column:               id
+    with_wildcard_routes: true
+
+perfil:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                perfil
+    module:               perfil
+    prefix_path:          /perfil
+    column:               id
+    with_wildcard_routes: true
+
+cliente:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Cliente
+    module:               cliente
+    prefix_path:          /cliente
+    column:               id
+    with_wildcard_routes: true
+
+lista_precio:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                ListaPrecio
+    module:               lista_precio
+    prefix_path:          /lista_precio
+    column:               id
+    with_wildcard_routes: true
+
+tipo_usuario:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipoUsuario
+    module:               tipo_usuario
+    prefix_path:          /tipo_usuario
+    column:               id
+    with_wildcard_routes: true
+
+tipo_cliente:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipoCliente
+    module:               tipo_cliente
+    prefix_path:          /tipo_cliente
+    column:               id
+    with_wildcard_routes: true
+
+region:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Region
+    module:               region
+    prefix_path:          /region
+    column:               id
+    with_wildcard_routes: true
+
+bodega:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Bodega
+    module:               bodega
+    prefix_path:          /bodega
+    column:               id
+    with_wildcard_routes: true
+
+tipo_bodega:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipoBodega
+    module:               tipo_bodega
+    prefix_path:          /tipo_bodega
+    column:               id
+    with_wildcard_routes: true
+
+tipo_descuento:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipoDescuento
+    module:               tipo_descuento
+    prefix_path:          /tipo_descuento
+    column:               id
+    with_wildcard_routes: true
+
+categoria_producto:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                CategoriaProducto
+    module:               categoria_producto
+    prefix_path:          /categoria_producto
+    column:               id
+    with_wildcard_routes: true
+
+
+
+forma_pago:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                FormaPago
+    module:               forma_pago
+    prefix_path:          /forma_pago
+    column:               id
+    with_wildcard_routes: true
+
+tipo_movimiento:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipoMovimiento
+    module:               tipo_movimiento
+    prefix_path:          /tipo_movimiento
+    column:               id
+    with_wildcard_routes: true
+
+moneda:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Moneda
+    module:               moneda
+    prefix_path:          /moneda
+    column:               id
+    with_wildcard_routes: true
+
+lista_negra_acceso_ip:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                ListaNegraAccesoIp
+    module:               lista_negra_acceso_ip
+    prefix_path:          /lista_negra_acceso_ip
+    column:               id
+    with_wildcard_routes: true
+
+operadores_prefijos:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                OperadoresPrefijos
+    module:               operadores_prefijos
+    prefix_path:          /operadores_prefijos
+    column:               id
+    with_wildcard_routes: true
+
+lista_negra_telefono:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                ListaNegraTelefono
+    module:               lista_negra_telefono
+    prefix_path:          /lista_negra_telefono
+    column:               id
+    with_wildcard_routes: true
+
+tipo_seguimiento:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                TipoSeguimiento
+    module:               tipo_seguimiento
+    prefix_path:          /tipo_seguimiento
+    column:               id
+    with_wildcard_routes: true
+
+estatus:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                estatus
+    module:               estatus
+    prefix_path:          /estatus
+    column:               id
+    with_wildcard_routes: true
+
+identificacion_hallazgo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                identificacionHallazgo
+    module:               identificacion_hallazgo
+    prefix_path:          /identificacion_hallazgo
+    column:               id
+    with_wildcard_routes: true
+
+tipo_costo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoCosto
+    module:               tipo_costo
+    prefix_path:          /tipo_costo
+    column:               id
+    with_wildcard_routes: true
+
+participante:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                participante
+    module:               participante
+    prefix_path:          /participante
+    column:               id
+    with_wildcard_routes: true
+
+tipificacion:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipificacion
+    module:               tipificacion
+    prefix_path:          /tipificacion
+    column:               id
+    with_wildcard_routes: true
+
+proyecto:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                proyecto
+    module:               proyecto
+    prefix_path:          /proyecto
+    column:               id
+    with_wildcard_routes: true
+
+analisis_hallazgo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                analisisHallazgo
+    module:               analisis_hallazgo
+    prefix_path:          /analisis_hallazgo
+    column:               id
+    with_wildcard_routes: true
+
+dispocision_tomar:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                dispocisionTomar
+    module:               dispocision_tomar
+    prefix_path:          /dispocision_tomar
+    column:               id
+    with_wildcard_routes: true
+
+division_hallazgo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                divisionHallazgo
+    module:               division_hallazgo
+    prefix_path:          /division_hallazgo
+    column:               id
+    with_wildcard_routes: true
+
+fuente_hallazgo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                fuenteHallazgo
+    module:               fuente_hallazgo
+    prefix_path:          /fuente_hallazgo
+    column:               id
+    with_wildcard_routes: true
+
+activo_fijo:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                ActivoFijo
+    module:               activo_fijo
+    prefix_path:          /activo_fijo
+    column:               id
+    with_wildcard_routes: true
+
+usuario:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Usuario
+    module:               usuario
+    prefix_path:          /usuario
+    column:               id
+    with_wildcard_routes: true
+
+centro_costo_empresa:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                CentroCostoEmpresa
+    module:               centro_costo_empresa
+    prefix_path:          /centro_costo_empresa
+    column:               id
+    with_wildcard_routes: true
+
+nomenclatura_empresa:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                NomenclaturaEmpresa
+    module:               nomenclatura_empresa
+    prefix_path:          /nomenclatura_empresa
+    column:               id
+    with_wildcard_routes: true
+
+puesto:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Puesto
+    module:               puesto
+    prefix_path:          /puesto
+    column:               id
+    with_wildcard_routes: true
+
+pais:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Pais
+    module:               pais
+    prefix_path:          /pais
+    column:               id
+    with_wildcard_routes: true
+
+empresa:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Empresa
+    module:               empresa
+    prefix_path:          /empresa
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   
+  param: { module: inicio, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   :module
+  param: { action: index }
+
+default:
+  url:   :module/:action/*
