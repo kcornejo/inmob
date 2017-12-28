@@ -55,6 +55,7 @@
                             <a href="#"><i class="icon-shield"></i><span>Seguridad</span></a>
                             <ul class="children collapse">
                                 <li><a  href="<?php echo url_for("usuario/index")?>"> Usuarios</a></li>
+                                <li><a  href="<?php echo url_for("perfil/index")?>"> Perfiles</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -142,6 +143,8 @@
         <script src="/assets/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
         <script src="/assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
         <script src="/assets/global/plugins/charts-chartjs/Chart.min.js"></script>
+        <script src="/assets/global/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+        <script src="/assets/global/plugins/switchery/switchery.min.js"></script> <!-- IOS Switch -->
         <script src="/assets/global/js/builder.js"></script> <!-- Theme Builder -->
         <script src="/assets/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
         <script src="/assets/global/js/widgets/notes.js"></script> <!-- Notes Widget -->

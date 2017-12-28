@@ -22,20 +22,32 @@ generator:
               attributes:
                   class: form-control input-medium
               label:       Clave
+          email: 
+              attributes:
+                  class: form-control input-medium
+              label:       Correo Electronico
+          numero_telefono: 
+              attributes:
+                  class: form-control input-medium
+              label:       Numero Telefonico
+          perfil_id: 
+              attributes:
+                  class: form-control input-medium
+              label:       Perfil
       list: 
         title:   Listado de Usuarios
-        display: [usuario, activo]
+        display: [usuario,perfil, email, numero_telefono, activo]
         object_actions:
           _edit: 
             attributes:  class=btn btn-xs btn-warning
           _delete: 
             attributes:  class=btn btn-xs btn-danger
       filter:
-        display: [usuario, activo]
+        display: [usuario,perfil_id,email, numero_telefono, activo]
       form:    ~
       edit: 
         title:   " Edicion de Usuario [%%USUARIO%%]"
-        display:  [usuario, activo]
+        display:  [usuario, perfil_id, email, numero_telefono, activo]
       new: 
         title:   Creacion de Usuario
-        display:  [usuario, clave,activo]
+        display:  [usuario, perfil_id, clave, email, numero_telefono, activo]

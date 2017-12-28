@@ -1,0 +1,37 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           perfil
+    theme:                 admin15
+    non_verbose_templates: true
+    with_show:             false
+    singular:              perfil
+    plural:                perfils
+    route_prefix:          perfil
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+          descripcion: 
+              attributes:
+                  class: form-control input-medium
+              label:       Perfil
+      list:
+        title:   Listado de Perfiles
+        display: [descripcion, activo]
+        object_actions:
+          _edit: 
+            attributes:  class=btn btn-xs btn-warning
+          _delete: 
+            attributes:  class=btn btn-xs btn-danger
+      filter:
+          display: [descripcion, activo]
+      form:    ~
+      edit:
+        title:   " Edicion de Perfil [%%DESCRIPCION%%]"
+        display:  [descripcion, activo]
+      new:
+        title:   Creacion de Perfil
+        display:  [descripcion, activo]

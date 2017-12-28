@@ -9,4 +9,44 @@ propel:
     created_by:                        { type: varchar(32) }
     updated_by:                        { type: varchar(32) }
     activo:                            { type: boolean, default: true }
-  
+    email:                             { type: varchar(255) }
+    numero_telefono:                   { type: varchar(255) }
+    perfil_id:                         ~
+    
+  perfil:
+    id:                                ~
+    descripcion:                       { type: varchar(255) , primaryString: true}
+    activo:                            { type: boolean, default: true }
+    created_at:                        ~
+    updated_at:                        ~
+    created_by:                        { type: varchar(32) }
+    updated_by:                        { type: varchar(32) }
+  propiedad:
+    id:                                 ~
+    tipo_operacion:                     { type: varchar(32) }
+    tipo_inmueble:                      { type: varchar(32) }
+    cantidad_habitacion:                { type: integer }
+    cantidad_banio:                     { type: integer }
+    cantidad_parqueo:                   { type: integer }
+    cantidad_comedor:                   { type: integer }
+    cantidad_sala:                      { type: integer }
+    cantidad_cocina:                    { type: integer }
+    dormitorio_servicio:                { type: boolean, default: false }
+    estudio:                            { type: boolean, default: false }
+    cisterna:                           { type: boolean, default: false }
+    cantidad_jardin:                    { type: integer }
+    cantidad_patio:                     { type: integer }
+    lavanderia:                         { type: boolean, default: false }
+    estado:                             { type: varchar(32) }
+    amenidades:                         { type: varchar(255) }
+    precio:                             { type: double }
+    negociable:                         { type: boolean, default: false }
+    incluye_gastos_escritura:           { type: boolean, default: false }
+    anio_construccion:                  { type: integer }
+    mantenimiento_mensual:              { type: double }
+    iusi_semestral:                     { type: double }
+    valor_avaluo:                       { type: double }
+    created_at:                         ~
+    updated_at:                         ~
+    created_by:                         { type: varchar(32) }
+    updated_by:                         { type: varchar(32) }

@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1513689056.
- * Generated on 2017-12-19 13:10:56 
+ * up to version 1514347651.
+ * Generated on 2017-12-27 04:07:31 
  */
-class PropelMigration_1513689056
+class PropelMigration_1514347651
 {
 
     public function preUp($manager)
@@ -42,17 +42,36 @@ class PropelMigration_1513689056
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-CREATE TABLE `usuario`
+CREATE TABLE `propiedad`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `usuario` VARCHAR(32) NOT NULL,
-    `clave` VARCHAR(60),
-    `correo` VARCHAR(255),
+    `tipo_operacion` VARCHAR(32),
+    `tipo_inmueble` VARCHAR(32),
+    `cantidad_habitacion` INTEGER,
+    `cantidad_banio` INTEGER,
+    `cantidad_parqueo` INTEGER,
+    `cantidad_comedor` INTEGER,
+    `cantidad_sala` INTEGER,
+    `cantidad_cocina` INTEGER,
+    `dormitorio_servicio` TINYINT(1) DEFAULT 0,
+    `estudio` TINYINT(1) DEFAULT 0,
+    `cisterna` TINYINT(1) DEFAULT 0,
+    `cantidad_jardin` INTEGER,
+    `cantidad_patio` INTEGER,
+    `cantidad_lavanderia` INTEGER,
+    `estado` VARCHAR(32),
+    `amenidades` VARCHAR(255),
+    `precio` DOUBLE,
+    `negociable` TINYINT(1) DEFAULT 0,
+    `incluye_gastos_escritura` TINYINT(1) DEFAULT 0,
+    `anio_construccion` INTEGER,
+    `mantenimiento_mensual` DOUBLE,
+    `iusi_semestral` DOUBLE,
+    `valor_avaluo` DOUBLE,
     `created_at` DATETIME,
     `updated_at` DATETIME,
     `created_by` VARCHAR(32),
     `updated_by` VARCHAR(32),
-    `activo` TINYINT(1) DEFAULT 1,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -76,7 +95,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `propiedad`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
