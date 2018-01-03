@@ -10,6 +10,7 @@
         <link href="/assets/global/css/style.css" rel="stylesheet">
         <link href="/assets/global/css/theme.css" rel="stylesheet">
         <link href="/assets/global/css/ui.css" rel="stylesheet">
+        <link href="/assets/global/plugins/rateit/rateit.css" rel="stylesheet">
         <link href="/assets/admin/layout4/css/layout.css" rel="stylesheet">
         <script src="/assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
@@ -45,17 +46,17 @@
             <div class="sidebar">
                 <div class="logopanel">
                     <h1>
-                        <a href="<?php echo url_for("inicio/index")?>"></a>
+                        <a href="<?php echo url_for("inicio/index") ?>"></a>
                     </h1>
                 </div>
                 <div class="sidebar-inner">
                     <ul class="nav nav-sidebar">
-                        <li><a href="<?php echo url_for("inicio/index")?>"><i class="icon-home"></i><span>Inicio</span></a></li>
+                        <li><a href="<?php echo url_for("inicio/index") ?>"><i class="icon-home"></i><span>Inicio</span></a></li>
                         <li class="nav-parent">
                             <a href="#"><i class="icon-shield"></i><span>Seguridad</span></a>
                             <ul class="children collapse">
-                                <li><a  href="<?php echo url_for("usuario/index")?>"> Usuarios</a></li>
-                                <li><a  href="<?php echo url_for("perfil/index")?>"> Perfiles</a></li>
+                                <li><a  href="<?php echo url_for("usuario/index") ?>"> Usuarios</a></li>
+                                <li><a  href="<?php echo url_for("perfil/index") ?>"> Perfiles</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -85,7 +86,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="<?php echo url_for("seguridad/logout")?>"><i class="icon-logout"></i><span>Cerrar Sesión</span></a>
+                                        <a href="<?php echo url_for("seguridad/logout") ?>"><i class="icon-logout"></i><span>Cerrar Sesión</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -99,13 +100,13 @@
                 <div class="page-content">
                     <div class="row">
                         <div class="col-lg-12">
-                            <?php echo $sf_content;?>
+                            <?php echo $sf_content; ?>
                         </div>
                     </div>
                     <div class="footer">
                         <div class="copyright">
                             <p class="pull-left sm-pull-reset">
-                                <span>Copyright <span class="copyright">©</span> <?php echo date("Y")?> </span>
+                                <span>Copyright <span class="copyright">©</span> <?php echo date("Y") ?> </span>
                             </p>
                         </div>
                     </div>
@@ -140,6 +141,7 @@
         <script src="/assets/global/plugins/retina/retina.min.js"></script> <!-- Retina Display -->
         <script src="/assets/global/plugins/select2/dist/js/select2.full.min.js"></script> <!-- Select Inputs -->
         <script src="/assets/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
+        <script src="/assets/global/plugins/rateit/jquery.rateit.min.js"></script>
         <script src="/assets/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
         <script src="/assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
         <script src="/assets/global/plugins/charts-chartjs/Chart.min.js"></script>
@@ -150,6 +152,7 @@
         <script src="/assets/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
         <script src="/assets/global/js/quickview.js"></script> <!-- Chat Script -->
         <script src="/assets/global/js/pages/search.js"></script> <!-- Search Script -->
+        <script src="/assets/global/js/pages/form_plugins.js"></script>
         <script src="/assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
         <script src="/assets/global/js/application.js"></script> <!-- Main Application Script -->
         <script src="/assets/admin/layout4/js/layout.js"></script> <!-- Main Application Script -->
