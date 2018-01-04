@@ -44,10 +44,12 @@
         <section>
             <!-- BEGIN SIDEBAR -->
             <div class="sidebar">
+                <!--<img src="/assets/img/logo_v2.png" width="30%" class="logopanel"/>-->
                 <div class="logopanel">
-                    <h1>
-                        <a href="<?php echo url_for("inicio/index") ?>"></a>
-                    </h1>
+                    <img src="/assets/img/logo_v2.png" width="20%" onclick="location.replace('<?php echo url_for('inicio/index') ?>');"/>
+                    <!--                                    <h1>
+                                                            <a href="<?php echo url_for("inicio/index") ?>"></a>
+                                                        </h1>-->
                 </div>
                 <div class="sidebar-inner">
                     <ul class="nav nav-sidebar">
@@ -60,22 +62,17 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="sidebar-footer clearfix">
-                        <a class="pull-left footer-settings" href="#" data-rel="tooltip" data-placement="top" data-original-title="Settings">
-                            <i class="icon-settings"></i></a>
-                        <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
-                            <i class="icon-size-fullscreen"></i></a>
-                        <a class="pull-left" href="#" data-rel="tooltip" data-placement="top" data-original-title="Lockscreen">
-                            <i class="icon-lock"></i></a>
-                        <a class="pull-left btn-effect" href="#" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
-                            <i class="icon-power"></i></a>
-                    </div>
                 </div>
             </div>
             <!-- END SIDEBAR -->
             <div class="main-content">
                 <!-- BEGIN TOPBAR -->
                 <div class="topbar">
+                    <div class="header-left">
+                        <div class="topnav">
+                            <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+                        </div>
+                    </div>
                     <div class="header-right">
                         <ul class="header-menu nav navbar-nav">
                             <!-- BEGIN USER DROPDOWN -->

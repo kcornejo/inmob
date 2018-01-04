@@ -10,8 +10,8 @@ class VenderForm extends sfForm {
         $departamentos = array();
         $municipios = array();
         $zonas = array();
-        $this->setWidget("tipo_operacion", new sfWidgetFormSelect(array('choices' => $opciones), array()));
-        $this->setWidget("tipo_inmueble", new sfWidgetFormSelect(array('choices' => $opciones_inm), array()));
+        $this->setWidget("tipo_operacion", new sfWidgetFormSelect(array('choices' => $opciones), array("class" => "col-md-10")));
+        $this->setWidget("tipo_inmueble", new sfWidgetFormSelect(array('choices' => $opciones_inm), array("class" => "col-md-10")));
         $this->setWidget("habitacion", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("banio", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "0.5", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("parqueo", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
@@ -24,11 +24,11 @@ class VenderForm extends sfForm {
         $this->setWidget("jardin", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("patio", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("lavanderia", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
-        $this->setWidget("estado", new sfWidgetFormSelect(array('choices' => $estado), array()));
+        $this->setWidget("estado", new sfWidgetFormSelect(array('choices' => $estado), array("class" => "col-md-10")));
         $this->setWidget("amenidades", new sfWidgetFormInputText(array(), array("class" => "form-control ")));
         $this->setWidget("precio", new sfWidgetFormInputText(array("label" => "Precio (Q)"), array("class" => "form-control")));
         $this->setWidget("precio_negociable", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
-        $this->setWidget("forma_pago", new sfWidgetFormSelect(array('choices' => $opciones_pago), array()));
+        $this->setWidget("forma_pago", new sfWidgetFormSelect(array('choices' => $opciones_pago), array("class" => "col-md-10")));
         $this->setWidget("gastos_escritura", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
         $this->setWidget("anios_construccion", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("mantenimiento_mensual", new sfWidgetFormInputText(array("label" => "Mantenimiento Mensual"), array("class" => "form-control")));
@@ -39,9 +39,9 @@ class VenderForm extends sfForm {
         $this->setWidget("nombre_cliente", new sfWidgetFormInputText(array("label" => "Nombre del Cliente"), array("class" => "form-control")));
         $this->setWidget("correo_cliente", new sfWidgetFormInputText(array("label" => "Correo del Cliente"), array("class" => "form-control")));
         $this->setWidget("telefono_cliente", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control")));
-        $this->setWidget("departamento", new sfWidgetFormSelect(array('choices' => $departamentos), array()));
-        $this->setWidget("municipio", new sfWidgetFormSelect(array('choices' => $municipios), array()));
-        $this->setWidget("zona", new sfWidgetFormSelect(array('choices' => $zonas), array()));
+        $this->setWidget("departamento", new sfWidgetFormSelect(array('choices' => $departamentos), array("class" => "col-md-10")));
+        $this->setWidget("municipio", new sfWidgetFormSelect(array('choices' => $municipios), array("class" => "col-md-10")));
+        $this->setWidget("zona", new sfWidgetFormSelect(array('choices' => $zonas), array("class" => "col-md-10")));
         $this->setWidget("km", new sfWidgetFormInputText(array("label" => "KM"), array("class" => "form-control")));
         $this->setWidget("direccion", new sfWidgetFormInputText(array("label" => "Direccion"), array("class" => "form-control")));
         $this->setWidget("seguridad", new  sfWidgetFormInputHidden());
@@ -74,6 +74,7 @@ class VenderForm extends sfForm {
         $this->setValidator("gastos_escritura", new sfValidatorString(array('required' => false)));
         $this->setValidator("anios_construccion", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("iusi_trimestral", new sfValidatorNumber(array('required' => false)));
+        $this->setValidator("mantenimiento_mensual", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("valor_avaluo", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("mi_comision", new sfValidatorNumber(array('required' => true)));
         $this->setValidator("comision_compartida", new sfValidatorNumber(array('required' => true)));

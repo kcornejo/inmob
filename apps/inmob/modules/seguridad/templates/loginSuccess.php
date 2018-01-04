@@ -17,8 +17,10 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-md-offset-4">
                     <div class="account-wall">
-                        <i class="user-img icons-faces-users-03"></i>
-                        <!--<img src="/assets/img/logo_biz.png" width="100%"/>-->
+                        <center>
+                            <img src="/assets/img/logo_v2.png" width="50%"/>
+                            <br/><br/>
+                        </center>
                         <?php echo $form->renderFormTag(url_for("seguridad/login"), array("class" => "form-signin")) ?>
                         <?php if ($form['clave']->hasError()): ?>
                             <div class="alert alert-danger media fade in">
