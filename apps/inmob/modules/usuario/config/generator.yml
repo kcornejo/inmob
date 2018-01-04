@@ -29,7 +29,7 @@ generator:
           numero_telefono: 
               attributes:
                   class: form-control input-medium
-              label:       Numero Telefonico
+              label:       Número Telefónico
           perfil_id: 
               attributes:
                   class: form-control input-medium
