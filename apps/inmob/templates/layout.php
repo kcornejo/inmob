@@ -97,6 +97,7 @@
                 <div class="page-content">
                     <div class="row">
                         <div class="col-lg-12">
+                            <?php include_partial("soporte/avisos")?>
                             <?php echo $sf_content; ?>
                         </div>
                     </div>

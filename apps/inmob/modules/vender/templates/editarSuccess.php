@@ -12,8 +12,8 @@
     <?php endforeach ?>
 <?php endif ?>
 <div class="panel">
-    <div class="panel-header bg-primary">
-        <h3>Vender Propiedad
+    <div class="panel-header bg-success">
+        <h3>Editar Propiedad
             <a class="btn btn-xs btn-warning" style="float:right;margin-top: -6px;" href="<?php echo url_for("inicio/index") ?>">
                 <i class="fa fa-hand-o-left"></i>
                 Atras
@@ -22,7 +22,7 @@
 
     </div>
     <div class="panel-content">
-        <?php echo $formulario_vender->renderFormTag(url_for("vender/nueva")); ?>
+        <?php echo $formulario_vender->renderFormTag(url_for("vender/editar") . "?id=" . $id); ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel">

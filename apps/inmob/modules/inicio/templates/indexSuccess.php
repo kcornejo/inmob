@@ -7,6 +7,15 @@
 <div class="tab-content">
     <div class="tab-pane fade active in" id="tab6_1">
         <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered table-hover">
+                    <?php foreach ($propiedades as $propiedad): ?>
+                        <tr onclick="location.replace('<?php echo url_for('vender/editar') . "?id=" . $propiedad->getId() ?>')">
+                            <td>Precio: <?php echo $propiedad->getPrecio() ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
             <hr/>
             <button style="float:right" onclick="location.replace('<?php echo url_for('vender/nueva') ?>');" type="button" class="btn btn-icon btn-rounded btn-primary"><i class="fa fa-plus"></i></button>
         </div>

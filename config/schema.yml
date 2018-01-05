@@ -46,7 +46,38 @@ propel:
     mantenimiento_mensual:              { type: double }
     iusi_semestral:                     { type: double }
     valor_avaluo:                       { type: double }
+    mi_comision:                        { type: double }
+    comision_compartida:                { type: double }
+    nombre_cliente:                     { type: varchar(255) }
+    correo_cliente:                     { type: varchar(255) }
+    telefono_cliente:                   { type: varchar(25) }
+    departamento_id:                    ~
+    municipio_id:                       ~
+    zona:                               { type: varchar(200) }
+    km:                                 { type: varchar(200) }
+    direccion:                          { type: varchar(255) }
+    seguridad:                          { type: double }
+    accesos:                            { type: double }
+    agua:                               { type: double }
+    transporte_publico:                 { type: double }
+    transito_vehicular:                 { type: double }
+    comunidades_colidantes:             { type: double }
+    areas_recreacion:                   { type: double }
+    dormitorio_servicio:                { type: integer }
+    estudio:                            { type: integer }
+    cisterna:                           { type: integer }
+    lavanderia:                         { type: integer }
+    precio_negociable:                  { type: boolean }
+    forma_pago:                         { type: varchar(255) }
+    gastos_escritura:                   { type: boolean  }
     created_at:                         ~
     updated_at:                         ~
     created_by:                         { type: varchar(32) }
     updated_by:                         { type: varchar(32) }
+  departamento:
+    id:                                ~
+    descripcion:                       { type: varchar(255) , primaryString: true}
+  municipio:
+    id:                                ~
+    descripcion:                       { type: varchar(255) , primaryString: true}
+    departamento_id:                   ~

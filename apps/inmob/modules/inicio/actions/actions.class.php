@@ -11,7 +11,32 @@
 class inicioActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
-       
+        $this->propiedades = PropiedadQuery::create()->find();
+    }
+
+    public function executeDep(sfWebRequest $request) {
+        $url = "https://gist.githubusercontent.com/tian2992/7439705/raw/703b239b487171cc356182149cadb23340561b81/guatemala.json";
+        $datos = json_decode(file_get_contents($url), true);
+        foreach ($datos as $dep => $fila) {
+            $Departamento = DepartamentoQuery::create()->findOneByDescripcion($dep);
+            if (!$Departamento) {
+                $Departamento = new Departamento();
+                $Departamento->setDescripcion($dep);
+                $Departamento->save();
+            }
+            foreach ($fila as $mun) {
+                $Municipio = MunicipioQuery::create()
+                        ->filterByDepartamentoId($Departamento->getId())
+                        ->filterByDescripcion($mun)
+                        ->findOne();
+                if (!$Municipio) {
+                    $Municipio = new Municipio();
+                    $Municipio->setDepartamentoId($Departamento->getId());
+                    $Municipio->setDescripcion($mun);
+                    $Municipio->save();
+                }
+            }
+        }
     }
 
     public function executePrincipal(sfWebRequest $request) {

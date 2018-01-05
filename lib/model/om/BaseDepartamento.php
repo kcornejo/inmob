@@ -2,7 +2,7 @@
 
 
 /**
- * Base class that represents a row from the 'perfil' table.
+ * Base class that represents a row from the 'departamento' table.
  *
  *
  *
@@ -12,18 +12,18 @@
  *
  * @package    propel.generator.lib.model.om
  */
-abstract class BasePerfil extends BaseObject implements Persistent
+abstract class BaseDepartamento extends BaseObject implements Persistent
 {
     /**
      * Peer class name
      */
-    const PEER = 'PerfilPeer';
+    const PEER = 'DepartamentoPeer';
 
     /**
      * The Peer class.
      * Instance provides a convenient way of calling static methods on a class
      * that calling code may not be able to identify.
-     * @var        PerfilPeer
+     * @var        DepartamentoPeer
      */
     protected static $peer;
 
@@ -46,41 +46,16 @@ abstract class BasePerfil extends BaseObject implements Persistent
     protected $descripcion;
 
     /**
-     * The value for the activo field.
-     * Note: this column has a database default value of: true
-     * @var        boolean
+     * @var        PropelObjectCollection|Propiedad[] Collection to store aggregation of Propiedad objects.
      */
-    protected $activo;
+    protected $collPropiedads;
+    protected $collPropiedadsPartial;
 
     /**
-     * The value for the created_at field.
-     * @var        string
+     * @var        PropelObjectCollection|Municipio[] Collection to store aggregation of Municipio objects.
      */
-    protected $created_at;
-
-    /**
-     * The value for the updated_at field.
-     * @var        string
-     */
-    protected $updated_at;
-
-    /**
-     * The value for the created_by field.
-     * @var        string
-     */
-    protected $created_by;
-
-    /**
-     * The value for the updated_by field.
-     * @var        string
-     */
-    protected $updated_by;
-
-    /**
-     * @var        PropelObjectCollection|Usuario[] Collection to store aggregation of Usuario objects.
-     */
-    protected $collUsuarios;
-    protected $collUsuariosPartial;
+    protected $collMunicipios;
+    protected $collMunicipiosPartial;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -100,28 +75,13 @@ abstract class BasePerfil extends BaseObject implements Persistent
      * An array of objects scheduled for deletion.
      * @var		PropelObjectCollection
      */
-    protected $usuariosScheduledForDeletion = null;
+    protected $propiedadsScheduledForDeletion = null;
 
     /**
-     * Applies default values to this object.
-     * This method should be called from the object's constructor (or
-     * equivalent initialization method).
-     * @see        __construct()
+     * An array of objects scheduled for deletion.
+     * @var		PropelObjectCollection
      */
-    public function applyDefaultValues()
-    {
-        $this->activo = true;
-    }
-
-    /**
-     * Initializes internal state of BasePerfil object.
-     * @see        applyDefaults()
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->applyDefaultValues();
-    }
+    protected $municipiosScheduledForDeletion = null;
 
     /**
      * Get the [id] column value.
@@ -144,114 +104,10 @@ abstract class BasePerfil extends BaseObject implements Persistent
     }
 
     /**
-     * Get the [activo] column value.
-     *
-     * @return boolean
-     */
-    public function getActivo()
-    {
-        return $this->activo;
-    }
-
-    /**
-     * Get the [optionally formatted] temporal [created_at] column value.
-     *
-     *
-     * @param string $format The date/time format string (either date()-style or strftime()-style).
-     *				 If format is null, then the raw DateTime object will be returned.
-     * @return mixed Formatted date/time value as string or DateTime object (if format is null), null if column is null, and 0 if column value is 0000-00-00 00:00:00
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getCreatedAt($format = 'Y-m-d H:i:s')
-    {
-        if ($this->created_at === null) {
-            return null;
-        }
-
-        if ($this->created_at === '0000-00-00 00:00:00') {
-            // while technically this is not a default value of null,
-            // this seems to be closest in meaning.
-            return null;
-        } else {
-            try {
-                $dt = new DateTime($this->created_at);
-            } catch (Exception $x) {
-                throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->created_at, true), $x);
-            }
-        }
-
-        if ($format === null) {
-            // Because propel.useDateTimeClass is true, we return a DateTime object.
-            return $dt;
-        } elseif (strpos($format, '%') !== false) {
-            return strftime($format, $dt->format('U'));
-        } else {
-            return $dt->format($format);
-        }
-    }
-
-    /**
-     * Get the [optionally formatted] temporal [updated_at] column value.
-     *
-     *
-     * @param string $format The date/time format string (either date()-style or strftime()-style).
-     *				 If format is null, then the raw DateTime object will be returned.
-     * @return mixed Formatted date/time value as string or DateTime object (if format is null), null if column is null, and 0 if column value is 0000-00-00 00:00:00
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getUpdatedAt($format = 'Y-m-d H:i:s')
-    {
-        if ($this->updated_at === null) {
-            return null;
-        }
-
-        if ($this->updated_at === '0000-00-00 00:00:00') {
-            // while technically this is not a default value of null,
-            // this seems to be closest in meaning.
-            return null;
-        } else {
-            try {
-                $dt = new DateTime($this->updated_at);
-            } catch (Exception $x) {
-                throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->updated_at, true), $x);
-            }
-        }
-
-        if ($format === null) {
-            // Because propel.useDateTimeClass is true, we return a DateTime object.
-            return $dt;
-        } elseif (strpos($format, '%') !== false) {
-            return strftime($format, $dt->format('U'));
-        } else {
-            return $dt->format($format);
-        }
-    }
-
-    /**
-     * Get the [created_by] column value.
-     *
-     * @return string
-     */
-    public function getCreatedBy()
-    {
-        return $this->created_by;
-    }
-
-    /**
-     * Get the [updated_by] column value.
-     *
-     * @return string
-     */
-    public function getUpdatedBy()
-    {
-        return $this->updated_by;
-    }
-
-    /**
      * Set the value of [id] column.
      *
      * @param int $v new value
-     * @return Perfil The current object (for fluent API support)
+     * @return Departamento The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -261,7 +117,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[] = PerfilPeer::ID;
+            $this->modifiedColumns[] = DepartamentoPeer::ID;
         }
 
 
@@ -272,7 +128,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
      * Set the value of [descripcion] column.
      *
      * @param string $v new value
-     * @return Perfil The current object (for fluent API support)
+     * @return Departamento The current object (for fluent API support)
      */
     public function setDescripcion($v)
     {
@@ -282,129 +138,12 @@ abstract class BasePerfil extends BaseObject implements Persistent
 
         if ($this->descripcion !== $v) {
             $this->descripcion = $v;
-            $this->modifiedColumns[] = PerfilPeer::DESCRIPCION;
+            $this->modifiedColumns[] = DepartamentoPeer::DESCRIPCION;
         }
 
 
         return $this;
     } // setDescripcion()
-
-    /**
-     * Sets the value of the [activo] column.
-     * Non-boolean arguments are converted using the following rules:
-     *   * 1, '1', 'true',  'on',  and 'yes' are converted to boolean true
-     *   * 0, '0', 'false', 'off', and 'no'  are converted to boolean false
-     * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
-     *
-     * @param boolean|integer|string $v The new value
-     * @return Perfil The current object (for fluent API support)
-     */
-    public function setActivo($v)
-    {
-        if ($v !== null) {
-            if (is_string($v)) {
-                $v = in_array(strtolower($v), array('false', 'off', '-', 'no', 'n', '0', '')) ? false : true;
-            } else {
-                $v = (boolean) $v;
-            }
-        }
-
-        if ($this->activo !== $v) {
-            $this->activo = $v;
-            $this->modifiedColumns[] = PerfilPeer::ACTIVO;
-        }
-
-
-        return $this;
-    } // setActivo()
-
-    /**
-     * Sets the value of [created_at] column to a normalized version of the date/time value specified.
-     *
-     * @param mixed $v string, integer (timestamp), or DateTime value.
-     *               Empty strings are treated as null.
-     * @return Perfil The current object (for fluent API support)
-     */
-    public function setCreatedAt($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->created_at !== null || $dt !== null) {
-            $currentDateAsString = ($this->created_at !== null && $tmpDt = new DateTime($this->created_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
-            $newDateAsString = $dt ? $dt->format('Y-m-d H:i:s') : null;
-            if ($currentDateAsString !== $newDateAsString) {
-                $this->created_at = $newDateAsString;
-                $this->modifiedColumns[] = PerfilPeer::CREATED_AT;
-            }
-        } // if either are not null
-
-
-        return $this;
-    } // setCreatedAt()
-
-    /**
-     * Sets the value of [updated_at] column to a normalized version of the date/time value specified.
-     *
-     * @param mixed $v string, integer (timestamp), or DateTime value.
-     *               Empty strings are treated as null.
-     * @return Perfil The current object (for fluent API support)
-     */
-    public function setUpdatedAt($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->updated_at !== null || $dt !== null) {
-            $currentDateAsString = ($this->updated_at !== null && $tmpDt = new DateTime($this->updated_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
-            $newDateAsString = $dt ? $dt->format('Y-m-d H:i:s') : null;
-            if ($currentDateAsString !== $newDateAsString) {
-                $this->updated_at = $newDateAsString;
-                $this->modifiedColumns[] = PerfilPeer::UPDATED_AT;
-            }
-        } // if either are not null
-
-
-        return $this;
-    } // setUpdatedAt()
-
-    /**
-     * Set the value of [created_by] column.
-     *
-     * @param string $v new value
-     * @return Perfil The current object (for fluent API support)
-     */
-    public function setCreatedBy($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->created_by !== $v) {
-            $this->created_by = $v;
-            $this->modifiedColumns[] = PerfilPeer::CREATED_BY;
-        }
-
-
-        return $this;
-    } // setCreatedBy()
-
-    /**
-     * Set the value of [updated_by] column.
-     *
-     * @param string $v new value
-     * @return Perfil The current object (for fluent API support)
-     */
-    public function setUpdatedBy($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->updated_by !== $v) {
-            $this->updated_by = $v;
-            $this->modifiedColumns[] = PerfilPeer::UPDATED_BY;
-        }
-
-
-        return $this;
-    } // setUpdatedBy()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -416,10 +155,6 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function hasOnlyDefaultValues()
     {
-            if ($this->activo !== true) {
-                return false;
-            }
-
         // otherwise, everything was equal, so return true
         return true;
     } // hasOnlyDefaultValues()
@@ -444,11 +179,6 @@ abstract class BasePerfil extends BaseObject implements Persistent
 
             $this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
             $this->descripcion = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
-            $this->activo = ($row[$startcol + 2] !== null) ? (boolean) $row[$startcol + 2] : null;
-            $this->created_at = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-            $this->updated_at = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
-            $this->created_by = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
-            $this->updated_by = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -457,10 +187,10 @@ abstract class BasePerfil extends BaseObject implements Persistent
                 $this->ensureConsistency();
             }
 
-            return $startcol + 7; // 7 = PerfilPeer::NUM_HYDRATE_COLUMNS.
+            return $startcol + 2; // 2 = DepartamentoPeer::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating Perfil object", $e);
+            throw new PropelException("Error populating Departamento object", $e);
         }
     }
 
@@ -503,13 +233,13 @@ abstract class BasePerfil extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PerfilPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(DepartamentoPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $stmt = PerfilPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+        $stmt = DepartamentoPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
         $row = $stmt->fetch(PDO::FETCH_NUM);
         $stmt->closeCursor();
         if (!$row) {
@@ -519,7 +249,9 @@ abstract class BasePerfil extends BaseObject implements Persistent
 
         if ($deep) {  // also de-associate any related objects?
 
-            $this->collUsuarios = null;
+            $this->collPropiedads = null;
+
+            $this->collMunicipios = null;
 
         } // if (deep)
     }
@@ -541,16 +273,16 @@ abstract class BasePerfil extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PerfilPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(DepartamentoPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
         try {
-            $deleteQuery = PerfilQuery::create()
+            $deleteQuery = DepartamentoQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             // symfony_behaviors behavior
-            foreach (sfMixer::getCallables('BasePerfil:delete:pre') as $callable)
+            foreach (sfMixer::getCallables('BaseDepartamento:delete:pre') as $callable)
             {
               if (call_user_func($callable, $this, $con))
               {
@@ -563,7 +295,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
                 $deleteQuery->delete($con);
                 $this->postDelete($con);
                 // symfony_behaviors behavior
-                foreach (sfMixer::getCallables('BasePerfil:delete:post') as $callable)
+                foreach (sfMixer::getCallables('BaseDepartamento:delete:post') as $callable)
                 {
                   call_user_func($callable, $this, $con);
                 }
@@ -600,7 +332,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PerfilPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(DepartamentoPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
@@ -608,7 +340,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
         try {
             $ret = $this->preSave($con);
             // symfony_behaviors behavior
-            foreach (sfMixer::getCallables('BasePerfil:save:pre') as $callable)
+            foreach (sfMixer::getCallables('BaseDepartamento:save:pre') as $callable)
             {
               if (is_integer($affectedRows = call_user_func($callable, $this, $con)))
               {
@@ -617,19 +349,8 @@ abstract class BasePerfil extends BaseObject implements Persistent
               }
             }
 
-            // symfony_timestampable behavior
-            if ($this->isModified() && !$this->isColumnModified(PerfilPeer::UPDATED_AT))
-            {
-                $this->setUpdatedAt(time());
-            }
             if ($isInsert) {
                 $ret = $ret && $this->preInsert($con);
-                // symfony_timestampable behavior
-                if (!$this->isColumnModified(PerfilPeer::CREATED_AT))
-                {
-                  $this->setCreatedAt(time());
-                }
-
             } else {
                 $ret = $ret && $this->preUpdate($con);
             }
@@ -642,12 +363,12 @@ abstract class BasePerfil extends BaseObject implements Persistent
                 }
                 $this->postSave($con);
                 // symfony_behaviors behavior
-                foreach (sfMixer::getCallables('BasePerfil:save:post') as $callable)
+                foreach (sfMixer::getCallables('BaseDepartamento:save:post') as $callable)
                 {
                   call_user_func($callable, $this, $con, $affectedRows);
                 }
 
-                PerfilPeer::addInstanceToPool($this);
+                DepartamentoPeer::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -688,18 +409,36 @@ abstract class BasePerfil extends BaseObject implements Persistent
                 $this->resetModified();
             }
 
-            if ($this->usuariosScheduledForDeletion !== null) {
-                if (!$this->usuariosScheduledForDeletion->isEmpty()) {
-                    foreach ($this->usuariosScheduledForDeletion as $usuario) {
+            if ($this->propiedadsScheduledForDeletion !== null) {
+                if (!$this->propiedadsScheduledForDeletion->isEmpty()) {
+                    foreach ($this->propiedadsScheduledForDeletion as $propiedad) {
                         // need to save related object because we set the relation to null
-                        $usuario->save($con);
+                        $propiedad->save($con);
                     }
-                    $this->usuariosScheduledForDeletion = null;
+                    $this->propiedadsScheduledForDeletion = null;
                 }
             }
 
-            if ($this->collUsuarios !== null) {
-                foreach ($this->collUsuarios as $referrerFK) {
+            if ($this->collPropiedads !== null) {
+                foreach ($this->collPropiedads as $referrerFK) {
+                    if (!$referrerFK->isDeleted()) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
+            }
+
+            if ($this->municipiosScheduledForDeletion !== null) {
+                if (!$this->municipiosScheduledForDeletion->isEmpty()) {
+                    foreach ($this->municipiosScheduledForDeletion as $municipio) {
+                        // need to save related object because we set the relation to null
+                        $municipio->save($con);
+                    }
+                    $this->municipiosScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collMunicipios !== null) {
+                foreach ($this->collMunicipios as $referrerFK) {
                     if (!$referrerFK->isDeleted()) {
                         $affectedRows += $referrerFK->save($con);
                     }
@@ -726,36 +465,21 @@ abstract class BasePerfil extends BaseObject implements Persistent
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[] = PerfilPeer::ID;
+        $this->modifiedColumns[] = DepartamentoPeer::ID;
         if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . PerfilPeer::ID . ')');
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . DepartamentoPeer::ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(PerfilPeer::ID)) {
+        if ($this->isColumnModified(DepartamentoPeer::ID)) {
             $modifiedColumns[':p' . $index++]  = '`ID`';
         }
-        if ($this->isColumnModified(PerfilPeer::DESCRIPCION)) {
+        if ($this->isColumnModified(DepartamentoPeer::DESCRIPCION)) {
             $modifiedColumns[':p' . $index++]  = '`DESCRIPCION`';
-        }
-        if ($this->isColumnModified(PerfilPeer::ACTIVO)) {
-            $modifiedColumns[':p' . $index++]  = '`ACTIVO`';
-        }
-        if ($this->isColumnModified(PerfilPeer::CREATED_AT)) {
-            $modifiedColumns[':p' . $index++]  = '`CREATED_AT`';
-        }
-        if ($this->isColumnModified(PerfilPeer::UPDATED_AT)) {
-            $modifiedColumns[':p' . $index++]  = '`UPDATED_AT`';
-        }
-        if ($this->isColumnModified(PerfilPeer::CREATED_BY)) {
-            $modifiedColumns[':p' . $index++]  = '`CREATED_BY`';
-        }
-        if ($this->isColumnModified(PerfilPeer::UPDATED_BY)) {
-            $modifiedColumns[':p' . $index++]  = '`UPDATED_BY`';
         }
 
         $sql = sprintf(
-            'INSERT INTO `perfil` (%s) VALUES (%s)',
+            'INSERT INTO `departamento` (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -769,21 +493,6 @@ abstract class BasePerfil extends BaseObject implements Persistent
                         break;
                     case '`DESCRIPCION`':
                         $stmt->bindValue($identifier, $this->descripcion, PDO::PARAM_STR);
-                        break;
-                    case '`ACTIVO`':
-                        $stmt->bindValue($identifier, (int) $this->activo, PDO::PARAM_INT);
-                        break;
-                    case '`CREATED_AT`':
-                        $stmt->bindValue($identifier, $this->created_at, PDO::PARAM_STR);
-                        break;
-                    case '`UPDATED_AT`':
-                        $stmt->bindValue($identifier, $this->updated_at, PDO::PARAM_STR);
-                        break;
-                    case '`CREATED_BY`':
-                        $stmt->bindValue($identifier, $this->created_by, PDO::PARAM_STR);
-                        break;
-                    case '`UPDATED_BY`':
-                        $stmt->bindValue($identifier, $this->updated_by, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -879,13 +588,21 @@ abstract class BasePerfil extends BaseObject implements Persistent
             $failureMap = array();
 
 
-            if (($retval = PerfilPeer::doValidate($this, $columns)) !== true) {
+            if (($retval = DepartamentoPeer::doValidate($this, $columns)) !== true) {
                 $failureMap = array_merge($failureMap, $retval);
             }
 
 
-                if ($this->collUsuarios !== null) {
-                    foreach ($this->collUsuarios as $referrerFK) {
+                if ($this->collPropiedads !== null) {
+                    foreach ($this->collPropiedads as $referrerFK) {
+                        if (!$referrerFK->validate($columns)) {
+                            $failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+                        }
+                    }
+                }
+
+                if ($this->collMunicipios !== null) {
+                    foreach ($this->collMunicipios as $referrerFK) {
                         if (!$referrerFK->validate($columns)) {
                             $failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
                         }
@@ -911,7 +628,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = PerfilPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = DepartamentoPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -932,21 +649,6 @@ abstract class BasePerfil extends BaseObject implements Persistent
                 break;
             case 1:
                 return $this->getDescripcion();
-                break;
-            case 2:
-                return $this->getActivo();
-                break;
-            case 3:
-                return $this->getCreatedAt();
-                break;
-            case 4:
-                return $this->getUpdatedAt();
-                break;
-            case 5:
-                return $this->getCreatedBy();
-                break;
-            case 6:
-                return $this->getUpdatedBy();
                 break;
             default:
                 return null;
@@ -971,23 +673,21 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
-        if (isset($alreadyDumpedObjects['Perfil'][$this->getPrimaryKey()])) {
+        if (isset($alreadyDumpedObjects['Departamento'][$this->getPrimaryKey()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['Perfil'][$this->getPrimaryKey()] = true;
-        $keys = PerfilPeer::getFieldNames($keyType);
+        $alreadyDumpedObjects['Departamento'][$this->getPrimaryKey()] = true;
+        $keys = DepartamentoPeer::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
             $keys[1] => $this->getDescripcion(),
-            $keys[2] => $this->getActivo(),
-            $keys[3] => $this->getCreatedAt(),
-            $keys[4] => $this->getUpdatedAt(),
-            $keys[5] => $this->getCreatedBy(),
-            $keys[6] => $this->getUpdatedBy(),
         );
         if ($includeForeignObjects) {
-            if (null !== $this->collUsuarios) {
-                $result['Usuarios'] = $this->collUsuarios->toArray(null, true, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            if (null !== $this->collPropiedads) {
+                $result['Propiedads'] = $this->collPropiedads->toArray(null, true, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+            if (null !== $this->collMunicipios) {
+                $result['Municipios'] = $this->collMunicipios->toArray(null, true, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
             }
         }
 
@@ -1007,7 +707,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = PerfilPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = DepartamentoPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 
         $this->setByPosition($pos, $value);
     }
@@ -1028,21 +728,6 @@ abstract class BasePerfil extends BaseObject implements Persistent
                 break;
             case 1:
                 $this->setDescripcion($value);
-                break;
-            case 2:
-                $this->setActivo($value);
-                break;
-            case 3:
-                $this->setCreatedAt($value);
-                break;
-            case 4:
-                $this->setUpdatedAt($value);
-                break;
-            case 5:
-                $this->setCreatedBy($value);
-                break;
-            case 6:
-                $this->setUpdatedBy($value);
                 break;
         } // switch()
     }
@@ -1066,15 +751,10 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
     {
-        $keys = PerfilPeer::getFieldNames($keyType);
+        $keys = DepartamentoPeer::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
         if (array_key_exists($keys[1], $arr)) $this->setDescripcion($arr[$keys[1]]);
-        if (array_key_exists($keys[2], $arr)) $this->setActivo($arr[$keys[2]]);
-        if (array_key_exists($keys[3], $arr)) $this->setCreatedAt($arr[$keys[3]]);
-        if (array_key_exists($keys[4], $arr)) $this->setUpdatedAt($arr[$keys[4]]);
-        if (array_key_exists($keys[5], $arr)) $this->setCreatedBy($arr[$keys[5]]);
-        if (array_key_exists($keys[6], $arr)) $this->setUpdatedBy($arr[$keys[6]]);
     }
 
     /**
@@ -1084,15 +764,10 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(PerfilPeer::DATABASE_NAME);
+        $criteria = new Criteria(DepartamentoPeer::DATABASE_NAME);
 
-        if ($this->isColumnModified(PerfilPeer::ID)) $criteria->add(PerfilPeer::ID, $this->id);
-        if ($this->isColumnModified(PerfilPeer::DESCRIPCION)) $criteria->add(PerfilPeer::DESCRIPCION, $this->descripcion);
-        if ($this->isColumnModified(PerfilPeer::ACTIVO)) $criteria->add(PerfilPeer::ACTIVO, $this->activo);
-        if ($this->isColumnModified(PerfilPeer::CREATED_AT)) $criteria->add(PerfilPeer::CREATED_AT, $this->created_at);
-        if ($this->isColumnModified(PerfilPeer::UPDATED_AT)) $criteria->add(PerfilPeer::UPDATED_AT, $this->updated_at);
-        if ($this->isColumnModified(PerfilPeer::CREATED_BY)) $criteria->add(PerfilPeer::CREATED_BY, $this->created_by);
-        if ($this->isColumnModified(PerfilPeer::UPDATED_BY)) $criteria->add(PerfilPeer::UPDATED_BY, $this->updated_by);
+        if ($this->isColumnModified(DepartamentoPeer::ID)) $criteria->add(DepartamentoPeer::ID, $this->id);
+        if ($this->isColumnModified(DepartamentoPeer::DESCRIPCION)) $criteria->add(DepartamentoPeer::DESCRIPCION, $this->descripcion);
 
         return $criteria;
     }
@@ -1107,8 +782,8 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(PerfilPeer::DATABASE_NAME);
-        $criteria->add(PerfilPeer::ID, $this->id);
+        $criteria = new Criteria(DepartamentoPeer::DATABASE_NAME);
+        $criteria->add(DepartamentoPeer::ID, $this->id);
 
         return $criteria;
     }
@@ -1149,7 +824,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param object $copyObj An object of Perfil (or compatible) type.
+     * @param object $copyObj An object of Departamento (or compatible) type.
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -1157,11 +832,6 @@ abstract class BasePerfil extends BaseObject implements Persistent
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
         $copyObj->setDescripcion($this->getDescripcion());
-        $copyObj->setActivo($this->getActivo());
-        $copyObj->setCreatedAt($this->getCreatedAt());
-        $copyObj->setUpdatedAt($this->getUpdatedAt());
-        $copyObj->setCreatedBy($this->getCreatedBy());
-        $copyObj->setUpdatedBy($this->getUpdatedBy());
 
         if ($deepCopy && !$this->startCopy) {
             // important: temporarily setNew(false) because this affects the behavior of
@@ -1170,9 +840,15 @@ abstract class BasePerfil extends BaseObject implements Persistent
             // store object hash to prevent cycle
             $this->startCopy = true;
 
-            foreach ($this->getUsuarios() as $relObj) {
+            foreach ($this->getPropiedads() as $relObj) {
                 if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
-                    $copyObj->addUsuario($relObj->copy($deepCopy));
+                    $copyObj->addPropiedad($relObj->copy($deepCopy));
+                }
+            }
+
+            foreach ($this->getMunicipios() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addMunicipio($relObj->copy($deepCopy));
                 }
             }
 
@@ -1195,7 +871,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
      * objects.
      *
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return Perfil Clone of current object.
+     * @return Departamento Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1215,12 +891,12 @@ abstract class BasePerfil extends BaseObject implements Persistent
      * same instance for all member of this class. The method could therefore
      * be static, but this would prevent one from overriding the behavior.
      *
-     * @return PerfilPeer
+     * @return DepartamentoPeer
      */
     public function getPeer()
     {
         if (self::$peer === null) {
-            self::$peer = new PerfilPeer();
+            self::$peer = new DepartamentoPeer();
         }
 
         return self::$peer;
@@ -1237,40 +913,43 @@ abstract class BasePerfil extends BaseObject implements Persistent
      */
     public function initRelation($relationName)
     {
-        if ('Usuario' == $relationName) {
-            $this->initUsuarios();
+        if ('Propiedad' == $relationName) {
+            $this->initPropiedads();
+        }
+        if ('Municipio' == $relationName) {
+            $this->initMunicipios();
         }
     }
 
     /**
-     * Clears out the collUsuarios collection
+     * Clears out the collPropiedads collection
      *
      * This does not modify the database; however, it will remove any associated objects, causing
      * them to be refetched by subsequent calls to accessor method.
      *
      * @return void
-     * @see        addUsuarios()
+     * @see        addPropiedads()
      */
-    public function clearUsuarios()
+    public function clearPropiedads()
     {
-        $this->collUsuarios = null; // important to set this to null since that means it is uninitialized
-        $this->collUsuariosPartial = null;
+        $this->collPropiedads = null; // important to set this to null since that means it is uninitialized
+        $this->collPropiedadsPartial = null;
     }
 
     /**
-     * reset is the collUsuarios collection loaded partially
+     * reset is the collPropiedads collection loaded partially
      *
      * @return void
      */
-    public function resetPartialUsuarios($v = true)
+    public function resetPartialPropiedads($v = true)
     {
-        $this->collUsuariosPartial = $v;
+        $this->collPropiedadsPartial = $v;
     }
 
     /**
-     * Initializes the collUsuarios collection.
+     * Initializes the collPropiedads collection.
      *
-     * By default this just sets the collUsuarios collection to an empty array (like clearcollUsuarios());
+     * By default this just sets the collPropiedads collection to an empty array (like clearcollPropiedads());
      * however, you may wish to override this method in your stub class to provide setting appropriate
      * to your application -- for example, setting the initial array to the values stored in database.
      *
@@ -1279,173 +958,405 @@ abstract class BasePerfil extends BaseObject implements Persistent
      *
      * @return void
      */
-    public function initUsuarios($overrideExisting = true)
+    public function initPropiedads($overrideExisting = true)
     {
-        if (null !== $this->collUsuarios && !$overrideExisting) {
+        if (null !== $this->collPropiedads && !$overrideExisting) {
             return;
         }
-        $this->collUsuarios = new PropelObjectCollection();
-        $this->collUsuarios->setModel('Usuario');
+        $this->collPropiedads = new PropelObjectCollection();
+        $this->collPropiedads->setModel('Propiedad');
     }
 
     /**
-     * Gets an array of Usuario objects which contain a foreign key that references this object.
+     * Gets an array of Propiedad objects which contain a foreign key that references this object.
      *
      * If the $criteria is not null, it is used to always fetch the results from the database.
      * Otherwise the results are fetched from the database the first time, then cached.
      * Next time the same method is called without $criteria, the cached collection is returned.
-     * If this Perfil is new, it will return
+     * If this Departamento is new, it will return
      * an empty collection or the current collection; the criteria is ignored on a new object.
      *
      * @param Criteria $criteria optional Criteria object to narrow the query
      * @param PropelPDO $con optional connection object
-     * @return PropelObjectCollection|Usuario[] List of Usuario objects
+     * @return PropelObjectCollection|Propiedad[] List of Propiedad objects
      * @throws PropelException
      */
-    public function getUsuarios($criteria = null, PropelPDO $con = null)
+    public function getPropiedads($criteria = null, PropelPDO $con = null)
     {
-        $partial = $this->collUsuariosPartial && !$this->isNew();
-        if (null === $this->collUsuarios || null !== $criteria  || $partial) {
-            if ($this->isNew() && null === $this->collUsuarios) {
+        $partial = $this->collPropiedadsPartial && !$this->isNew();
+        if (null === $this->collPropiedads || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collPropiedads) {
                 // return empty collection
-                $this->initUsuarios();
+                $this->initPropiedads();
             } else {
-                $collUsuarios = UsuarioQuery::create(null, $criteria)
-                    ->filterByPerfil($this)
+                $collPropiedads = PropiedadQuery::create(null, $criteria)
+                    ->filterByDepartamento($this)
                     ->find($con);
                 if (null !== $criteria) {
-                    if (false !== $this->collUsuariosPartial && count($collUsuarios)) {
-                      $this->initUsuarios(false);
+                    if (false !== $this->collPropiedadsPartial && count($collPropiedads)) {
+                      $this->initPropiedads(false);
 
-                      foreach($collUsuarios as $obj) {
-                        if (false == $this->collUsuarios->contains($obj)) {
-                          $this->collUsuarios->append($obj);
+                      foreach($collPropiedads as $obj) {
+                        if (false == $this->collPropiedads->contains($obj)) {
+                          $this->collPropiedads->append($obj);
                         }
                       }
 
-                      $this->collUsuariosPartial = true;
+                      $this->collPropiedadsPartial = true;
                     }
 
-                    return $collUsuarios;
+                    return $collPropiedads;
                 }
 
-                if($partial && $this->collUsuarios) {
-                    foreach($this->collUsuarios as $obj) {
+                if($partial && $this->collPropiedads) {
+                    foreach($this->collPropiedads as $obj) {
                         if($obj->isNew()) {
-                            $collUsuarios[] = $obj;
+                            $collPropiedads[] = $obj;
                         }
                     }
                 }
 
-                $this->collUsuarios = $collUsuarios;
-                $this->collUsuariosPartial = false;
+                $this->collPropiedads = $collPropiedads;
+                $this->collPropiedadsPartial = false;
             }
         }
 
-        return $this->collUsuarios;
+        return $this->collPropiedads;
     }
 
     /**
-     * Sets a collection of Usuario objects related by a one-to-many relationship
+     * Sets a collection of Propiedad objects related by a one-to-many relationship
      * to the current object.
      * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
      * and new objects from the given Propel collection.
      *
-     * @param PropelCollection $usuarios A Propel collection.
+     * @param PropelCollection $propiedads A Propel collection.
      * @param PropelPDO $con Optional connection object
      */
-    public function setUsuarios(PropelCollection $usuarios, PropelPDO $con = null)
+    public function setPropiedads(PropelCollection $propiedads, PropelPDO $con = null)
     {
-        $this->usuariosScheduledForDeletion = $this->getUsuarios(new Criteria(), $con)->diff($usuarios);
+        $this->propiedadsScheduledForDeletion = $this->getPropiedads(new Criteria(), $con)->diff($propiedads);
 
-        foreach ($this->usuariosScheduledForDeletion as $usuarioRemoved) {
-            $usuarioRemoved->setPerfil(null);
+        foreach ($this->propiedadsScheduledForDeletion as $propiedadRemoved) {
+            $propiedadRemoved->setDepartamento(null);
         }
 
-        $this->collUsuarios = null;
-        foreach ($usuarios as $usuario) {
-            $this->addUsuario($usuario);
+        $this->collPropiedads = null;
+        foreach ($propiedads as $propiedad) {
+            $this->addPropiedad($propiedad);
         }
 
-        $this->collUsuarios = $usuarios;
-        $this->collUsuariosPartial = false;
+        $this->collPropiedads = $propiedads;
+        $this->collPropiedadsPartial = false;
     }
 
     /**
-     * Returns the number of related Usuario objects.
+     * Returns the number of related Propiedad objects.
      *
      * @param Criteria $criteria
      * @param boolean $distinct
      * @param PropelPDO $con
-     * @return int             Count of related Usuario objects.
+     * @return int             Count of related Propiedad objects.
      * @throws PropelException
      */
-    public function countUsuarios(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+    public function countPropiedads(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
     {
-        $partial = $this->collUsuariosPartial && !$this->isNew();
-        if (null === $this->collUsuarios || null !== $criteria || $partial) {
-            if ($this->isNew() && null === $this->collUsuarios) {
+        $partial = $this->collPropiedadsPartial && !$this->isNew();
+        if (null === $this->collPropiedads || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collPropiedads) {
                 return 0;
             } else {
                 if($partial && !$criteria) {
-                    return count($this->getUsuarios());
+                    return count($this->getPropiedads());
                 }
-                $query = UsuarioQuery::create(null, $criteria);
+                $query = PropiedadQuery::create(null, $criteria);
                 if ($distinct) {
                     $query->distinct();
                 }
 
                 return $query
-                    ->filterByPerfil($this)
+                    ->filterByDepartamento($this)
                     ->count($con);
             }
         } else {
-            return count($this->collUsuarios);
+            return count($this->collPropiedads);
         }
     }
 
     /**
-     * Method called to associate a Usuario object to this object
-     * through the Usuario foreign key attribute.
+     * Method called to associate a Propiedad object to this object
+     * through the Propiedad foreign key attribute.
      *
-     * @param    Usuario $l Usuario
-     * @return Perfil The current object (for fluent API support)
+     * @param    Propiedad $l Propiedad
+     * @return Departamento The current object (for fluent API support)
      */
-    public function addUsuario(Usuario $l)
+    public function addPropiedad(Propiedad $l)
     {
-        if ($this->collUsuarios === null) {
-            $this->initUsuarios();
-            $this->collUsuariosPartial = true;
+        if ($this->collPropiedads === null) {
+            $this->initPropiedads();
+            $this->collPropiedadsPartial = true;
         }
-        if (!$this->collUsuarios->contains($l)) { // only add it if the **same** object is not already associated
-            $this->doAddUsuario($l);
+        if (!$this->collPropiedads->contains($l)) { // only add it if the **same** object is not already associated
+            $this->doAddPropiedad($l);
         }
 
         return $this;
     }
 
     /**
-     * @param	Usuario $usuario The usuario object to add.
+     * @param	Propiedad $propiedad The propiedad object to add.
      */
-    protected function doAddUsuario($usuario)
+    protected function doAddPropiedad($propiedad)
     {
-        $this->collUsuarios[]= $usuario;
-        $usuario->setPerfil($this);
+        $this->collPropiedads[]= $propiedad;
+        $propiedad->setDepartamento($this);
     }
 
     /**
-     * @param	Usuario $usuario The usuario object to remove.
+     * @param	Propiedad $propiedad The propiedad object to remove.
      */
-    public function removeUsuario($usuario)
+    public function removePropiedad($propiedad)
     {
-        if ($this->getUsuarios()->contains($usuario)) {
-            $this->collUsuarios->remove($this->collUsuarios->search($usuario));
-            if (null === $this->usuariosScheduledForDeletion) {
-                $this->usuariosScheduledForDeletion = clone $this->collUsuarios;
-                $this->usuariosScheduledForDeletion->clear();
+        if ($this->getPropiedads()->contains($propiedad)) {
+            $this->collPropiedads->remove($this->collPropiedads->search($propiedad));
+            if (null === $this->propiedadsScheduledForDeletion) {
+                $this->propiedadsScheduledForDeletion = clone $this->collPropiedads;
+                $this->propiedadsScheduledForDeletion->clear();
             }
-            $this->usuariosScheduledForDeletion[]= $usuario;
-            $usuario->setPerfil(null);
+            $this->propiedadsScheduledForDeletion[]= $propiedad;
+            $propiedad->setDepartamento(null);
+        }
+    }
+
+
+    /**
+     * If this collection has already been initialized with
+     * an identical criteria, it returns the collection.
+     * Otherwise if this Departamento is new, it will return
+     * an empty collection; or if this Departamento has previously
+     * been saved, it will retrieve related Propiedads from storage.
+     *
+     * This method is protected by default in order to keep the public
+     * api reasonable.  You can provide public methods for those you
+     * actually need in Departamento.
+     *
+     * @param Criteria $criteria optional Criteria object to narrow the query
+     * @param PropelPDO $con optional connection object
+     * @param string $join_behavior optional join type to use (defaults to Criteria::LEFT_JOIN)
+     * @return PropelObjectCollection|Propiedad[] List of Propiedad objects
+     */
+    public function getPropiedadsJoinMunicipio($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+    {
+        $query = PropiedadQuery::create(null, $criteria);
+        $query->joinWith('Municipio', $join_behavior);
+
+        return $this->getPropiedads($query, $con);
+    }
+
+    /**
+     * Clears out the collMunicipios collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addMunicipios()
+     */
+    public function clearMunicipios()
+    {
+        $this->collMunicipios = null; // important to set this to null since that means it is uninitialized
+        $this->collMunicipiosPartial = null;
+    }
+
+    /**
+     * reset is the collMunicipios collection loaded partially
+     *
+     * @return void
+     */
+    public function resetPartialMunicipios($v = true)
+    {
+        $this->collMunicipiosPartial = $v;
+    }
+
+    /**
+     * Initializes the collMunicipios collection.
+     *
+     * By default this just sets the collMunicipios collection to an empty array (like clearcollMunicipios());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initMunicipios($overrideExisting = true)
+    {
+        if (null !== $this->collMunicipios && !$overrideExisting) {
+            return;
+        }
+        $this->collMunicipios = new PropelObjectCollection();
+        $this->collMunicipios->setModel('Municipio');
+    }
+
+    /**
+     * Gets an array of Municipio objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this Departamento is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param Criteria $criteria optional Criteria object to narrow the query
+     * @param PropelPDO $con optional connection object
+     * @return PropelObjectCollection|Municipio[] List of Municipio objects
+     * @throws PropelException
+     */
+    public function getMunicipios($criteria = null, PropelPDO $con = null)
+    {
+        $partial = $this->collMunicipiosPartial && !$this->isNew();
+        if (null === $this->collMunicipios || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collMunicipios) {
+                // return empty collection
+                $this->initMunicipios();
+            } else {
+                $collMunicipios = MunicipioQuery::create(null, $criteria)
+                    ->filterByDepartamento($this)
+                    ->find($con);
+                if (null !== $criteria) {
+                    if (false !== $this->collMunicipiosPartial && count($collMunicipios)) {
+                      $this->initMunicipios(false);
+
+                      foreach($collMunicipios as $obj) {
+                        if (false == $this->collMunicipios->contains($obj)) {
+                          $this->collMunicipios->append($obj);
+                        }
+                      }
+
+                      $this->collMunicipiosPartial = true;
+                    }
+
+                    return $collMunicipios;
+                }
+
+                if($partial && $this->collMunicipios) {
+                    foreach($this->collMunicipios as $obj) {
+                        if($obj->isNew()) {
+                            $collMunicipios[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collMunicipios = $collMunicipios;
+                $this->collMunicipiosPartial = false;
+            }
+        }
+
+        return $this->collMunicipios;
+    }
+
+    /**
+     * Sets a collection of Municipio objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param PropelCollection $municipios A Propel collection.
+     * @param PropelPDO $con Optional connection object
+     */
+    public function setMunicipios(PropelCollection $municipios, PropelPDO $con = null)
+    {
+        $this->municipiosScheduledForDeletion = $this->getMunicipios(new Criteria(), $con)->diff($municipios);
+
+        foreach ($this->municipiosScheduledForDeletion as $municipioRemoved) {
+            $municipioRemoved->setDepartamento(null);
+        }
+
+        $this->collMunicipios = null;
+        foreach ($municipios as $municipio) {
+            $this->addMunicipio($municipio);
+        }
+
+        $this->collMunicipios = $municipios;
+        $this->collMunicipiosPartial = false;
+    }
+
+    /**
+     * Returns the number of related Municipio objects.
+     *
+     * @param Criteria $criteria
+     * @param boolean $distinct
+     * @param PropelPDO $con
+     * @return int             Count of related Municipio objects.
+     * @throws PropelException
+     */
+    public function countMunicipios(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+    {
+        $partial = $this->collMunicipiosPartial && !$this->isNew();
+        if (null === $this->collMunicipios || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collMunicipios) {
+                return 0;
+            } else {
+                if($partial && !$criteria) {
+                    return count($this->getMunicipios());
+                }
+                $query = MunicipioQuery::create(null, $criteria);
+                if ($distinct) {
+                    $query->distinct();
+                }
+
+                return $query
+                    ->filterByDepartamento($this)
+                    ->count($con);
+            }
+        } else {
+            return count($this->collMunicipios);
+        }
+    }
+
+    /**
+     * Method called to associate a Municipio object to this object
+     * through the Municipio foreign key attribute.
+     *
+     * @param    Municipio $l Municipio
+     * @return Departamento The current object (for fluent API support)
+     */
+    public function addMunicipio(Municipio $l)
+    {
+        if ($this->collMunicipios === null) {
+            $this->initMunicipios();
+            $this->collMunicipiosPartial = true;
+        }
+        if (!$this->collMunicipios->contains($l)) { // only add it if the **same** object is not already associated
+            $this->doAddMunicipio($l);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param	Municipio $municipio The municipio object to add.
+     */
+    protected function doAddMunicipio($municipio)
+    {
+        $this->collMunicipios[]= $municipio;
+        $municipio->setDepartamento($this);
+    }
+
+    /**
+     * @param	Municipio $municipio The municipio object to remove.
+     */
+    public function removeMunicipio($municipio)
+    {
+        if ($this->getMunicipios()->contains($municipio)) {
+            $this->collMunicipios->remove($this->collMunicipios->search($municipio));
+            if (null === $this->municipiosScheduledForDeletion) {
+                $this->municipiosScheduledForDeletion = clone $this->collMunicipios;
+                $this->municipiosScheduledForDeletion->clear();
+            }
+            $this->municipiosScheduledForDeletion[]= $municipio;
+            $municipio->setDepartamento(null);
         }
     }
 
@@ -1456,15 +1367,9 @@ abstract class BasePerfil extends BaseObject implements Persistent
     {
         $this->id = null;
         $this->descripcion = null;
-        $this->activo = null;
-        $this->created_at = null;
-        $this->updated_at = null;
-        $this->created_by = null;
-        $this->updated_by = null;
         $this->alreadyInSave = false;
         $this->alreadyInValidation = false;
         $this->clearAllReferences();
-        $this->applyDefaultValues();
         $this->resetModified();
         $this->setNew(true);
         $this->setDeleted(false);
@@ -1482,17 +1387,26 @@ abstract class BasePerfil extends BaseObject implements Persistent
     public function clearAllReferences($deep = false)
     {
         if ($deep) {
-            if ($this->collUsuarios) {
-                foreach ($this->collUsuarios as $o) {
+            if ($this->collPropiedads) {
+                foreach ($this->collPropiedads as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
+            if ($this->collMunicipios) {
+                foreach ($this->collMunicipios as $o) {
                     $o->clearAllReferences($deep);
                 }
             }
         } // if ($deep)
 
-        if ($this->collUsuarios instanceof PropelCollection) {
-            $this->collUsuarios->clearIterator();
+        if ($this->collPropiedads instanceof PropelCollection) {
+            $this->collPropiedads->clearIterator();
         }
-        $this->collUsuarios = null;
+        $this->collPropiedads = null;
+        if ($this->collMunicipios instanceof PropelCollection) {
+            $this->collMunicipios->clearIterator();
+        }
+        $this->collMunicipios = null;
     }
 
     /**
@@ -1522,7 +1436,7 @@ abstract class BasePerfil extends BaseObject implements Persistent
     {
 
         // symfony_behaviors behavior
-        if ($callable = sfMixer::getCallable('BasePerfil:' . $name))
+        if ($callable = sfMixer::getCallable('BaseDepartamento:' . $name))
         {
           array_unshift($params, $this);
           return call_user_func_array($callable, $params);
