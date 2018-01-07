@@ -39,6 +39,7 @@ propel:
     lavanderia:                         { type: boolean, default: false }
     estado:                             { type: varchar(32) }
     amenidades:                         { type: varchar(255) }
+    moneda_id:                          ~
     precio:                             { type: double }
     negociable:                         { type: boolean, default: false }
     incluye_gastos_escritura:           { type: boolean, default: false }
@@ -54,6 +55,7 @@ propel:
     departamento_id:                    ~
     municipio_id:                       ~
     zona:                               { type: varchar(200) }
+    carretera_id:                       ~
     km:                                 { type: varchar(200) }
     direccion:                          { type: varchar(255) }
     seguridad:                          { type: double }
@@ -63,21 +65,29 @@ propel:
     transito_vehicular:                 { type: double }
     comunidades_colidantes:             { type: double }
     areas_recreacion:                   { type: double }
-    dormitorio_servicio:                { type: integer }
-    estudio:                            { type: integer }
-    cisterna:                           { type: integer }
-    lavanderia:                         { type: integer }
-    precio_negociable:                  { type: boolean }
     forma_pago:                         { type: varchar(255) }
-    gastos_escritura:                   { type: boolean  }
     created_at:                         ~
     updated_at:                         ~
     created_by:                         { type: varchar(32) }
     updated_by:                         { type: varchar(32) }
+    tiene_luz:                          { type: boolean, default: false }
+    tiene_agua:                         { type: boolean, default: false }
+    niveles:                            { type: integer }
+    area:                               { type: double }
+    area_x:                             { type: double }
+    area_y:                             { type: double }
   departamento:
+    id:                                ~
+    descripcion:                       { type: varchar(255) , primaryString: true}
+  carretera:
     id:                                ~
     descripcion:                       { type: varchar(255) , primaryString: true}
   municipio:
     id:                                ~
     descripcion:                       { type: varchar(255) , primaryString: true}
     departamento_id:                   ~
+  moneda:
+    id:                                ~
+    descripcion:                       { type: varchar(255) , primaryString: true}
+    simbolo:                           { type: varchar(3) , primaryString: true}
+    codigo:                            { type: varchar(3) , primaryString: true}
