@@ -12,6 +12,7 @@
         <link href="/assets/global/css/ui.css" rel="stylesheet">
         <link href="/assets/global/plugins/rateit/rateit.css" rel="stylesheet">
         <link href="/assets/admin/layout4/css/layout.css" rel="stylesheet">
+        <link href="/js/css-stars.css" rel="stylesheet">
         <script src="/assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
@@ -97,7 +98,7 @@
                 <div class="page-content">
                     <div class="row">
                         <div class="col-lg-12">
-                            <?php include_partial("soporte/avisos")?>
+                            <?php include_partial("soporte/avisos") ?>
                             <?php echo $sf_content; ?>
                         </div>
                     </div>
@@ -154,5 +155,6 @@
         <script src="/assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
         <script src="/assets/global/js/application.js"></script> <!-- Main Application Script -->
         <script src="/assets/admin/layout4/js/layout.js"></script> <!-- Main Application Script -->
+        <script src="/js/bootstrap-rating-input.js"></script>
     </body>
 </html>

@@ -37,6 +37,28 @@ class inicioActions extends sfActions {
                 }
             }
         }
+        $CarreteraVerficia = CarreteraQuery::create()->findOne();
+        if (!$CarreteraVerficia) {
+            $listado = array("Aguilar Batres", "CA9", "CA1", "Roosevelt");
+            foreach ($listado as $fila) {
+                $Carretera = new Carretera();
+                $Carretera->setDescripcion($fila);
+                $Carretera->save();
+            }
+        }
+        $VerificaMoneda = MonedaQuery::create()->findOne();
+        if (!$VerificaMoneda) {
+            $Moneda = new Moneda();
+            $Moneda->setDescripcion("Quetzal");
+            $Moneda->setSimbolo("Q");
+            $Moneda->setCodigo("GTQ");
+            $Moneda->save();
+            $Moneda = new Moneda();
+            $Moneda->setDescripcion("Dolar");
+            $Moneda->setSimbolo("$");
+            $Moneda->setCodigo("USD");
+            $Moneda->save();
+        }
     }
 
     public function executePrincipal(sfWebRequest $request) {

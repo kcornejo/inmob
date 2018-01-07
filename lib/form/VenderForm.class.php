@@ -5,10 +5,17 @@ class VenderForm extends sfForm {
     public function configure() {
         $opciones = array("Vender" => "Vender", "Rentar" => "Rentar");
         $estado = array("Usado" => "Usado", "Nuevo" => "Nuevo");
-        $opciones_inm = array("Casa" => "Casa", "Apartamento" => "Apartamento", "Terreno" => "Terreno", "Oficinas" => "Oficinas", "Local" => "Local");
-        $opciones_pago = array("Financiado" => "Financiado");
+        $opciones_inm = array("Casa" => "Casa", "Apartamento" => "Apartamento", "Terreno" => "Terreno", "Oficinas" => "Oficinas", "Local" => "Local", "Edificio" => "Edificio", "Bodega" => "Bodega");
+        $opciones_pago = array("Financiado" => "Financiado", "Al Contado" => "Al Contado");
+        $opciones_km = array("" => "[Seleccione KM]", "1" => "1", "2" => "2", "3" => "3", "4" => "4", "5" => "5", "6" => "6", "7" => "7", "8" => "8", "9" => "9", "10" => "10", "11" => "11", "12" => "12", "13" => "13", "14" => "14", "15" => "15", "16" => "16", "17" => "17", "18" => "18", "19" => "19", "20" => "20", "21" => "21",);
         $departamentos = array();
         $DepartamentoQuery = DepartamentoQuery::create()->find();
+        $opciones_carretera = array();
+        $opciones_carretera[""] = "[Seleccione Carretera]";
+        $Carretera = CarreteraQuery::create()->find();
+        foreach ($Carretera as $fila) {
+            $opciones_carretera[$fila->getId()] = $fila->getDescripcion();
+        }
         foreach ($DepartamentoQuery as $fila) {
             $departamentos[$fila->getId()] = $fila->getDescripcion();
         }
@@ -17,12 +24,20 @@ class VenderForm extends sfForm {
         foreach ($MunicipioQuery as $fila) {
             $municipios[$fila->getId()] = $fila->getDescripcion();
         }
-        $zonas = array();
+        $MonedaQuery = MonedaQuery::create()->find();
+        $monedas = array();
+        foreach ($MonedaQuery as $fila) {
+            $monedas[$fila->getId()] = $fila->getCodigo();
+        }
         $this->setWidget("tipo_operacion", new sfWidgetFormSelect(array('choices' => $opciones), array("class" => "col-md-10")));
         $this->setWidget("tipo_inmueble", new sfWidgetFormSelect(array('choices' => $opciones_inm), array("class" => "col-md-10")));
         $this->setWidget("habitacion", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("banio", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "0.5", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("parqueo", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
+        $this->setWidget("niveles", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
+        $this->setWidget("area", new sfWidgetFormInputText(array(), array("class" => "form-control")));
+        $this->setWidget("area_x", new sfWidgetFormInputText(array(), array("class" => "form-control col-md-2")));
+        $this->setWidget("area_y", new sfWidgetFormInputText(array(), array("class" => "form-control col-md-2")));
         $this->setWidget("comedor", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("sala", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("cocina", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
@@ -32,7 +47,10 @@ class VenderForm extends sfForm {
         $this->setWidget("jardin", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("patio", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "primary", "data-btn-after" => "success")));
         $this->setWidget("lavanderia", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
+        $this->setWidget("tiene_luz", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
+        $this->setWidget("tiene_agua", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
         $this->setWidget("estado", new sfWidgetFormSelect(array('choices' => $estado), array("class" => "col-md-10")));
+        $this->setWidget("moneda", new sfWidgetFormSelect(array('choices' => $monedas), array("class" => "col-md-10")));
         $this->setWidget("amenidades", new sfWidgetFormInputText(array(), array("class" => "form-control ")));
         $this->setWidget("precio", new sfWidgetFormInputText(array("label" => "Precio (Q)"), array("class" => "form-control")));
         $this->setWidget("precio_negociable", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
@@ -50,34 +68,35 @@ class VenderForm extends sfForm {
         $this->setWidget("departamento", new sfWidgetFormSelect(array('choices' => $departamentos), array("class" => "col-md-12")));
         $this->setWidget("municipio", new sfWidgetFormSelect(array('choices' => $municipios), array("class" => "col-md-12")));
         $this->setWidget("zona", new sfWidgetFormInputText(array("label" => "Zona"), array("class" => "form-control")));
-        $this->setWidget("km", new sfWidgetFormInputText(array("label" => "KM"), array("class" => "form-control")));
+        $this->setWidget("carretera", new sfWidgetFormSelect(array('choices' => $opciones_carretera), array("class" => "col-md-10")));
+        $this->setWidget("km", new sfWidgetFormSelect(array('choices' => $opciones_km), array("class" => "col-md-10")));
         $this->setWidget("direccion", new sfWidgetFormInputText(array("label" => "Direccion"), array("class" => "form-control")));
-        $this->setWidget("seguridad", new sfWidgetFormInputHidden());
-        $this->setWidget("accesos", new sfWidgetFormInputHidden());
-        $this->setWidget("agua", new sfWidgetFormInputHidden());
-        $this->setWidget("transporte_publico", new sfWidgetFormInputHidden());
-        $this->setWidget("transito_vehicular", new sfWidgetFormInputHidden());
-        $this->setWidget("comunidades_colidantes", new sfWidgetFormInputHidden());
-        $this->setWidget("areas_recreacion", new sfWidgetFormInputHidden());
+        $this->setWidget("seguridad", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
+        $this->setWidget("accesos", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
+        $this->setWidget("agua", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
+        $this->setWidget("transporte_publico", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
+        $this->setWidget("transito_vehicular", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
+        $this->setWidget("comunidades_colidantes", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
+        $this->setWidget("areas_recreacion", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
 
         $this->setValidator("tipo_operacion", new sfValidatorString(array('required' => true)));
         $this->setValidator("tipo_inmueble", new sfValidatorString(array('required' => true)));
-        $this->setValidator("habitacion", new sfValidatorInteger(array('required' => true)));
-        $this->setValidator("banio", new sfValidatorNumber(array('required' => true)));
-        $this->setValidator("parqueo", new sfValidatorInteger(array('required' => true)));
+        $this->setValidator("habitacion", new sfValidatorInteger(array('required' => false)));
+        $this->setValidator("banio", new sfValidatorNumber(array('required' => false)));
+        $this->setValidator("parqueo", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("comedor", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("sala", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("cocina", new sfValidatorInteger(array('required' => false)));
-        $this->setValidator("dormitorio_servicio", new sfValidatorBoolean(array('required' => false)));
-        $this->setValidator("estudio", new sfValidatorBoolean(array('required' => false)));
-        $this->setValidator("cisterna", new sfValidatorBoolean(array('required' => false)));
+        $this->setValidator("dormitorio_servicio", new sfValidatorString(array('required' => false)));
+        $this->setValidator("estudio", new sfValidatorString(array('required' => false)));
+        $this->setValidator("cisterna", new sfValidatorString(array('required' => false)));
         $this->setValidator("jardin", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("patio", new sfValidatorInteger(array('required' => false)));
-        $this->setValidator("lavanderia", new sfValidatorBoolean(array('required' => false)));
+        $this->setValidator("lavanderia", new sfValidatorString(array('required' => false)));
         $this->setValidator("estado", new sfValidatorString(array('required' => true)));
         $this->setValidator("amenidades", new sfValidatorString(array('required' => false)));
         $this->setValidator("precio", new sfValidatorNumber(array('required' => true)));
-        $this->setValidator("precio_negociable", new sfValidatorBoolean(array('required' => false)));
+        $this->setValidator("precio_negociable", new sfValidatorString(array('required' => false)));
         $this->setValidator("forma_pago", new sfValidatorString(array('required' => false)));
         $this->setValidator("gastos_escritura", new sfValidatorString(array('required' => false)));
         $this->setValidator("anios_construccion", new sfValidatorNumber(array('required' => false)));
@@ -92,7 +111,9 @@ class VenderForm extends sfForm {
         $this->setValidator("telefono_cliente", new sfValidatorString(array('required' => true)));
         $this->setValidator("departamento", new sfValidatorString(array('required' => true)));
         $this->setValidator("municipio", new sfValidatorString(array('required' => true)));
-        $this->setValidator("zona", new sfValidatorString(array('required' => true)));
+        $this->setValidator("zona", new sfValidatorString(array('required' => false)));
+        $this->setValidator("carretera", new sfValidatorString(array('required' => false)));
+        $this->setValidator("moneda", new sfValidatorString(array('required' => false)));
         $this->setValidator("km", new sfValidatorString(array('required' => false)));
         $this->setValidator("direccion", new sfValidatorString(array('required' => true)));
         $this->setValidator("seguridad", new sfValidatorString(array('required' => false)));
@@ -102,6 +123,12 @@ class VenderForm extends sfForm {
         $this->setValidator("transito_vehicular", new sfValidatorString(array('required' => false)));
         $this->setValidator("comunidades_colidantes", new sfValidatorString(array('required' => false)));
         $this->setValidator("areas_recreacion", new sfValidatorString(array('required' => false)));
+        $this->setValidator("niveles", new sfValidatorString(array('required' => false)));
+        $this->setValidator("area", new sfValidatorString(array('required' => false)));
+        $this->setValidator("area_x", new sfValidatorString(array('required' => false)));
+        $this->setValidator("area_y", new sfValidatorString(array('required' => false)));
+        $this->setValidator("tiene_luz", new sfValidatorString(array('required' => false)));
+        $this->setValidator("tiene_agua", new sfValidatorString(array('required' => false)));
         $this->widgetSchema->setNameFormat('vender_form[%s]');
     }
 

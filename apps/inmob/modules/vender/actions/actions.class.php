@@ -31,48 +31,7 @@ class venderActions extends sfActions {
             if ($this->formulario_vender->isValid()) {
                 $valores = $this->formulario_vender->getValues();
                 $Propiedad = new Propiedad();
-                $Propiedad->setTipoOperacion($valores["tipo_operacion"]);
-                $Propiedad->setTipoInmueble($valores["tipo_inmueble"]);
-                $Propiedad->setCantidadHabitacion($valores["habitacion"]);
-                $Propiedad->setCantidadBanio($valores["banio"]);
-                $Propiedad->setCantidadParqueo($valores["parqueo"]);
-                $Propiedad->setCantidadComedor($valores["comedor"]);
-                $Propiedad->setCantidadSala($valores["sala"]);
-                $Propiedad->setCantidadCocina($valores["cocina"]);
-                $Propiedad->setCantidadJardin($valores["jardin"]);
-                $Propiedad->setCantidadPatio($valores["patio"]);
-                $Propiedad->setEstado($valores["estado"]);
-                $Propiedad->setAmenidades($valores["amenidades"]);
-                $Propiedad->setPrecio($valores["precio"]);
-                $Propiedad->setAnioConstruccion($valores["anios_construccion"]);
-                $Propiedad->setMantenimientoMensual($valores["mantenimiento_mensual"]);
-                $Propiedad->setIusiSemestral($valores["iusi_trimestral"]);
-                $Propiedad->setValorAvaluo($valores["valor_avaluo"]);
-                $Propiedad->setMiComision($valores['mi_comision']);
-                $Propiedad->setComisionCompartida($valores["comision_compartida"]);
-                $Propiedad->setNombreCliente($valores["nombre_cliente"]);
-                $Propiedad->setCorreoCliente($valores["correo_cliente"]);
-                $Propiedad->setTelefonoCliente($valores["telefono_cliente"]);
-                $Propiedad->setDepartamentoId($valores["departamento"]);
-                $Propiedad->setMunicipioId($valores["municipio"]);
-                $Propiedad->setZona($valores["zona"]);
-                $Propiedad->setKm($valores["km"]);
-                $Propiedad->setDireccion($valores["direccion"]);
-                $Propiedad->setSeguridad($valores["seguridad"]);
-                $Propiedad->setAccesos($valores["accesos"]);
-                $Propiedad->setAgua($valores["agua"]);
-                $Propiedad->setTransportePublico($valores["transporte_publico"]);
-                $Propiedad->setTransitoVehicular($valores["transito_vehicular"]);
-                $Propiedad->setComunidadesColidantes($valores["comunidades_colidantes"]);
-                $Propiedad->setAreasRecreacion($valores["areas_recreacion"]);
-                $Propiedad->setDormitorioServicio($valores["dormitorio_servicio"]);
-                $Propiedad->setEstudio($valores["estudio"]);
-                $Propiedad->setCisterna($valores["cisterna"]);
-                $Propiedad->setLavanderia($valores["lavanderia"]);
-                $Propiedad->setPrecioNegociable($valores["precio_negociable"]);
-                $Propiedad->setFormaPago($valores["forma_pago"]);
-                $Propiedad->setGastosEscritura($valores["gastos_escritura"]);
-                $Propiedad->save();
+                $this->guardaPropiedad($Propiedad, $valores);
                 $this->getUser()->setFlash("exito", "Venta creada correctamente.");
                 $this->redirect("inicio/index");
             }
@@ -121,62 +80,83 @@ class venderActions extends sfActions {
         $defaults["estudio"] = $Propiedad->getEstudio();
         $defaults["cisterna"] = $Propiedad->getCisterna();
         $defaults["lavanderia"] = $Propiedad->getLavanderia();
-        $defaults["precio_negociable"] = $Propiedad->getPrecioNegociable();
+        $defaults["precio_negociable"] = $Propiedad->getNegociable();
         $defaults["forma_pago"] = $Propiedad->getFormaPago();
-        $defaults["gastos_escritura"] = $Propiedad->getGastosEscritura();
-
+        $defaults["gastos_escritura"] = $Propiedad->getIncluyeGastosEscritura();
+        $defaults["carretera"] = $Propiedad->getCarreteraId();
+        $defaults["moneda"] = $Propiedad->getMonedaId();
+        $defaults["tiene_luz"] = $Propiedad->getTieneLuz();
+        $defaults["tiene_agua"] = $Propiedad->getTieneAgua();
+        $defaults["niveles"] = $Propiedad->getNiveles();
+        $defaults["area"] = $Propiedad->getArea();
+        $defaults["area_x"] = $Propiedad->getAreaX();
+        $defaults["area_y"] = $Propiedad->getAreaY();
         $this->formulario_vender = new VenderForm($defaults);
         if ($request->isMethod('POST')) {
             $this->formulario_vender->bind($request->getParameter("vender_form"));
             if ($this->formulario_vender->isValid()) {
                 $valores = $this->formulario_vender->getValues();
-                $Propiedad->setTipoOperacion($valores["tipo_operacion"]);
-                $Propiedad->setTipoInmueble($valores["tipo_inmueble"]);
-                $Propiedad->setCantidadHabitacion($valores["habitacion"]);
-                $Propiedad->setCantidadBanio($valores["banio"]);
-                $Propiedad->setCantidadParqueo($valores["parqueo"]);
-                $Propiedad->setCantidadComedor($valores["comedor"]);
-                $Propiedad->setCantidadSala($valores["sala"]);
-                $Propiedad->setCantidadCocina($valores["cocina"]);
-                $Propiedad->setCantidadJardin($valores["jardin"]);
-                $Propiedad->setCantidadPatio($valores["patio"]);
-                $Propiedad->setEstado($valores["estado"]);
-                $Propiedad->setAmenidades($valores["amenidades"]);
-                $Propiedad->setPrecio($valores["precio"]);
-                $Propiedad->setAnioConstruccion($valores["anios_construccion"]);
-                $Propiedad->setMantenimientoMensual($valores["mantenimiento_mensual"]);
-                $Propiedad->setIusiSemestral($valores["iusi_trimestral"]);
-                $Propiedad->setValorAvaluo($valores["valor_avaluo"]);
-                $Propiedad->setMiComision($valores['mi_comision']);
-                $Propiedad->setComisionCompartida($valores["comision_compartida"]);
-                $Propiedad->setNombreCliente($valores["nombre_cliente"]);
-                $Propiedad->setCorreoCliente($valores["correo_cliente"]);
-                $Propiedad->setTelefonoCliente($valores["telefono_cliente"]);
-                $Propiedad->setDepartamentoId($valores["departamento"]);
-                $Propiedad->setMunicipioId($valores["municipio"]);
-                $Propiedad->setZona($valores["zona"]);
-                $Propiedad->setKm($valores["km"]);
-                $Propiedad->setDireccion($valores["direccion"]);
-                $Propiedad->setSeguridad($valores["seguridad"]);
-                $Propiedad->setAccesos($valores["accesos"]);
-                $Propiedad->setAgua($valores["agua"]);
-                $Propiedad->setTransportePublico($valores["transporte_publico"]);
-                $Propiedad->setTransitoVehicular($valores["transito_vehicular"]);
-                $Propiedad->setComunidadesColidantes($valores["comunidades_colidantes"]);
-                $Propiedad->setAreasRecreacion($valores["areas_recreacion"]);
-                $Propiedad->setDormitorioServicio($valores["dormitorio_servicio"]);
-                $Propiedad->setEstudio($valores["estudio"]);
-                $Propiedad->setCisterna($valores["cisterna"]);
-                $Propiedad->setLavanderia($valores["lavanderia"]);
-                $Propiedad->setPrecioNegociable($valores["precio_negociable"]);
-                $Propiedad->setFormaPago($valores["forma_pago"]);
-                $Propiedad->setGastosEscritura($valores["gastos_escritura"]);
-                $Propiedad->save();
+                $this->guardaPropiedad($Propiedad, $valores);
                 $this->getUser()->setFlash("exito", "Venta editada correctamente.");
                 $this->redirect("inicio/index");
             }
         }
         $this->id = $id;
+    }
+
+    public function guardaPropiedad($Propiedad, $valores) {
+        $Propiedad->setTipoOperacion($valores["tipo_operacion"]);
+        $Propiedad->setTipoInmueble($valores["tipo_inmueble"]);
+        $Propiedad->setCantidadHabitacion($valores["habitacion"]);
+        $Propiedad->setCantidadBanio($valores["banio"]);
+        $Propiedad->setCantidadParqueo($valores["parqueo"]);
+        $Propiedad->setCantidadComedor($valores["comedor"]);
+        $Propiedad->setCantidadSala($valores["sala"]);
+        $Propiedad->setCantidadCocina($valores["cocina"]);
+        $Propiedad->setCantidadJardin($valores["jardin"]);
+        $Propiedad->setCantidadPatio($valores["patio"]);
+        $Propiedad->setEstado($valores["estado"]);
+        $Propiedad->setAmenidades($valores["amenidades"]);
+        $Propiedad->setPrecio($valores["precio"]);
+        $Propiedad->setAnioConstruccion($valores["anios_construccion"]);
+        $Propiedad->setMantenimientoMensual($valores["mantenimiento_mensual"]);
+        $Propiedad->setIusiSemestral($valores["iusi_trimestral"]);
+        $Propiedad->setValorAvaluo($valores["valor_avaluo"]);
+        $Propiedad->setMiComision($valores['mi_comision']);
+        if ($valores['carretera']) {
+            $Propiedad->setCarreteraId($valores['carretera']);
+        }
+        $Propiedad->setMonedaId($valores['moneda']);
+        $Propiedad->setComisionCompartida($valores["comision_compartida"]);
+        $Propiedad->setNombreCliente($valores["nombre_cliente"]);
+        $Propiedad->setCorreoCliente($valores["correo_cliente"]);
+        $Propiedad->setTelefonoCliente($valores["telefono_cliente"]);
+        $Propiedad->setDepartamentoId($valores["departamento"]);
+        $Propiedad->setMunicipioId($valores["municipio"]);
+        $Propiedad->setZona($valores["zona"]);
+        $Propiedad->setKm($valores["km"]);
+        $Propiedad->setDireccion($valores["direccion"]);
+        $Propiedad->setSeguridad($valores["seguridad"]);
+        $Propiedad->setAccesos($valores["accesos"]);
+        $Propiedad->setAgua($valores["agua"]);
+        $Propiedad->setTransportePublico($valores["transporte_publico"]);
+        $Propiedad->setTransitoVehicular($valores["transito_vehicular"]);
+        $Propiedad->setComunidadesColidantes($valores["comunidades_colidantes"]);
+        $Propiedad->setAreasRecreacion($valores["areas_recreacion"]);
+        $Propiedad->setDormitorioServicio($valores["dormitorio_servicio"]);
+        $Propiedad->setEstudio($valores["estudio"]);
+        $Propiedad->setCisterna($valores["cisterna"]);
+        $Propiedad->setLavanderia($valores["lavanderia"]);
+        $Propiedad->setNegociable($valores["precio_negociable"]);
+        $Propiedad->setFormaPago($valores["forma_pago"]);
+        $Propiedad->setIncluyeGastosEscritura($valores["gastos_escritura"]);
+        $Propiedad->setTieneLuz($valores["tiene_luz"]);
+        $Propiedad->setTieneAgua($valores["tiene_agua"]);
+        $Propiedad->setNiveles($valores["niveles"]);
+        $Propiedad->setArea($valores["area"]);
+        $Propiedad->setAreaX($valores["area_x"]);
+        $Propiedad->setAreaY($valores["area_y"]);
+        $Propiedad->save();
     }
 
 }

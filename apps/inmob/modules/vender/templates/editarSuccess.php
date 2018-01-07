@@ -47,59 +47,91 @@
                         <h4><b>Caracteristicas de Inmueble</b></h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Habitaciones<br/><br/><img width="25%" src="/assets/img/iconos/habitaciones.png"/></h3>
+                                <h3 style="text-align: center;">Habitaciones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
                                 <?php echo $formulario_vender["habitacion"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Baño<br/><br/><img width="25%" src="/assets/img/iconos/baños.png"/></h3>
+                                <h3 style="text-align: center;">Baño<br/><br/><img width="25%" src="/assets/img/caracteristicas/Baños-01.png"/></h3>
                                 <?php echo $formulario_vender["banio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Parqueo<br/><br/><img width="25%" src="/assets/img/iconos/parqueos.png"/></h3>
+                                <h3 style="text-align: center;">Parqueo<br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
                                 <?php echo $formulario_vender["parqueo"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Comedor<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
-                                <?php echo $formulario_vender["comedor"] ?>
+                                <h3 style="text-align: center;">Niveles<br/><br/><img width="25%" src="/assets/img/caracteristicas/Niveles-01.png"/></h3>
+                                <?php echo $formulario_vender["niveles"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Salas<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
-                                <?php echo $formulario_vender["sala"] ?>
+                                <h3 style="text-align: center;">Área<br/><br/><img width="25%" src="/assets/img/caracteristicas/Area-01.png"/></h3>
+                                <?php echo $formulario_vender["area"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Cocina<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
-                                <?php echo $formulario_vender["cocina"] ?>
+                                <h3 style="text-align: center;">Dimensiones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Dimensiones-01.png"/></h3>
+                                <table>
+                                    <tr>
+                                        <td><?php echo $formulario_vender["area_x"] ?></td>
+                                        <td>x</td>
+                                        <td><?php echo $formulario_vender["area_y"] ?></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Dormitorio de Servicio<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
+                                <h3 style="text-align: center;">Agua<br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
+                                <div style="text-align: center">
+                                    <?php echo $formulario_vender["tiene_agua"] ?>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <h3 style="text-align: center;">Energia Electrica<br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
+                                <div style="text-align: center">
+                                    <?php echo $formulario_vender["tiene_luz"] ?>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <h3 style="text-align: center;">Comedor<br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
+                                <?php echo $formulario_vender["comedor"] ?>
+                            </div>
+                            <div class="col-md-2">
+                                <h3 style="text-align: center;">Salas<br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
+                                <?php echo $formulario_vender["sala"] ?>
+                            </div>
+                            <div class="col-md-2">
+                                <h3 style="text-align: center;">Cocina<br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
+                                <?php echo $formulario_vender["cocina"] ?>
+                            </div>
+                            <div class="col-md-2">
+                                <h3 style="text-align: center;">Dormitorio de Servicio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["dormitorio_servicio"] ?>
                                 </div>
                             </div>
+                        </div>
+                        <div class='row'>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Estudio<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
+                                <h3 style="text-align: center;">Estudio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["estudio"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Cisterna<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
+                                <h3 style="text-align: center;">Cisterna<br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["cisterna"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Jardin<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
+                                <h3 style="text-align: center;">Jardin<br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
                                 <?php echo $formulario_vender["jardin"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Patio<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
+                                <h3 style="text-align: center;">Patio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
                                 <?php echo $formulario_vender["patio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Lavanderia<br/><br/><img width="25%" src="/assets/img/iconos/comedores.png"/></h3>
+                                <h3 style="text-align: center;">Lavanderia<br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["lavanderia"] ?>
                                 </div>
@@ -123,17 +155,27 @@
                     <div class="panel-content">
                         <h4><b>Información Financiera</b></h4>
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="col-md-8">
-                                    <h4>Precio (Q)</h4>
+                            <div class="col-md-5">
+                                <div class="col-md-4">
+                                    Precio
+                                    <?php echo $formulario_vender["moneda"] ?>
+                                </div>
+                                <div class="col-md-6">
+                                    &nbsp;
                                     <?php echo $formulario_vender["precio"] ?>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <h5 style="text-align: center;">Negociable</h5>
                                     <?php echo $formulario_vender["precio_negociable"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
+                                Forma de Pago
+                                <div style="text-align: center">
+                                    <?php echo $formulario_vender["forma_pago"]; ?>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
                                 <h5 style="text-align: center;">Gastos Escritura</h5>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["gastos_escritura"]; ?>
@@ -145,14 +187,14 @@
                                     <?php echo $formulario_vender["anios_construccion"] ?>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-3">
                                 <h5>Mantenimiento Mensual</h5>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mantenimiento_mensual"] ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3">
                                 <h5>Iusi Trimestral</h5>
                                 <div style="text-align: center">
@@ -254,6 +296,14 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
+                                <h5>Carretera</h5>
+                                <div style="text-align: center">
+                                    <?php echo $formulario_vender["carretera"] ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
                                 <h5>Dirección</h5>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["direccion"] ?>
@@ -270,51 +320,44 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <h5>Seguridad</h5>
-                                <div style="text-align: center">
+                                <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["seguridad"] ?>
-                                    <div class="rateit" data-value="5" data-step="1"></div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <h5>Accesos</h5>
-                                <div style="text-align: center">
+                                <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["accesos"] ?>
-                                    <div class="rateit" data-value="5" data-step="1"></div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <h5>Agua</h5>
-                                <div style="text-align: center">
+                                <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["agua"] ?>
-                                    <div class="rateit" data-value="5" data-step="1"></div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <h5>Transporte Publico</h5>
-                                <div style="text-align: center">
+                                <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["transporte_publico"] ?>
-                                    <div class="rateit" data-value="5" data-step="1"></div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <h5>Transito Vehicular</h5>
-                                <div style="text-align: center">
+                                <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["transito_vehicular"] ?>
-                                    <div class="rateit" data-value="5" data-step="1"></div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <h5>Comunidades Colidantes</h5>
-                                <div style="text-align: center">
+                                <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["comunidades_colidantes"] ?>
-                                    <div class="rateit"  data-value="5" data-step="1"></div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <h5>Areas de Recreación</h5>
-                                <div style="text-align: center">
+                                <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["areas_recreacion"] ?>
-                                    <div class="rateit"  data-value="5" data-step="1"></div>
                                 </div>
                             </div>
                         </div>
