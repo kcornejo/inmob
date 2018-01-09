@@ -27,7 +27,7 @@ class venderActions extends sfActions {
         $defaults["patio"] = "0";
         $this->formulario_vender = new VenderForm($defaults);
         if ($request->isMethod('POST')) {
-            $this->formulario_vender->bind($request->getParameter("vender_form"));
+            $this->formulario_vender->bind($request->getParameter("vender_form"), $request->getFiles("vender_form"));
             if ($this->formulario_vender->isValid()) {
                 $valores = $this->formulario_vender->getValues();
                 $Propiedad = new Propiedad();
@@ -93,7 +93,7 @@ class venderActions extends sfActions {
         $defaults["area_y"] = $Propiedad->getAreaY();
         $this->formulario_vender = new VenderForm($defaults);
         if ($request->isMethod('POST')) {
-            $this->formulario_vender->bind($request->getParameter("vender_form"));
+            $this->formulario_vender->bind($request->getParameter("vender_form"), $request->getFiles("vender_form"));
             if ($this->formulario_vender->isValid()) {
                 $valores = $this->formulario_vender->getValues();
                 $this->guardaPropiedad($Propiedad, $valores);
@@ -102,6 +102,15 @@ class venderActions extends sfActions {
             }
         }
         $this->id = $id;
+        $this->Propiedad = $Propiedad;
+    }
+
+    public function executeEliminarImagen(sfRequest $request) {
+        $id = $request->getParameter("id");
+        $PropiedadImagen = PropiedadImagenQuery::create()->findOneById($id);
+        $id_pro = $PropiedadImagen->getPropiedadId();
+        $PropiedadImagen->delete();
+        $this->redirect("vender/editar?id=" . $id_pro);
     }
 
     public function guardaPropiedad($Propiedad, $valores) {
@@ -157,6 +166,20 @@ class venderActions extends sfActions {
         $Propiedad->setAreaX($valores["area_x"]);
         $Propiedad->setAreaY($valores["area_y"]);
         $Propiedad->save();
+        $archivo = $valores["archivo"];
+        while (current($archivo)) {
+            if ($archivo) {
+                $key = key($archivo);
+                $nombreOriginal = $key;
+                $filename = $archivo[$key];
+                $nuevacarga = new PropiedadImagen();
+                $nuevacarga->setNombreOriginal($nombreOriginal);
+                $nuevacarga->setNombreActual($filename);
+                $nuevacarga->setPropiedadId($Propiedad->getId());
+                $nuevacarga->save();
+            }
+            next($archivo);
+        }
     }
 
 }

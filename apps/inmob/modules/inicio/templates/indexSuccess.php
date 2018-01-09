@@ -11,7 +11,27 @@
                 <table class="table table-striped table-bordered table-hover">
                     <?php foreach ($propiedades as $propiedad): ?>
                         <tr onclick="location.replace('<?php echo url_for('vender/editar') . "?id=" . $propiedad->getId() ?>')">
-                            <td>Precio: <?php echo $propiedad->getPrecio() ?></td>
+                            <td style="width:40%">
+                                <?php foreach ($propiedad->getPropiedadImagens() as $fila): ?>
+                                    <img style="width:100%" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
+                                    <?php break; ?>
+                                <?php endforeach; ?>
+                                <?php if (sizeof($propiedad->getPropiedadImagens()) == 0): ?>
+                                    <div style=";background-color:#f1f3f3; text-align: center;">
+                                        <img style="width:100%" src="/assets/img/caracteristicas/casa.png"/>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                            <td style="width:60%">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td># <?php echo $propiedad->getId() ?></td>
+                                        <td style="text-align:right;">
+                                            <?php echo $propiedad->getMoneda()->getCodigo() . " " . number_format($propiedad->getPrecio(), 2) ?>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

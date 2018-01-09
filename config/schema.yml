@@ -91,3 +91,12 @@ propel:
     descripcion:                       { type: varchar(255) , primaryString: true}
     simbolo:                           { type: varchar(3) , primaryString: true}
     codigo:                            { type: varchar(3) , primaryString: true}
+  propiedad_imagen:
+    id:                                ~
+    propiedad_id:                      ~
+    nombre_original:                   { type: varchar(255) , primaryString: true}
+    nombre_actual:                     { type: varchar(255) , primaryString: true}
+    created_at:                        ~
+    updated_at:                        ~
+    created_by:                        { type: varchar(32) }
+    updated_by:                        { type: varchar(32) }

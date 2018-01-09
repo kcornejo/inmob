@@ -78,6 +78,11 @@ class VenderForm extends sfForm {
         $this->setWidget("transito_vehicular", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
         $this->setWidget("comunidades_colidantes", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
         $this->setWidget("areas_recreacion", new sfWidgetFormInputText(array(), array("class" => "rating", "type" => "number")));
+        $this->setWidget("archivo", new sfWidgetFormInputFileMultiple(array(), array(
+            "size" => "20",
+            "multiple" => true,
+            'max' => 10,
+        )));
 
         $this->setValidator("tipo_operacion", new sfValidatorString(array('required' => true)));
         $this->setValidator("tipo_inmueble", new sfValidatorString(array('required' => true)));
@@ -129,6 +134,10 @@ class VenderForm extends sfForm {
         $this->setValidator("area_y", new sfValidatorString(array('required' => false)));
         $this->setValidator("tiene_luz", new sfValidatorString(array('required' => false)));
         $this->setValidator("tiene_agua", new sfValidatorString(array('required' => false)));
+        $carpeta = sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . "imagenes";
+        $this->setValidator("archivo", new sfValidatorFileMultiple(array(
+            "required" => false,
+            "path" => $carpeta)));
         $this->widgetSchema->setNameFormat('vender_form[%s]');
     }
 

@@ -364,6 +364,34 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-content">
+                        <h4><b>Imagenes</b></h4>
+                        <div class="row">
+                            <?php foreach ($Propiedad->getPropiedadImagens() as $imagen): ?>
+                                <div class="col-md-3">
+                                    <img style="width:100%" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $imagen->getNombreActual() ?>"/>
+                                    <br/>
+                                    <div style="text-align: center;">
+                                        <a class="btn btn-danger" href="<?php echo url_for("vender/eliminarImagen") . "?id=" . $imagen->getId() ?>">
+                                            <i class="fa fa-times-circle-o"></i>
+                                            Eliminar
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div style="text-align: center;color:#4a89dc;">
+                                    <?php echo $formulario_vender["archivo"] ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-success">
             <i class="fa fa-save"></i>
