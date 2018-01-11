@@ -317,14 +317,14 @@ function inputSelect(){
     if ($.fn.select2) {
         setTimeout(function(){
             $('select:not(.select-picker)').each(function() {
-                $(this).select2({
-                    placeholder: $(this).data('placeholder') ? $(this).data('placeholder') : '',
-                    allowClear: $(this).data('allowclear') ? $(this).data('allowclear') : false,
-                    minimumInputLength: $(this).data('minimumInputLength') ? $(this).data('minimumInputLength') : -1,
-                    minimumResultsForSearch: $(this).data('search') ? -1 : 1,
-                    dropdownCssClass: $(this).data('style') ? $(this).data('style') : '',
-                    containerCssClass: $(this).data('container-class') ? $(this).data('container-class') : ''
-                });
+//                $(this).select2({
+//                    placeholder: $(this).data('placeholder') ? $(this).data('placeholder') : '',
+//                    allowClear: $(this).data('allowclear') ? $(this).data('allowclear') : false,
+//                    minimumInputLength: $(this).data('minimumInputLength') ? $(this).data('minimumInputLength') : -1,
+//                    minimumResultsForSearch: $(this).data('search') ? -1 : 1,
+//                    dropdownCssClass: $(this).data('style') ? $(this).data('style') : '',
+//                    containerCssClass: $(this).data('container-class') ? $(this).data('container-class') : ''
+//                });
             });
         },200);
     }

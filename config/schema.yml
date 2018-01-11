@@ -100,3 +100,43 @@ propel:
     updated_at:                        ~
     created_by:                        { type: varchar(32) }
     updated_by:                        { type: varchar(32) }
+  requerimiento:
+    id:                                ~
+    tipo_operacion:                     { type: varchar(32) }
+    tipo_inmueble:                      { type: varchar(32) }
+    cantidad_habitacion:                { type: integer }
+    cantidad_banio:                     { type: integer }
+    cantidad_parqueo:                   { type: integer }
+    cantidad_comedor:                   { type: integer }
+    cantidad_sala:                      { type: integer }
+    cantidad_cocina:                    { type: integer }
+    dormitorio_servicio:                { type: boolean, default: false }
+    estudio:                            { type: boolean, default: false }
+    cisterna:                           { type: boolean, default: false }
+    cantidad_jardin:                    { type: integer }
+    cantidad_patio:                     { type: integer }
+    lavanderia:                         { type: boolean, default: false }
+    tiene_luz:                          { type: boolean, default: false }
+    tiene_agua:                         { type: boolean, default: false }
+    niveles:                            { type: integer }
+    area:                               { type: double }
+    area_x:                             { type: double }
+    area_y:                             { type: double }
+    estado:                             { type: varchar(32) }
+    amenidades:                         { type: varchar(255) }
+    moneda_id:                          ~
+    presupuesto_min:                    { type: double }
+    presupuesto_max:                    { type: double }
+    precalificacion:                    { type: boolean, default: false }
+    nombre_cliente:                     { type: varchar(255) }
+    correo_cliente:                     { type: varchar(255) }
+    telefono_cliente:                   { type: varchar(25) }
+  direccion_requerimiento:
+    id:                                 ~
+    requerimiento_id:                   ~
+    departamento_id:                    ~
+    municipio_id:                       ~
+    zona:                               { type: varchar(200) }
+    carretera_id:                       ~
+    km:                                 { type: varchar(200) }
+    direccion:                          { type: varchar(255) }

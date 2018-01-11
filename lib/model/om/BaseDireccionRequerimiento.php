@@ -2,7 +2,7 @@
 
 
 /**
- * Base class that represents a row from the 'propiedad_imagen' table.
+ * Base class that represents a row from the 'direccion_requerimiento' table.
  *
  *
  *
@@ -12,18 +12,18 @@
  *
  * @package    propel.generator.lib.model.om
  */
-abstract class BasePropiedadImagen extends BaseObject implements Persistent
+abstract class BaseDireccionRequerimiento extends BaseObject implements Persistent
 {
     /**
      * Peer class name
      */
-    const PEER = 'PropiedadImagenPeer';
+    const PEER = 'DireccionRequerimientoPeer';
 
     /**
      * The Peer class.
      * Instance provides a convenient way of calling static methods on a class
      * that calling code may not be able to identify.
-     * @var        PropiedadImagenPeer
+     * @var        DireccionRequerimientoPeer
      */
     protected static $peer;
 
@@ -40,51 +40,66 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     protected $id;
 
     /**
-     * The value for the propiedad_id field.
+     * The value for the requerimiento_id field.
      * @var        int
      */
-    protected $propiedad_id;
+    protected $requerimiento_id;
 
     /**
-     * The value for the nombre_original field.
+     * The value for the departamento_id field.
+     * @var        int
+     */
+    protected $departamento_id;
+
+    /**
+     * The value for the municipio_id field.
+     * @var        int
+     */
+    protected $municipio_id;
+
+    /**
+     * The value for the zona field.
      * @var        string
      */
-    protected $nombre_original;
+    protected $zona;
 
     /**
-     * The value for the nombre_actual field.
+     * The value for the carretera_id field.
+     * @var        int
+     */
+    protected $carretera_id;
+
+    /**
+     * The value for the km field.
      * @var        string
      */
-    protected $nombre_actual;
+    protected $km;
 
     /**
-     * The value for the created_at field.
+     * The value for the direccion field.
      * @var        string
      */
-    protected $created_at;
+    protected $direccion;
 
     /**
-     * The value for the updated_at field.
-     * @var        string
+     * @var        Requerimiento
      */
-    protected $updated_at;
+    protected $aRequerimiento;
 
     /**
-     * The value for the created_by field.
-     * @var        string
+     * @var        Departamento
      */
-    protected $created_by;
+    protected $aDepartamento;
 
     /**
-     * The value for the updated_by field.
-     * @var        string
+     * @var        Municipio
      */
-    protected $updated_by;
+    protected $aMunicipio;
 
     /**
-     * @var        Propiedad
+     * @var        Carretera
      */
-    protected $aPropiedad;
+    protected $aCarretera;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -111,134 +126,80 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     }
 
     /**
-     * Get the [propiedad_id] column value.
+     * Get the [requerimiento_id] column value.
      *
      * @return int
      */
-    public function getPropiedadId()
+    public function getRequerimientoId()
     {
-        return $this->propiedad_id;
+        return $this->requerimiento_id;
     }
 
     /**
-     * Get the [nombre_original] column value.
+     * Get the [departamento_id] column value.
+     *
+     * @return int
+     */
+    public function getDepartamentoId()
+    {
+        return $this->departamento_id;
+    }
+
+    /**
+     * Get the [municipio_id] column value.
+     *
+     * @return int
+     */
+    public function getMunicipioId()
+    {
+        return $this->municipio_id;
+    }
+
+    /**
+     * Get the [zona] column value.
      *
      * @return string
      */
-    public function getNombreOriginal()
+    public function getZona()
     {
-        return $this->nombre_original;
+        return $this->zona;
     }
 
     /**
-     * Get the [nombre_actual] column value.
+     * Get the [carretera_id] column value.
+     *
+     * @return int
+     */
+    public function getCarreteraId()
+    {
+        return $this->carretera_id;
+    }
+
+    /**
+     * Get the [km] column value.
      *
      * @return string
      */
-    public function getNombreActual()
+    public function getKm()
     {
-        return $this->nombre_actual;
+        return $this->km;
     }
 
     /**
-     * Get the [optionally formatted] temporal [created_at] column value.
-     *
-     *
-     * @param string $format The date/time format string (either date()-style or strftime()-style).
-     *				 If format is null, then the raw DateTime object will be returned.
-     * @return mixed Formatted date/time value as string or DateTime object (if format is null), null if column is null, and 0 if column value is 0000-00-00 00:00:00
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getCreatedAt($format = 'Y-m-d H:i:s')
-    {
-        if ($this->created_at === null) {
-            return null;
-        }
-
-        if ($this->created_at === '0000-00-00 00:00:00') {
-            // while technically this is not a default value of null,
-            // this seems to be closest in meaning.
-            return null;
-        } else {
-            try {
-                $dt = new DateTime($this->created_at);
-            } catch (Exception $x) {
-                throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->created_at, true), $x);
-            }
-        }
-
-        if ($format === null) {
-            // Because propel.useDateTimeClass is true, we return a DateTime object.
-            return $dt;
-        } elseif (strpos($format, '%') !== false) {
-            return strftime($format, $dt->format('U'));
-        } else {
-            return $dt->format($format);
-        }
-    }
-
-    /**
-     * Get the [optionally formatted] temporal [updated_at] column value.
-     *
-     *
-     * @param string $format The date/time format string (either date()-style or strftime()-style).
-     *				 If format is null, then the raw DateTime object will be returned.
-     * @return mixed Formatted date/time value as string or DateTime object (if format is null), null if column is null, and 0 if column value is 0000-00-00 00:00:00
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getUpdatedAt($format = 'Y-m-d H:i:s')
-    {
-        if ($this->updated_at === null) {
-            return null;
-        }
-
-        if ($this->updated_at === '0000-00-00 00:00:00') {
-            // while technically this is not a default value of null,
-            // this seems to be closest in meaning.
-            return null;
-        } else {
-            try {
-                $dt = new DateTime($this->updated_at);
-            } catch (Exception $x) {
-                throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->updated_at, true), $x);
-            }
-        }
-
-        if ($format === null) {
-            // Because propel.useDateTimeClass is true, we return a DateTime object.
-            return $dt;
-        } elseif (strpos($format, '%') !== false) {
-            return strftime($format, $dt->format('U'));
-        } else {
-            return $dt->format($format);
-        }
-    }
-
-    /**
-     * Get the [created_by] column value.
+     * Get the [direccion] column value.
      *
      * @return string
      */
-    public function getCreatedBy()
+    public function getDireccion()
     {
-        return $this->created_by;
-    }
-
-    /**
-     * Get the [updated_by] column value.
-     *
-     * @return string
-     */
-    public function getUpdatedBy()
-    {
-        return $this->updated_by;
+        return $this->direccion;
     }
 
     /**
      * Set the value of [id] column.
      *
      * @param int $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @return DireccionRequerimiento The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -248,7 +209,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::ID;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::ID;
         }
 
 
@@ -256,159 +217,167 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     } // setId()
 
     /**
-     * Set the value of [propiedad_id] column.
+     * Set the value of [requerimiento_id] column.
      *
      * @param int $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @return DireccionRequerimiento The current object (for fluent API support)
      */
-    public function setPropiedadId($v)
+    public function setRequerimientoId($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->propiedad_id !== $v) {
-            $this->propiedad_id = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::PROPIEDAD_ID;
+        if ($this->requerimiento_id !== $v) {
+            $this->requerimiento_id = $v;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::REQUERIMIENTO_ID;
         }
 
-        if ($this->aPropiedad !== null && $this->aPropiedad->getId() !== $v) {
-            $this->aPropiedad = null;
+        if ($this->aRequerimiento !== null && $this->aRequerimiento->getId() !== $v) {
+            $this->aRequerimiento = null;
         }
 
 
         return $this;
-    } // setPropiedadId()
+    } // setRequerimientoId()
 
     /**
-     * Set the value of [nombre_original] column.
+     * Set the value of [departamento_id] column.
+     *
+     * @param int $v new value
+     * @return DireccionRequerimiento The current object (for fluent API support)
+     */
+    public function setDepartamentoId($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->departamento_id !== $v) {
+            $this->departamento_id = $v;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::DEPARTAMENTO_ID;
+        }
+
+        if ($this->aDepartamento !== null && $this->aDepartamento->getId() !== $v) {
+            $this->aDepartamento = null;
+        }
+
+
+        return $this;
+    } // setDepartamentoId()
+
+    /**
+     * Set the value of [municipio_id] column.
+     *
+     * @param int $v new value
+     * @return DireccionRequerimiento The current object (for fluent API support)
+     */
+    public function setMunicipioId($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->municipio_id !== $v) {
+            $this->municipio_id = $v;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::MUNICIPIO_ID;
+        }
+
+        if ($this->aMunicipio !== null && $this->aMunicipio->getId() !== $v) {
+            $this->aMunicipio = null;
+        }
+
+
+        return $this;
+    } // setMunicipioId()
+
+    /**
+     * Set the value of [zona] column.
      *
      * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @return DireccionRequerimiento The current object (for fluent API support)
      */
-    public function setNombreOriginal($v)
+    public function setZona($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nombre_original !== $v) {
-            $this->nombre_original = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::NOMBRE_ORIGINAL;
+        if ($this->zona !== $v) {
+            $this->zona = $v;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::ZONA;
         }
 
 
         return $this;
-    } // setNombreOriginal()
+    } // setZona()
 
     /**
-     * Set the value of [nombre_actual] column.
+     * Set the value of [carretera_id] column.
+     *
+     * @param int $v new value
+     * @return DireccionRequerimiento The current object (for fluent API support)
+     */
+    public function setCarreteraId($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->carretera_id !== $v) {
+            $this->carretera_id = $v;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::CARRETERA_ID;
+        }
+
+        if ($this->aCarretera !== null && $this->aCarretera->getId() !== $v) {
+            $this->aCarretera = null;
+        }
+
+
+        return $this;
+    } // setCarreteraId()
+
+    /**
+     * Set the value of [km] column.
      *
      * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @return DireccionRequerimiento The current object (for fluent API support)
      */
-    public function setNombreActual($v)
+    public function setKm($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->nombre_actual !== $v) {
-            $this->nombre_actual = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::NOMBRE_ACTUAL;
+        if ($this->km !== $v) {
+            $this->km = $v;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::KM;
         }
 
 
         return $this;
-    } // setNombreActual()
+    } // setKm()
 
     /**
-     * Sets the value of [created_at] column to a normalized version of the date/time value specified.
-     *
-     * @param mixed $v string, integer (timestamp), or DateTime value.
-     *               Empty strings are treated as null.
-     * @return PropiedadImagen The current object (for fluent API support)
-     */
-    public function setCreatedAt($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->created_at !== null || $dt !== null) {
-            $currentDateAsString = ($this->created_at !== null && $tmpDt = new DateTime($this->created_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
-            $newDateAsString = $dt ? $dt->format('Y-m-d H:i:s') : null;
-            if ($currentDateAsString !== $newDateAsString) {
-                $this->created_at = $newDateAsString;
-                $this->modifiedColumns[] = PropiedadImagenPeer::CREATED_AT;
-            }
-        } // if either are not null
-
-
-        return $this;
-    } // setCreatedAt()
-
-    /**
-     * Sets the value of [updated_at] column to a normalized version of the date/time value specified.
-     *
-     * @param mixed $v string, integer (timestamp), or DateTime value.
-     *               Empty strings are treated as null.
-     * @return PropiedadImagen The current object (for fluent API support)
-     */
-    public function setUpdatedAt($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->updated_at !== null || $dt !== null) {
-            $currentDateAsString = ($this->updated_at !== null && $tmpDt = new DateTime($this->updated_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
-            $newDateAsString = $dt ? $dt->format('Y-m-d H:i:s') : null;
-            if ($currentDateAsString !== $newDateAsString) {
-                $this->updated_at = $newDateAsString;
-                $this->modifiedColumns[] = PropiedadImagenPeer::UPDATED_AT;
-            }
-        } // if either are not null
-
-
-        return $this;
-    } // setUpdatedAt()
-
-    /**
-     * Set the value of [created_by] column.
+     * Set the value of [direccion] column.
      *
      * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @return DireccionRequerimiento The current object (for fluent API support)
      */
-    public function setCreatedBy($v)
+    public function setDireccion($v)
     {
         if ($v !== null) {
             $v = (string) $v;
         }
 
-        if ($this->created_by !== $v) {
-            $this->created_by = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::CREATED_BY;
+        if ($this->direccion !== $v) {
+            $this->direccion = $v;
+            $this->modifiedColumns[] = DireccionRequerimientoPeer::DIRECCION;
         }
 
 
         return $this;
-    } // setCreatedBy()
-
-    /**
-     * Set the value of [updated_by] column.
-     *
-     * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
-     */
-    public function setUpdatedBy($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->updated_by !== $v) {
-            $this->updated_by = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::UPDATED_BY;
-        }
-
-
-        return $this;
-    } // setUpdatedBy()
+    } // setDireccion()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -443,13 +412,13 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         try {
 
             $this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
-            $this->propiedad_id = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
-            $this->nombre_original = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
-            $this->nombre_actual = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-            $this->created_at = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
-            $this->updated_at = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
-            $this->created_by = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
-            $this->updated_by = ($row[$startcol + 7] !== null) ? (string) $row[$startcol + 7] : null;
+            $this->requerimiento_id = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
+            $this->departamento_id = ($row[$startcol + 2] !== null) ? (int) $row[$startcol + 2] : null;
+            $this->municipio_id = ($row[$startcol + 3] !== null) ? (int) $row[$startcol + 3] : null;
+            $this->zona = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
+            $this->carretera_id = ($row[$startcol + 5] !== null) ? (int) $row[$startcol + 5] : null;
+            $this->km = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
+            $this->direccion = ($row[$startcol + 7] !== null) ? (string) $row[$startcol + 7] : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -458,10 +427,10 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 $this->ensureConsistency();
             }
 
-            return $startcol + 8; // 8 = PropiedadImagenPeer::NUM_HYDRATE_COLUMNS.
+            return $startcol + 8; // 8 = DireccionRequerimientoPeer::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating PropiedadImagen object", $e);
+            throw new PropelException("Error populating DireccionRequerimiento object", $e);
         }
     }
 
@@ -481,8 +450,17 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     public function ensureConsistency()
     {
 
-        if ($this->aPropiedad !== null && $this->propiedad_id !== $this->aPropiedad->getId()) {
-            $this->aPropiedad = null;
+        if ($this->aRequerimiento !== null && $this->requerimiento_id !== $this->aRequerimiento->getId()) {
+            $this->aRequerimiento = null;
+        }
+        if ($this->aDepartamento !== null && $this->departamento_id !== $this->aDepartamento->getId()) {
+            $this->aDepartamento = null;
+        }
+        if ($this->aMunicipio !== null && $this->municipio_id !== $this->aMunicipio->getId()) {
+            $this->aMunicipio = null;
+        }
+        if ($this->aCarretera !== null && $this->carretera_id !== $this->aCarretera->getId()) {
+            $this->aCarretera = null;
         }
     } // ensureConsistency
 
@@ -507,13 +485,13 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PropiedadImagenPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(DireccionRequerimientoPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $stmt = PropiedadImagenPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+        $stmt = DireccionRequerimientoPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
         $row = $stmt->fetch(PDO::FETCH_NUM);
         $stmt->closeCursor();
         if (!$row) {
@@ -523,7 +501,10 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
 
         if ($deep) {  // also de-associate any related objects?
 
-            $this->aPropiedad = null;
+            $this->aRequerimiento = null;
+            $this->aDepartamento = null;
+            $this->aMunicipio = null;
+            $this->aCarretera = null;
         } // if (deep)
     }
 
@@ -544,16 +525,16 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PropiedadImagenPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(DireccionRequerimientoPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
         try {
-            $deleteQuery = PropiedadImagenQuery::create()
+            $deleteQuery = DireccionRequerimientoQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             // symfony_behaviors behavior
-            foreach (sfMixer::getCallables('BasePropiedadImagen:delete:pre') as $callable)
+            foreach (sfMixer::getCallables('BaseDireccionRequerimiento:delete:pre') as $callable)
             {
               if (call_user_func($callable, $this, $con))
               {
@@ -566,7 +547,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 $deleteQuery->delete($con);
                 $this->postDelete($con);
                 // symfony_behaviors behavior
-                foreach (sfMixer::getCallables('BasePropiedadImagen:delete:post') as $callable)
+                foreach (sfMixer::getCallables('BaseDireccionRequerimiento:delete:post') as $callable)
                 {
                   call_user_func($callable, $this, $con);
                 }
@@ -603,7 +584,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PropiedadImagenPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(DireccionRequerimientoPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
@@ -611,7 +592,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         try {
             $ret = $this->preSave($con);
             // symfony_behaviors behavior
-            foreach (sfMixer::getCallables('BasePropiedadImagen:save:pre') as $callable)
+            foreach (sfMixer::getCallables('BaseDireccionRequerimiento:save:pre') as $callable)
             {
               if (is_integer($affectedRows = call_user_func($callable, $this, $con)))
               {
@@ -620,19 +601,8 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
               }
             }
 
-            // symfony_timestampable behavior
-            if ($this->isModified() && !$this->isColumnModified(PropiedadImagenPeer::UPDATED_AT))
-            {
-                $this->setUpdatedAt(time());
-            }
             if ($isInsert) {
                 $ret = $ret && $this->preInsert($con);
-                // symfony_timestampable behavior
-                if (!$this->isColumnModified(PropiedadImagenPeer::CREATED_AT))
-                {
-                  $this->setCreatedAt(time());
-                }
-
             } else {
                 $ret = $ret && $this->preUpdate($con);
             }
@@ -645,12 +615,12 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 }
                 $this->postSave($con);
                 // symfony_behaviors behavior
-                foreach (sfMixer::getCallables('BasePropiedadImagen:save:post') as $callable)
+                foreach (sfMixer::getCallables('BaseDireccionRequerimiento:save:post') as $callable)
                 {
                   call_user_func($callable, $this, $con, $affectedRows);
                 }
 
-                PropiedadImagenPeer::addInstanceToPool($this);
+                DireccionRequerimientoPeer::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -685,11 +655,32 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
             // method.  This object relates to these object(s) by a
             // foreign key reference.
 
-            if ($this->aPropiedad !== null) {
-                if ($this->aPropiedad->isModified() || $this->aPropiedad->isNew()) {
-                    $affectedRows += $this->aPropiedad->save($con);
+            if ($this->aRequerimiento !== null) {
+                if ($this->aRequerimiento->isModified() || $this->aRequerimiento->isNew()) {
+                    $affectedRows += $this->aRequerimiento->save($con);
                 }
-                $this->setPropiedad($this->aPropiedad);
+                $this->setRequerimiento($this->aRequerimiento);
+            }
+
+            if ($this->aDepartamento !== null) {
+                if ($this->aDepartamento->isModified() || $this->aDepartamento->isNew()) {
+                    $affectedRows += $this->aDepartamento->save($con);
+                }
+                $this->setDepartamento($this->aDepartamento);
+            }
+
+            if ($this->aMunicipio !== null) {
+                if ($this->aMunicipio->isModified() || $this->aMunicipio->isNew()) {
+                    $affectedRows += $this->aMunicipio->save($con);
+                }
+                $this->setMunicipio($this->aMunicipio);
+            }
+
+            if ($this->aCarretera !== null) {
+                if ($this->aCarretera->isModified() || $this->aCarretera->isNew()) {
+                    $affectedRows += $this->aCarretera->save($con);
+                }
+                $this->setCarretera($this->aCarretera);
             }
 
             if ($this->isNew() || $this->isModified()) {
@@ -723,39 +714,39 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[] = PropiedadImagenPeer::ID;
+        $this->modifiedColumns[] = DireccionRequerimientoPeer::ID;
         if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . PropiedadImagenPeer::ID . ')');
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . DireccionRequerimientoPeer::ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(PropiedadImagenPeer::ID)) {
+        if ($this->isColumnModified(DireccionRequerimientoPeer::ID)) {
             $modifiedColumns[':p' . $index++]  = '`ID`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::PROPIEDAD_ID)) {
-            $modifiedColumns[':p' . $index++]  = '`PROPIEDAD_ID`';
+        if ($this->isColumnModified(DireccionRequerimientoPeer::REQUERIMIENTO_ID)) {
+            $modifiedColumns[':p' . $index++]  = '`REQUERIMIENTO_ID`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ORIGINAL)) {
-            $modifiedColumns[':p' . $index++]  = '`NOMBRE_ORIGINAL`';
+        if ($this->isColumnModified(DireccionRequerimientoPeer::DEPARTAMENTO_ID)) {
+            $modifiedColumns[':p' . $index++]  = '`DEPARTAMENTO_ID`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ACTUAL)) {
-            $modifiedColumns[':p' . $index++]  = '`NOMBRE_ACTUAL`';
+        if ($this->isColumnModified(DireccionRequerimientoPeer::MUNICIPIO_ID)) {
+            $modifiedColumns[':p' . $index++]  = '`MUNICIPIO_ID`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_AT)) {
-            $modifiedColumns[':p' . $index++]  = '`CREATED_AT`';
+        if ($this->isColumnModified(DireccionRequerimientoPeer::ZONA)) {
+            $modifiedColumns[':p' . $index++]  = '`ZONA`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_AT)) {
-            $modifiedColumns[':p' . $index++]  = '`UPDATED_AT`';
+        if ($this->isColumnModified(DireccionRequerimientoPeer::CARRETERA_ID)) {
+            $modifiedColumns[':p' . $index++]  = '`CARRETERA_ID`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_BY)) {
-            $modifiedColumns[':p' . $index++]  = '`CREATED_BY`';
+        if ($this->isColumnModified(DireccionRequerimientoPeer::KM)) {
+            $modifiedColumns[':p' . $index++]  = '`KM`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_BY)) {
-            $modifiedColumns[':p' . $index++]  = '`UPDATED_BY`';
+        if ($this->isColumnModified(DireccionRequerimientoPeer::DIRECCION)) {
+            $modifiedColumns[':p' . $index++]  = '`DIRECCION`';
         }
 
         $sql = sprintf(
-            'INSERT INTO `propiedad_imagen` (%s) VALUES (%s)',
+            'INSERT INTO `direccion_requerimiento` (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -767,26 +758,26 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                     case '`ID`':
                         $stmt->bindValue($identifier, $this->id, PDO::PARAM_INT);
                         break;
-                    case '`PROPIEDAD_ID`':
-                        $stmt->bindValue($identifier, $this->propiedad_id, PDO::PARAM_INT);
+                    case '`REQUERIMIENTO_ID`':
+                        $stmt->bindValue($identifier, $this->requerimiento_id, PDO::PARAM_INT);
                         break;
-                    case '`NOMBRE_ORIGINAL`':
-                        $stmt->bindValue($identifier, $this->nombre_original, PDO::PARAM_STR);
+                    case '`DEPARTAMENTO_ID`':
+                        $stmt->bindValue($identifier, $this->departamento_id, PDO::PARAM_INT);
                         break;
-                    case '`NOMBRE_ACTUAL`':
-                        $stmt->bindValue($identifier, $this->nombre_actual, PDO::PARAM_STR);
+                    case '`MUNICIPIO_ID`':
+                        $stmt->bindValue($identifier, $this->municipio_id, PDO::PARAM_INT);
                         break;
-                    case '`CREATED_AT`':
-                        $stmt->bindValue($identifier, $this->created_at, PDO::PARAM_STR);
+                    case '`ZONA`':
+                        $stmt->bindValue($identifier, $this->zona, PDO::PARAM_STR);
                         break;
-                    case '`UPDATED_AT`':
-                        $stmt->bindValue($identifier, $this->updated_at, PDO::PARAM_STR);
+                    case '`CARRETERA_ID`':
+                        $stmt->bindValue($identifier, $this->carretera_id, PDO::PARAM_INT);
                         break;
-                    case '`CREATED_BY`':
-                        $stmt->bindValue($identifier, $this->created_by, PDO::PARAM_STR);
+                    case '`KM`':
+                        $stmt->bindValue($identifier, $this->km, PDO::PARAM_STR);
                         break;
-                    case '`UPDATED_BY`':
-                        $stmt->bindValue($identifier, $this->updated_by, PDO::PARAM_STR);
+                    case '`DIRECCION`':
+                        $stmt->bindValue($identifier, $this->direccion, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -887,14 +878,32 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
             // method.  This object relates to these object(s) by a
             // foreign key reference.
 
-            if ($this->aPropiedad !== null) {
-                if (!$this->aPropiedad->validate($columns)) {
-                    $failureMap = array_merge($failureMap, $this->aPropiedad->getValidationFailures());
+            if ($this->aRequerimiento !== null) {
+                if (!$this->aRequerimiento->validate($columns)) {
+                    $failureMap = array_merge($failureMap, $this->aRequerimiento->getValidationFailures());
+                }
+            }
+
+            if ($this->aDepartamento !== null) {
+                if (!$this->aDepartamento->validate($columns)) {
+                    $failureMap = array_merge($failureMap, $this->aDepartamento->getValidationFailures());
+                }
+            }
+
+            if ($this->aMunicipio !== null) {
+                if (!$this->aMunicipio->validate($columns)) {
+                    $failureMap = array_merge($failureMap, $this->aMunicipio->getValidationFailures());
+                }
+            }
+
+            if ($this->aCarretera !== null) {
+                if (!$this->aCarretera->validate($columns)) {
+                    $failureMap = array_merge($failureMap, $this->aCarretera->getValidationFailures());
                 }
             }
 
 
-            if (($retval = PropiedadImagenPeer::doValidate($this, $columns)) !== true) {
+            if (($retval = DireccionRequerimientoPeer::doValidate($this, $columns)) !== true) {
                 $failureMap = array_merge($failureMap, $retval);
             }
 
@@ -918,7 +927,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = PropiedadImagenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = DireccionRequerimientoPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -938,25 +947,25 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 return $this->getId();
                 break;
             case 1:
-                return $this->getPropiedadId();
+                return $this->getRequerimientoId();
                 break;
             case 2:
-                return $this->getNombreOriginal();
+                return $this->getDepartamentoId();
                 break;
             case 3:
-                return $this->getNombreActual();
+                return $this->getMunicipioId();
                 break;
             case 4:
-                return $this->getCreatedAt();
+                return $this->getZona();
                 break;
             case 5:
-                return $this->getUpdatedAt();
+                return $this->getCarreteraId();
                 break;
             case 6:
-                return $this->getCreatedBy();
+                return $this->getKm();
                 break;
             case 7:
-                return $this->getUpdatedBy();
+                return $this->getDireccion();
                 break;
             default:
                 return null;
@@ -981,24 +990,33 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
-        if (isset($alreadyDumpedObjects['PropiedadImagen'][$this->getPrimaryKey()])) {
+        if (isset($alreadyDumpedObjects['DireccionRequerimiento'][$this->getPrimaryKey()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['PropiedadImagen'][$this->getPrimaryKey()] = true;
-        $keys = PropiedadImagenPeer::getFieldNames($keyType);
+        $alreadyDumpedObjects['DireccionRequerimiento'][$this->getPrimaryKey()] = true;
+        $keys = DireccionRequerimientoPeer::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
-            $keys[1] => $this->getPropiedadId(),
-            $keys[2] => $this->getNombreOriginal(),
-            $keys[3] => $this->getNombreActual(),
-            $keys[4] => $this->getCreatedAt(),
-            $keys[5] => $this->getUpdatedAt(),
-            $keys[6] => $this->getCreatedBy(),
-            $keys[7] => $this->getUpdatedBy(),
+            $keys[1] => $this->getRequerimientoId(),
+            $keys[2] => $this->getDepartamentoId(),
+            $keys[3] => $this->getMunicipioId(),
+            $keys[4] => $this->getZona(),
+            $keys[5] => $this->getCarreteraId(),
+            $keys[6] => $this->getKm(),
+            $keys[7] => $this->getDireccion(),
         );
         if ($includeForeignObjects) {
-            if (null !== $this->aPropiedad) {
-                $result['Propiedad'] = $this->aPropiedad->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            if (null !== $this->aRequerimiento) {
+                $result['Requerimiento'] = $this->aRequerimiento->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->aDepartamento) {
+                $result['Departamento'] = $this->aDepartamento->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->aMunicipio) {
+                $result['Municipio'] = $this->aMunicipio->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->aCarretera) {
+                $result['Carretera'] = $this->aCarretera->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
             }
         }
 
@@ -1018,7 +1036,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = PropiedadImagenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = DireccionRequerimientoPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 
         $this->setByPosition($pos, $value);
     }
@@ -1038,25 +1056,25 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 $this->setId($value);
                 break;
             case 1:
-                $this->setPropiedadId($value);
+                $this->setRequerimientoId($value);
                 break;
             case 2:
-                $this->setNombreOriginal($value);
+                $this->setDepartamentoId($value);
                 break;
             case 3:
-                $this->setNombreActual($value);
+                $this->setMunicipioId($value);
                 break;
             case 4:
-                $this->setCreatedAt($value);
+                $this->setZona($value);
                 break;
             case 5:
-                $this->setUpdatedAt($value);
+                $this->setCarreteraId($value);
                 break;
             case 6:
-                $this->setCreatedBy($value);
+                $this->setKm($value);
                 break;
             case 7:
-                $this->setUpdatedBy($value);
+                $this->setDireccion($value);
                 break;
         } // switch()
     }
@@ -1080,16 +1098,16 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
     {
-        $keys = PropiedadImagenPeer::getFieldNames($keyType);
+        $keys = DireccionRequerimientoPeer::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-        if (array_key_exists($keys[1], $arr)) $this->setPropiedadId($arr[$keys[1]]);
-        if (array_key_exists($keys[2], $arr)) $this->setNombreOriginal($arr[$keys[2]]);
-        if (array_key_exists($keys[3], $arr)) $this->setNombreActual($arr[$keys[3]]);
-        if (array_key_exists($keys[4], $arr)) $this->setCreatedAt($arr[$keys[4]]);
-        if (array_key_exists($keys[5], $arr)) $this->setUpdatedAt($arr[$keys[5]]);
-        if (array_key_exists($keys[6], $arr)) $this->setCreatedBy($arr[$keys[6]]);
-        if (array_key_exists($keys[7], $arr)) $this->setUpdatedBy($arr[$keys[7]]);
+        if (array_key_exists($keys[1], $arr)) $this->setRequerimientoId($arr[$keys[1]]);
+        if (array_key_exists($keys[2], $arr)) $this->setDepartamentoId($arr[$keys[2]]);
+        if (array_key_exists($keys[3], $arr)) $this->setMunicipioId($arr[$keys[3]]);
+        if (array_key_exists($keys[4], $arr)) $this->setZona($arr[$keys[4]]);
+        if (array_key_exists($keys[5], $arr)) $this->setCarreteraId($arr[$keys[5]]);
+        if (array_key_exists($keys[6], $arr)) $this->setKm($arr[$keys[6]]);
+        if (array_key_exists($keys[7], $arr)) $this->setDireccion($arr[$keys[7]]);
     }
 
     /**
@@ -1099,16 +1117,16 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(PropiedadImagenPeer::DATABASE_NAME);
+        $criteria = new Criteria(DireccionRequerimientoPeer::DATABASE_NAME);
 
-        if ($this->isColumnModified(PropiedadImagenPeer::ID)) $criteria->add(PropiedadImagenPeer::ID, $this->id);
-        if ($this->isColumnModified(PropiedadImagenPeer::PROPIEDAD_ID)) $criteria->add(PropiedadImagenPeer::PROPIEDAD_ID, $this->propiedad_id);
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ORIGINAL)) $criteria->add(PropiedadImagenPeer::NOMBRE_ORIGINAL, $this->nombre_original);
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ACTUAL)) $criteria->add(PropiedadImagenPeer::NOMBRE_ACTUAL, $this->nombre_actual);
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_AT)) $criteria->add(PropiedadImagenPeer::CREATED_AT, $this->created_at);
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_AT)) $criteria->add(PropiedadImagenPeer::UPDATED_AT, $this->updated_at);
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_BY)) $criteria->add(PropiedadImagenPeer::CREATED_BY, $this->created_by);
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_BY)) $criteria->add(PropiedadImagenPeer::UPDATED_BY, $this->updated_by);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::ID)) $criteria->add(DireccionRequerimientoPeer::ID, $this->id);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::REQUERIMIENTO_ID)) $criteria->add(DireccionRequerimientoPeer::REQUERIMIENTO_ID, $this->requerimiento_id);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::DEPARTAMENTO_ID)) $criteria->add(DireccionRequerimientoPeer::DEPARTAMENTO_ID, $this->departamento_id);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::MUNICIPIO_ID)) $criteria->add(DireccionRequerimientoPeer::MUNICIPIO_ID, $this->municipio_id);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::ZONA)) $criteria->add(DireccionRequerimientoPeer::ZONA, $this->zona);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::CARRETERA_ID)) $criteria->add(DireccionRequerimientoPeer::CARRETERA_ID, $this->carretera_id);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::KM)) $criteria->add(DireccionRequerimientoPeer::KM, $this->km);
+        if ($this->isColumnModified(DireccionRequerimientoPeer::DIRECCION)) $criteria->add(DireccionRequerimientoPeer::DIRECCION, $this->direccion);
 
         return $criteria;
     }
@@ -1123,8 +1141,8 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(PropiedadImagenPeer::DATABASE_NAME);
-        $criteria->add(PropiedadImagenPeer::ID, $this->id);
+        $criteria = new Criteria(DireccionRequerimientoPeer::DATABASE_NAME);
+        $criteria->add(DireccionRequerimientoPeer::ID, $this->id);
 
         return $criteria;
     }
@@ -1165,20 +1183,20 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param object $copyObj An object of PropiedadImagen (or compatible) type.
+     * @param object $copyObj An object of DireccionRequerimiento (or compatible) type.
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setPropiedadId($this->getPropiedadId());
-        $copyObj->setNombreOriginal($this->getNombreOriginal());
-        $copyObj->setNombreActual($this->getNombreActual());
-        $copyObj->setCreatedAt($this->getCreatedAt());
-        $copyObj->setUpdatedAt($this->getUpdatedAt());
-        $copyObj->setCreatedBy($this->getCreatedBy());
-        $copyObj->setUpdatedBy($this->getUpdatedBy());
+        $copyObj->setRequerimientoId($this->getRequerimientoId());
+        $copyObj->setDepartamentoId($this->getDepartamentoId());
+        $copyObj->setMunicipioId($this->getMunicipioId());
+        $copyObj->setZona($this->getZona());
+        $copyObj->setCarreteraId($this->getCarreteraId());
+        $copyObj->setKm($this->getKm());
+        $copyObj->setDireccion($this->getDireccion());
 
         if ($deepCopy && !$this->startCopy) {
             // important: temporarily setNew(false) because this affects the behavior of
@@ -1206,7 +1224,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      * objects.
      *
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return PropiedadImagen Clone of current object.
+     * @return DireccionRequerimiento Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1226,38 +1244,38 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      * same instance for all member of this class. The method could therefore
      * be static, but this would prevent one from overriding the behavior.
      *
-     * @return PropiedadImagenPeer
+     * @return DireccionRequerimientoPeer
      */
     public function getPeer()
     {
         if (self::$peer === null) {
-            self::$peer = new PropiedadImagenPeer();
+            self::$peer = new DireccionRequerimientoPeer();
         }
 
         return self::$peer;
     }
 
     /**
-     * Declares an association between this object and a Propiedad object.
+     * Declares an association between this object and a Requerimiento object.
      *
-     * @param             Propiedad $v
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @param             Requerimiento $v
+     * @return DireccionRequerimiento The current object (for fluent API support)
      * @throws PropelException
      */
-    public function setPropiedad(Propiedad $v = null)
+    public function setRequerimiento(Requerimiento $v = null)
     {
         if ($v === null) {
-            $this->setPropiedadId(NULL);
+            $this->setRequerimientoId(NULL);
         } else {
-            $this->setPropiedadId($v->getId());
+            $this->setRequerimientoId($v->getId());
         }
 
-        $this->aPropiedad = $v;
+        $this->aRequerimiento = $v;
 
         // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the Propiedad object, it will not be re-added.
+        // If this object has already been added to the Requerimiento object, it will not be re-added.
         if ($v !== null) {
-            $v->addPropiedadImagen($this);
+            $v->addDireccionRequerimiento($this);
         }
 
 
@@ -1266,26 +1284,179 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
 
 
     /**
-     * Get the associated Propiedad object
+     * Get the associated Requerimiento object
      *
      * @param PropelPDO $con Optional Connection object.
-     * @return Propiedad The associated Propiedad object.
+     * @return Requerimiento The associated Requerimiento object.
      * @throws PropelException
      */
-    public function getPropiedad(PropelPDO $con = null)
+    public function getRequerimiento(PropelPDO $con = null)
     {
-        if ($this->aPropiedad === null && ($this->propiedad_id !== null)) {
-            $this->aPropiedad = PropiedadQuery::create()->findPk($this->propiedad_id, $con);
+        if ($this->aRequerimiento === null && ($this->requerimiento_id !== null)) {
+            $this->aRequerimiento = RequerimientoQuery::create()->findPk($this->requerimiento_id, $con);
             /* The following can be used additionally to
                 guarantee the related object contains a reference
                 to this object.  This level of coupling may, however, be
                 undesirable since it could result in an only partially populated collection
                 in the referenced object.
-                $this->aPropiedad->addPropiedadImagens($this);
+                $this->aRequerimiento->addDireccionRequerimientos($this);
              */
         }
 
-        return $this->aPropiedad;
+        return $this->aRequerimiento;
+    }
+
+    /**
+     * Declares an association between this object and a Departamento object.
+     *
+     * @param             Departamento $v
+     * @return DireccionRequerimiento The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setDepartamento(Departamento $v = null)
+    {
+        if ($v === null) {
+            $this->setDepartamentoId(NULL);
+        } else {
+            $this->setDepartamentoId($v->getId());
+        }
+
+        $this->aDepartamento = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the Departamento object, it will not be re-added.
+        if ($v !== null) {
+            $v->addDireccionRequerimiento($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated Departamento object
+     *
+     * @param PropelPDO $con Optional Connection object.
+     * @return Departamento The associated Departamento object.
+     * @throws PropelException
+     */
+    public function getDepartamento(PropelPDO $con = null)
+    {
+        if ($this->aDepartamento === null && ($this->departamento_id !== null)) {
+            $this->aDepartamento = DepartamentoQuery::create()->findPk($this->departamento_id, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aDepartamento->addDireccionRequerimientos($this);
+             */
+        }
+
+        return $this->aDepartamento;
+    }
+
+    /**
+     * Declares an association between this object and a Municipio object.
+     *
+     * @param             Municipio $v
+     * @return DireccionRequerimiento The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setMunicipio(Municipio $v = null)
+    {
+        if ($v === null) {
+            $this->setMunicipioId(NULL);
+        } else {
+            $this->setMunicipioId($v->getId());
+        }
+
+        $this->aMunicipio = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the Municipio object, it will not be re-added.
+        if ($v !== null) {
+            $v->addDireccionRequerimiento($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated Municipio object
+     *
+     * @param PropelPDO $con Optional Connection object.
+     * @return Municipio The associated Municipio object.
+     * @throws PropelException
+     */
+    public function getMunicipio(PropelPDO $con = null)
+    {
+        if ($this->aMunicipio === null && ($this->municipio_id !== null)) {
+            $this->aMunicipio = MunicipioQuery::create()->findPk($this->municipio_id, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aMunicipio->addDireccionRequerimientos($this);
+             */
+        }
+
+        return $this->aMunicipio;
+    }
+
+    /**
+     * Declares an association between this object and a Carretera object.
+     *
+     * @param             Carretera $v
+     * @return DireccionRequerimiento The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setCarretera(Carretera $v = null)
+    {
+        if ($v === null) {
+            $this->setCarreteraId(NULL);
+        } else {
+            $this->setCarreteraId($v->getId());
+        }
+
+        $this->aCarretera = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the Carretera object, it will not be re-added.
+        if ($v !== null) {
+            $v->addDireccionRequerimiento($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated Carretera object
+     *
+     * @param PropelPDO $con Optional Connection object.
+     * @return Carretera The associated Carretera object.
+     * @throws PropelException
+     */
+    public function getCarretera(PropelPDO $con = null)
+    {
+        if ($this->aCarretera === null && ($this->carretera_id !== null)) {
+            $this->aCarretera = CarreteraQuery::create()->findPk($this->carretera_id, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aCarretera->addDireccionRequerimientos($this);
+             */
+        }
+
+        return $this->aCarretera;
     }
 
     /**
@@ -1294,13 +1465,13 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     public function clear()
     {
         $this->id = null;
-        $this->propiedad_id = null;
-        $this->nombre_original = null;
-        $this->nombre_actual = null;
-        $this->created_at = null;
-        $this->updated_at = null;
-        $this->created_by = null;
-        $this->updated_by = null;
+        $this->requerimiento_id = null;
+        $this->departamento_id = null;
+        $this->municipio_id = null;
+        $this->zona = null;
+        $this->carretera_id = null;
+        $this->km = null;
+        $this->direccion = null;
         $this->alreadyInSave = false;
         $this->alreadyInValidation = false;
         $this->clearAllReferences();
@@ -1323,17 +1494,20 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         if ($deep) {
         } // if ($deep)
 
-        $this->aPropiedad = null;
+        $this->aRequerimiento = null;
+        $this->aDepartamento = null;
+        $this->aMunicipio = null;
+        $this->aCarretera = null;
     }
 
     /**
      * return the string representation of this object
      *
-     * @return string The value of the 'nombre_original' column
+     * @return string
      */
     public function __toString()
     {
-        return (string) $this->getNombreOriginal();
+        return (string) $this->exportTo(DireccionRequerimientoPeer::DEFAULT_STRING_FORMAT);
     }
 
     /**
@@ -1353,7 +1527,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     {
 
         // symfony_behaviors behavior
-        if ($callable = sfMixer::getCallable('BasePropiedadImagen:' . $name))
+        if ($callable = sfMixer::getCallable('BaseDireccionRequerimiento:' . $name))
         {
           array_unshift($params, $this);
           return call_user_func_array($callable, $params);
