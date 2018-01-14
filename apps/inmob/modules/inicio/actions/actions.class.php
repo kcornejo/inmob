@@ -13,6 +13,7 @@ class inicioActions extends sfActions {
     public function executeIndex(sfWebRequest $request) {
         $this->propiedades = PropiedadQuery::create()->find();
         $this->requerimientos = RequerimientoQuery::create()->find();
+        $this->negocios = NegocioQuery::create()->find();
     }
 
     public function executeDep(sfWebRequest $request) {

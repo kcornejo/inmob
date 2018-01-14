@@ -134,6 +134,8 @@ class venderActions extends sfActions {
         $Propiedad->setMiComision($valores['mi_comision']);
         if ($valores['carretera']) {
             $Propiedad->setCarreteraId($valores['carretera']);
+        } else {
+            $Propiedad->setCarreteraId(null);
         }
         $Propiedad->setMonedaId($valores['moneda']);
         $Propiedad->setComisionCompartida($valores["comision_compartida"]);

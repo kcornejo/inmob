@@ -20,6 +20,7 @@ class requerimientoActions extends sfActions {
         $defaults["habitacion"] = $Requerimiento->getCantidadHabitacion();
         $defaults["banio"] = $Requerimiento->getCantidadBanio();
         $defaults["parqueo"] = $Requerimiento->getCantidadParqueo();
+        $defaults["forma_pago"] = $Requerimiento->getFormaPago();
         $defaults["comedor"] = $Requerimiento->getCantidadComedor();
         $defaults["sala"] = $Requerimiento->getCantidadSala();
         $defaults["cocina"] = $Requerimiento->getCantidadCocina();
@@ -93,7 +94,7 @@ class requerimientoActions extends sfActions {
             }
         }
         $this->id = $id;
-        $this->cantidad = $cantidad ;
+        $this->cantidad = $cantidad;
     }
 
     public function executeNueva(sfWebRequest $request) {
@@ -154,7 +155,7 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setEstudio($valores["estudio"]);
         $Requerimiento->setCisterna($valores["cisterna"]);
         $Requerimiento->setLavanderia($valores["lavanderia"]);
-//        $Requerimiento->setFormaPago($valores["forma_pago"]);
+        $Requerimiento->setFormaPago($valores["forma_pago"]);
         $Requerimiento->setTieneLuz($valores["tiene_luz"]);
         $Requerimiento->setTieneAgua($valores["tiene_agua"]);
         $Requerimiento->setNiveles($valores["niveles"]);
@@ -170,6 +171,8 @@ class requerimientoActions extends sfActions {
         $DireccionRequerimiento->setKm($valores["km"]);
         if ($valores['carretera']) {
             $DireccionRequerimiento->setCarreteraId($valores['carretera']);
+        } else {
+            $DireccionRequerimiento->setCarreteraId(null);
         }
         $DireccionRequerimiento->setDireccion($valores["direccion"]);
         $DireccionRequerimiento->setRequerimientoId($Requerimiento->getId());

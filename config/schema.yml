@@ -125,6 +125,7 @@ propel:
     estado:                             { type: varchar(32) }
     amenidades:                         { type: varchar(255) }
     moneda_id:                          ~
+    forma_pago:                         { type: varchar(255) }
     presupuesto_min:                    { type: double }
     presupuesto_max:                    { type: double }
     precalificacion:                    { type: boolean, default: false }
@@ -140,3 +141,6 @@ propel:
     carretera_id:                       ~
     km:                                 { type: varchar(200) }
     direccion:                          { type: varchar(255) }
+  negocio:
+    requerimiento_id:                   ~
+    propiedad_id:                       ~
