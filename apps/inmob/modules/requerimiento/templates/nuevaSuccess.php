@@ -278,6 +278,7 @@
         $("#nuevo_requerimiento_cantidad").val(valor);
         $.get("<?php echo url_for("requerimiento/direccion") ?>", {"num": valor}, function (response) {
             $("#direccion").append(response);
+            BusquedaLlenaSelect();
         }, "html");
     }
     function menos_direccion(id) {

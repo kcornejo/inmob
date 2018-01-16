@@ -9,6 +9,7 @@ class VenderForm extends sfForm {
         $opciones_pago = array("Financiado" => "Financiado", "Al Contado" => "Al Contado");
         $opciones_km = array("" => "[Seleccione KM]", "1" => "1", "2" => "2", "3" => "3", "4" => "4", "5" => "5", "6" => "6", "7" => "7", "8" => "8", "9" => "9", "10" => "10", "11" => "11", "12" => "12", "13" => "13", "14" => "14", "15" => "15", "16" => "16", "17" => "17", "18" => "18", "19" => "19", "20" => "20", "21" => "21",);
         $departamentos = array();
+        $departamentos[""] = "[Seleccione Departamento]";
         $DepartamentoQuery = DepartamentoQuery::create()->find();
         $opciones_carretera = array();
         $opciones_carretera[""] = "[Seleccione Carretera]";
@@ -21,6 +22,7 @@ class VenderForm extends sfForm {
         }
         $MunicipioQuery = MunicipioQuery::create()->find();
         $municipios = array();
+        $municipios[""] = "[Seleccione Municipio]";
         foreach ($MunicipioQuery as $fila) {
             $municipios[$fila->getId()] = $fila->getDescripcion();
         }
@@ -65,7 +67,7 @@ class VenderForm extends sfForm {
         $this->setWidget("nombre_cliente", new sfWidgetFormInputText(array("label" => "Nombre del Cliente"), array("class" => "form-control")));
         $this->setWidget("correo_cliente", new sfWidgetFormInputText(array("label" => "Correo del Cliente"), array("class" => "form-control")));
         $this->setWidget("telefono_cliente", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control")));
-        $this->setWidget("departamento", new sfWidgetFormSelect(array('choices' => $departamentos), array("class" => "form-control col-md-12")));
+        $this->setWidget("departamento", new sfWidgetFormSelect(array('choices' => $departamentos), array("class" => "form-control velLlenaSelect col-md-12", "destino" => "vender_form_municipio", "url" => sfContext::getInstance()->getController()->genUrl("soporte/departamento"))));
         $this->setWidget("municipio", new sfWidgetFormSelect(array('choices' => $municipios), array("class" => "form-control col-md-12")));
         $this->setWidget("zona", new sfWidgetFormInputText(array("label" => "Zona"), array("class" => "form-control")));
         $this->setWidget("carretera", new sfWidgetFormSelect(array('choices' => $opciones_carretera), array("class" => "form-control col-md-10")));

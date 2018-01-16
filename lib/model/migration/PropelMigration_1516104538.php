@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1515467075.
- * Generated on 2018-01-09 03:04:35 
+ * up to version 1516104538.
+ * Generated on 2018-01-16 12:08:58 
  */
-class PropelMigration_1515467075
+class PropelMigration_1516104538
 {
 
     public function preUp($manager)
@@ -42,26 +42,9 @@ class PropelMigration_1515467075
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `propiedad` ADD CONSTRAINT `propiedad_FK_4`
-    FOREIGN KEY (`carretera_id`)
-    REFERENCES `carretera` (`id`);
+ALTER TABLE `direccion_requerimiento` CHANGE `carretera_id` `carretera_id` INTEGER;
 
-CREATE TABLE `propiedad_imagen`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `propiedad_id` INTEGER,
-    `nombre_original` VARCHAR(255),
-    `nombre_actual` VARCHAR(255),
-    `created_at` DATETIME,
-    `updated_at` DATETIME,
-    `created_by` VARCHAR(32),
-    `updated_by` VARCHAR(32),
-    PRIMARY KEY (`id`),
-    INDEX `propiedad_imagen_FI_1` (`propiedad_id`),
-    CONSTRAINT `propiedad_imagen_FK_1`
-        FOREIGN KEY (`propiedad_id`)
-        REFERENCES `propiedad` (`id`)
-) ENGINE=InnoDB;
+ALTER TABLE `propiedad` CHANGE `carretera_id` `carretera_id` INTEGER;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
@@ -83,9 +66,9 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `propiedad_imagen`;
+ALTER TABLE `direccion_requerimiento` CHANGE `carretera_id` `carretera_id` INTEGER NOT NULL;
 
-ALTER TABLE `propiedad` DROP FOREIGN KEY `propiedad_FK_4`;
+ALTER TABLE `propiedad` CHANGE `carretera_id` `carretera_id` INTEGER NOT NULL;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

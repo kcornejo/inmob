@@ -329,21 +329,22 @@
 </div>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-                                    $(document).ready(function () {
-
-                                    });
-                                    function mas_direccion() {
-                                        var valor = parseInt($("#nuevo_requerimiento_cantidad").val());
-                                        valor = valor + 1;
-                                        $("#nuevo_requerimiento_cantidad").val(valor);
-                                        $.get("<?php echo url_for("requerimiento/direccion") ?>", {"num": valor}, function (response) {
-                                            $("#direccion").append(response);
-                                        }, "html");
-                                    }
-                                    function menos_direccion(id) {
-                                        $("#direccion_" + id).remove();
-                                        var valor = $("#nuevo_requerimiento_cantidad").val();
-                                        valor = valor - 1;
-                                        $("#nuevo_requerimiento_cantidad").val(valor);
-                                    }
+                                        $(document).ready(function () {
+                                            
+                                        });
+                                        function mas_direccion() {
+                                            var valor = parseInt($("#nuevo_requerimiento_cantidad").val());
+                                            valor = valor + 1;
+                                            $("#nuevo_requerimiento_cantidad").val(valor);
+                                            $.get("<?php echo url_for("requerimiento/direccion") ?>", {"num": valor}, function (response) {
+                                                $("#direccion").append(response);
+                                                BusquedaLlenaSelect();
+                                            }, "html");
+                                        }
+                                        function menos_direccion(id) {
+                                            $("#direccion_" + id).remove();
+                                            var valor = $("#nuevo_requerimiento_cantidad").val();
+                                            valor = valor - 1;
+                                            $("#nuevo_requerimiento_cantidad").val(valor);
+                                        }
 </script>

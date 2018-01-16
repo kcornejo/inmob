@@ -404,10 +404,18 @@ class sfWebResponse extends sfResponse
    *
    * @return string Normalized header
    */
-  protected function normalizeHeaderName($name)
+  protected function _normalizeHeaderName($name)
   {
     return preg_replace('/\-(.)/e', "'-'.strtoupper('\\1')", strtr(ucfirst(strtolower($name)), '_', '-'));
   }
+   protected function normalizeHeaderName($name)
+    {
+      $out = [];
+      array_map(function($record) use (&$out) {
+        $out[] = ucfirst(strtolower($record));
+      }, explode('-',$name));
+      return implode('-',$out);
+    }
 
   /**
    * Retrieves a formated date.

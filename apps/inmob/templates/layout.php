@@ -151,10 +151,11 @@
         <script src="/assets/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
         <script src="/assets/global/js/quickview.js"></script> <!-- Chat Script -->
         <script src="/assets/global/js/pages/search.js"></script> <!-- Search Script -->
-        <script src="/assets/global/js/pages/form_plugins.js"></script>
+        <!--<script src="/assets/global/js/pages/form_plugins.js"></script>-->
         <script src="/assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
         <script src="/assets/global/js/application.js"></script> <!-- Main Application Script -->
         <script src="/assets/admin/layout4/js/layout.js"></script> <!-- Main Application Script -->
         <script src="/js/bootstrap-rating-input.js"></script>
+        <script src="/js/kenScript.js"></script>
     </body>
 </html>

@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <table class="table table-striped table-bordered table-hover">
                     <?php foreach ($propiedades as $propiedad): ?>
-                        <tr onclick="location.replace('<?php echo url_for('vender/editar') . "?id=" . $propiedad->getId() ?>')">
+                        <tr>
                             <td style="width:40%">
                                 <?php foreach ($propiedad->getPropiedadImagens() as $fila): ?>
                                     <img style="width:100%" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
@@ -42,6 +42,31 @@
                                             ?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: right;">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <span class="dropdown-arrow"></span>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="<?php echo url_for('vender/editar') . "?id=" . $propiedad->getId() ?>" href='#'>
+                                                            Editar
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
+                                                                       location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
+                                                                   }" href="#">
+                                                            Eliminar
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </table>
                             </td>
                         </tr>
@@ -57,7 +82,7 @@
             <div class="col-md-12">
                 <table class="table table-striped table-bordered table-hover">
                     <?php foreach ($requerimientos as $requerimiento): ?>
-                        <tr onclick="location.replace('<?php echo url_for('requerimiento/editar') . "?id=" . $requerimiento->getId() ?>')">
+                        <tr>
                             <td style="width:40%">
                                 <div style=";background-color:#f1f3f3; text-align: center;">
                                     <img style="width:100%" src="/assets/img/caracteristicas/casa.png"/>
@@ -89,17 +114,20 @@
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                     <span class="caret"></span>
-                                                    <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <span class="dropdown-arrow"></span>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Action</a>
+                                                    <li>
+                                                        <a href="<?php echo url_for('requerimiento/editar') . "?id=" . $requerimiento->getId() ?>" href='#'>
+                                                            Editar
+                                                        </a>
                                                     </li>
-                                                    <li><a href="#">Another action</a>
-                                                    </li>
-                                                    <li><a href="#">Something else here</a>
-                                                    </li>
-                                                    <li><a href="#">Separated link</a>
+                                                    <li>
+                                                        <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
+                                                                       location.replace('<?php echo url_for('requerimiento/eliminar') . "?id=" . $requerimiento->getId() ?>')
+                                                                   }" href="#">
+                                                            Eliminar
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>

@@ -10,11 +10,14 @@
  */
 class venderActions extends sfActions {
 
-    /**
-     * Executes index action
-     *
-     * @param sfRequest $request A request object
-     */
+    public function executeEliminar(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+        PropiedadImagenQuery::create()->findByPropiedadId($id)->delete();
+        PropiedadQuery::create()->findById($id)->delete();
+        $this->getUser()->setFlash("exito", "Propiedad eliminado con exito.");
+        $this->redirect("inicio/index");
+    }
+
     public function executeNueva(sfWebRequest $request) {
         $defaults = array();
         $defaults["habitacion"] = "0";
