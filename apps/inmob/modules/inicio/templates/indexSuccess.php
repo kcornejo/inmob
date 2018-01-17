@@ -58,13 +58,17 @@
                                                     </li>
                                                     <li>
                                                         <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                                       location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
-                                                                   }" href="#">
+                                                                        location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
+                                                                    }" href="#">
                                                             Eliminar
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
+                                            <select class="ajusta_propiedad" referencia="<?php echo $propiedad->getId() ?>" >
+                                                <option value="Disponible" <?php echo $propiedad->getEstatus() == "Disponible" ? "selected" : null ?>>Disponible</option>
+                                                <option value="Vendido" <?php echo $propiedad->getEstatus() == "Vendido" ? "selected" : null ?>>Vendido</option>
+                                            </select>
                                         </td>
                                     </tr>
                                 </table>
@@ -93,7 +97,7 @@
                                     <tr>
                                         <td># <?php echo $requerimiento->getId() ?></td>
                                         <td style="text-align:right;">
-                                            <b><?php echo $requerimiento->getMoneda()->getCodigo() ?></b>
+                                            <b><?php echo $requerimiento->getMonedaRelatedByMonedaId()->getCodigo() ?></b>
                                             <?php echo number_format($requerimiento->getPresupuestoMin(), 2) . '-' . number_format($requerimiento->getPresupuestoMax(), 2) ?>
                                         </td>
                                     </tr>
@@ -124,13 +128,17 @@
                                                     </li>
                                                     <li>
                                                         <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
-                                                                       location.replace('<?php echo url_for('requerimiento/eliminar') . "?id=" . $requerimiento->getId() ?>')
-                                                                   }" href="#">
+                                                                        location.replace('<?php echo url_for('requerimiento/eliminar') . "?id=" . $requerimiento->getId() ?>')
+                                                                    }" href="#">
                                                             Eliminar
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
+                                            <select class="ajusta_requerimiento" referencia="<?php echo $requerimiento->getId() ?>" >
+                                                <option value="Disponible" <?php echo $requerimiento->getEstatus() == "Disponible" ? "selected" : null ?>>Disponible</option>
+                                                <option value="Vendido" <?php echo $requerimiento->getEstatus() == "Vendido" ? "selected" : null ?>>Vendido</option>
+                                            </select>
                                         </td>
                                     </tr>
                                 </table>
@@ -171,3 +179,18 @@
         </div>
     </div>
 </div>
+<script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+                            $(document).ready(function () {
+                                $(".ajusta_propiedad").on('change', function () {
+                                    var referencia = $(this).attr("referencia");
+                                    var valor = $(this).val();
+                                    $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id" : referencia, "valor" : valor});
+                                });
+                                $(".ajusta_requerimiento").on('change', function () {
+                                    var referencia = $(this).attr("referencia");
+                                    var valor = $(this).val();
+                                    $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id" : referencia, "valor" : valor});
+                                });
+                            });
+</script>

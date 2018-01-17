@@ -155,25 +155,76 @@
                     <div class="panel-content">
                         <h4><b>Información Financiera</b></h4>
                         <div class="row">
-                            <div class="col-md-9">
-                                <div class="col-md-4">
-                                    Precio
-                                    <?php echo $formulario["moneda"] ?>
-                                </div>
-                                <div class="col-md-4">
-                                    Minino
-                                    <?php echo $formulario["presupuesto_min"] ?>
-                                </div>
-                                <div class="col-md-4">
-                                    Maximo
-                                    <?php echo $formulario["presupuesto_max"] ?>
-                                </div>
-                            </div>
                             <div class="col-md-3">
                                 Forma de Pago
                                 <div style="text-align: center">
                                     <?php echo $formulario["forma_pago"]; ?>
                                 </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="col-md-3">
+                                    Precio
+                                    <?php echo $formulario["moneda"] ?>
+                                </div>
+                                <div class="col-md-3">
+                                    Minino
+                                    <?php echo $formulario["presupuesto_min"] ?>
+                                </div>
+                                <div class="col-md-3">
+                                    Maximo
+                                    <?php echo $formulario["presupuesto_max"] ?>
+                                </div>
+                                <div class="col-md-3" id="precalificacion" style="text-align: center;">
+                                    Precalificacion<br/>
+                                    <?php echo $formulario["precalificacion"] ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" id="modulo_precalificacion">
+                <div class="panel">
+                    <div class="panel-content">
+                        <h4><b>Precalificacion</b></h4>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Nucleo Familiar
+                                <?php echo $formulario["nucleo_familiar"]; ?>
+                            </div>
+                            <div class="col-md-3">
+                                Ingresos
+                                <?php echo $formulario["ingresos"]; ?>
+                            </div>
+                            <div class="col-md-3">
+                                Egresos
+                                <?php echo $formulario["egresos"]; ?>
+                            </div>
+                            <div class="col-md-2">
+                                Tasa de Interes Anual
+                                <?php echo $formulario["tasa_interes_anual"]; ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Enganche
+                                <?php echo $formulario["enganche"]; ?>
+                            </div>
+                            <div class="col-md-2">
+                                Plazo en Años
+                                <?php echo $formulario["plazo_en_anios"]; ?>
+                            </div>
+                            <div class="col-md-2">
+                                Plazo en Meses
+                                <?php echo $formulario["plazo_en_meses"]; ?>
+                            </div>
+                            <div class="col-md-3">
+                                Monto a Financiar Maximo
+                                <?php echo $formulario["monto_financiar_maximo"]; ?>
+                            </div>
+                            <div class="col-md-3">
+                                Cuota Total Maxima Mensual
+                                <?php echo $formulario["cuota_total_mensual_maxima"]; ?>
                             </div>
                         </div>
                     </div>
@@ -271,20 +322,85 @@
         <?php echo "</form>"; ?>
     </div>
 </div>
+<script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-    function mas_direccion() {
-        var valor = parseInt($("#nuevo_requerimiento_cantidad").val());
-        valor = valor + 1;
-        $("#nuevo_requerimiento_cantidad").val(valor);
-        $.get("<?php echo url_for("requerimiento/direccion") ?>", {"num": valor}, function (response) {
-            $("#direccion").append(response);
-            BusquedaLlenaSelect();
-        }, "html");
-    }
-    function menos_direccion(id) {
-        $("#direccion_" + id).remove();
-        var valor = $("#nuevo_requerimiento_cantidad").val();
-        valor = valor - 1;
-        $("#nuevo_requerimiento_cantidad").val(valor);
-    }
+                                    function mas_direccion() {
+                                        var valor = parseInt($("#nuevo_requerimiento_cantidad").val());
+                                        valor = valor + 1;
+                                        $("#nuevo_requerimiento_cantidad").val(valor);
+                                        $.get("<?php echo url_for("requerimiento/direccion") ?>", {"num": valor}, function (response) {
+                                            $("#direccion").append(response);
+                                            BusquedaLlenaSelect();
+                                        }, "html");
+                                    }
+                                    function menos_direccion(id) {
+                                        $("#direccion_" + id).remove();
+                                        var valor = $("#nuevo_requerimiento_cantidad").val();
+                                        valor = valor - 1;
+                                        $("#nuevo_requerimiento_cantidad").val(valor);
+                                    }
+                                    $(document).ready(function () {
+                                        cambio_forma_pago();
+                                        cambio_financiado();
+                                        calculo();
+                                        $("#nuevo_requerimiento_forma_pago").on("change", function () {
+                                            cambio_forma_pago();
+                                            cambio_financiado();
+                                        });
+                                        $("#nuevo_requerimiento_precalificacion").on("change", function () {
+                                            cambio_financiado();
+                                        });
+                                        $(".calculo").on("input", function () {
+                                            calculo();
+                                        });
+                                    });
+                                    function cambio_forma_pago() {
+                                        var valor = $("#nuevo_requerimiento_forma_pago").val();
+                                        if (valor == "Financiado") {
+                                            $("#precalificacion").show();
+                                        } else {
+                                            $("#precalificacion").hide();
+                                        }
+                                    }
+                                    function cambio_financiado() {
+                                        var precalificacion = $("#nuevo_requerimiento_precalificacion").val();
+                                        var forma_pago = $("#nuevo_requerimiento_forma_pago").val();
+                                        if (forma_pago == "Financiado" && precalificacion == "Si") {
+                                            $("#modulo_precalificacion").show();
+                                            $("#nuevo_requerimiento_presupuesto_max").attr("readonly", true);
+                                        } else {
+                                            $("#modulo_precalificacion").hide();
+                                            $("#nuevo_requerimiento_presupuesto_max").removeAttr('readonly');
+                                        }
+                                    }
+                                    function calculo() {
+                                        plazo_en_meses();
+                                        monto_financiar();
+                                    }
+                                    function plazo_en_meses() {
+                                        var plazo_anios = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());
+                                        $("#nuevo_requerimiento_plazo_en_meses").val(plazo_anios * 12);
+                                    }
+                                    function monto_financiar() {
+                                        var X = parseFloat($("#nuevo_requerimiento_tasa_interes_anual").val());
+                                        var Y = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());
+                                        var ingreso_neto = parseFloat($("#nuevo_requerimiento_ingresos").val() - $("#nuevo_requerimiento_egresos").val());
+                                        var cuota_mensual_maxima = parseFloat(ingreso_neto * 0.363636);
+                                        var W = ingreso_neto;
+                                        var Z = parseFloat($("#nuevo_requerimiento_enganche").val());
+
+                                        var presupuesto_maximo = (-((X / 12) + 1) ^ (Y * 12)) * X * Z / 12;
+                                        presupuesto_maximo = (presupuesto_maximo / ((((X / 12) + 1) ^ (Y * 12)) - 1));
+                                        presupuesto_maximo = presupuesto_maximo + W * (-0.363636);
+                                        presupuesto_maximo = presupuesto_maximo / ((((-X / 12) * (((X / 12) + 1) ^ (Y * 12))) / ((((X / 12) + 1) ^ (Y * 12)) - 1)) - (12029 / 11200000));
+                                        var Iusi = 0.009 * (presupuesto_maximo) / (1.12 * 12);
+                                        var Seguro = presupuesto_maximo / 1.12 * 0.04529;
+                                        var C = parseFloat(cuota_mensual_maxima - Iusi - Seguro);
+                                        var Monto_Financiar = (((X / 12) + 1) ^ (-(Y * 12))) * (((X / 12) + 1) ^ (Y * 12) - 1) * C / (X / 12);
+                                        Monto_Financiar = parseFloat(Monto_Financiar);
+                                        $("#nuevo_requerimiento_monto_financiar_maximo").val(Monto_Financiar.toFixed(2));
+                                        $("#nuevo_requerimiento_cuota_total_mensual_maxima").val(cuota_mensual_maxima.toFixed(2));
+                                        $("#nuevo_requerimiento_presupuesto_max").val(presupuesto_maximo.toFixed(2));
+                                        
+                                    }
 </script>

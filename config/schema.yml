@@ -1,4 +1,75 @@
 propel:
+    
+  negocio:
+    id:                                 ~
+    requerimiento_id:                   { type: integer, foreignTable: requerimiento, foreignReference: id, required: true  }
+    propiedad_id:                       { type: integer, foreignTable: propiedad, foreignReference: id, required: true  }    
+    
+  direccion_requerimiento:
+    id:                                 ~
+    requerimiento_id:                   { type: integer, foreignTable: requerimiento, foreignReference: id, required: true  }
+    departamento_id:                    { type: integer, foreignTable: departamento, foreignReference: id, required: true  }
+    municipio_id:                       { type: integer, foreignTable: municipio, foreignReference: id, required: true  }
+    zona:                               { type: varchar(200) }
+    carretera_id:                       { type: integer, foreignTable: carretera, foreignReference: id, required: false  }
+    km:                                 { type: varchar(200) }
+    direccion:                          { type: varchar(255) }
+    
+  requerimiento:
+    id:                                 ~
+    tipo_operacion:                     { type: varchar(32) }
+    tipo_inmueble:                      { type: varchar(32) }
+    cantidad_habitacion:                { type: integer }
+    cantidad_banio:                     { type: integer }
+    cantidad_parqueo:                   { type: integer }
+    cantidad_comedor:                   { type: integer }
+    cantidad_sala:                      { type: integer }
+    cantidad_cocina:                    { type: integer }
+    dormitorio_servicio:                { type: boolean, default: false }
+    estudio:                            { type: boolean, default: false }
+    cisterna:                           { type: boolean, default: false }
+    cantidad_jardin:                    { type: integer }
+    cantidad_patio:                     { type: integer }
+    lavanderia:                         { type: boolean, default: false }
+    tiene_luz:                          { type: boolean, default: false }
+    tiene_agua:                         { type: boolean, default: false }
+    niveles:                            { type: integer }
+    area:                               { type: double }
+    area_x:                             { type: double }
+    area_y:                             { type: double }
+    estado:                             { type: varchar(32) }
+    amenidades:                         { type: varchar(255) }
+    moneda_id:                          { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
+    forma_pago:                         { type: varchar(255) }
+    presupuesto_min:                    { type: double }
+    presupuesto_max:                    { type: double }
+    nombre_cliente:                     { type: varchar(255) }
+    correo_cliente:                     { type: varchar(255) }
+    telefono_cliente:                   { type: varchar(25) }
+    estatus:                            { type: varchar(25), default: "Disponible"}
+    precalificacion:                    { type: boolean }
+    nucleo_familiar:                    { type: integer }
+    moneda_ingreso:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
+    ingresos:                           { type: double }
+    moneda_egresos:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
+    egresos:                            { type: double }
+    enganche:                           { type: double }
+    tasa_interes_anual:                 { type: double }
+    plazo_en_anios:                     { type: double }
+    plazo_en_meses:                     { type: double }
+    monto_financiar_maximo:             { type: double }
+    cuota_total_mensual_maxima:         { type: double }
+    
+  propiedad_imagen:
+    id:                                ~
+    propiedad_id:                      { type: integer, foreignTable: propiedad, foreignReference: id, required: true  }
+    nombre_original:                   { type: varchar(255) , primaryString: true}
+    nombre_actual:                     { type: varchar(255) , primaryString: true}
+    created_at:                        ~
+    updated_at:                        ~
+    created_by:                        { type: varchar(32) }
+    updated_by:                        { type: varchar(32) }
+              
   usuario:
     id:                                ~
     usuario:                           { type: varchar(32), required: true , primaryString: true}
@@ -11,7 +82,7 @@ propel:
     activo:                            { type: boolean, default: true }
     email:                             { type: varchar(255) }
     numero_telefono:                   { type: varchar(255) }
-    perfil_id:                         ~
+    perfil_id:                         { type: integer, foreignTable: perfil, foreignReference: id, required: true  }
     
   perfil:
     id:                                ~
@@ -21,6 +92,7 @@ propel:
     updated_at:                        ~
     created_by:                        { type: varchar(32) }
     updated_by:                        { type: varchar(32) }
+    
   propiedad:
     id:                                 ~
     tipo_operacion:                     { type: varchar(32) }
@@ -39,7 +111,7 @@ propel:
     lavanderia:                         { type: boolean, default: false }
     estado:                             { type: varchar(32) }
     amenidades:                         { type: varchar(255) }
-    moneda_id:                          ~
+    moneda_id:                          { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
     precio:                             { type: double }
     negociable:                         { type: boolean, default: false }
     incluye_gastos_escritura:           { type: boolean, default: false }
@@ -52,10 +124,10 @@ propel:
     nombre_cliente:                     { type: varchar(255) }
     correo_cliente:                     { type: varchar(255) }
     telefono_cliente:                   { type: varchar(25) }
-    departamento_id:                    ~
-    municipio_id:                       ~
+    departamento_id:                    { type: integer, foreignTable: departamento, foreignReference: id, required: true  }
+    municipio_id:                       { type: integer, foreignTable: municipio, foreignReference: id, required: true  }
     zona:                               { type: varchar(200) }
-    carretera_id:                       ~
+    carretera_id:                       { type: integer, foreignTable: carretera, foreignReference: id, required: false  }
     km:                                 { type: varchar(200) }
     direccion:                          { type: varchar(255) }
     seguridad:                          { type: double }
@@ -76,71 +148,23 @@ propel:
     area:                               { type: double }
     area_x:                             { type: double }
     area_y:                             { type: double }
-  departamento:
-    id:                                ~
-    descripcion:                       { type: varchar(255) , primaryString: true}
-  carretera:
-    id:                                ~
-    descripcion:                       { type: varchar(255) , primaryString: true}
+    estatus:                            { type: varchar(25), default: "Disponible" }
+    
   municipio:
     id:                                ~
     descripcion:                       { type: varchar(255) , primaryString: true}
-    departamento_id:                   ~
+    departamento_id:                   { type: integer, foreignTable: departamento, foreignReference: id, required: true  }    
+    
+  departamento:
+    id:                                ~
+    descripcion:                       { type: varchar(255) , primaryString: true}
+    
+  carretera:
+    id:                                ~
+    descripcion:                       { type: varchar(255) , primaryString: true}
+        
   moneda:
     id:                                ~
     descripcion:                       { type: varchar(255) , primaryString: true}
     simbolo:                           { type: varchar(3) , primaryString: true}
     codigo:                            { type: varchar(3) , primaryString: true}
-  propiedad_imagen:
-    id:                                ~
-    propiedad_id:                      ~
-    nombre_original:                   { type: varchar(255) , primaryString: true}
-    nombre_actual:                     { type: varchar(255) , primaryString: true}
-    created_at:                        ~
-    updated_at:                        ~
-    created_by:                        { type: varchar(32) }
-    updated_by:                        { type: varchar(32) }
-  requerimiento:
-    id:                                ~
-    tipo_operacion:                     { type: varchar(32) }
-    tipo_inmueble:                      { type: varchar(32) }
-    cantidad_habitacion:                { type: integer }
-    cantidad_banio:                     { type: integer }
-    cantidad_parqueo:                   { type: integer }
-    cantidad_comedor:                   { type: integer }
-    cantidad_sala:                      { type: integer }
-    cantidad_cocina:                    { type: integer }
-    dormitorio_servicio:                { type: boolean, default: false }
-    estudio:                            { type: boolean, default: false }
-    cisterna:                           { type: boolean, default: false }
-    cantidad_jardin:                    { type: integer }
-    cantidad_patio:                     { type: integer }
-    lavanderia:                         { type: boolean, default: false }
-    tiene_luz:                          { type: boolean, default: false }
-    tiene_agua:                         { type: boolean, default: false }
-    niveles:                            { type: integer }
-    area:                               { type: double }
-    area_x:                             { type: double }
-    area_y:                             { type: double }
-    estado:                             { type: varchar(32) }
-    amenidades:                         { type: varchar(255) }
-    moneda_id:                          ~
-    forma_pago:                         { type: varchar(255) }
-    presupuesto_min:                    { type: double }
-    presupuesto_max:                    { type: double }
-    precalificacion:                    { type: boolean, default: false }
-    nombre_cliente:                     { type: varchar(255) }
-    correo_cliente:                     { type: varchar(255) }
-    telefono_cliente:                   { type: varchar(25) }
-  direccion_requerimiento:
-    id:                                 ~
-    requerimiento_id:                   ~
-    departamento_id:                    ~
-    municipio_id:                       ~
-    zona:                               { type: varchar(200) }
-    carretera_id:                       ~
-    km:                                 { type: varchar(200) }
-    direccion:                          { type: varchar(255) }
-  negocio:
-    requerimiento_id:                   ~
-    propiedad_id:                       ~

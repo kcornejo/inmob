@@ -52,6 +52,18 @@ class requerimientoActions extends sfActions {
         $defaults["area"] = $Requerimiento->getArea();
         $defaults["area_x"] = $Requerimiento->getAreaX();
         $defaults["area_y"] = $Requerimiento->getAreaY();
+        $defaults["precalificacion"] = $Requerimiento->getPrecalificacion();
+        $defaults["nucleo_familiar"] = $Requerimiento->getNucleoFamiliar();
+        $defaults["moneda_ingreso"] = $Requerimiento->getMonedaIngreso();
+        $defaults["ingresos"] = $Requerimiento->getIngresos();
+        $defaults["moneda_egresos"] = $Requerimiento->getMonedaEgresos();
+        $defaults["egresos"] = $Requerimiento->getEgresos();
+        $defaults["enganche"] = $Requerimiento->getEnganche();
+        $defaults["tasa_interes_anual"] = $Requerimiento->getTasaInteresAnual();
+        $defaults["plazo_en_anios"] = $Requerimiento->getPlazoEnAnios();
+        $defaults["plazo_en_meses"] = $Requerimiento->getPlazoEnMeses();
+        $defaults["monto_financiar_maximo"] = $Requerimiento->getMontoFinanciarMaximo();
+        $defaults["cuota_total_mensual_maxima"] = $Requerimiento->getCuotaTotalMensualMaxima();
         foreach ($Requerimiento->getDireccionRequerimientos() as $fila) {
             $defaults["departamento"] = $fila->getDepartamentoId();
             $defaults["municipio"] = $fila->getMunicipioId();
@@ -170,6 +182,18 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setArea($valores["area"]);
         $Requerimiento->setAreaX($valores["area_x"]);
         $Requerimiento->setAreaY($valores["area_y"]);
+        $Requerimiento->setPrecalificacion($valores["precalificacion"]);
+        $Requerimiento->setNucleoFamiliar($valores["nucleo_familiar"]);
+        $Requerimiento->setMonedaIngreso($valores["moneda_ingreso"]);
+        $Requerimiento->setIngresos($valores["ingresos"]);
+        $Requerimiento->setMonedaEgresos($valores["moneda_egresos"]);
+        $Requerimiento->setEgresos($valores["egresos"]);
+        $Requerimiento->setEnganche($valores["enganche"]);
+        $Requerimiento->setTasaInteresAnual($valores["tasa_interes_anual"]);
+        $Requerimiento->setPlazoEnAnios($valores["plazo_en_anios"]);
+        $Requerimiento->setPlazoEnMeses($valores["plazo_en_meses"]);
+        $Requerimiento->setMontoFinanciarMaximo($valores["monto_financiar_maximo"]);
+        $Requerimiento->setCuotaTotalMensualMaxima($valores["cuota_total_mensual_maxima"]);
         $Requerimiento->save();
         DireccionRequerimientoQuery::create()->findByRequerimientoId($Requerimiento->getId())->delete();
         $DireccionRequerimiento = new DireccionRequerimiento();

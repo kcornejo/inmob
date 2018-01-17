@@ -29,4 +29,20 @@ class soporteActions extends sfActions {
         return $this->renderText(json_encode($retorno));
     }
 
+    public function executeEstatusPropiedad(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+        $valor = $request->getParameter("valor");
+        $Propiedad = PropiedadQuery::create()->findOneById($id);
+        $Propiedad->setEstatus($valor);
+        $Propiedad->save();
+    }
+
+    public function executeEstatusRequerimiento(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+        $valor = $request->getParameter("valor");
+        $Requerimiento = RequerimientoQuery::create()->findOneById($id);
+        $Requerimiento->setEstatus($valor);
+        $Requerimiento->save();
+    }
+
 }

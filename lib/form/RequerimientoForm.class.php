@@ -60,6 +60,18 @@ class RequerimientoForm extends sfForm {
         $this->setWidget("nombre_cliente", new sfWidgetFormInputText(array("label" => "Nombre del Cliente"), array("class" => "form-control")));
         $this->setWidget("correo_cliente", new sfWidgetFormInputText(array("label" => "Correo del Cliente"), array("class" => "form-control")));
         $this->setWidget("telefono_cliente", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control")));
+        $this->setWidget("precalificacion", new sfWidgetFormSelect(array("choices" => array("Si" => "Si", "No" => "No")), array("class" => "form-control")));
+        $this->setWidget("nucleo_familiar", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control")));
+        $this->setWidget("moneda_ingreso", new sfWidgetFormSelect(array('choices' => $monedas), array("class" => "form-control col-md-10")));
+        $this->setWidget("ingresos", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control calculo")));
+        $this->setWidget("moneda_egresos", new sfWidgetFormSelect(array('choices' => $monedas), array("class" => "form-control col-md-10")));
+        $this->setWidget("egresos", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control calculo")));
+        $this->setWidget("enganche", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control calculo")));
+        $this->setWidget("tasa_interes_anual", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control calculo")));
+        $this->setWidget("plazo_en_anios", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control calculo")));
+        $this->setWidget("plazo_en_meses", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control", "readonly" => true)));
+        $this->setWidget("monto_financiar_maximo", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control", "readonly" => true)));
+        $this->setWidget("cuota_total_mensual_maxima", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control", "readonly" => true)));
 
         $this->setWidget("departamento", new sfWidgetFormSelect(array('choices' => $departamentos), array("class" => "form-control velLlenaSelect col-md-12", "destino" => "nuevo_requerimiento_municipio", "url" => sfContext::getInstance()->getController()->genUrl("soporte/departamento"))));
         $this->setWidget("municipio", new sfWidgetFormSelect(array('choices' => $municipios), array("class" => "form-control col-md-12")));
@@ -123,6 +135,18 @@ class RequerimientoForm extends sfForm {
         $this->setValidator("direccion", new sfValidatorString(array('required' => true)));
 
         $this->setValidator("cantidad", new sfValidatorString(array('required' => false)));
+        $this->setValidator("precalificacion", new sfValidatorString(array('required' => false)));
+        $this->setValidator("nucleo_familiar", new sfValidatorString(array('required' => false)));
+        $this->setValidator("moneda_ingreso", new sfValidatorString(array('required' => false)));
+        $this->setValidator("ingresos", new sfValidatorString(array('required' => false)));
+        $this->setValidator("moneda_egresos", new sfValidatorString(array('required' => false)));
+        $this->setValidator("egresos", new sfValidatorString(array('required' => false)));
+        $this->setValidator("enganche", new sfValidatorString(array('required' => false)));
+        $this->setValidator("tasa_interes_anual", new sfValidatorString(array('required' => false)));
+        $this->setValidator("plazo_en_anios", new sfValidatorString(array('required' => false)));
+        $this->setValidator("plazo_en_meses", new sfValidatorString(array('required' => false)));
+        $this->setValidator("monto_financiar_maximo", new sfValidatorString(array('required' => false)));
+        $this->setValidator("cuota_total_mensual_maxima", new sfValidatorString(array('required' => false)));
         $this->widgetSchema->setNameFormat('nuevo_requerimiento[%s]');
     }
 
