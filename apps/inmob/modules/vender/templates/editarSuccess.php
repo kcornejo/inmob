@@ -401,3 +401,14 @@
         <?php echo "</form>"; ?>
     </div>
 </div>
+<script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        cambio_forma_pago();
+        cambio_financiado();
+        calculo();
+        $(".calculo").on("input", function () {
+            calculo();
+        });
+    });
+</script>

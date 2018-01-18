@@ -374,14 +374,11 @@
                                         var W = ingreso_neto;
                                         var Z = parseFloat($("#nuevo_requerimiento_enganche").val());
 
-                                        var presupuesto_maximo = (-((X / 12) + 1) ^ (Y * 12)) * X * Z / 12;
-                                        presupuesto_maximo = (presupuesto_maximo / ((((X / 12) + 1) ^ (Y * 12)) - 1));
-                                        presupuesto_maximo = presupuesto_maximo + W * (-0.363636);
-                                        presupuesto_maximo = presupuesto_maximo / ((((-X / 12) * (((X / 12) + 1) ^ (Y * 12))) / ((((X / 12) + 1) ^ (Y * 12)) - 1)) - (12029 / 11200000));
-                                        var Iusi = 0.009 * (presupuesto_maximo) / (1.12 * 12);
+                                        var presupuesto_maximo = (-((X / 12 + 1) ^ (Y * 12) * X / 12 * Z) / ((X / 12 + 1) ^ (Y * 12) - 1) + W * (-0.363636)) / (-(X / 12 * (X / 12 + 1) ^ (Y * 12)) / ((X / 12 + 1) ^ (Y * 12) - 1) - 12029 / (11200000));
+                                        var Iusi = (0.009 * (presupuesto_maximo)) / (1.12 * 12);
                                         var Seguro = presupuesto_maximo / 1.12 * 0.04529;
                                         var C = parseFloat(cuota_mensual_maxima - Iusi - Seguro);
-                                        var Monto_Financiar = (((X / 12) + 1) ^ (-(Y * 12))) * (((X / 12) + 1) ^ (Y * 12) - 1) * C / (X / 12);
+                                        var Monto_Financiar = (((X / 12) + 1) ^ (-(Y * 12)) * ((((X / 12) + 1) ^ (Y * 12)) - 1) * C) / (X / 12);
                                         Monto_Financiar = parseFloat(Monto_Financiar);
                                         $("#nuevo_requerimiento_monto_financiar_maximo").val(Monto_Financiar.toFixed(2));
                                         $("#nuevo_requerimiento_cuota_total_mensual_maxima").val(cuota_mensual_maxima.toFixed(2));
