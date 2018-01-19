@@ -3,7 +3,7 @@
 class requerimientoActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
-        
+        $this->requerimientos = RequerimientoQuery::create()->find();
     }
 
     public function executeDireccion(sfWebRequest $request) {

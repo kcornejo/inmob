@@ -10,6 +10,10 @@
  */
 class venderActions extends sfActions {
 
+    public function executeIndex(sfWebRequest $request) {
+        $this->propiedades = PropiedadQuery::create()->find();
+    }
+
     public function executeEliminar(sfWebRequest $request) {
         $id = $request->getParameter("id");
         PropiedadImagenQuery::create()->findByPropiedadId($id)->delete();

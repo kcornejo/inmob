@@ -78,7 +78,9 @@
                 </table>
             </div>
             <hr/>
-            <button style="float:right" onclick="location.replace('<?php echo url_for('vender/nueva') ?>');" type="button" class="btn btn-icon btn-rounded btn-primary"><i class="fa fa-plus"></i></button>
+            <a class="col-md-1 col-xs-3 col-sm-1" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;border-radius: 10px" href="<?php echo url_for('vender/nueva') ?>">
+                <img style="width:100%" src="/assets/img/caracteristicas/Agregar propiedad.png"/>
+            </a>
         </div>
     </div>
     <div class="tab-pane fade" id="tab6_2">
@@ -148,7 +150,9 @@
                 </table>
             </div>
             <hr/>
-            <button style="float:right" onclick="location.replace('<?php echo url_for('requerimiento/nueva') ?>');" type="button" class="btn btn-icon btn-rounded btn-primary"><i class="fa fa-plus"></i></button>
+            <a class="col-md-1 col-xs-3 col-sm-1" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;" href="<?php echo url_for('requerimiento/nueva') ?>">
+                <img style="width:100%" src="/assets/img/caracteristicas/Agregar requerimiento.png"/>
+            </a>
         </div>
     </div>
     <div class="tab-pane fade" id="tab6_3">
@@ -185,12 +189,12 @@
                                 $(".ajusta_propiedad").on('change', function () {
                                     var referencia = $(this).attr("referencia");
                                     var valor = $(this).val();
-                                    $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id" : referencia, "valor" : valor});
+                                    $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
                                 });
                                 $(".ajusta_requerimiento").on('change', function () {
                                     var referencia = $(this).attr("referencia");
                                     var valor = $(this).val();
-                                    $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id" : referencia, "valor" : valor});
+                                    $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
                                 });
                             });
 </script>

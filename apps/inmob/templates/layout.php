@@ -52,16 +52,11 @@
                                                             <a href="<?php echo url_for("inicio/index") ?>"></a>
                                                         </h1>-->
                 </div>
-                <div class="sidebar-inner">
+                <div class="sidebar-inner" style="background-color:#4A89DC;">
                     <ul class="nav nav-sidebar">
-                        <li><a href="<?php echo url_for("inicio/index") ?>"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li class="nav-parent">
-                            <a href="#"><i class="icon-shield"></i><span>Seguridad</span></a>
-                            <ul class="children collapse">
-                                <li><a  href="<?php echo url_for("usuario/index") ?>"> Usuarios</a></li>
-                                <li><a  href="<?php echo url_for("perfil/index") ?>"> Perfiles</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="<?php echo url_for("vender/index") ?>"><i class="icon-home"></i><span>Propiedades</span></a></li>
+                        <li><a href="<?php echo url_for("requerimiento/index") ?>"><i class="icon-check"></i><span>Requerimientos</span></a></li>
+                        <li><a href="<?php echo url_for("negocio/index") ?>"><i class="icon-diamond"></i><span>Negocios</span></a></li>
                     </ul>
                 </div>
             </div>
