@@ -6,6 +6,9 @@ function kenStars() {
         });
     });
 }
+function imagen(){
+    $(".fancybox").fancybox();
+}
 function BusquedaLlenaSelect() {
     $(".velLlenaSelect").each(function () {
         var id_origen = "#" + $(this).attr("id");
@@ -40,4 +43,5 @@ function llenaSelect(id_origen, id_destino, url) {
 $(document).ready(function () {
 //    kenStars();
     BusquedaLlenaSelect();
+    imagen();
 });

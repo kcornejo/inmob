@@ -96,7 +96,7 @@
             <div class="col-md-4">
                 <h5>Dirección</h5>
                 <div style="text-align: center">
-                    <input class="form-control" name="nuevo_requerimiento[direccion_<?php echo $num; ?>]" id="nuevo_requerimiento_direccion_<?php echo $num; ?>" type="text">                                </div>
+                    <input required="true" class="form-control" name="nuevo_requerimiento[direccion_<?php echo $num; ?>]" id="nuevo_requerimiento_direccion_<?php echo $num; ?>" type="text">                                </div>
             </div>
         </div>
     </div>

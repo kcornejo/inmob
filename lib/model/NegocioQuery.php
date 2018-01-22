@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for performing query and update operations on the 'negocio' table.
  *
@@ -17,6 +15,6 @@
  *
  * @package    propel.generator.lib.model
  */
-class NegocioQuery extends BaseNegocioQuery
-{
+class NegocioQuery extends BaseNegocioQuery {
+    
 }

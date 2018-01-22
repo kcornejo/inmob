@@ -13,11 +13,9 @@
 <?php endif ?>
 <div class="panel">
     <div class="panel-header bg-success">
-        <h3>Editar Propiedad
-            <a class="btn btn-xs btn-warning" style="float:right;margin-top: -6px;" href="<?php echo url_for("inicio/index") ?>">
-                <i class="fa fa-hand-o-left"></i>
-                Atras
-            </a>
+        <h3>
+            <a href="#" data-toggle="modal" data-target="#modal-basic" style="color:black;font-size:x-large"><i class="icon icons-arrows-03"></i></a>
+            Editar Propiedad
         </h3>
 
     </div>
@@ -399,6 +397,24 @@
         </button>
         <?php echo $formulario_vender->renderHiddenFields() ?>
         <?php echo "</form>"; ?>
+    </div>
+</div>
+<div class="modal fade" id="modal-basic" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+                <h4 class="modal-title"><strong>Aviso!</strong></h4>
+            </div>
+            <div class="modal-body">
+                Desea guardar antes de Salir?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-embossed" data-dismiss="modal" onclick="$('form').submit();">Guardar</button>
+                <button type="button" class="btn btn-danger btn-embossed" data-dismiss="modal" onclick="location.href = '<?php echo url_for("vender/index") ?>'">Salir</button>
+                <button type="button" class="btn btn-default btn-embossed" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
     </div>
 </div>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>

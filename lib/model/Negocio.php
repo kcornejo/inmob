@@ -22,6 +22,7 @@ class Negocio extends BaseNegocio {
                 ->filterByPropiedadId($Propiedad->getId())
                 ->find()
                 ->delete();
+        sfContext::getInstance()->getUser()->setAttribute('filtro', false, "Requerimiento");
         $Requerimientos = RequerimientoQuery::create()->find();
         foreach ($Requerimientos as $fila) {
             self::match($Propiedad, $fila);
@@ -33,6 +34,7 @@ class Negocio extends BaseNegocio {
                 ->filterByRequerimientoId($Requerimiento->getId())
                 ->find()
                 ->delete();
+        sfContext::getInstance()->getUser()->setAttribute('filtro', false, "Propiedad");
         $Propiedades = PropiedadQuery::create()->find();
         foreach ($Propiedades as $fila) {
             self::match($fila, $Requerimiento);
@@ -85,6 +87,8 @@ class Negocio extends BaseNegocio {
             $Negocio = new Negocio();
             $Negocio->setRequerimientoId($Requerimiento->getId());
             $Negocio->setPropiedadId($Propiedad->getId());
+            $Negocio->setUsuarioReq($Requerimiento->getUsuarioId());
+            $Negocio->setUsuarioProp($Propiedad->getUsuarioId());
             $Negocio->save();
         }
     }

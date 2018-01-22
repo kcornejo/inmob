@@ -13,11 +13,9 @@
 <?php endif ?>
 <div class="panel">
     <div class="panel-header bg-primary">
-        <h3>Nuevo Requerimiento
-            <a class="btn btn-xs btn-warning" style="float:right;margin-top: -6px;" href="<?php echo url_for("inicio/index") ?>">
-                <i class="fa fa-hand-o-left"></i>
-                Atras
-            </a>
+        <h3>
+            <a href="#" data-toggle="modal" data-target="#modal-basic" style="color:white;font-size:x-large"><i class="icon icons-arrows-03"></i></a>
+            Nuevo Requerimiento
         </h3>
 
     </div>
@@ -322,82 +320,99 @@
         <?php echo "</form>"; ?>
     </div>
 </div>
+<div class="modal fade" id="modal-basic" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+                <h4 class="modal-title"><strong>Aviso!</strong></h4>
+            </div>
+            <div class="modal-body">
+                Desea guardar antes de Salir?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-embossed" data-dismiss="modal" onclick="$('form').submit();">Guardar</button>
+                <button type="button" class="btn btn-danger btn-embossed" data-dismiss="modal" onclick="location.href = '<?php echo url_for("requerimiento/index") ?>'">Salir</button>
+                <button type="button" class="btn btn-default btn-embossed" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-                                    function mas_direccion() {
-                                        var valor = parseInt($("#nuevo_requerimiento_cantidad").val());
-                                        valor = valor + 1;
-                                        $("#nuevo_requerimiento_cantidad").val(valor);
-                                        $.get("<?php echo url_for("requerimiento/direccion") ?>", {"num": valor}, function (response) {
-                                            $("#direccion").append(response);
-                                            BusquedaLlenaSelect();
-                                        }, "html");
-                                    }
-                                    function menos_direccion(id) {
-                                        $("#direccion_" + id).remove();
-                                        var valor = $("#nuevo_requerimiento_cantidad").val();
-                                        valor = valor - 1;
-                                        $("#nuevo_requerimiento_cantidad").val(valor);
-                                    }
-                                    $(document).ready(function () {
-                                        cambio_forma_pago();
-                                        cambio_financiado();
-                                        calculo();
-                                        $("#nuevo_requerimiento_forma_pago").on("change", function () {
-                                            cambio_forma_pago();
-                                            cambio_financiado();
-                                        });
-                                        $("#nuevo_requerimiento_precalificacion").on("change", function () {
-                                            cambio_financiado();
-                                        });
-                                        $(".calculo").on("input", function () {
-                                            calculo();
-                                        });
-                                    });
-                                    function cambio_forma_pago() {
-                                        var valor = $("#nuevo_requerimiento_forma_pago").val();
-                                        if (valor == "Financiado") {
-                                            $("#precalificacion").show();
-                                        } else {
-                                            $("#precalificacion").hide();
-                                        }
-                                    }
-                                    function cambio_financiado() {
-                                        var precalificacion = $("#nuevo_requerimiento_precalificacion").val();
-                                        var forma_pago = $("#nuevo_requerimiento_forma_pago").val();
-                                        if (forma_pago == "Financiado" && precalificacion == "Si") {
-                                            $("#modulo_precalificacion").show();
-                                            $("#nuevo_requerimiento_presupuesto_max").attr("readonly", true);
-                                        } else {
-                                            $("#modulo_precalificacion").hide();
-                                            $("#nuevo_requerimiento_presupuesto_max").removeAttr('readonly');
-                                        }
-                                    }
-                                    function calculo() {
-                                        plazo_en_meses();
-                                        monto_financiar();
-                                    }
-                                    function plazo_en_meses() {
-                                        var plazo_anios = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());
-                                        $("#nuevo_requerimiento_plazo_en_meses").val(plazo_anios * 12);
-                                    }
-                                    function monto_financiar() {
-                                        var X = parseFloat($("#nuevo_requerimiento_tasa_interes_anual").val());
-                                        var Y = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());
-                                        var ingreso_neto = parseFloat($("#nuevo_requerimiento_ingresos").val() - $("#nuevo_requerimiento_egresos").val());
-                                        var cuota_mensual_maxima = parseFloat(ingreso_neto * 0.363636);
-                                        var W = ingreso_neto;
-                                        var Z = parseFloat($("#nuevo_requerimiento_enganche").val());
-                                        var TASA_INTERES_ANUAL = X / 100;
-                                        var presupuesto_maximo = (-(((((TASA_INTERES_ANUAL / 12) + 1) ^ (Y * 12)) * ((TASA_INTERES_ANUAL / 12)) * Z) / (((TASA_INTERES_ANUAL / 12) + 1) ^ (Y * 12) - 1)) - W) / (-(((TASA_INTERES_ANUAL / 12) * (((TASA_INTERES_ANUAL / 12) + 1) ^ (Y * 12))) / ((((TASA_INTERES_ANUAL / 12) + 1) ^ (Y * 12)) - 1)) - (12029 / 11200000));
-                                        var Iusi = (0.009 * (presupuesto_maximo)) / (1.12 * 12);
-                                        var Seguro = presupuesto_maximo / 1.12 * 0.04529;
-                                        var C = parseFloat(cuota_mensual_maxima - Iusi - Seguro);
-                                        var Monto_Financiar = ((((TASA_INTERES_ANUAL / 12) + 1) ^ -(Y * 12)) * (((TASA_INTERES_ANUAL / 12) + 1) ^ (Y * 12) - 1) * C) / (TASA_INTERES_ANUAL / 12);
-                                        Monto_Financiar = parseFloat(Monto_Financiar);
-                                        $("#nuevo_requerimiento_monto_financiar_maximo").val(Monto_Financiar.toFixed(2));
-                                        $("#nuevo_requerimiento_cuota_total_mensual_maxima").val(cuota_mensual_maxima.toFixed(2));
-                                        $("#nuevo_requerimiento_presupuesto_max").val(presupuesto_maximo.toFixed(2));
+                    function mas_direccion() {
+                        var valor = parseInt($("#nuevo_requerimiento_cantidad").val());
+                        valor = valor + 1;
+                        $("#nuevo_requerimiento_cantidad").val(valor);
+                        $.get("<?php echo url_for("requerimiento/direccion") ?>", {"num": valor}, function (response) {
+                            $("#direccion").append(response);
+                            BusquedaLlenaSelect();
+                        }, "html");
+                    }
+                    function menos_direccion(id) {
+                        $("#direccion_" + id).remove();
+                        var valor = $("#nuevo_requerimiento_cantidad").val();
+                        valor = valor - 1;
+                        $("#nuevo_requerimiento_cantidad").val(valor);
+                    }
+                    $(document).ready(function () {
+                        cambio_forma_pago();
+                        cambio_financiado();
+                        calculo();
+                        $("#nuevo_requerimiento_forma_pago").on("change", function () {
+                            cambio_forma_pago();
+                            cambio_financiado();
+                        });
+                        $("#nuevo_requerimiento_precalificacion").on("change", function () {
+                            cambio_financiado();
+                        });
+                        $(".calculo").on("input", function () {
+                            calculo();
+                        });
+                    });
+                    function cambio_forma_pago() {
+                        var valor = $("#nuevo_requerimiento_forma_pago").val();
+                        if (valor == "Financiado") {
+                            $("#precalificacion").show();
+                        } else {
+                            $("#precalificacion").hide();
+                        }
+                    }
+                    function cambio_financiado() {
+                        var precalificacion = $("#nuevo_requerimiento_precalificacion").val();
+                        var forma_pago = $("#nuevo_requerimiento_forma_pago").val();
+                        if (forma_pago == "Financiado" && precalificacion == "Si") {
+                            $("#modulo_precalificacion").show();
+                            $("#nuevo_requerimiento_presupuesto_max").attr("readonly", true);
+                        } else {
+                            $("#modulo_precalificacion").hide();
+                            $("#nuevo_requerimiento_presupuesto_max").removeAttr('readonly');
+                        }
+                    }
+                    function calculo() {
+                        plazo_en_meses();
+                        monto_financiar();
+                    }
+                    function plazo_en_meses() {
+                        var plazo_anios = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());
+                        $("#nuevo_requerimiento_plazo_en_meses").val(plazo_anios * 12);
+                    }
+                    function monto_financiar() {
+                        var X = parseFloat($("#nuevo_requerimiento_tasa_interes_anual").val());
+                        var Y = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());
+                        var ingreso_neto = parseFloat($("#nuevo_requerimiento_ingresos").val() - $("#nuevo_requerimiento_egresos").val());
+                        var cuota_mensual_maxima = parseFloat(ingreso_neto * 0.3636363636363636);
+                        var W = ingreso_neto;
+                        var Z = parseFloat($("#nuevo_requerimiento_enganche").val());
+                        var TASA_INTERES_ANUAL = X / 100;
+                        var presupuesto_maximo = (-(((Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12))) * ((TASA_INTERES_ANUAL / 12)) * Z) / (Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12)) - 1)) - cuota_mensual_maxima) / (-(((TASA_INTERES_ANUAL / 12) * (Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12)))) / ((Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12))) - 1)) - (12029 / 11200000));
+                        var Iusi = (0.009 * (presupuesto_maximo)) / (1.12 * 12);
+                        var Seguro = (0.01 * presupuesto_maximo * 0.04529) / 1.12;
+                        var C = parseFloat(cuota_mensual_maxima - Iusi - Seguro);
+                        var Monto_Financiar = ((Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (-(Y * 12)))) * (Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12)) - 1) * C) / (TASA_INTERES_ANUAL / 12);
+                        $("#nuevo_requerimiento_monto_financiar_maximo").val(Monto_Financiar.toFixed(2));
+                        $("#nuevo_requerimiento_cuota_total_mensual_maxima").val(cuota_mensual_maxima.toFixed(2));
+                        $("#nuevo_requerimiento_presupuesto_max").val(presupuesto_maximo.toFixed(2));
 
-                                    }
+                    }
 </script>

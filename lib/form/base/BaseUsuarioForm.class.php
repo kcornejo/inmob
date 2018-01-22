@@ -25,7 +25,9 @@ abstract class BaseUsuarioForm extends BaseFormPropel
       'activo'          => new sfWidgetFormInputCheckbox(),
       'email'           => new sfWidgetFormInputText(),
       'numero_telefono' => new sfWidgetFormInputText(),
-      'perfil_id'       => new sfWidgetFormPropelChoice(array('model' => 'Perfil', 'add_empty' => true)),
+      'perfil_id'       => new sfWidgetFormPropelChoice(array('model' => 'Perfil', 'add_empty' => false)),
+      'administrador'   => new sfWidgetFormInputCheckbox(),
+      'nombre_completo' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -40,7 +42,9 @@ abstract class BaseUsuarioForm extends BaseFormPropel
       'activo'          => new sfValidatorBoolean(array('required' => false)),
       'email'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'numero_telefono' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'perfil_id'       => new sfValidatorPropelChoice(array('model' => 'Perfil', 'column' => 'id', 'required' => false)),
+      'perfil_id'       => new sfValidatorPropelChoice(array('model' => 'Perfil', 'column' => 'id')),
+      'administrador'   => new sfValidatorBoolean(array('required' => false)),
+      'nombre_completo' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('usuario[%s]');

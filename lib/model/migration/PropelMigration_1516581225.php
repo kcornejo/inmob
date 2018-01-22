@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1516186778.
- * Generated on 2018-01-17 10:59:38 
+ * up to version 1516581225.
+ * Generated on 2018-01-22 00:33:45 
  */
-class PropelMigration_1516186778
+class PropelMigration_1516581225
 {
 
     public function preUp($manager)
@@ -42,14 +42,8 @@ class PropelMigration_1516186778
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `requerimiento`
-    ADD `moneda_egresos` INTEGER NOT NULL AFTER `ingresos`;
-
-CREATE INDEX `requerimiento_FI_3` ON `requerimiento` (`moneda_egresos`);
-
-ALTER TABLE `requerimiento` ADD CONSTRAINT `requerimiento_FK_3`
-    FOREIGN KEY (`moneda_egresos`)
-    REFERENCES `moneda` (`id`);
+ALTER TABLE `usuario`
+    ADD `nombre_completo` VARCHAR(255) AFTER `administrador`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
@@ -71,11 +65,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `requerimiento` DROP FOREIGN KEY `requerimiento_FK_3`;
-
-DROP INDEX `requerimiento_FI_3` ON `requerimiento`;
-
-ALTER TABLE `requerimiento` DROP `moneda_egresos`;
+ALTER TABLE `usuario` DROP `nombre_completo`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

@@ -18,6 +18,14 @@ generator:
               attributes:
                   class: form-control input-medium
               label:       Usuario
+          nombre_completo: 
+              attributes:
+                  class: form-control input-medium
+              label:       Nombre Completo
+          administrador: 
+              attributes:
+                  class: form-control input-medium
+              label:      Administrador
           clave: 
               attributes:
                   class: form-control input-medium
@@ -36,18 +44,18 @@ generator:
               label:       Perfil
       list: 
         title:   Listado de Usuarios
-        display: [usuario,perfil, email, numero_telefono, activo]
+        display: [usuario,nombre_completo,perfil, email, numero_telefono, activo, administrador]
         object_actions:
           _edit: 
             attributes:  class=btn btn-xs btn-warning
           _delete: 
             attributes:  class=btn btn-xs btn-danger
       filter:
-        display: [usuario,perfil_id,email, numero_telefono, activo]
+        display: [usuario,nombre_completo,perfil_id,email, numero_telefono, activo]
       form:    ~
       edit: 
         title:   " Edicion de Usuario [%%USUARIO%%]"
-        display:  [usuario, perfil_id, email, numero_telefono, activo]
+        display:  [usuario,nombre_completo, perfil_id, email, numero_telefono, activo, administrador]
       new: 
         title:   Creacion de Usuario
-        display:  [usuario, perfil_id, clave, email, numero_telefono, activo]
+        display:  [usuario, nombre_completo, perfil_id, clave, email, numero_telefono, activo, administrador]

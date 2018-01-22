@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for performing query and update operations on the 'propiedad' table.
  *
@@ -19,4 +17,4 @@
  */
 class PropiedadQuery extends BasePropiedadQuery
 {
-}
+                }

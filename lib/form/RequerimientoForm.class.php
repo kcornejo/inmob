@@ -62,7 +62,7 @@ class RequerimientoForm extends sfForm {
         $this->setWidget("telefono_cliente", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control")));
         $this->setWidget("precalificacion", new sfWidgetFormSelect(array("choices" => array("Si" => "Si", "No" => "No")), array("class" => "form-control")));
         $this->setWidget("nucleo_familiar", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control")));
-        $this->setWidget("moneda_ingreso", new sfWidgetFormSelect(array('choices' => $monedas), array("class" => "form-control col-md-10")));
+//        $this->setWidget("moneda_ingreso", new sfWidgetFormSelect(array('choices' => $monedas), array("class" => "form-control col-md-10")));
         $this->setWidget("ingresos", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control calculo")));
         $this->setWidget("moneda_egresos", new sfWidgetFormSelect(array('choices' => $monedas), array("class" => "form-control col-md-10")));
         $this->setWidget("egresos", new sfWidgetFormInputText(array("label" => "Telefono del Cliente"), array("class" => "form-control calculo")));
@@ -137,7 +137,7 @@ class RequerimientoForm extends sfForm {
         $this->setValidator("cantidad", new sfValidatorString(array('required' => false)));
         $this->setValidator("precalificacion", new sfValidatorString(array('required' => false)));
         $this->setValidator("nucleo_familiar", new sfValidatorString(array('required' => false)));
-        $this->setValidator("moneda_ingreso", new sfValidatorString(array('required' => false)));
+//        $this->setValidator("moneda_ingreso", new sfValidatorString(array('required' => false)));
         $this->setValidator("ingresos", new sfValidatorString(array('required' => false)));
         $this->setValidator("moneda_egresos", new sfValidatorString(array('required' => false)));
         $this->setValidator("egresos", new sfValidatorString(array('required' => false)));

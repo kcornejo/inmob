@@ -3,7 +3,10 @@
 class requerimientoActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
-        $this->requerimientos = RequerimientoQuery::create()->find();
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $this->requerimientos = RequerimientoQuery::create()
+                ->filterByUsuarioId($usuario_id)
+                ->find();
     }
 
     public function executeDireccion(sfWebRequest $request) {
@@ -110,7 +113,7 @@ class requerimientoActions extends sfActions {
                 $valores = $this->formulario->getValues();
                 $this->guardaRequerimiento($valores, $Requerimiento);
                 $this->getUser()->setFlash("exito", "Requerimiento creado con exito.");
-                $this->redirect("inicio/index");
+                $this->redirect("requerimiento/index");
             }
         }
         $this->id = $id;
@@ -146,7 +149,7 @@ class requerimientoActions extends sfActions {
                 $Requerimiento = new Requerimiento();
                 $this->guardaRequerimiento($valores, $Requerimiento);
                 $this->getUser()->setFlash("exito", "Requerimiento creado con exito.");
-                $this->redirect("inicio/index");
+                $this->redirect("requerimiento/index");
             }
         }
     }
@@ -184,9 +187,8 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setAreaY($valores["area_y"]);
         $Requerimiento->setPrecalificacion($valores["precalificacion"]);
         $Requerimiento->setNucleoFamiliar($valores["nucleo_familiar"]);
-        $Requerimiento->setMonedaIngreso($valores["moneda_ingreso"]);
+        $Requerimiento->setMonedaIngreso($valores["moneda"]);
         $Requerimiento->setIngresos($valores["ingresos"]);
-        $Requerimiento->setMonedaEgresos($valores["moneda_egresos"]);
         $Requerimiento->setEgresos($valores["egresos"]);
         $Requerimiento->setEnganche($valores["enganche"]);
         $Requerimiento->setTasaInteresAnual($valores["tasa_interes_anual"]);
@@ -194,6 +196,8 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setPlazoEnMeses($valores["plazo_en_meses"]);
         $Requerimiento->setMontoFinanciarMaximo($valores["monto_financiar_maximo"]);
         $Requerimiento->setCuotaTotalMensualMaxima($valores["cuota_total_mensual_maxima"]);
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Requerimiento->setUsuarioId($usuario_id);
         $Requerimiento->save();
         DireccionRequerimientoQuery::create()->findByRequerimientoId($Requerimiento->getId())->delete();
         $DireccionRequerimiento = new DireccionRequerimiento();

@@ -11,7 +11,10 @@
 class venderActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
-        $this->propiedades = PropiedadQuery::create()->find();
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $this->propiedades = PropiedadQuery::create()
+                ->filterByUsuarioId($usuario_id)
+                ->find();
     }
 
     public function executeEliminar(sfWebRequest $request) {
@@ -40,7 +43,7 @@ class venderActions extends sfActions {
                 $Propiedad = new Propiedad();
                 $this->guardaPropiedad($Propiedad, $valores);
                 $this->getUser()->setFlash("exito", "Venta creada correctamente.");
-                $this->redirect("inicio/index");
+                $this->redirect("vender/index");
             }
         }
     }
@@ -105,7 +108,7 @@ class venderActions extends sfActions {
                 $valores = $this->formulario_vender->getValues();
                 $this->guardaPropiedad($Propiedad, $valores);
                 $this->getUser()->setFlash("exito", "Venta editada correctamente.");
-                $this->redirect("inicio/index");
+                $this->redirect("vender/index");
             }
         }
         $this->id = $id;
@@ -174,6 +177,8 @@ class venderActions extends sfActions {
         $Propiedad->setArea($valores["area"]);
         $Propiedad->setAreaX($valores["area_x"]);
         $Propiedad->setAreaY($valores["area_y"]);
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Propiedad->setUsuarioId($usuario_id);
         $Propiedad->save();
         $archivo = $valores["archivo"];
         while (current($archivo)) {

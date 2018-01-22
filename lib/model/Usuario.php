@@ -24,4 +24,19 @@ class Usuario extends BaseUsuario {
         parent::save($con);
     }
 
+    static function getValidacionUsuario($tabla = null) {
+        $retorno = false;
+        if (sfContext::hasInstance()) {
+            $user = sfContext::getInstance()->getUser();
+            if ($user->isAuthenticated()) {
+                if ($user->getAttribute('filtro', null, $tabla) || is_null($user->getAttribute('filtro', null, $tabla))) {
+                    $retorno = true;
+                } else {
+                    $user->setAttribute('filtro', true, $tabla);
+                }
+            }
+        }
+        return $retorno;
+    }
+
 }

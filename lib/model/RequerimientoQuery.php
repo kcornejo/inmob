@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for performing query and update operations on the 'requerimiento' table.
  *
@@ -19,4 +17,4 @@
  */
 class RequerimientoQuery extends BaseRequerimientoQuery
 {
-}
+                }

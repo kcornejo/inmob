@@ -4,7 +4,8 @@ propel:
     id:                                 ~
     requerimiento_id:                   { type: integer, foreignTable: requerimiento, foreignReference: id, required: true  }
     propiedad_id:                       { type: integer, foreignTable: propiedad, foreignReference: id, required: true  }    
-    
+    usuario_req:                        { type: integer, foreignTable: usuario, foreignReference: id, required: true  }    
+    usuario_prop:                       { type: integer, foreignTable: usuario, foreignReference: id, required: true  }    
   direccion_requerimiento:
     id:                                 ~
     requerimiento_id:                   { type: integer, foreignTable: requerimiento, foreignReference: id, required: true  }
@@ -59,6 +60,11 @@ propel:
     plazo_en_meses:                     { type: double }
     monto_financiar_maximo:             { type: double }
     cuota_total_mensual_maxima:         { type: double }
+    created_at:                        ~
+    updated_at:                        ~
+    created_by:                        { type: varchar(32) }
+    updated_by:                        { type: varchar(32) }
+    usuario_id:                        ~
     
   propiedad_imagen:
     id:                                ~
@@ -83,6 +89,8 @@ propel:
     email:                             { type: varchar(255) }
     numero_telefono:                   { type: varchar(255) }
     perfil_id:                         { type: integer, foreignTable: perfil, foreignReference: id, required: true  }
+    administrador:                     { type: boolean, default: false }
+    nombre_completo:                   { type: varchar(255) }
     
   perfil:
     id:                                ~
@@ -149,6 +157,7 @@ propel:
     area_x:                             { type: double }
     area_y:                             { type: double }
     estatus:                            { type: varchar(25), default: "Disponible" }
+    usuario_id:                         ~
     
   municipio:
     id:                                ~

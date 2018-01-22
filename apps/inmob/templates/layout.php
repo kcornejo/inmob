@@ -13,6 +13,7 @@
         <link href="/assets/global/plugins/rateit/rateit.css" rel="stylesheet">
         <link href="/assets/admin/layout4/css/layout.css" rel="stylesheet">
         <link href="/js/css-stars.css" rel="stylesheet">
+        <link rel="stylesheet" href="/js/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
         <script src="/assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
@@ -46,24 +47,42 @@
             <!-- BEGIN SIDEBAR -->
             <div class="sidebar">
                 <!--<img src="/assets/img/logo_v2.png" width="30%" class="logopanel"/>-->
-                <div class="logopanel">
+                <div class="logopanel"  style="-webkit-box-shadow:none;">
                     <img src="/assets/img/logo_v2.png" width="20%" onclick="location.replace('<?php echo url_for('inicio/index') ?>');"/>
                     <!--                                    <h1>
                                                             <a href="<?php echo url_for("inicio/index") ?>"></a>
                                                         </h1>-->
                 </div>
-                <div class="sidebar-inner" style="background-color:#4A89DC;">
+                <div class="sidebar-inner no-scrollbar" style="background-color:#4A89DC;">
                     <ul class="nav nav-sidebar">
                         <li><a href="<?php echo url_for("vender/index") ?>"><i class="icon-home"></i><span>Propiedades</span></a></li>
                         <li><a href="<?php echo url_for("requerimiento/index") ?>"><i class="icon-check"></i><span>Requerimientos</span></a></li>
-                        <li><a href="<?php echo url_for("negocio/index") ?>"><i class="icon-diamond"></i><span>Negocios</span></a></li>
+                        <li>
+                            <a href="<?php echo url_for("negocio/index") ?>">
+                                <span class="pull-right badge badge-primary">
+                                    <?php
+                                    $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+                                    $Negocio = NegocioQuery::create()
+                                            ->where("usuario_req = $usuario_id or usuario_prop = $usuario_id")
+                                            ->find();
+                                    $Usuario = UsuarioQuery::create()->findOneById($usuario_id);
+                                    echo sizeof($Negocio);
+                                    ?>
+                                </span>
+                                <i class="icon-diamond"></i>
+                                <span>Negocios</span>
+                            </a>
+                        </li>
+                        <?php if ($Usuario->getAdministrador()): ?>
+                            <li><a href="<?php echo url_for("usuario/index") ?>"><i class="icon-users"></i><span>Usuarios</span></a></li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
             <!-- END SIDEBAR -->
             <div class="main-content">
                 <!-- BEGIN TOPBAR -->
-                <div class="topbar">
+                <div class="topbar" style="-webkit-box-shadow:none;">
                     <div class="header-left">
                         <div class="topnav">
                             <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
@@ -91,12 +110,8 @@
                 <!-- END TOPBAR -->
                 <!-- BEGIN PAGE CONTENT -->
                 <div class="page-content">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <?php include_partial("soporte/avisos") ?>
-                            <?php echo $sf_content; ?>
-                        </div>
-                    </div>
+                    <?php include_partial("soporte/avisos") ?>
+                    <?php echo $sf_content; ?>
                     <div class="footer">
                         <div class="copyright">
                             <p class="pull-left sm-pull-reset">
@@ -151,6 +166,7 @@
         <script src="/assets/global/js/application.js"></script> <!-- Main Application Script -->
         <script src="/assets/admin/layout4/js/layout.js"></script> <!-- Main Application Script -->
         <script src="/js/bootstrap-rating-input.js"></script>
+        <script type="text/javascript" src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
         <script src="/js/kenScript.js"></script>
     </body>
 </html>
