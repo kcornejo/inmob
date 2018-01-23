@@ -12,12 +12,13 @@
     <?php endforeach ?>
 <?php endif ?>
 <div class="panel">
-    <div class="panel-header bg-primary">
-        <h3>
-            <a href="#" data-toggle="modal" data-target="#modal-basic" style="color:white;font-size:x-large"><i class="icon icons-arrows-03"></i></a>
-            Vender Propiedad
+    <div class="panel-header" style="background-color:#305da8;color:white;font-size:14pt;">
+        <h3 face="Helvetica">
+            <a href="#" data-toggle="modal" data-target="#modal-basic" style="color:white;">
+                <i class="icon icons-arrows-03"></i>
+            </a>
+            Nueva Propiedad
         </h3>
-
     </div>
     <div class="panel-content">
         <?php echo $formulario_vender->renderFormTag(url_for("vender/nueva")); ?>
@@ -25,7 +26,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Operación y Inmueble</b></h4>
+                        <h4 class="titulo_kc">
+                            OPERACIÓN E INMUEBLE
+                        </h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <h5>Tipo de Operacion</h5>
@@ -42,7 +45,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Caracteristicas de Inmueble</b></h4>
+                        <h4 class="titulo_kc">
+                            CARACTERÍSTICAS DEL INMUEBLE
+                        </h4>
                         <div class="row">
                             <div class="col-md-2">
                                 <h3 style="text-align: center;">Habitaciones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
@@ -151,7 +156,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Información Financiera</b></h4>
+                        <h4 class="titulo_kc">
+                            INFORMACIÓN FINANCIERA
+                        </h4>
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="col-md-4">
@@ -212,18 +219,32 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Terminos de Negociación</b></h4>
+                        <h4 class="titulo_kc">
+                            TÉRMINOS DE NEGOCIACIÓN
+                        </h4>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <h5>Mi Comisión (%)</h5>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mi_comision"] ?>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <h5>Comisión Compartida</h5>
+                            <div class="col-md-3">
+                                <h5>Comisión Compartida (%)</h5>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["comision_compartida"] ?>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Mi Comisión</h5>
+                                <div style="text-align: center">
+                                    <input type="text" class="form-control" readonly="true" id="valor_mi_comision"/>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Comisión Compartida</h5>
+                                <div style="text-align: center">
+                                    <input type="text" class="form-control" readonly="true" id="valor_comision_compartida"/>
                                 </div>
                             </div>
                         </div>
@@ -233,7 +254,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Información de Contacto</b></h4>
+                        <h4 class="titulo_kc">
+                            INFORMACIÓN DE CONTACTO
+                        </h4>
                         <div class="row">
                             <div class="col-md-4">
                                 <h5>Nombre del Cliente</h5>
@@ -260,7 +283,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Ubicación</b></h4>
+                        <h4 class="titulo_kc">
+                            UBICACIÓN
+                        </h4>
                         <div class="row">
                             <div class="col-md-2">
                                 <h5>Departamento</h5>
@@ -307,7 +332,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Calificación</b></h4>
+                        <h4 class="titulo_kc">
+                            COMUNIDAD
+                        </h4>
                         <div class="row">
                             <div class="col-md-2">
                                 <h5>Seguridad</h5>
@@ -358,7 +385,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Imagenes</b></h4>
+                        <h4 class="titulo_kc">
+                            IMÁGENES
+                        </h4>
                         <div class="row">
                             <div class="col-md-2">
                                 <div style="text-align: center;color:#4a89dc;">
@@ -396,3 +425,22 @@
         </div>
     </div>
 </div>
+<script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+                    $(document).ready(function () {
+                        calculo();
+                        $(".calculo").on("input", function () {
+                            calculo();
+                        });
+                    });
+                    function calculo() {
+                        //valor_comision_compartida
+                        //valor_mi_comision
+                        var mi_comision = $("#vender_form_mi_comision").val();
+                        var comision_compartida = $("#vender_form_comision_compartida").val();
+                        var precio = $("#vender_form_precio").val();
+                        $("#valor_mi_comision").val(parseFloat(precio * mi_comision / 100).toFixed(2));
+                        $("#valor_comision_compartida").val(parseFloat($("#valor_mi_comision").val() * comision_compartida / 100).toFixed(2));
+                    }
+
+</script>

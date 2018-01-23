@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-header bg-primary">
-                    <h3>
-                        <a style="color:white;font-size:x-large" href="<?php echo url_for("negocio/index") ?>"><i class="icon icons-arrows-03"></i></a>
+                <div class="panel-header" style="background-color:#305da8;color:white;font-size:14pt;">
+                    <h3 face="Helvetica">
+                        <a style="color:white;" href="<?php echo url_for("negocio/index") ?>"><i class="icon icons-arrows-03"></i></a>
                         Casa en <?php
                         switch ($negocio->getPropiedad()->getTipoOperacion()) {
                             case "Vender":

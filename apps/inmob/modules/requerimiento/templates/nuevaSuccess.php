@@ -12,12 +12,11 @@
     <?php endforeach ?>
 <?php endif ?>
 <div class="panel">
-    <div class="panel-header bg-primary">
-        <h3>
-            <a href="#" data-toggle="modal" data-target="#modal-basic" style="color:white;font-size:x-large"><i class="icon icons-arrows-03"></i></a>
+    <div class="panel-header"   style="background-color:#305da8;color:white;font-size:14pt;">
+        <h3 face="Helvetica">
+            <a href="#" data-toggle="modal" data-target="#modal-basic" style="color:white;"><i class="icon icons-arrows-03"></i></a>
             Nuevo Requerimiento
         </h3>
-
     </div>
     <div class="panel-content">
         <?php echo $formulario->renderFormTag(url_for("requerimiento/nueva")); ?>
@@ -25,7 +24,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Operación y Inmueble</b></h4>
+                        <h4 class="titulo_kc">
+                            OPERACIÓN E INMUEBLE
+                        </h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <h5>Tipo de Operacion</h5>
@@ -42,7 +43,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Caracteristicas de Inmueble</b></h4>
+                        <h4 class="titulo_kc">
+                            CARACTERÍSTICAS DEL INMUEBLE
+                        </h4>
                         <div class="row">
                             <div class="col-md-2">
                                 <h3 style="text-align: center;">Habitaciones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
@@ -151,7 +154,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Información Financiera</b></h4>
+                        <h4 class="titulo_kc">
+                            INFORMACIÓN FINANCIERA
+                        </h4>
                         <div class="row">
                             <div class="col-md-3">
                                 Forma de Pago
@@ -184,7 +189,9 @@
             <div class="col-md-12" id="modulo_precalificacion">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Precalificacion</b></h4>
+                        <h4 class="titulo_kc">
+                            PRECALIFICACIÓN
+                        </h4>
                         <div class="row">
                             <div class="col-md-2">
                                 Nucleo Familiar
@@ -231,7 +238,9 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-content">
-                        <h4><b>Información de Contacto</b></h4>
+                        <h4 class="titulo_kc">
+                            INFORMACIÓN DE CONTACTO
+                        </h4>
                         <div class="row">
                             <div class="col-md-4">
                                 <h5>Nombre del Cliente</h5>

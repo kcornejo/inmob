@@ -12,16 +12,16 @@
                     <div class="form-body">
                         <div class="form-group">
                             Clave:
-                            <?php echo $form['Clave'] ?>
+                            <?php echo $form['clave'] ?>
                             <span class="error">
-                                <?php echo $form['Clave']->renderError() ?>
+                                <?php echo $form['clave']->renderError() ?>
                             </span>
                         </div>
                         <div class="form-group">
                             Repetir la Clave
-                            <?php echo $form['Repetir'] ?>
+                            <?php echo $form['clave_2'] ?>
                             <span class="error">
-                                <?php echo $form['Repetir']->renderError() ?>
+                                <?php echo $form['clave_2']->renderError() ?>
                             </span>
                         </div>
                         <?php echo $form->renderHiddenFields() ?>

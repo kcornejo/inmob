@@ -50,7 +50,7 @@ class seguridadActions extends sfActions {
                 $valores = $this->form->getValues();
                 $usuario_id = $this->getUser()->getAttribute('usuario', null, 'seguridad');
                 $Usuario = UsuarioQuery::create()->findOneById($usuario_id);
-                $Usuario->setClave(sha1($valores['Clave']));
+                $Usuario->setClave(sha1($valores['clave']));
                 $Usuario->save();
                 $this->getUser()->setFlash('exito', 'Cambio de Clave Efectuado Exitosamente');
                 $this->redirect("inicio/index");
