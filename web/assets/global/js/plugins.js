@@ -234,8 +234,8 @@ function iosSwitch() {
     if ($('.js-switch').length){ 
         setTimeout(function(){
             $('.js-switch').each(function () {
-            var colorOn = '#18A689'; 
-            var colorOff = '#DFDFDF';
+            var colorOn = '#305da8'; 
+            var colorOff = '#f3f3f3';
             if($(this).data('color-on')) colorOn = $(this).data('color-on');
             if($(this).data('color-on')) colorOff = $(this).data('color-off');
             if(colorOn == 'blue') colorOn = '#56A2D5';

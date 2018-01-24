@@ -1,10 +1,18 @@
 /*.error{*/
-    /*color:#AF0000;*/
+/*color:#AF0000;*/
 /*}*/
 .titulo_kc{
-    text-align: center;
     font-family: Helvetica;
     color: #9a9a9a;
     background-color:white;
     font-size:12pt;
+}
+.numeric-stepper{
+    text-align: center;
+}
+.estrella_apagada{
+    color:#f3f3f3;
+}
+.estrella_encendida{
+    color:#305da8;
 }

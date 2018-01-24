@@ -399,10 +399,15 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn col-md-1 col-xs-2 col-sm-2" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;background-color:#305da8;color:white;">
             <i class="fa fa-save"></i>
-            Guardar
+            <span class="hidden-sm hidden-xs">
+                Guardar
+            </span>
         </button>
+        <!--<a class="col-md-1 col-xs-3 col-sm-1" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;border-radius: 10px" href="<?php echo url_for('vender/nueva') ?>">-->
+            <!--<img style="width:100%" src="/assets/img/caracteristicas/Agregar propiedad.png"/>-->
+        <!--</a>-->
         <?php echo $formulario_vender->renderHiddenFields() ?>
         <?php echo "</form>"; ?>
     </div>

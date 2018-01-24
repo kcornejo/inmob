@@ -18,7 +18,7 @@ class requerimientoActions extends sfActions {
         DireccionRequerimientoQuery::create()->findByRequerimientoId($id)->delete();
         RequerimientoQuery::create()->findById($id)->delete();
         $this->getUser()->setFlash("exito", "Requerimiento eliminado con exito.");
-        $this->redirect("inicio/index");
+        $this->redirect("requerimiento/index");
     }
 
     public function executeEditar(sfWebRequest $request) {

@@ -411,9 +411,11 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn col-md-1 col-xs-2 col-sm-2" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;background-color:#305da8;color:white;">
             <i class="fa fa-save"></i>
-            Guardar
+            <span class="hidden-sm hidden-xs">
+                Guardar
+            </span>
         </button>
         <?php echo $formulario_vender->renderHiddenFields() ?>
         <?php echo "</form>"; ?>
