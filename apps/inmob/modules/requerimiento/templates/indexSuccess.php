@@ -46,7 +46,7 @@
                                         ?>
                                     </td>
                                     <td style="text-align:right;">
-                                        <b><?php echo $requerimiento->getMonedaRelatedByMonedaId()->getCodigo() ?></b>
+                                        <b><?php echo $requerimiento->getMoneda()->getCodigo() ?></b>
                                         <?php echo number_format($requerimiento->getPresupuestoMin(), 2) . '-' . number_format($requerimiento->getPresupuestoMax(), 2) ?>
                                     </td>
                                 </tr>

@@ -57,9 +57,9 @@ class requerimientoActions extends sfActions {
         $defaults["area_y"] = $Requerimiento->getAreaY();
         $defaults["precalificacion"] = $Requerimiento->getPrecalificacion();
         $defaults["nucleo_familiar"] = $Requerimiento->getNucleoFamiliar();
-        $defaults["moneda_ingreso"] = $Requerimiento->getMonedaIngreso();
+//        $defaults["moneda_ingreso"] = $Requerimiento->getMonedaIngreso();
         $defaults["ingresos"] = $Requerimiento->getIngresos();
-        $defaults["moneda_egresos"] = $Requerimiento->getMonedaEgresos();
+//        $defaults["moneda_egresos"] = $Requerimiento->getMonedaEgresos();
         $defaults["egresos"] = $Requerimiento->getEgresos();
         $defaults["enganche"] = $Requerimiento->getEnganche();
         $defaults["tasa_interes_anual"] = $Requerimiento->getTasaInteresAnual();
@@ -187,7 +187,7 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setAreaY($valores["area_y"]);
         $Requerimiento->setPrecalificacion($valores["precalificacion"]);
         $Requerimiento->setNucleoFamiliar($valores["nucleo_familiar"]);
-        $Requerimiento->setMonedaIngreso($valores["moneda"]);
+//        $Requerimiento->setMonedaIngreso($valores["moneda"]);
         $Requerimiento->setIngresos($valores["ingresos"]);
         $Requerimiento->setEgresos($valores["egresos"]);
         $Requerimiento->setEnganche($valores["enganche"]);

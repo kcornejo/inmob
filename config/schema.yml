@@ -21,7 +21,7 @@ propel:
     tipo_operacion:                     { type: varchar(32) }
     tipo_inmueble:                      { type: varchar(32) }
     cantidad_habitacion:                { type: integer }
-    cantidad_banio:                     { type: integer }
+    cantidad_banio:                     { type: double  }
     cantidad_parqueo:                   { type: integer }
     cantidad_comedor:                   { type: integer }
     cantidad_sala:                      { type: integer }
@@ -50,9 +50,9 @@ propel:
     estatus:                            { type: varchar(25), default: "Disponible"}
     precalificacion:                    { type: boolean }
     nucleo_familiar:                    { type: integer }
-    moneda_ingreso:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
+#    moneda_ingreso:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
     ingresos:                           { type: double }
-    moneda_egresos:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
+#    moneda_egresos:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }
     egresos:                            { type: double }
     enganche:                           { type: double }
     tasa_interes_anual:                 { type: double }
@@ -106,7 +106,7 @@ propel:
     tipo_operacion:                     { type: varchar(32) }
     tipo_inmueble:                      { type: varchar(32) }
     cantidad_habitacion:                { type: integer }
-    cantidad_banio:                     { type: integer }
+    cantidad_banio:                     { type: double }
     cantidad_parqueo:                   { type: integer }
     cantidad_comedor:                   { type: integer }
     cantidad_sala:                      { type: integer }

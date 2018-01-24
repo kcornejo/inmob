@@ -41,7 +41,7 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align:right;">
-                                        <b><?php echo $fila->getRequerimiento()->getMonedaRelatedByMonedaId()->getCodigo() ?></b>
+                                        <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
                                         <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 2) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 2) ?>
                                     </td>
                                 </tr>
@@ -81,7 +81,7 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align:right;">
-                                        <b><?php echo $fila->getRequerimiento()->getMonedaRelatedByMonedaId()->getCodigo() ?></b>
+                                        <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
                                         <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 2) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 2) ?>
                                     </td>
                                 </tr>

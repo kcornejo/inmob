@@ -212,7 +212,7 @@
                         <div class="col-md-12">
                             <div style="float:left;">
                                 <h3>
-                                    <b><?php echo $negocio->getRequerimiento()->getMonedaRelatedByMonedaId()->getCodigo() ?></b>
+                                    <b><?php echo $negocio->getRequerimiento()->getMoneda()->getCodigo() ?></b>
                                     <?php echo number_format($negocio->getRequerimiento()->getPresupuestoMin(), 2) ?> - <?php echo number_format($negocio->getRequerimiento()->getPresupuestoMax(), 2) ?>
                                 </h3>
                             </div>
