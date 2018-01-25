@@ -7,6 +7,17 @@
     background-color:white;
     font-size:12pt;
 }
+.subtitulo_kc{
+    font-family: Helvetica;
+    color: #444444;
+    background-color:white;
+    font-size:11pt;
+    text-align:center;
+    text-transform: capitalize;
+}
+.subtitulo_kc:first-letter{
+    /*text-transform: lowercase;*/
+}
 .numeric-stepper{
     text-align: center;
 }

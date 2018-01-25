@@ -29,11 +29,11 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <h5>Tipo de Operacion</h5>
+                                <span class="subtitulo_kc">Tipo de Operacion</span>
                                 <?php echo $formulario_vender["tipo_operacion"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <h5>Tipo de Inmueble</h5>
+                                <span class="subtitulo_kc">Tipo de Inmueble</span>
                                 <?php echo $formulario_vender["tipo_inmueble"]; ?>
                             </div>
                         </div>
@@ -48,27 +48,27 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Habitaciones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
                                 <?php echo $formulario_vender["habitacion"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Baño<br/><br/><img width="25%" src="/assets/img/caracteristicas/Baños-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Baño</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Baños-01.png"/></h3>
                                 <?php echo $formulario_vender["banio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Parqueo<br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Parqueo</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
                                 <?php echo $formulario_vender["parqueo"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Niveles<br/><br/><img width="25%" src="/assets/img/caracteristicas/Niveles-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Niveles</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Niveles-01.png"/></h3>
                                 <?php echo $formulario_vender["niveles"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Área<br/><br/><img width="25%" src="/assets/img/caracteristicas/Area-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Área</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Area-01.png"/></h3>
                                 <?php echo $formulario_vender["area"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Dimensiones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Dimensiones-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Dimensiones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dimensiones-01.png"/></h3>
                                 <table>
                                     <tr>
                                         <td><?php echo $formulario_vender["area_x"] ?></td>
@@ -80,31 +80,31 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Agua<br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Agua</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["tiene_agua"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Energia Electrica<br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Energia Electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["tiene_luz"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Comedor<br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Comedor</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
                                 <?php echo $formulario_vender["comedor"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Salas<br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Salas</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
                                 <?php echo $formulario_vender["sala"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Cocina<br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Cocina</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
                                 <?php echo $formulario_vender["cocina"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Dormitorio de Servicio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de Servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["dormitorio_servicio"] ?>
                                 </div>
@@ -112,27 +112,27 @@
                         </div>
                         <div class='row'>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Estudio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Estudio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["estudio"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Cisterna<br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Cisterna</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["cisterna"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Jardin<br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Jardin</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
                                 <?php echo $formulario_vender["jardin"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Patio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Patio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
                                 <?php echo $formulario_vender["patio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Lavanderia<br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Lavanderia</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["lavanderia"] ?>
                                 </div>
@@ -140,11 +140,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <h3>Estado del inmueble</h3>
+                                <span class="subtitulo_kc">Estado del inmueble</span>
                                 <?php echo $formulario_vender["estado"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <h3>Amenidades / Extras</h3>
+                                <span class="subtitulo_kc">Amenidades / Extras</span>
                                 <?php echo $formulario_vender["amenidades"]; ?>
                             </div>
                         </div>
@@ -160,7 +160,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="col-md-4">
-                                    Precio
+                                    <span class="subtitulo_kc">Precio</span>
                                     <?php echo $formulario_vender["moneda"] ?>
                                 </div>
                                 <div class="col-md-6">
@@ -168,24 +168,24 @@
                                     <?php echo $formulario_vender["precio"] ?>
                                 </div>
                                 <div class="col-md-2">
-                                    <h5 style="text-align: center;">Negociable</h5>
+                                    <span class="subtitulo_kc">Negociable</span>
                                     <?php echo $formulario_vender["precio_negociable"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                Forma de Pago
+                                <span class="subtitulo_kc">Forma de Pago</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["forma_pago"]; ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5 style="text-align: center;">Gastos Escritura</h5>
+                                <span class="subtitulo_kc">Gastos Escritura</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["gastos_escritura"]; ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Años de Construcción</h5>
+                                <span class="subtitulo_kc">Años de Construcción</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["anios_construccion"] ?>
                                 </div>
@@ -193,19 +193,19 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>Mantenimiento Mensual</h5>
+                                <span class="subtitulo_kc">Mantenimiento Mensual</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mantenimiento_mensual"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <h5>Iusi Trimestral</h5>
+                                <span class="subtitulo_kc">Iusi Trimestral</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["iusi_trimestral"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <h5>Valor Avaluo</h5>
+                                <span class="subtitulo_kc">Valor Avaluo</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["valor_avaluo"] ?>
                                 </div>
@@ -222,25 +222,25 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>Mi Comisión (%)</h5>
+                                <span class="subtitulo_kc">Mi Comisión (%)</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mi_comision"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <h5>Comisión Compartida (%)</h5>
+                                <span class="subtitulo_kc">Comisión Compartida (%)</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["comision_compartida"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <h5>Mi Comisión</h5>
+                                <span class="subtitulo_kc">Mi Comisión</span>
                                 <div style="text-align: center">
                                     <input type="text" class="form-control" readonly="true" id="valor_mi_comision"/>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <h5>Comisión Compartida</h5>
+                                <span class="subtitulo_kc">Comisión Compartida</span>
                                 <div style="text-align: center">
                                     <input type="text" class="form-control" readonly="true" id="valor_comision_compartida"/>
                                 </div>
@@ -257,19 +257,19 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-4">
-                                <h5>Nombre del Cliente</h5>
+                                <span class="subtitulo_kc">Nombre del Cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["nombre_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>Correo del Cliente</h5>
+                                <span class="subtitulo_kc">Correo del Cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["correo_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>Telefono del Cliente</h5>
+                                <span class="subtitulo_kc">Telefono del Cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["telefono_cliente"] ?>
                                 </div>
@@ -286,31 +286,31 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <h5>Departamento</h5>
+                                <span class="subtitulo_kc">Departamento</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["departamento"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Municipio</h5>
+                                <span class="subtitulo_kc">Municipio</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["municipio"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Zona</h5>
+                                <span class="subtitulo_kc">Zona</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["zona"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>KM</h5>
+                                <span class="subtitulo_kc">KM.</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["km"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>Carretera</h5>
+                                <span class="subtitulo_kc">Carretera</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["carretera"] ?>
                                 </div>
@@ -318,7 +318,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <h5>Dirección</h5>
+                                <span class="subtitulo_kc">Dirección</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["direccion"] ?>
                                 </div>
@@ -335,43 +335,43 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <h5>Seguridad</h5>
+                                <span class="subtitulo_kc">Seguridad</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["seguridad"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Accesos</h5>
+                                <span class="subtitulo_kc">Accesos</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["accesos"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Agua</h5>
+                                <span class="subtitulo_kc">Agua</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["agua"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Transporte Publico</h5>
+                                <span class="subtitulo_kc">Transporte Publico</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["transporte_publico"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Transito Vehicular</h5>
+                                <span class="subtitulo_kc">Transito Vehicular</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["transito_vehicular"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Comunidades Colidantes</h5>
+                                <span class="subtitulo_kc">Comunidades Colidantes</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["comunidades_colidantes"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Areas de Recreación</h5>
+                                <span class="subtitulo_kc">Areas de Recreación</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["areas_recreacion"] ?>
                                 </div>

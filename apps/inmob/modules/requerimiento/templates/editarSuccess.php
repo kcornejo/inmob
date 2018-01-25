@@ -29,11 +29,11 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <h5>Tipo de Operacion</h5>
+                                <span class="subtitulo_kc">Tipo de Operacion</span>
                                 <?php echo $formulario["tipo_operacion"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <h5>Tipo de Inmueble</h5>
+                                <span class="subtitulo_kc">Tipo de Inmueble</span>
                                 <?php echo $formulario["tipo_inmueble"]; ?>
                             </div>
                         </div>
@@ -48,27 +48,27 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Habitaciones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
                                 <?php echo $formulario["habitacion"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Baño<br/><br/><img width="25%" src="/assets/img/caracteristicas/Baños-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Baño</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Baños-01.png"/></h3>
                                 <?php echo $formulario["banio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Parqueo<br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Parqueo</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
                                 <?php echo $formulario["parqueo"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Niveles<br/><br/><img width="25%" src="/assets/img/caracteristicas/Niveles-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Niveles</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Niveles-01.png"/></h3>
                                 <?php echo $formulario["niveles"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Área<br/><br/><img width="25%" src="/assets/img/caracteristicas/Area-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Área</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Area-01.png"/></h3>
                                 <?php echo $formulario["area"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Dimensiones<br/><br/><img width="25%" src="/assets/img/caracteristicas/Dimensiones-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Dimensiones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dimensiones-01.png"/></h3>
                                 <table>
                                     <tr>
                                         <td><?php echo $formulario["area_x"] ?></td>
@@ -80,31 +80,31 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Agua<br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Agua</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario["tiene_agua"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Energia Electrica<br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Energia Electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario["tiene_luz"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Comedor<br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Comedor</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
                                 <?php echo $formulario["comedor"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Salas<br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Salas</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
                                 <?php echo $formulario["sala"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Cocina<br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Cocina</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
                                 <?php echo $formulario["cocina"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Dormitorio de Servicio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de Servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario["dormitorio_servicio"] ?>
                                 </div>
@@ -112,27 +112,27 @@
                         </div>
                         <div class='row'>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Estudio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Estudio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario["estudio"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Cisterna<br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Cisterna</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario["cisterna"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Jardin<br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Jardin</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
                                 <?php echo $formulario["jardin"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Patio<br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Patio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
                                 <?php echo $formulario["patio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;">Lavanderia<br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Lavanderia</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
                                 <div style="text-align: center">
                                     <?php echo $formulario["lavanderia"] ?>
                                 </div>
@@ -140,11 +140,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <h3>Estado del inmueble</h3>
+                                <span class="subtitulo_kc">Estado del inmueble</span>
                                 <?php echo $formulario["estado"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <h3>Amenidades / Extras</h3>
+                                <span class="subtitulo_kc">Amenidades / Extras</span>
                                 <?php echo $formulario["amenidades"]; ?>
                             </div>
                         </div>
@@ -159,26 +159,26 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-3">
-                                Forma de Pago
+                                <span class="subtitulo_kc">Forma de Pago</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["forma_pago"]; ?>
                                 </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-3">
-                                    Precio
+                                    <span class="subtitulo_kc">Precio</span>
                                     <?php echo $formulario["moneda"] ?>
                                 </div>
                                 <div class="col-md-3">
-                                    Minino
+                                    <span class="subtitulo_kc">Minino</span>
                                     <?php echo $formulario["presupuesto_min"] ?>
                                 </div>
                                 <div class="col-md-3">
-                                    Maximo
+                                    <span class="subtitulo_kc">Maximo</span>
                                     <?php echo $formulario["presupuesto_max"] ?>
                                 </div>
                                 <div class="col-md-3" id="precalificacion" style="text-align: center;">
-                                    Precalificacion<br/>
+                                    <span class="subtitulo_kc">Precalificacion</span><br/>
                                     <?php echo $formulario["precalificacion"] ?>
                                 </div>
                             </div>
@@ -194,41 +194,41 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                Nucleo Familiar
+                                <span class="subtitulo_kc">Nucleo Familiar</span>
                                 <?php echo $formulario["nucleo_familiar"]; ?>
                             </div>
                             <div class="col-md-3">
-                                Ingresos
+                                <span class="subtitulo_kc">Ingresos</span>
                                 <?php echo $formulario["ingresos"]; ?>
                             </div>
                             <div class="col-md-3">
-                                Egresos
+                                <span class="subtitulo_kc">Egresos</span>
                                 <?php echo $formulario["egresos"]; ?>
                             </div>
                             <div class="col-md-2">
-                                Tasa de Interes Anual
+                                <span class="subtitulo_kc">Tasa de Interes Anual</span>
                                 <?php echo $formulario["tasa_interes_anual"]; ?>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                Enganche
+                                <span class="subtitulo_kc">Enganche</span>
                                 <?php echo $formulario["enganche"]; ?>
                             </div>
                             <div class="col-md-2">
-                                Plazo en Años
+                                <span class="subtitulo_kc">Plazo en Años</span>
                                 <?php echo $formulario["plazo_en_anios"]; ?>
                             </div>
                             <div class="col-md-2">
-                                Plazo en Meses
+                                <span class="subtitulo_kc">Plazo en Meses</span>
                                 <?php echo $formulario["plazo_en_meses"]; ?>
                             </div>
                             <div class="col-md-3">
-                                Monto a Financiar Maximo
+                                <span class="subtitulo_kc">Monto a Financiar Maximo</span>
                                 <?php echo $formulario["monto_financiar_maximo"]; ?>
                             </div>
                             <div class="col-md-3">
-                                Cuota Total Maxima Mensual
+                                <span class="subtitulo_kc">Cuota Total Maxima Mensual</span>
                                 <?php echo $formulario["cuota_total_mensual_maxima"]; ?>
                             </div>
                         </div>
@@ -243,19 +243,19 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-4">
-                                <h5>Nombre del Cliente</h5>
+                                <span class="subtitulo_kc">Nombre del Cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["nombre_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>Correo del Cliente</h5>
+                                <span class="subtitulo_kc">Correo del Cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["correo_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>Telefono del Cliente</h5>
+                                <span class="subtitulo_kc">Telefono del Cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["telefono_cliente"] ?>
                                 </div>
@@ -269,9 +269,7 @@
                     <div class="panel-content">
                         <div class="row">
                             <div style="float:left;">
-                                <h4 class="titulo_kc">
-                                    UBICACIÓN
-                                </h4>
+                                <span class="subtitulo_kc">Ubicación</span>
                             </div>
                             <div style="float:right;">
                                 <a class="btn btn-default btn-rounded" href="#/" onclick="mas_direccion();">
@@ -281,31 +279,31 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <h5>Departamento</h5>
+                                <span class="subtitulo_kc">Departamento</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["departamento"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Municipio</h5>
+                                <span class="subtitulo_kc">Municipio</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["municipio"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>Zona</h5>
+                                <span class="subtitulo_kc">Zona</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["zona"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <h5>KM</h5>
+                                <span class="subtitulo_kc">KM.</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["km"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>Carretera</h5>
+                                <span class="subtitulo_kc">Carretera</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["carretera"] ?>
                                 </div>
@@ -313,7 +311,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <h5>Dirección</h5>
+                                <span class="subtitulo_kc">Dirección</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["direccion"] ?>
                                 </div>

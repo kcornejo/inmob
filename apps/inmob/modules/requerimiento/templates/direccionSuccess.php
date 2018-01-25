@@ -3,7 +3,7 @@
     <div class="panel-content">
         <div class="row">
             <div style="float:left;">
-                <h4><b>Ubicación <?php echo $num ?></b></h4>
+                <span class="subtitulo_kc">Ubicación <?php echo $num ?></span>
             </div>
             <div style="float:right;">
                 <a class="btn btn-default btn-rounded" href="#/" onclick="menos_direccion(<?php echo $num ?>);">
@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <h5>Departamento</h5>
+                <span class="subtitulo_kc">Departamento</span>
                 <div style="text-align: center">
                     <select destino="nuevo_requerimiento_municipio_<?php echo $num; ?>" class="form-control velLlenaSelect col-md-12" url="<?php echo sfContext::getInstance()->getController()->genUrl("soporte/departamento") ?>" name="nuevo_requerimiento[departamento_<?php echo $num; ?>]" id="nuevo_requerimiento_departamento_<?php echo $num; ?>">
                         <option value="1">Alta Verapaz</option>
@@ -40,7 +40,7 @@
                     </select>                                </div>
             </div>
             <div class="col-md-2">
-                <h5>Municipio</h5>
+                <span class="subtitulo_kc">Municipio</span>
                 <div style="text-align: center">
                     <select class="form-control col-md-12" name="nuevo_requerimiento[municipio_<?php echo $num; ?>]" id="nuevo_requerimiento_municipio_<?php echo $num; ?>">
 
@@ -48,12 +48,12 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <h5>Zona</h5>
+                <span class="subtitulo_kc">Zona</span>
                 <div style="text-align: center">
                     <input class="form-control" name="nuevo_requerimiento[zona_<?php echo $num; ?>]" id="nuevo_requerimiento_zona_<?php echo $num; ?>" type="text">                                </div>
             </div>
             <div class="col-md-2">
-                <h5>KM</h5>
+                <span class="subtitulo_kc">KM.</span>
                 <div style="text-align: center">
                     <select class="form-control col-md-10" name="nuevo_requerimiento[km_<?php echo $num; ?>]" id="nuevo_requerimiento_km_<?php echo $num; ?>">
                         <option value="" selected="selected">[Seleccione KM]</option>
@@ -81,7 +81,7 @@
                     </select>                                </div>
             </div>
             <div class="col-md-4">
-                <h5>Carretera</h5>
+                <span class="subtitulo_kc">Carretera</span>
                 <div style="text-align: center">
                     <select class="form-control col-md-10" name="nuevo_requerimiento[carretera_<?php echo $num; ?>]" id="nuevo_requerimiento_carretera_<?php echo $num; ?>">
                         <option value="" selected="selected">[Seleccione Carretera]</option>
@@ -94,7 +94,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <h5>Dirección</h5>
+                <span class="subtitulo_kc">Dirección</span>
                 <div style="text-align: center">
                     <input required="true" class="form-control" name="nuevo_requerimiento[direccion_<?php echo $num; ?>]" id="nuevo_requerimiento_direccion_<?php echo $num; ?>" type="text">                                </div>
             </div>
