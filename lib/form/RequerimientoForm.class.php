@@ -93,7 +93,7 @@ class RequerimientoForm extends sfForm {
             $this->setValidator("zona_" . $fila, new sfValidatorString(array('required' => false)));
             $this->setValidator("carretera_" . $fila, new sfValidatorString(array('required' => false)));
             $this->setValidator("km_" . $fila, new sfValidatorString(array('required' => false)));
-            $this->setValidator("direccion_" . $fila, new sfValidatorString(array('required' => true)));
+            $this->setValidator("direccion_" . $fila, new sfValidatorString(array('required' => false)));
         }
 
         $this->setValidator("tipo_operacion", new sfValidatorString(array('required' => true)));
@@ -132,7 +132,7 @@ class RequerimientoForm extends sfForm {
         $this->setValidator("zona", new sfValidatorString(array('required' => false)));
         $this->setValidator("carretera", new sfValidatorString(array('required' => false)));
         $this->setValidator("km", new sfValidatorString(array('required' => false)));
-        $this->setValidator("direccion", new sfValidatorString(array('required' => true)));
+        $this->setValidator("direccion", new sfValidatorString(array('required' => false)));
 
         $this->setValidator("cantidad", new sfValidatorString(array('required' => false)));
         $this->setValidator("precalificacion", new sfValidatorString(array('required' => false)));

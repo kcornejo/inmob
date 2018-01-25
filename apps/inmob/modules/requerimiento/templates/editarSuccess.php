@@ -269,7 +269,7 @@
                     <div class="panel-content">
                         <div class="row">
                             <div style="float:left;">
-                                <span class="subtitulo_kc">Ubicación</span>
+                                <span class="titulo_kc">UBICACIÓN</span>
                             </div>
                             <div style="float:right;">
                                 <a class="btn btn-default btn-rounded" href="#/" onclick="mas_direccion();">
@@ -319,6 +319,62 @@
                         </div>
                     </div>
                 </div>
+                <?php for ($i = 2; $i < $cantidad; $i++): ?>
+                    <div class="panel"  id="direccion_<?php echo $i ?>" >
+                        <div class="panel-content">
+                            <div class="row">
+                                <div style="float:left;">
+                                    <span class="titulo_kc">UBICACIÓN <?php echo $i ?></span>
+                                </div>
+                                <div style="float:right;">
+                                    <a class="btn btn-default btn-rounded" href="#/" onclick="menos_direccion(<?php echo $i ?>);">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="subtitulo_kc">Departamento</span>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario["departamento_" . $i] ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="subtitulo_kc">Municipio</span>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario["municipio_" . $i] ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="subtitulo_kc">Zona</span>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario["zona_" . $i] ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="subtitulo_kc">KM.</span>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario["km_" . $i] ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="subtitulo_kc">Carretera</span>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario["carretera_" . $i] ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="subtitulo_kc">Dirección</span>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario["direccion_" . $i] ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endfor; ?>
             </div>
         </div>
         <button type="submit" class="btn col-md-1 col-xs-2 col-sm-2" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;background-color:#305da8;color:white;">
@@ -381,14 +437,18 @@
                         if (forma_pago == "Financiado" && precalificacion == "Si") {
                             $("#modulo_precalificacion").show();
                             $("#nuevo_requerimiento_presupuesto_max").attr("readonly", true);
+                            calculo();
                         } else {
                             $("#modulo_precalificacion").hide();
                             $("#nuevo_requerimiento_presupuesto_max").removeAttr('readonly');
                         }
                     }
                     function calculo() {
-                        plazo_en_meses();
-                        monto_financiar();
+                        var precalificacion = $("#nuevo_requerimiento_precalificacion").val();
+                        if (precalificacion == "Si") {
+                            plazo_en_meses();
+                            monto_financiar();
+                        }
                     }
                     function plazo_en_meses() {
                         var plazo_anios = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());

@@ -269,7 +269,7 @@
                     <div class="panel-content">
                         <div class="row">
                             <div style="float:left;">
-                                <span class="subtitulo_kc">Ubicación</span>
+                                <span class="titulo_kc">UBICACIÓN</span>
                             </div>
                             <div style="float:right;">
                                 <a class="btn btn-default btn-rounded" href="#/" onclick="mas_direccion();">
@@ -395,14 +395,18 @@
                         if (forma_pago == "Financiado" && precalificacion == "Si") {
                             $("#modulo_precalificacion").show();
                             $("#nuevo_requerimiento_presupuesto_max").attr("readonly", true);
+                            calculo();
                         } else {
                             $("#modulo_precalificacion").hide();
                             $("#nuevo_requerimiento_presupuesto_max").removeAttr('readonly');
                         }
                     }
                     function calculo() {
-                        plazo_en_meses();
-                        monto_financiar();
+                        var precalificacion = $("#nuevo_requerimiento_precalificacion").val();
+                        if (precalificacion == "Si") {
+                            plazo_en_meses();
+                            monto_financiar();
+                        }
                     }
                     function plazo_en_meses() {
                         var plazo_anios = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());

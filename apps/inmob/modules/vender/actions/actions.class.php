@@ -40,10 +40,14 @@ class venderActions extends sfActions {
             $this->formulario_vender->bind($request->getParameter("vender_form"), $request->getFiles("vender_form"));
             if ($this->formulario_vender->isValid()) {
                 $valores = $this->formulario_vender->getValues();
-                $Propiedad = new Propiedad();
-                $this->guardaPropiedad($Propiedad, $valores);
-                $this->getUser()->setFlash("exito", "Venta creada correctamente.");
-                $this->redirect("vender/index");
+                if ($valores["zona"] == "" && $valores["carretera"] == "") {
+                    $this->getUser()->setFlash("error", "Ingrese carretera o zona");
+                } else {
+                    $Propiedad = new Propiedad();
+                    $this->guardaPropiedad($Propiedad, $valores);
+                    $this->getUser()->setFlash("exito", "Venta creada correctamente.");
+                    $this->redirect("vender/index");
+                }
             }
         }
     }
@@ -106,9 +110,13 @@ class venderActions extends sfActions {
             $this->formulario_vender->bind($request->getParameter("vender_form"), $request->getFiles("vender_form"));
             if ($this->formulario_vender->isValid()) {
                 $valores = $this->formulario_vender->getValues();
-                $this->guardaPropiedad($Propiedad, $valores);
-                $this->getUser()->setFlash("exito", "Venta editada correctamente.");
-                $this->redirect("vender/index");
+                if ($valores["zona"] == "" && $valores["carretera"] == "") {
+                    $this->getUser()->setFlash("error", "Ingrese carretera o zona");
+                } else {
+                    $this->guardaPropiedad($Propiedad, $valores);
+                    $this->getUser()->setFlash("exito", "Venta editada correctamente.");
+                    $this->redirect("vender/index");
+                }
             }
         }
         $this->id = $id;

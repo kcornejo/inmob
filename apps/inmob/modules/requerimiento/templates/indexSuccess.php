@@ -83,10 +83,6 @@
                                                 <?php echo $requerimiento->getCantidadBanio() ?>
                                                 <img style="max-width: 30px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                             </div>
-                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <?php echo $requerimiento->getCantidadBanio() ?>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dimensiones-01.png"/>
-                                            </div>
                                         </div>
                                     </td>
                                 </tr>

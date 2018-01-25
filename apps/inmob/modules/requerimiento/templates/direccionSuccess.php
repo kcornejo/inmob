@@ -3,7 +3,7 @@
     <div class="panel-content">
         <div class="row">
             <div style="float:left;">
-                <span class="subtitulo_kc">Ubicación <?php echo $num ?></span>
+                <span class="titulo_kc">UBICACIÓN <?php echo $num ?></span>
             </div>
             <div style="float:right;">
                 <a class="btn btn-default btn-rounded" href="#/" onclick="menos_direccion(<?php echo $num ?>);">
@@ -96,7 +96,7 @@
             <div class="col-md-4">
                 <span class="subtitulo_kc">Dirección</span>
                 <div style="text-align: center">
-                    <input required="true" class="form-control" name="nuevo_requerimiento[direccion_<?php echo $num; ?>]" id="nuevo_requerimiento_direccion_<?php echo $num; ?>" type="text">                                </div>
+                    <input class="form-control" name="nuevo_requerimiento[direccion_<?php echo $num; ?>]" id="nuevo_requerimiento_direccion_<?php echo $num; ?>" type="text">                                </div>
             </div>
         </div>
     </div>

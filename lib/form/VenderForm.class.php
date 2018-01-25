@@ -122,7 +122,7 @@ class VenderForm extends sfForm {
         $this->setValidator("carretera", new sfValidatorString(array('required' => false)));
         $this->setValidator("moneda", new sfValidatorString(array('required' => false)));
         $this->setValidator("km", new sfValidatorString(array('required' => false)));
-        $this->setValidator("direccion", new sfValidatorString(array('required' => true)));
+        $this->setValidator("direccion", new sfValidatorString(array('required' => false)));
         $this->setValidator("seguridad", new sfValidatorString(array('required' => false)));
         $this->setValidator("accesos", new sfValidatorString(array('required' => false)));
         $this->setValidator("agua", new sfValidatorString(array('required' => false)));

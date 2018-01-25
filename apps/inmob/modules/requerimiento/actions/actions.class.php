@@ -55,7 +55,11 @@ class requerimientoActions extends sfActions {
         $defaults["area"] = $Requerimiento->getArea();
         $defaults["area_x"] = $Requerimiento->getAreaX();
         $defaults["area_y"] = $Requerimiento->getAreaY();
-        $defaults["precalificacion"] = $Requerimiento->getPrecalificacion();
+        if ($Requerimiento->getPrecalificacion()) {
+            $defaults["precalificacion"] = "Si";
+        } else {
+            $defaults["precalificacion"] = "No";
+        }
         $defaults["nucleo_familiar"] = $Requerimiento->getNucleoFamiliar();
 //        $defaults["moneda_ingreso"] = $Requerimiento->getMonedaIngreso();
         $defaults["ingresos"] = $Requerimiento->getIngresos();
@@ -111,9 +115,31 @@ class requerimientoActions extends sfActions {
             $this->formulario->bind($request->getParameter("nuevo_requerimiento"));
             if ($this->formulario->isValid()) {
                 $valores = $this->formulario->getValues();
-                $this->guardaRequerimiento($valores, $Requerimiento);
-                $this->getUser()->setFlash("exito", "Requerimiento creado con exito.");
-                $this->redirect("requerimiento/index");
+                $valido = true;
+                if ($valores["zona"] == "" && $valores["carretera"] == "") {
+                    $valido = false;
+                }
+                if ($valido) {
+                    foreach ($valores as $llave => $fila) {
+                        $llave_array = explode("_", $llave);
+                        if ($llave_array[0] == "direccion" && key_exists(1, $llave_array)) {
+                            $busqueda_array[$llave_array[1]] = $llave_array[1];
+                        }
+                    }
+                    foreach ($busqueda_array as $fila) {
+                        if ($valores["zona_" . $fila] == "" && $valores["carretera_" . $fila] == "") {
+                            $valido = false;
+                            break;
+                        }
+                    }
+                }
+                if ($valido) {
+                    $this->guardaRequerimiento($valores, $Requerimiento);
+                    $this->getUser()->setFlash("exito", "Requerimiento creado con exito.");
+                    $this->redirect("requerimiento/index");
+                } else {
+                    $this->getUser()->setFlash("error", "Ingrese carretera o zona en las direcciones ingresadas");
+                }
             }
         }
         $this->id = $id;
@@ -131,6 +157,11 @@ class requerimientoActions extends sfActions {
         $defaults["cocina"] = "0";
         $defaults["jardin"] = "0";
         $defaults["patio"] = "0";
+        $defaults["ingresos"] = "0";
+        $defaults["egresos"] = "0";
+        $defaults["enganche"] = "0";
+        $defaults["tasa_interes_anual"] = "0";
+        $defaults["plazo_en_anios"] = "0";
         $busqueda_array = array();
         if ($request->isMethod('POST')) {
             foreach ($request->getParameter("nuevo_requerimiento") as $llave => $fila) {
@@ -146,10 +177,32 @@ class requerimientoActions extends sfActions {
             $this->formulario->bind($request->getParameter("nuevo_requerimiento"));
             if ($this->formulario->isValid()) {
                 $valores = $this->formulario->getValues();
-                $Requerimiento = new Requerimiento();
-                $this->guardaRequerimiento($valores, $Requerimiento);
-                $this->getUser()->setFlash("exito", "Requerimiento creado con exito.");
-                $this->redirect("requerimiento/index");
+                $valido = true;
+                if ($valores["zona"] == "" && $valores["carretera"] == "") {
+                    $valido = false;
+                }
+                if ($valido) {
+                    foreach ($valores as $llave => $fila) {
+                        $llave_array = explode("_", $llave);
+                        if ($llave_array[0] == "direccion" && key_exists(1, $llave_array)) {
+                            $busqueda_array[$llave_array[1]] = $llave_array[1];
+                        }
+                    }
+                    foreach ($busqueda_array as $fila) {
+                        if ($valores["zona_" . $fila] == "" && $valores["carretera_" . $fila] == "") {
+                            $valido = false;
+                            break;
+                        }
+                    }
+                }
+                if ($valido) {
+                    $Requerimiento = new Requerimiento();
+                    $this->guardaRequerimiento($valores, $Requerimiento);
+                    $this->getUser()->setFlash("exito", "Requerimiento creado con exito.");
+                    $this->redirect("requerimiento/index");
+                } else {
+                    $this->getUser()->setFlash("error", "Ingrese carretera o zona en las direcciones ingresadas");
+                }
             }
         }
     }
@@ -185,7 +238,11 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setArea($valores["area"]);
         $Requerimiento->setAreaX($valores["area_x"]);
         $Requerimiento->setAreaY($valores["area_y"]);
-        $Requerimiento->setPrecalificacion($valores["precalificacion"]);
+        if ($valores["precalificacion"] == "Si") {
+            $Requerimiento->setPrecalificacion(true);
+        } else {
+            $Requerimiento->setPrecalificacion(false);
+        }
         $Requerimiento->setNucleoFamiliar($valores["nucleo_familiar"]);
 //        $Requerimiento->setMonedaIngreso($valores["moneda"]);
         $Requerimiento->setIngresos($valores["ingresos"]);
