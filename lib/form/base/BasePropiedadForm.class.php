@@ -77,7 +77,7 @@ abstract class BasePropiedadForm extends BaseFormPropel
       'tipo_operacion'           => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'tipo_inmueble'            => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'cantidad_habitacion'      => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
-      'cantidad_banio'           => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
+      'cantidad_banio'           => new sfValidatorNumber(array('required' => false)),
       'cantidad_parqueo'         => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'cantidad_comedor'         => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'cantidad_sala'            => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),

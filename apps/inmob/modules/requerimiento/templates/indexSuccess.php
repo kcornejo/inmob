@@ -37,7 +37,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Casa en <?php
+                                        <?php echo $requerimiento->getTipoInmueble()?>
+                                         en <?php
                                         if ($requerimiento->getTipoOperacion() == "Comprar") {
                                             echo "Compra";
                                         } else {

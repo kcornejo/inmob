@@ -112,10 +112,9 @@ class VenderForm extends sfForm {
         $this->setValidator("valor_avaluo", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("mi_comision", new sfValidatorNumber(array('required' => true)));
         $this->setValidator("comision_compartida", new sfValidatorNumber(array('required' => true)));
-        $this->setValidator("nombre_cliente", new sfValidatorString(array('required' => true)));
-        $this->setValidator("correo_cliente", new sfValidatorString(array('required' => true)));
-        $this->setValidator("telefono_cliente", new sfValidatorString(array('required' => true)));
-        $this->setValidator("telefono_cliente", new sfValidatorString(array('required' => true)));
+        $this->setValidator("nombre_cliente", new sfValidatorString(array('required' => false)));
+        $this->setValidator("correo_cliente", new sfValidatorString(array('required' => false)));
+        $this->setValidator("telefono_cliente", new sfValidatorString(array('required' => false)));
         $this->setValidator("departamento", new sfValidatorString(array('required' => true)));
         $this->setValidator("municipio", new sfValidatorString(array('required' => true)));
         $this->setValidator("zona", new sfValidatorString(array('required' => false)));

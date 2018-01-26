@@ -43,9 +43,28 @@ class Negocio extends BaseNegocio {
 
     static function match(Propiedad $Propiedad, Requerimiento $Requerimiento) {
         $no_negocio = false;
-        if (!($Propiedad->getPrecio() >= $Requerimiento->getPresupuestoMin() && $Propiedad->getPrecio() <= $Requerimiento->getPresupuestoMax())) {
-            $no_negocio = true;
+        if ($Propiedad->getMonedaId() == $Requerimiento->getMonedaId()) {
+            if (!($Propiedad->getPrecio() >= $Requerimiento->getPresupuestoMin() && $Propiedad->getPrecio() <= $Requerimiento->getPresupuestoMax())) {
+                $no_negocio = true;
+            }
+        } else {
+            $precio = $Propiedad->getPrecio();
+            $MonedaOrigen = $Propiedad->getMonedaId();
+            $MonedaDestino = $Requerimiento->getMonedaId();
+            $TasaCambio = TasaCambioQuery::create()
+                    ->filterByMonedaOrigen($MonedaOrigen)
+                    ->filterByMonedaDestino($MonedaDestino)
+                    ->findOne();
+            if ($TasaCambio) {
+                $precio = $precio * $TasaCambio->getMonto();
+                if (!($precio >= $Requerimiento->getPresupuestoMin() && $precio <= $Requerimiento->getPresupuestoMax())) {
+                    $no_negocio = true;
+                }
+            } else {
+                $no_negocio = true;
+            }
         }
+
         $direccion = false;
         foreach ($Requerimiento->getDireccionRequerimientos() as $dir) {
             if (($Propiedad->getZona() == $dir->getZona() && $Propiedad->getMunicipio() == $dir->getMunicipio()) || ($Propiedad->getCarreteraId() && $Propiedad->getCarreteraId() == $dir->getCarreteraId())) {
@@ -81,6 +100,9 @@ class Negocio extends BaseNegocio {
             $no_negocio = true;
         }
         if ($Propiedad->getCantidadParqueo() < $Requerimiento->getCantidadParqueo()) {
+            $no_negocio = true;
+        }
+        if ($Propiedad->getEstatus() != "Disponible" || $Requerimiento->getEstatus() != "Disponible") {
             $no_negocio = true;
         }
         if (!$no_negocio) {

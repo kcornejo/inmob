@@ -35,6 +35,7 @@ class soporteActions extends sfActions {
         $Propiedad = PropiedadQuery::create()->findOneById($id);
         $Propiedad->setEstatus($valor);
         $Propiedad->save();
+        die();
     }
 
     public function executeEstatusRequerimiento(sfWebRequest $request) {
@@ -43,6 +44,7 @@ class soporteActions extends sfActions {
         $Requerimiento = RequerimientoQuery::create()->findOneById($id);
         $Requerimiento->setEstatus($valor);
         $Requerimiento->save();
+        die();
     }
 
 }

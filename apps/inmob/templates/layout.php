@@ -75,7 +75,9 @@
                             </a>
                         </li>
                         <?php if ($Usuario->getAdministrador()): ?>
+                            <li><a href="<?php echo url_for("tasa_cambio/index") ?>"><i class="icon-refresh"></i><span>Tasa de Cambio</span></a></li>
                             <li><a href="<?php echo url_for("usuario/index") ?>"><i class="icon-users"></i><span>Usuarios</span></a></li>
+                            <li><a href="<?php echo url_for("perfil/index") ?>"><i class="icon-lock"></i><span>Perfiles</span></a></li>
                         <?php endif; ?>
                     </ul>
                 </div>

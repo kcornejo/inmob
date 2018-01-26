@@ -177,3 +177,8 @@ propel:
     descripcion:                       { type: varchar(255) , primaryString: true}
     simbolo:                           { type: varchar(3) , primaryString: true}
     codigo:                            { type: varchar(3) , primaryString: true}
+  tasa_cambio:
+    id:                                ~
+    moneda_origen:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }    
+    moneda_destino:                    { type: integer, foreignTable: moneda, foreignReference: id, required: true  }    
+    monto:                             { type: float }

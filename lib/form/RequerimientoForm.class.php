@@ -116,10 +116,9 @@ class RequerimientoForm extends sfForm {
         $this->setValidator("presupuesto_min", new sfValidatorNumber(array('required' => true)));
         $this->setValidator("presupuesto_max", new sfValidatorNumber(array('required' => true)));
         $this->setValidator("forma_pago", new sfValidatorString(array('required' => false)));
-        $this->setValidator("nombre_cliente", new sfValidatorString(array('required' => true)));
-        $this->setValidator("correo_cliente", new sfValidatorString(array('required' => true)));
-        $this->setValidator("telefono_cliente", new sfValidatorString(array('required' => true)));
-        $this->setValidator("telefono_cliente", new sfValidatorString(array('required' => true)));
+        $this->setValidator("nombre_cliente", new sfValidatorString(array('required' => false)));
+        $this->setValidator("correo_cliente", new sfValidatorString(array('required' => false)));
+        $this->setValidator("telefono_cliente", new sfValidatorString(array('required' => false)));
         $this->setValidator("niveles", new sfValidatorString(array('required' => false)));
         $this->setValidator("area", new sfValidatorString(array('required' => false)));
         $this->setValidator("area_x", new sfValidatorString(array('required' => false)));

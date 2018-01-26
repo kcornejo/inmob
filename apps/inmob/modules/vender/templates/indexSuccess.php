@@ -43,7 +43,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Casa en <?php
+                                        <?php echo $propiedad->getTipoInmueble()?>
+                                         en <?php
                                         if ($propiedad->getTipoOperacion() == "Vender") {
                                             echo "Venta";
                                         } else {
@@ -98,3 +99,18 @@
         <img style="width:100%" src="/assets/img/caracteristicas/Agregar propiedad.png"/>
     </a>
 </div>
+<script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+                            $(document).ready(function () {
+                                $(".ajusta_propiedad").on('change', function () {
+                                    var referencia = $(this).attr("referencia");
+                                    var valor = $(this).val();
+                                    $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
+                                });
+                                $(".ajusta_requerimiento").on('change', function () {
+                                    var referencia = $(this).attr("referencia");
+                                    var valor = $(this).val();
+                                    $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
+                                });
+                            });
+</script>

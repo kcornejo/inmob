@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1516762308.
- * Generated on 2018-01-24 02:51:48 
+ * up to version 1516970158.
+ * Generated on 2018-01-26 12:35:58 
  */
-class PropelMigration_1516762308
+class PropelMigration_1516970158
 {
 
     public function preUp($manager)
@@ -42,25 +42,7 @@ class PropelMigration_1516762308
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `requerimiento` DROP FOREIGN KEY `requerimiento_FK_3`;
-
-ALTER TABLE `requerimiento` DROP FOREIGN KEY `requerimiento_FK_4`;
-
-ALTER TABLE `requerimiento` DROP FOREIGN KEY `requerimiento_FK_2`;
-
-DROP INDEX `requerimiento_FI_3` ON `requerimiento`;
-
-DROP INDEX `requerimiento_FI_2` ON `requerimiento`;
-
-ALTER TABLE `requerimiento` DROP `moneda_ingreso`;
-
-ALTER TABLE `requerimiento` DROP `moneda_egresos`;
-
-CREATE INDEX `requerimiento_FI_2` ON `requerimiento` (`usuario_id`);
-
-ALTER TABLE `requerimiento` ADD CONSTRAINT `requerimiento_FK_2`
-    FOREIGN KEY (`usuario_id`)
-    REFERENCES `usuario` (`id`);
+ALTER TABLE `tasa_cambio` CHANGE `monto` `monto` FLOAT;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
@@ -82,29 +64,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `requerimiento` DROP FOREIGN KEY `requerimiento_FK_2`;
-
-DROP INDEX `requerimiento_FI_2` ON `requerimiento`;
-
-ALTER TABLE `requerimiento`
-    ADD `moneda_ingreso` INTEGER NOT NULL AFTER `nucleo_familiar`,
-    ADD `moneda_egresos` INTEGER NOT NULL AFTER `ingresos`;
-
-CREATE BTREE INDEX `requerimiento_FI_2` ON `requerimiento` (`moneda_ingreso`);
-
-CREATE BTREE INDEX `requerimiento_FI_3` ON `requerimiento` (`moneda_egresos`);
-
-ALTER TABLE `requerimiento` ADD CONSTRAINT `requerimiento_FK_2`
-    FOREIGN KEY (`moneda_ingreso`)
-    REFERENCES `moneda` (`id`);
-
-ALTER TABLE `requerimiento` ADD CONSTRAINT `requerimiento_FK_3`
-    FOREIGN KEY (`moneda_egresos`)
-    REFERENCES `moneda` (`id`);
-
-ALTER TABLE `requerimiento` ADD CONSTRAINT `requerimiento_FK_4`
-    FOREIGN KEY (`usuario_id`)
-    REFERENCES `usuario` (`id`);
+ALTER TABLE `tasa_cambio` CHANGE `monto` `monto` DOUBLE;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

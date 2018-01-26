@@ -2,7 +2,7 @@
 
 
 /**
- * Base class that represents a row from the 'propiedad_imagen' table.
+ * Base class that represents a row from the 'tasa_cambio' table.
  *
  *
  *
@@ -12,18 +12,18 @@
  *
  * @package    propel.generator.lib.model.om
  */
-abstract class BasePropiedadImagen extends BaseObject implements Persistent
+abstract class BaseTasaCambio extends BaseObject implements Persistent
 {
     /**
      * Peer class name
      */
-    const PEER = 'PropiedadImagenPeer';
+    const PEER = 'TasaCambioPeer';
 
     /**
      * The Peer class.
      * Instance provides a convenient way of calling static methods on a class
      * that calling code may not be able to identify.
-     * @var        PropiedadImagenPeer
+     * @var        TasaCambioPeer
      */
     protected static $peer;
 
@@ -40,51 +40,32 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     protected $id;
 
     /**
-     * The value for the propiedad_id field.
+     * The value for the moneda_origen field.
      * @var        int
      */
-    protected $propiedad_id;
+    protected $moneda_origen;
 
     /**
-     * The value for the nombre_original field.
-     * @var        string
+     * The value for the moneda_destino field.
+     * @var        int
      */
-    protected $nombre_original;
+    protected $moneda_destino;
 
     /**
-     * The value for the nombre_actual field.
-     * @var        string
+     * The value for the monto field.
+     * @var        double
      */
-    protected $nombre_actual;
+    protected $monto;
 
     /**
-     * The value for the created_at field.
-     * @var        string
+     * @var        Moneda
      */
-    protected $created_at;
+    protected $aMonedaRelatedByMonedaOrigen;
 
     /**
-     * The value for the updated_at field.
-     * @var        string
+     * @var        Moneda
      */
-    protected $updated_at;
-
-    /**
-     * The value for the created_by field.
-     * @var        string
-     */
-    protected $created_by;
-
-    /**
-     * The value for the updated_by field.
-     * @var        string
-     */
-    protected $updated_by;
-
-    /**
-     * @var        Propiedad
-     */
-    protected $aPropiedad;
+    protected $aMonedaRelatedByMonedaDestino;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -111,134 +92,40 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     }
 
     /**
-     * Get the [propiedad_id] column value.
+     * Get the [moneda_origen] column value.
      *
      * @return int
      */
-    public function getPropiedadId()
+    public function getMonedaOrigen()
     {
-        return $this->propiedad_id;
+        return $this->moneda_origen;
     }
 
     /**
-     * Get the [nombre_original] column value.
+     * Get the [moneda_destino] column value.
      *
-     * @return string
+     * @return int
      */
-    public function getNombreOriginal()
+    public function getMonedaDestino()
     {
-        return $this->nombre_original;
+        return $this->moneda_destino;
     }
 
     /**
-     * Get the [nombre_actual] column value.
+     * Get the [monto] column value.
      *
-     * @return string
+     * @return double
      */
-    public function getNombreActual()
+    public function getMonto()
     {
-        return $this->nombre_actual;
-    }
-
-    /**
-     * Get the [optionally formatted] temporal [created_at] column value.
-     *
-     *
-     * @param string $format The date/time format string (either date()-style or strftime()-style).
-     *				 If format is null, then the raw DateTime object will be returned.
-     * @return mixed Formatted date/time value as string or DateTime object (if format is null), null if column is null, and 0 if column value is 0000-00-00 00:00:00
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getCreatedAt($format = 'Y-m-d H:i:s')
-    {
-        if ($this->created_at === null) {
-            return null;
-        }
-
-        if ($this->created_at === '0000-00-00 00:00:00') {
-            // while technically this is not a default value of null,
-            // this seems to be closest in meaning.
-            return null;
-        } else {
-            try {
-                $dt = new DateTime($this->created_at);
-            } catch (Exception $x) {
-                throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->created_at, true), $x);
-            }
-        }
-
-        if ($format === null) {
-            // Because propel.useDateTimeClass is true, we return a DateTime object.
-            return $dt;
-        } elseif (strpos($format, '%') !== false) {
-            return strftime($format, $dt->format('U'));
-        } else {
-            return $dt->format($format);
-        }
-    }
-
-    /**
-     * Get the [optionally formatted] temporal [updated_at] column value.
-     *
-     *
-     * @param string $format The date/time format string (either date()-style or strftime()-style).
-     *				 If format is null, then the raw DateTime object will be returned.
-     * @return mixed Formatted date/time value as string or DateTime object (if format is null), null if column is null, and 0 if column value is 0000-00-00 00:00:00
-     * @throws PropelException - if unable to parse/validate the date/time value.
-     */
-    public function getUpdatedAt($format = 'Y-m-d H:i:s')
-    {
-        if ($this->updated_at === null) {
-            return null;
-        }
-
-        if ($this->updated_at === '0000-00-00 00:00:00') {
-            // while technically this is not a default value of null,
-            // this seems to be closest in meaning.
-            return null;
-        } else {
-            try {
-                $dt = new DateTime($this->updated_at);
-            } catch (Exception $x) {
-                throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->updated_at, true), $x);
-            }
-        }
-
-        if ($format === null) {
-            // Because propel.useDateTimeClass is true, we return a DateTime object.
-            return $dt;
-        } elseif (strpos($format, '%') !== false) {
-            return strftime($format, $dt->format('U'));
-        } else {
-            return $dt->format($format);
-        }
-    }
-
-    /**
-     * Get the [created_by] column value.
-     *
-     * @return string
-     */
-    public function getCreatedBy()
-    {
-        return $this->created_by;
-    }
-
-    /**
-     * Get the [updated_by] column value.
-     *
-     * @return string
-     */
-    public function getUpdatedBy()
-    {
-        return $this->updated_by;
+        return $this->monto;
     }
 
     /**
      * Set the value of [id] column.
      *
      * @param int $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @return TasaCambio The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -248,7 +135,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::ID;
+            $this->modifiedColumns[] = TasaCambioPeer::ID;
         }
 
 
@@ -256,159 +143,75 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     } // setId()
 
     /**
-     * Set the value of [propiedad_id] column.
+     * Set the value of [moneda_origen] column.
      *
      * @param int $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @return TasaCambio The current object (for fluent API support)
      */
-    public function setPropiedadId($v)
+    public function setMonedaOrigen($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->propiedad_id !== $v) {
-            $this->propiedad_id = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::PROPIEDAD_ID;
+        if ($this->moneda_origen !== $v) {
+            $this->moneda_origen = $v;
+            $this->modifiedColumns[] = TasaCambioPeer::MONEDA_ORIGEN;
         }
 
-        if ($this->aPropiedad !== null && $this->aPropiedad->getId() !== $v) {
-            $this->aPropiedad = null;
+        if ($this->aMonedaRelatedByMonedaOrigen !== null && $this->aMonedaRelatedByMonedaOrigen->getId() !== $v) {
+            $this->aMonedaRelatedByMonedaOrigen = null;
         }
 
 
         return $this;
-    } // setPropiedadId()
+    } // setMonedaOrigen()
 
     /**
-     * Set the value of [nombre_original] column.
+     * Set the value of [moneda_destino] column.
      *
-     * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @param int $v new value
+     * @return TasaCambio The current object (for fluent API support)
      */
-    public function setNombreOriginal($v)
+    public function setMonedaDestino($v)
     {
         if ($v !== null) {
-            $v = (string) $v;
+            $v = (int) $v;
         }
 
-        if ($this->nombre_original !== $v) {
-            $this->nombre_original = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::NOMBRE_ORIGINAL;
+        if ($this->moneda_destino !== $v) {
+            $this->moneda_destino = $v;
+            $this->modifiedColumns[] = TasaCambioPeer::MONEDA_DESTINO;
+        }
+
+        if ($this->aMonedaRelatedByMonedaDestino !== null && $this->aMonedaRelatedByMonedaDestino->getId() !== $v) {
+            $this->aMonedaRelatedByMonedaDestino = null;
         }
 
 
         return $this;
-    } // setNombreOriginal()
+    } // setMonedaDestino()
 
     /**
-     * Set the value of [nombre_actual] column.
+     * Set the value of [monto] column.
      *
-     * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @param double $v new value
+     * @return TasaCambio The current object (for fluent API support)
      */
-    public function setNombreActual($v)
+    public function setMonto($v)
     {
         if ($v !== null) {
-            $v = (string) $v;
+            $v = (double) $v;
         }
 
-        if ($this->nombre_actual !== $v) {
-            $this->nombre_actual = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::NOMBRE_ACTUAL;
-        }
-
-
-        return $this;
-    } // setNombreActual()
-
-    /**
-     * Sets the value of [created_at] column to a normalized version of the date/time value specified.
-     *
-     * @param mixed $v string, integer (timestamp), or DateTime value.
-     *               Empty strings are treated as null.
-     * @return PropiedadImagen The current object (for fluent API support)
-     */
-    public function setCreatedAt($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->created_at !== null || $dt !== null) {
-            $currentDateAsString = ($this->created_at !== null && $tmpDt = new DateTime($this->created_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
-            $newDateAsString = $dt ? $dt->format('Y-m-d H:i:s') : null;
-            if ($currentDateAsString !== $newDateAsString) {
-                $this->created_at = $newDateAsString;
-                $this->modifiedColumns[] = PropiedadImagenPeer::CREATED_AT;
-            }
-        } // if either are not null
-
-
-        return $this;
-    } // setCreatedAt()
-
-    /**
-     * Sets the value of [updated_at] column to a normalized version of the date/time value specified.
-     *
-     * @param mixed $v string, integer (timestamp), or DateTime value.
-     *               Empty strings are treated as null.
-     * @return PropiedadImagen The current object (for fluent API support)
-     */
-    public function setUpdatedAt($v)
-    {
-        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
-        if ($this->updated_at !== null || $dt !== null) {
-            $currentDateAsString = ($this->updated_at !== null && $tmpDt = new DateTime($this->updated_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
-            $newDateAsString = $dt ? $dt->format('Y-m-d H:i:s') : null;
-            if ($currentDateAsString !== $newDateAsString) {
-                $this->updated_at = $newDateAsString;
-                $this->modifiedColumns[] = PropiedadImagenPeer::UPDATED_AT;
-            }
-        } // if either are not null
-
-
-        return $this;
-    } // setUpdatedAt()
-
-    /**
-     * Set the value of [created_by] column.
-     *
-     * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
-     */
-    public function setCreatedBy($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->created_by !== $v) {
-            $this->created_by = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::CREATED_BY;
+        if ($this->monto !== $v) {
+            $this->monto = $v;
+            $this->modifiedColumns[] = TasaCambioPeer::MONTO;
         }
 
 
         return $this;
-    } // setCreatedBy()
-
-    /**
-     * Set the value of [updated_by] column.
-     *
-     * @param string $v new value
-     * @return PropiedadImagen The current object (for fluent API support)
-     */
-    public function setUpdatedBy($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->updated_by !== $v) {
-            $this->updated_by = $v;
-            $this->modifiedColumns[] = PropiedadImagenPeer::UPDATED_BY;
-        }
-
-
-        return $this;
-    } // setUpdatedBy()
+    } // setMonto()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -443,13 +246,9 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         try {
 
             $this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
-            $this->propiedad_id = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
-            $this->nombre_original = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
-            $this->nombre_actual = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-            $this->created_at = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
-            $this->updated_at = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
-            $this->created_by = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
-            $this->updated_by = ($row[$startcol + 7] !== null) ? (string) $row[$startcol + 7] : null;
+            $this->moneda_origen = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
+            $this->moneda_destino = ($row[$startcol + 2] !== null) ? (int) $row[$startcol + 2] : null;
+            $this->monto = ($row[$startcol + 3] !== null) ? (double) $row[$startcol + 3] : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -458,10 +257,10 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 $this->ensureConsistency();
             }
 
-            return $startcol + 8; // 8 = PropiedadImagenPeer::NUM_HYDRATE_COLUMNS.
+            return $startcol + 4; // 4 = TasaCambioPeer::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating PropiedadImagen object", $e);
+            throw new PropelException("Error populating TasaCambio object", $e);
         }
     }
 
@@ -481,8 +280,11 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     public function ensureConsistency()
     {
 
-        if ($this->aPropiedad !== null && $this->propiedad_id !== $this->aPropiedad->getId()) {
-            $this->aPropiedad = null;
+        if ($this->aMonedaRelatedByMonedaOrigen !== null && $this->moneda_origen !== $this->aMonedaRelatedByMonedaOrigen->getId()) {
+            $this->aMonedaRelatedByMonedaOrigen = null;
+        }
+        if ($this->aMonedaRelatedByMonedaDestino !== null && $this->moneda_destino !== $this->aMonedaRelatedByMonedaDestino->getId()) {
+            $this->aMonedaRelatedByMonedaDestino = null;
         }
     } // ensureConsistency
 
@@ -507,13 +309,13 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PropiedadImagenPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(TasaCambioPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $stmt = PropiedadImagenPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+        $stmt = TasaCambioPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
         $row = $stmt->fetch(PDO::FETCH_NUM);
         $stmt->closeCursor();
         if (!$row) {
@@ -523,7 +325,8 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
 
         if ($deep) {  // also de-associate any related objects?
 
-            $this->aPropiedad = null;
+            $this->aMonedaRelatedByMonedaOrigen = null;
+            $this->aMonedaRelatedByMonedaDestino = null;
         } // if (deep)
     }
 
@@ -544,16 +347,16 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PropiedadImagenPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(TasaCambioPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
         try {
-            $deleteQuery = PropiedadImagenQuery::create()
+            $deleteQuery = TasaCambioQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             // symfony_behaviors behavior
-            foreach (sfMixer::getCallables('BasePropiedadImagen:delete:pre') as $callable)
+            foreach (sfMixer::getCallables('BaseTasaCambio:delete:pre') as $callable)
             {
               if (call_user_func($callable, $this, $con))
               {
@@ -566,7 +369,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 $deleteQuery->delete($con);
                 $this->postDelete($con);
                 // symfony_behaviors behavior
-                foreach (sfMixer::getCallables('BasePropiedadImagen:delete:post') as $callable)
+                foreach (sfMixer::getCallables('BaseTasaCambio:delete:post') as $callable)
                 {
                   call_user_func($callable, $this, $con);
                 }
@@ -603,7 +406,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(PropiedadImagenPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(TasaCambioPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
@@ -611,7 +414,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         try {
             $ret = $this->preSave($con);
             // symfony_behaviors behavior
-            foreach (sfMixer::getCallables('BasePropiedadImagen:save:pre') as $callable)
+            foreach (sfMixer::getCallables('BaseTasaCambio:save:pre') as $callable)
             {
               if (is_integer($affectedRows = call_user_func($callable, $this, $con)))
               {
@@ -620,19 +423,8 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
               }
             }
 
-            // symfony_timestampable behavior
-            if ($this->isModified() && !$this->isColumnModified(PropiedadImagenPeer::UPDATED_AT))
-            {
-                $this->setUpdatedAt(time());
-            }
             if ($isInsert) {
                 $ret = $ret && $this->preInsert($con);
-                // symfony_timestampable behavior
-                if (!$this->isColumnModified(PropiedadImagenPeer::CREATED_AT))
-                {
-                  $this->setCreatedAt(time());
-                }
-
             } else {
                 $ret = $ret && $this->preUpdate($con);
             }
@@ -645,12 +437,12 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 }
                 $this->postSave($con);
                 // symfony_behaviors behavior
-                foreach (sfMixer::getCallables('BasePropiedadImagen:save:post') as $callable)
+                foreach (sfMixer::getCallables('BaseTasaCambio:save:post') as $callable)
                 {
                   call_user_func($callable, $this, $con, $affectedRows);
                 }
 
-                PropiedadImagenPeer::addInstanceToPool($this);
+                TasaCambioPeer::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -685,11 +477,18 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
             // method.  This object relates to these object(s) by a
             // foreign key reference.
 
-            if ($this->aPropiedad !== null) {
-                if ($this->aPropiedad->isModified() || $this->aPropiedad->isNew()) {
-                    $affectedRows += $this->aPropiedad->save($con);
+            if ($this->aMonedaRelatedByMonedaOrigen !== null) {
+                if ($this->aMonedaRelatedByMonedaOrigen->isModified() || $this->aMonedaRelatedByMonedaOrigen->isNew()) {
+                    $affectedRows += $this->aMonedaRelatedByMonedaOrigen->save($con);
                 }
-                $this->setPropiedad($this->aPropiedad);
+                $this->setMonedaRelatedByMonedaOrigen($this->aMonedaRelatedByMonedaOrigen);
+            }
+
+            if ($this->aMonedaRelatedByMonedaDestino !== null) {
+                if ($this->aMonedaRelatedByMonedaDestino->isModified() || $this->aMonedaRelatedByMonedaDestino->isNew()) {
+                    $affectedRows += $this->aMonedaRelatedByMonedaDestino->save($con);
+                }
+                $this->setMonedaRelatedByMonedaDestino($this->aMonedaRelatedByMonedaDestino);
             }
 
             if ($this->isNew() || $this->isModified()) {
@@ -723,39 +522,27 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[] = PropiedadImagenPeer::ID;
+        $this->modifiedColumns[] = TasaCambioPeer::ID;
         if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . PropiedadImagenPeer::ID . ')');
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . TasaCambioPeer::ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(PropiedadImagenPeer::ID)) {
+        if ($this->isColumnModified(TasaCambioPeer::ID)) {
             $modifiedColumns[':p' . $index++]  = '`ID`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::PROPIEDAD_ID)) {
-            $modifiedColumns[':p' . $index++]  = '`PROPIEDAD_ID`';
+        if ($this->isColumnModified(TasaCambioPeer::MONEDA_ORIGEN)) {
+            $modifiedColumns[':p' . $index++]  = '`MONEDA_ORIGEN`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ORIGINAL)) {
-            $modifiedColumns[':p' . $index++]  = '`NOMBRE_ORIGINAL`';
+        if ($this->isColumnModified(TasaCambioPeer::MONEDA_DESTINO)) {
+            $modifiedColumns[':p' . $index++]  = '`MONEDA_DESTINO`';
         }
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ACTUAL)) {
-            $modifiedColumns[':p' . $index++]  = '`NOMBRE_ACTUAL`';
-        }
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_AT)) {
-            $modifiedColumns[':p' . $index++]  = '`CREATED_AT`';
-        }
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_AT)) {
-            $modifiedColumns[':p' . $index++]  = '`UPDATED_AT`';
-        }
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_BY)) {
-            $modifiedColumns[':p' . $index++]  = '`CREATED_BY`';
-        }
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_BY)) {
-            $modifiedColumns[':p' . $index++]  = '`UPDATED_BY`';
+        if ($this->isColumnModified(TasaCambioPeer::MONTO)) {
+            $modifiedColumns[':p' . $index++]  = '`MONTO`';
         }
 
         $sql = sprintf(
-            'INSERT INTO `propiedad_imagen` (%s) VALUES (%s)',
+            'INSERT INTO `tasa_cambio` (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -767,26 +554,14 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                     case '`ID`':
                         $stmt->bindValue($identifier, $this->id, PDO::PARAM_INT);
                         break;
-                    case '`PROPIEDAD_ID`':
-                        $stmt->bindValue($identifier, $this->propiedad_id, PDO::PARAM_INT);
+                    case '`MONEDA_ORIGEN`':
+                        $stmt->bindValue($identifier, $this->moneda_origen, PDO::PARAM_INT);
                         break;
-                    case '`NOMBRE_ORIGINAL`':
-                        $stmt->bindValue($identifier, $this->nombre_original, PDO::PARAM_STR);
+                    case '`MONEDA_DESTINO`':
+                        $stmt->bindValue($identifier, $this->moneda_destino, PDO::PARAM_INT);
                         break;
-                    case '`NOMBRE_ACTUAL`':
-                        $stmt->bindValue($identifier, $this->nombre_actual, PDO::PARAM_STR);
-                        break;
-                    case '`CREATED_AT`':
-                        $stmt->bindValue($identifier, $this->created_at, PDO::PARAM_STR);
-                        break;
-                    case '`UPDATED_AT`':
-                        $stmt->bindValue($identifier, $this->updated_at, PDO::PARAM_STR);
-                        break;
-                    case '`CREATED_BY`':
-                        $stmt->bindValue($identifier, $this->created_by, PDO::PARAM_STR);
-                        break;
-                    case '`UPDATED_BY`':
-                        $stmt->bindValue($identifier, $this->updated_by, PDO::PARAM_STR);
+                    case '`MONTO`':
+                        $stmt->bindValue($identifier, $this->monto, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -887,14 +662,20 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
             // method.  This object relates to these object(s) by a
             // foreign key reference.
 
-            if ($this->aPropiedad !== null) {
-                if (!$this->aPropiedad->validate($columns)) {
-                    $failureMap = array_merge($failureMap, $this->aPropiedad->getValidationFailures());
+            if ($this->aMonedaRelatedByMonedaOrigen !== null) {
+                if (!$this->aMonedaRelatedByMonedaOrigen->validate($columns)) {
+                    $failureMap = array_merge($failureMap, $this->aMonedaRelatedByMonedaOrigen->getValidationFailures());
+                }
+            }
+
+            if ($this->aMonedaRelatedByMonedaDestino !== null) {
+                if (!$this->aMonedaRelatedByMonedaDestino->validate($columns)) {
+                    $failureMap = array_merge($failureMap, $this->aMonedaRelatedByMonedaDestino->getValidationFailures());
                 }
             }
 
 
-            if (($retval = PropiedadImagenPeer::doValidate($this, $columns)) !== true) {
+            if (($retval = TasaCambioPeer::doValidate($this, $columns)) !== true) {
                 $failureMap = array_merge($failureMap, $retval);
             }
 
@@ -918,7 +699,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = PropiedadImagenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = TasaCambioPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -938,25 +719,13 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 return $this->getId();
                 break;
             case 1:
-                return $this->getPropiedadId();
+                return $this->getMonedaOrigen();
                 break;
             case 2:
-                return $this->getNombreOriginal();
+                return $this->getMonedaDestino();
                 break;
             case 3:
-                return $this->getNombreActual();
-                break;
-            case 4:
-                return $this->getCreatedAt();
-                break;
-            case 5:
-                return $this->getUpdatedAt();
-                break;
-            case 6:
-                return $this->getCreatedBy();
-                break;
-            case 7:
-                return $this->getUpdatedBy();
+                return $this->getMonto();
                 break;
             default:
                 return null;
@@ -981,24 +750,23 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
-        if (isset($alreadyDumpedObjects['PropiedadImagen'][$this->getPrimaryKey()])) {
+        if (isset($alreadyDumpedObjects['TasaCambio'][$this->getPrimaryKey()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['PropiedadImagen'][$this->getPrimaryKey()] = true;
-        $keys = PropiedadImagenPeer::getFieldNames($keyType);
+        $alreadyDumpedObjects['TasaCambio'][$this->getPrimaryKey()] = true;
+        $keys = TasaCambioPeer::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
-            $keys[1] => $this->getPropiedadId(),
-            $keys[2] => $this->getNombreOriginal(),
-            $keys[3] => $this->getNombreActual(),
-            $keys[4] => $this->getCreatedAt(),
-            $keys[5] => $this->getUpdatedAt(),
-            $keys[6] => $this->getCreatedBy(),
-            $keys[7] => $this->getUpdatedBy(),
+            $keys[1] => $this->getMonedaOrigen(),
+            $keys[2] => $this->getMonedaDestino(),
+            $keys[3] => $this->getMonto(),
         );
         if ($includeForeignObjects) {
-            if (null !== $this->aPropiedad) {
-                $result['Propiedad'] = $this->aPropiedad->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            if (null !== $this->aMonedaRelatedByMonedaOrigen) {
+                $result['MonedaRelatedByMonedaOrigen'] = $this->aMonedaRelatedByMonedaOrigen->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+            if (null !== $this->aMonedaRelatedByMonedaDestino) {
+                $result['MonedaRelatedByMonedaDestino'] = $this->aMonedaRelatedByMonedaDestino->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
             }
         }
 
@@ -1018,7 +786,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = PropiedadImagenPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = TasaCambioPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 
         $this->setByPosition($pos, $value);
     }
@@ -1038,25 +806,13 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
                 $this->setId($value);
                 break;
             case 1:
-                $this->setPropiedadId($value);
+                $this->setMonedaOrigen($value);
                 break;
             case 2:
-                $this->setNombreOriginal($value);
+                $this->setMonedaDestino($value);
                 break;
             case 3:
-                $this->setNombreActual($value);
-                break;
-            case 4:
-                $this->setCreatedAt($value);
-                break;
-            case 5:
-                $this->setUpdatedAt($value);
-                break;
-            case 6:
-                $this->setCreatedBy($value);
-                break;
-            case 7:
-                $this->setUpdatedBy($value);
+                $this->setMonto($value);
                 break;
         } // switch()
     }
@@ -1080,16 +836,12 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
     {
-        $keys = PropiedadImagenPeer::getFieldNames($keyType);
+        $keys = TasaCambioPeer::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-        if (array_key_exists($keys[1], $arr)) $this->setPropiedadId($arr[$keys[1]]);
-        if (array_key_exists($keys[2], $arr)) $this->setNombreOriginal($arr[$keys[2]]);
-        if (array_key_exists($keys[3], $arr)) $this->setNombreActual($arr[$keys[3]]);
-        if (array_key_exists($keys[4], $arr)) $this->setCreatedAt($arr[$keys[4]]);
-        if (array_key_exists($keys[5], $arr)) $this->setUpdatedAt($arr[$keys[5]]);
-        if (array_key_exists($keys[6], $arr)) $this->setCreatedBy($arr[$keys[6]]);
-        if (array_key_exists($keys[7], $arr)) $this->setUpdatedBy($arr[$keys[7]]);
+        if (array_key_exists($keys[1], $arr)) $this->setMonedaOrigen($arr[$keys[1]]);
+        if (array_key_exists($keys[2], $arr)) $this->setMonedaDestino($arr[$keys[2]]);
+        if (array_key_exists($keys[3], $arr)) $this->setMonto($arr[$keys[3]]);
     }
 
     /**
@@ -1099,16 +851,12 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(PropiedadImagenPeer::DATABASE_NAME);
+        $criteria = new Criteria(TasaCambioPeer::DATABASE_NAME);
 
-        if ($this->isColumnModified(PropiedadImagenPeer::ID)) $criteria->add(PropiedadImagenPeer::ID, $this->id);
-        if ($this->isColumnModified(PropiedadImagenPeer::PROPIEDAD_ID)) $criteria->add(PropiedadImagenPeer::PROPIEDAD_ID, $this->propiedad_id);
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ORIGINAL)) $criteria->add(PropiedadImagenPeer::NOMBRE_ORIGINAL, $this->nombre_original);
-        if ($this->isColumnModified(PropiedadImagenPeer::NOMBRE_ACTUAL)) $criteria->add(PropiedadImagenPeer::NOMBRE_ACTUAL, $this->nombre_actual);
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_AT)) $criteria->add(PropiedadImagenPeer::CREATED_AT, $this->created_at);
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_AT)) $criteria->add(PropiedadImagenPeer::UPDATED_AT, $this->updated_at);
-        if ($this->isColumnModified(PropiedadImagenPeer::CREATED_BY)) $criteria->add(PropiedadImagenPeer::CREATED_BY, $this->created_by);
-        if ($this->isColumnModified(PropiedadImagenPeer::UPDATED_BY)) $criteria->add(PropiedadImagenPeer::UPDATED_BY, $this->updated_by);
+        if ($this->isColumnModified(TasaCambioPeer::ID)) $criteria->add(TasaCambioPeer::ID, $this->id);
+        if ($this->isColumnModified(TasaCambioPeer::MONEDA_ORIGEN)) $criteria->add(TasaCambioPeer::MONEDA_ORIGEN, $this->moneda_origen);
+        if ($this->isColumnModified(TasaCambioPeer::MONEDA_DESTINO)) $criteria->add(TasaCambioPeer::MONEDA_DESTINO, $this->moneda_destino);
+        if ($this->isColumnModified(TasaCambioPeer::MONTO)) $criteria->add(TasaCambioPeer::MONTO, $this->monto);
 
         return $criteria;
     }
@@ -1123,8 +871,8 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(PropiedadImagenPeer::DATABASE_NAME);
-        $criteria->add(PropiedadImagenPeer::ID, $this->id);
+        $criteria = new Criteria(TasaCambioPeer::DATABASE_NAME);
+        $criteria->add(TasaCambioPeer::ID, $this->id);
 
         return $criteria;
     }
@@ -1165,20 +913,16 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param object $copyObj An object of PropiedadImagen (or compatible) type.
+     * @param object $copyObj An object of TasaCambio (or compatible) type.
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setPropiedadId($this->getPropiedadId());
-        $copyObj->setNombreOriginal($this->getNombreOriginal());
-        $copyObj->setNombreActual($this->getNombreActual());
-        $copyObj->setCreatedAt($this->getCreatedAt());
-        $copyObj->setUpdatedAt($this->getUpdatedAt());
-        $copyObj->setCreatedBy($this->getCreatedBy());
-        $copyObj->setUpdatedBy($this->getUpdatedBy());
+        $copyObj->setMonedaOrigen($this->getMonedaOrigen());
+        $copyObj->setMonedaDestino($this->getMonedaDestino());
+        $copyObj->setMonto($this->getMonto());
 
         if ($deepCopy && !$this->startCopy) {
             // important: temporarily setNew(false) because this affects the behavior of
@@ -1206,7 +950,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      * objects.
      *
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return PropiedadImagen Clone of current object.
+     * @return TasaCambio Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1226,38 +970,38 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
      * same instance for all member of this class. The method could therefore
      * be static, but this would prevent one from overriding the behavior.
      *
-     * @return PropiedadImagenPeer
+     * @return TasaCambioPeer
      */
     public function getPeer()
     {
         if (self::$peer === null) {
-            self::$peer = new PropiedadImagenPeer();
+            self::$peer = new TasaCambioPeer();
         }
 
         return self::$peer;
     }
 
     /**
-     * Declares an association between this object and a Propiedad object.
+     * Declares an association between this object and a Moneda object.
      *
-     * @param             Propiedad $v
-     * @return PropiedadImagen The current object (for fluent API support)
+     * @param             Moneda $v
+     * @return TasaCambio The current object (for fluent API support)
      * @throws PropelException
      */
-    public function setPropiedad(Propiedad $v = null)
+    public function setMonedaRelatedByMonedaOrigen(Moneda $v = null)
     {
         if ($v === null) {
-            $this->setPropiedadId(NULL);
+            $this->setMonedaOrigen(NULL);
         } else {
-            $this->setPropiedadId($v->getId());
+            $this->setMonedaOrigen($v->getId());
         }
 
-        $this->aPropiedad = $v;
+        $this->aMonedaRelatedByMonedaOrigen = $v;
 
         // Add binding for other direction of this n:n relationship.
-        // If this object has already been added to the Propiedad object, it will not be re-added.
+        // If this object has already been added to the Moneda object, it will not be re-added.
         if ($v !== null) {
-            $v->addPropiedadImagen($this);
+            $v->addTasaCambioRelatedByMonedaOrigen($this);
         }
 
 
@@ -1266,26 +1010,77 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
 
 
     /**
-     * Get the associated Propiedad object
+     * Get the associated Moneda object
      *
      * @param PropelPDO $con Optional Connection object.
-     * @return Propiedad The associated Propiedad object.
+     * @return Moneda The associated Moneda object.
      * @throws PropelException
      */
-    public function getPropiedad(PropelPDO $con = null)
+    public function getMonedaRelatedByMonedaOrigen(PropelPDO $con = null)
     {
-        if ($this->aPropiedad === null && ($this->propiedad_id !== null)) {
-            $this->aPropiedad = PropiedadQuery::create()->findPk($this->propiedad_id, $con);
+        if ($this->aMonedaRelatedByMonedaOrigen === null && ($this->moneda_origen !== null)) {
+            $this->aMonedaRelatedByMonedaOrigen = MonedaQuery::create()->findPk($this->moneda_origen, $con);
             /* The following can be used additionally to
                 guarantee the related object contains a reference
                 to this object.  This level of coupling may, however, be
                 undesirable since it could result in an only partially populated collection
                 in the referenced object.
-                $this->aPropiedad->addPropiedadImagens($this);
+                $this->aMonedaRelatedByMonedaOrigen->addTasaCambiosRelatedByMonedaOrigen($this);
              */
         }
 
-        return $this->aPropiedad;
+        return $this->aMonedaRelatedByMonedaOrigen;
+    }
+
+    /**
+     * Declares an association between this object and a Moneda object.
+     *
+     * @param             Moneda $v
+     * @return TasaCambio The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setMonedaRelatedByMonedaDestino(Moneda $v = null)
+    {
+        if ($v === null) {
+            $this->setMonedaDestino(NULL);
+        } else {
+            $this->setMonedaDestino($v->getId());
+        }
+
+        $this->aMonedaRelatedByMonedaDestino = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the Moneda object, it will not be re-added.
+        if ($v !== null) {
+            $v->addTasaCambioRelatedByMonedaDestino($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated Moneda object
+     *
+     * @param PropelPDO $con Optional Connection object.
+     * @return Moneda The associated Moneda object.
+     * @throws PropelException
+     */
+    public function getMonedaRelatedByMonedaDestino(PropelPDO $con = null)
+    {
+        if ($this->aMonedaRelatedByMonedaDestino === null && ($this->moneda_destino !== null)) {
+            $this->aMonedaRelatedByMonedaDestino = MonedaQuery::create()->findPk($this->moneda_destino, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aMonedaRelatedByMonedaDestino->addTasaCambiosRelatedByMonedaDestino($this);
+             */
+        }
+
+        return $this->aMonedaRelatedByMonedaDestino;
     }
 
     /**
@@ -1294,13 +1089,9 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     public function clear()
     {
         $this->id = null;
-        $this->propiedad_id = null;
-        $this->nombre_original = null;
-        $this->nombre_actual = null;
-        $this->created_at = null;
-        $this->updated_at = null;
-        $this->created_by = null;
-        $this->updated_by = null;
+        $this->moneda_origen = null;
+        $this->moneda_destino = null;
+        $this->monto = null;
         $this->alreadyInSave = false;
         $this->alreadyInValidation = false;
         $this->clearAllReferences();
@@ -1323,17 +1114,18 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
         if ($deep) {
         } // if ($deep)
 
-        $this->aPropiedad = null;
+        $this->aMonedaRelatedByMonedaOrigen = null;
+        $this->aMonedaRelatedByMonedaDestino = null;
     }
 
     /**
      * return the string representation of this object
      *
-     * @return string The value of the 'nombre_original' column
+     * @return string
      */
     public function __toString()
     {
-        return (string) $this->getNombreOriginal();
+        return (string) $this->exportTo(TasaCambioPeer::DEFAULT_STRING_FORMAT);
     }
 
     /**
@@ -1353,7 +1145,7 @@ abstract class BasePropiedadImagen extends BaseObject implements Persistent
     {
 
         // symfony_behaviors behavior
-        if ($callable = sfMixer::getCallable('BasePropiedadImagen:' . $name))
+        if ($callable = sfMixer::getCallable('BaseTasaCambio:' . $name))
         {
           array_unshift($params, $this);
           return call_user_func_array($callable, $params);
