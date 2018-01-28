@@ -105,7 +105,7 @@ class Negocio extends BaseNegocio {
         if ($Propiedad->getEstatus() != "Disponible" || $Requerimiento->getEstatus() != "Disponible") {
             $no_negocio = true;
         }
-        if (!$no_negocio) {
+        if (!$no_negocio && $Propiedad->getId() && $Requerimiento->getId()) {
             $Negocio = new Negocio();
             $Negocio->setRequerimientoId($Requerimiento->getId());
             $Negocio->setPropiedadId($Propiedad->getId());
