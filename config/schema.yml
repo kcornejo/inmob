@@ -182,3 +182,23 @@ propel:
     moneda_origen:                     { type: integer, foreignTable: moneda, foreignReference: id, required: true  }    
     moneda_destino:                    { type: integer, foreignTable: moneda, foreignReference: id, required: true  }    
     monto:                             { type: float }
+  token:
+    id:                                ~
+    usuario_id:                        { type: integer, foreignTable: usuario, foreignReference: id, required: true  }    
+    token:                             { type: varchar(255) , primaryString: true}
+    created_at:                         ~
+    updated_at:                         ~
+    utilizado:                         { type: boolean, default: false }
+  correo_pendiente:
+    id:                                ~
+    asunto:                            { type: varchar(255) }
+    contenido:                         { type: longvarchar }
+    beneficiario:                      { type: longvarchar }
+    enviado:                           { type: boolean, default: false }
+  configuracion:
+    id:                                ~
+    host:                              { type: varchar(255) }
+    encriptacion:                      { type: varchar(255) }
+    puerto:                            { type: varchar(255) }
+    usuario:                           { type: varchar(255) }
+    clave:                             { type: varchar(255) }
