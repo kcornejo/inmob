@@ -19,7 +19,7 @@ class CorreoPendientePeer extends BaseCorreoPendientePeer {
 
     public static function EnvioCorreo() {
         $listado = CorreoPendienteQuery::create()->findByEnviado(false);
-        $Configuracion = ConfiguracionCorreoQuery::create()->findOne();
+        $Configuracion = ConfiguracionQuery::create()->findOne();
         if ($Configuracion) {
             sfContext::getInstance()->getMailer()->getRealtimeTransport()->setHost($Configuracion->getHost());
             sfContext::getInstance()->getMailer()->getRealtimeTransport()->setEncryption($Configuracion->getEncriptacion());
