@@ -47,15 +47,19 @@ class LoginPortalForm extends sfForm {
             $valido = UsuarioQuery::validaUsuario($usuario, $clave);
             $user = sfContext::getInstance()->getUser();
             if ($valido) {
-                $user->setAuthenticated(true);
-                $user->setAttribute('usuario', $valido->getId(), 'seguridad');
-                $user->setAttribute('usuarioNombre', $valido->getUsuario(), 'seguridad');
+                if ($valido->getActivo()) {
+                    $user->setAuthenticated(true);
+                    $user->setAttribute('usuario', $valido->getId(), 'seguridad');
+                    $user->setAttribute('usuarioNombre', $valido->getUsuario(), 'seguridad');
+                } else {
+                    throw new sfValidatorErrorSchema($validator, array("usuario" => new sfValidatorError($validator, "Usuario no activo")));
+                }
             } else {
                 $msg = sfContext::getInstance()->getUser()->getFlash("login");
                 $user->setAuthenticated(false);
                 $user->getAttributeHolder('seguridad')->removeNamespace('seguridad');
                 $user->setFlash('error', 'Ingrese credenciales correctas.');
-                throw new sfValidatorErrorSchema($validator, array("clave" => new sfValidatorError($validator, $msg)));
+                throw new sfValidatorErrorSchema($validator, array("usuario" => new sfValidatorError($validator, $msg)));
             }
         }
         return $values;

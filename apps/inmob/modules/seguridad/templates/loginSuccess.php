@@ -15,38 +15,117 @@
         <!-- BEGIN LOGIN BOX -->
         <div class="container" id="login-block">
             <div class="row">
-                <div class="col-sm-6 col-md-4 col-md-offset-4">
-                    <div class="account-wall">
-                        <center>
-                            <img src="/assets/img/logo_v2.png" width="50%"/>
-                            <br/><br/>
-                        </center>
-                        <?php echo $form->renderFormTag(url_for("seguridad/login"), array("class" => "form-signin")) ?>
-                        <?php if ($form['clave']->hasError()): ?>
-                            <div class="alert alert-danger media fade in">
-                                <p><strong>Error</strong> <?php echo $form['clave']->getError()?>.</p>
-                            </div>
+                <div class="col-sm-6 col-md-8 hidden-sm hidden-xs">
+                    <video controls class="col-md-12" style="margin-top:10%;">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-sm-6 col-md-4 nav-tabs3" style="margin-top:30px;">
+                    <ul class="nav nav-tabs">
+                        <?php if (sfContext::getInstance()->getUser()->hasFlash('error_registro')): ?>
+                            <li class=""><a aria-expanded="true" href="#tab1_1" data-toggle="tab">Acceso</a></li>
+                            <li class="active"><a aria-expanded="false" href="#tab1_2" data-toggle="tab">Registro</a></li>
+                        <?php else: ?>
+                            <li class="active"><a aria-expanded="true" href="#tab1_1" data-toggle="tab">Acceso</a></li>
+                            <li class=""><a aria-expanded="false" href="#tab1_2" data-toggle="tab">Registro</a></li>
                         <?php endif; ?>
-                        <div class="append-icon">
-                            <?php echo $form["usuario"] ?>
-                            <i class="icon-user"></i>
+                    </ul>
+                    <div class="tab-content" style="background-color:transparent;">
+                        <div class="tab-pane fade <?php
+                        if (!sfContext::getInstance()->getUser()->hasFlash('error_registro')) {
+                            echo "active in";
+                        }
+                        ?>" id="tab1_1">
+                            <div class="account-wall" style="margin-top:15%;">
+                                <center>
+                                    <img src="/assets/img/logo_v2.png" width="50%"/>
+                                    <br/><br/>
+                                </center>
+                                <?php echo $form->renderFormTag(url_for("seguridad/login"), array("class" => "form-signin")) ?>
+                                <?php if ($form['usuario']->hasError()): ?>
+                                    <div class="alert alert-danger media fade in">
+                                        <p><strong>Error</strong> <?php echo $form['usuario']->getError() ?>.</p>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (sfContext::getInstance()->getUser()->hasFlash('exito_registro')): ?>
+                                    <div class="alert alert-success media fade in">
+                                        <p><strong>Error</strong> <?php echo sfContext::getInstance()->getUser()->getFlash('exito_registro') ?>.</p>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="append-icon">
+                                    <?php echo $form["usuario"] ?>
+                                    <i class="icon-user"></i>
+                                </div>
+                                <div class="append-icon m-b-20">
+                                    <?php echo $form["clave"] ?>
+                                    <i class="icon-lock"></i>
+                                </div>
+                                <button name="btn_login" type="submit" id="btn_login" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left">
+                                    <i class="fa fa-sign-in"></i>
+                                    Ingreso
+                                </button>
+                                <?php echo $form->renderHiddenFields() ?>
+                                <?php echo "</form>"; ?>
+                            </div>
+                            <p class="account-copyright">
+                                <span>Copyright © <?php echo date("Y") ?>
+                            </p>
                         </div>
-                        <div class="append-icon m-b-20">
-                            <?php echo $form["clave"] ?>
-                            <i class="icon-lock"></i>
+                        <div class="tab-pane fade <?php
+                        if (sfContext::getInstance()->getUser()->hasFlash('error_registro')) {
+                            echo "active in";
+                        }
+                        ?>" id="tab1_2">
+                            <div class="account-wall" style="margin-top:15%;">
+                                <center>
+                                    <img src="/assets/img/logo_v2.png" width="50%"/>
+                                    <br/><br/>
+                                </center>
+                                <?php echo $form_registro->renderFormTag(url_for("seguridad/login"), array("class" => "form-signin")) ?>
+                                <?php if ($form_registro['correo']->hasError()): ?>
+                                    <div class="alert alert-danger media fade in">
+                                        <p><strong>Error</strong> <?php echo $form_registro['correo']->getError() ?>.</p>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="append-icon m-b-10">
+                                    <?php echo $form_registro["perfil"] ?>
+                                    <i class="icon-shield"></i>
+                                </div>
+                                <div class="append-icon">
+                                    <?php echo $form_registro["numero_telefono"] ?>
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div class="append-icon">
+                                    <?php echo $form_registro["correo"] ?>
+                                    <i class="fa fa-inbox"></i>
+                                </div>
+                                <div class="append-icon">
+                                    <?php echo $form_registro["contrasenia"] ?>
+                                    <i class="fa fa-key"></i>
+                                </div>
+                                <div class="append-icon">
+                                    <?php echo $form_registro["contrasenia_2"] ?>
+                                    <i class="fa fa-refresh"></i>
+                                </div>
+                                <button name="btn_registro" type="submit" id="btn_registro" class="btn btn-lg btn-warning btn-block ladda-button" data-style="expand-left">
+                                    <i class="fa fa-user"></i>
+                                    Registro
+                                </button>
+                                <?php echo $form_registro->renderHiddenFields() ?>
+                                <?php echo "</form>"; ?>
+                            </div>
+                            <p class="account-copyright">
+                                <span>Copyright © <?php echo date("Y") ?>
+                            </p>
                         </div>
-                        <button type="submit" id="submit-form" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left">
-                            <i class="fa fa-sign-in"></i>
-                            Ingreso
-                        </button>
-                        <?php echo $form->renderHiddenFields() ?>
-                        <?php echo "</form>"; ?>
                     </div>
+
+
                 </div>
             </div>
-            <p class="account-copyright">
-                <span>Copyright © <?php echo date("Y") ?>
-            </p>
+
 
         </div>
         <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>

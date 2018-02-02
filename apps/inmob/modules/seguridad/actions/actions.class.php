@@ -18,16 +18,72 @@
  */
 class seguridadActions extends sfActions {
 
-    public function executeLogin(sfWebRequest $request) {
+    public function executeToken(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+        $token = TokenQuery::create()
+                ->filterByToken($id)
+                ->filterByUtilizado(false)
+                ->findOne();
+        if ($token) {
+            $Usuario = $token->getUsuario();
+            $Usuario->setActivo(true);
+            $Usuario->save();
+            $token->setUtilizado(true);
+            $token->save();
+            $user = sfContext::getInstance()->getUser();
+            $user->setAuthenticated(true);
+            $user->setAttribute('usuario', $Usuario->getId(), 'seguridad');
+            $user->setAttribute('usuarioNombre', $Usuario->getUsuario(), 'seguridad');
+        }
+        $this->redirect("inicio/index");
+    }
 
+    public function executeLogin(sfWebRequest $request) {
         $this->getUser()->getAttributeHolder()->clear();
+
         $this->form = new LoginPortalForm();
+        $this->form_registro = new RegistroForm();
         if ($request->isMethod('post')) {
-            $this->form->bind($request->getParameter("login"));
-            if ($this->form->isValid()) {
-                $user = sfContext::getInstance()->getUser();
-                $user->setAuthenticated(true);
-                $this->redirect("inicio/index");
+            if ($request->hasParameter("btn_registro")) {
+                $this->form_registro->bind($request->getParameter("registro"));
+                if ($this->form_registro->isValid()) {
+                    $con = Propel::getConnection();
+                    $con->beginTransaction();
+                    $valores = $this->form_registro->getValues();
+                    $Usuario = new Usuario();
+                    $Usuario->setActivo(false);
+                    $Usuario->setUsuario($valores['correo']);
+                    $Usuario->setEmail($valores['correo']);
+                    $Usuario->setClave($valores['contrasenia']);
+                    $Usuario->setPerfilId($valores['perfil']);
+                    $Usuario->setNumeroTelefono($valores['numero_telefono']);
+                    $Usuario->save();
+                    $token = sha1(uniqid() . date("Y-m-d H:i:s"));
+                    $Token = new Token();
+                    $Token->setUsuarioId($Usuario->getId());
+                    $Token->setToken($token);
+                    $Token->setUtilizado(false);
+                    $Token->save();
+                    $link = str_replace("/seguridad/login", "", "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
+                    $link = $link . "/seguridad/token?id=" . $token;
+                    $Correo = new CorreoPendiente();
+                    $Correo->setAsunto("Bienvenido(a)");
+                    $Correo->setBeneficiario($valores["correo"]);
+                    $Correo->setContenido("<html>Para ingresar a la aplicacion por favor presione <a href='$link'>Aqui</a></html>");
+                    $Correo->save();
+                    $this->getUser()->setFlash('exito', 'Por favor, revise su correo para continuar con el registro.');
+                    $con->commit();
+                    $this->redirect("seguridad/login");
+                } else {
+                    $this->getUser()->setFlash('error_registro', "Error en el Registro");
+                }
+            } else {
+                $this->form->bind($request->getParameter("login"));
+                if ($this->form->isValid()) {
+                    $user = sfContext::getInstance()->getUser();
+                    $user->setAuthenticated(true);
+                    $this->redirect("inicio/index");
+                }
             }
         }
         if ($this->getUser()->isAuthenticated()) {

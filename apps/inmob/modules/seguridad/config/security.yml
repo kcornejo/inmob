@@ -8,3 +8,5 @@ Recuperaclave:
   is_secure: false
 Recupera:
   is_secure: false
+Token:
+  is_secure: false  

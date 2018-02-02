@@ -4,17 +4,36 @@
             <div class="panel">
                 <div class="panel-header">
                     <h5>
-                        <i>
-                            <?php echo $requerimiento->getUpdatedAt("d/m/Y H:i"); ?>
-                        </i>
-                        <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
-                                    location.replace('<?php echo url_for('requerimiento/eliminar') . "?id=" . $requerimiento->getId() ?>')
-                                }" href="#" class="btn btn-xs btn-danger" style="float:right;margin-top: -6px;font-size: x-small">
-                            <i class="fa fa-times-circle-o"></i>
-                        </a>
-                        <a onclick="location.href = '<?php echo url_for('requerimiento/editar') . "?id=" . $requerimiento->getId() ?>'" class="btn btn-xs btn-blue" style="float:right;margin-top: -6px;font-size: x-small" href="#">
-                            <i class="fa fa-pencil"></i>
-                        </a>
+                        <?php echo $requerimiento->getId(); ?>
+                        |
+                        <?php echo $requerimiento->getTipoInmueble() ?>
+                        en <?php
+                        if ($requerimiento->getTipoOperacion() == "Comprar") {
+                            echo "Compra";
+                        } else {
+                            echo "Renta";
+                        }
+                        ?>
+                        <div class="dropdown" style="float:right;">
+                            <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                <li>
+                                    <a href="<?php echo url_for('requerimiento/editar') . "?id=" . $requerimiento->getId() ?>">
+                                        Editar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
+                                                location.replace('<?php echo url_for('requerimiento/eliminar') . "?id=" . $requerimiento->getId() ?>')
+                                            }" href="#">
+                                        Eliminar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
                     </h5>
                 </div>
                 <div class="panel-content">
@@ -37,14 +56,6 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <?php echo $requerimiento->getTipoInmueble()?>
-                                         en <?php
-                                        if ($requerimiento->getTipoOperacion() == "Comprar") {
-                                            echo "Compra";
-                                        } else {
-                                            echo "Renta";
-                                        }
-                                        ?>
                                     </td>
                                     <td style="text-align:right;">
                                         <b><?php echo $requerimiento->getMoneda()->getCodigo() ?></b>
@@ -101,16 +112,16 @@
 </div>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-                        $(document).ready(function () {
-                            $(".ajusta_propiedad").on('change', function () {
-                                var referencia = $(this).attr("referencia");
-                                var valor = $(this).val();
-                                $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
-                            });
-                            $(".ajusta_requerimiento").on('change', function () {
-                                var referencia = $(this).attr("referencia");
-                                var valor = $(this).val();
-                                $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
-                            });
-                        });
+                                    $(document).ready(function () {
+                                        $(".ajusta_propiedad").on('change', function () {
+                                            var referencia = $(this).attr("referencia");
+                                            var valor = $(this).val();
+                                            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
+                                        });
+                                        $(".ajusta_requerimiento").on('change', function () {
+                                            var referencia = $(this).attr("referencia");
+                                            var valor = $(this).val();
+                                            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
+                                        });
+                                    });
 </script>

@@ -31,10 +31,10 @@ EOF;
         $databaseManager = new sfDatabaseManager($this->configuration);
         $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
-        $config = ProjectConfiguration::getApplicationConfiguration("kunesweb", "prod", true);
+        $config = ProjectConfiguration::getApplicationConfiguration("inmob", "prod", true);
         sfContext::createInstance($config);
 
-        CorreoPeer::EnvioCorreo();
+        CorreoPendientePeer::EnvioCorreo();
         // add your code here
     }
 
