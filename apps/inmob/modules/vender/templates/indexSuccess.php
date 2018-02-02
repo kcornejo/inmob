@@ -29,6 +29,15 @@
                                             }" href="#">
                                         Eliminar
                                     </a>
+                                    <?php if ($propiedad->getEstatus() == "Disponible"): ?>
+                                        <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $propiedad->getId() . "&valor=Vendido" ?>">
+                                            Vendido!
+                                        </a>
+                                    <?php else: ?>
+                                        <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $propiedad->getId() . "&valor=Disponible" ?>">
+                                            Disponible!
+                                        </a>
+                                    <?php endif; ?>
                                 </li>
                             </ul>
                         </div>
@@ -51,40 +60,36 @@
                         <div class="col-md-10">
                             <table style="width:100%;height: 100%;" class="table">
                                 <tr>
-                                    <td style="color:#6480AB">
+                                    <td style="color:#6480AB" colspan="2">
                                         <b><?php echo $propiedad->getMoneda()->getCodigo() ?></b>
                                         <?php echo number_format($propiedad->getPrecio(), 2) ?>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        <select class="ajusta_propiedad" referencia="<?php echo $propiedad->getId() ?>" >
-                                            <option value="Disponible" <?php echo $propiedad->getEstatus() == "Disponible" ? "selected" : null ?>>Disponible</option>
-                                            <option value="Vendido" <?php echo $propiedad->getEstatus() == "Vendido" ? "selected" : null ?>>Vendido</option>
-                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <div class="row">
-                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $propiedad->getArea() ?></b>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                            <br/><br/>
+                                            <div class="col-md-2 col-xs-2 col-sm-3" style="text-align: center;">
+                                                <b><?php echo $propiedad->getArea() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $propiedad->getNiveles() ?></b>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                <b><?php echo $propiedad->getNiveles() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $propiedad->getCantidadHabitacion() ?></b>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                <b><?php echo $propiedad->getCantidadHabitacion() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $propiedad->getCantidadParqueo() ?></b>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                <b><?php echo $propiedad->getCantidadParqueo() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $propiedad->getCantidadBanio() ?></b>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                <b><?php echo $propiedad->getCantidadBanio() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                             </div>
+                                            <br/><br/>
                                         </div>
                                     </td>
                                 </tr>

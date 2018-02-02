@@ -30,6 +30,15 @@
                                             }" href="#">
                                         Eliminar
                                     </a>
+                                    <?php if ($requerimiento->getEstatus() == "Disponible"): ?>
+                                        <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $requerimiento->getId() . "&valor=Vendido" ?>">
+                                            Vendido!
+                                        </a>
+                                    <?php else: ?>
+                                        <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $requerimiento->getId() . "&valor=Disponible" ?>">
+                                            Disponible!
+                                        </a>
+                                    <?php endif; ?>
                                 </li>
                             </ul>
                         </div>
@@ -46,18 +55,7 @@
                         <div class="col-md-10">
                             <table style="width:100%;height: 100%">
                                 <tr>
-                                    <td># <?php echo $requerimiento->getId() ?></td>
-                                    <td style="text-align: right;">
-                                        <select class="ajusta_requerimiento" referencia="<?php echo $requerimiento->getId() ?>" >
-                                            <option value="Disponible" <?php echo $requerimiento->getEstatus() == "Disponible" ? "selected" : null ?>>Disponible</option>
-                                            <option value="Vendido" <?php echo $requerimiento->getEstatus() == "Vendido" ? "selected" : null ?>>Vendido</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td style="text-align:right;">
+                                    <td style="color:#6480AB" colspan="2">
                                         <b><?php echo $requerimiento->getMoneda()->getCodigo() ?></b>
                                         <?php echo number_format($requerimiento->getPresupuestoMin(), 2) . '-' . number_format($requerimiento->getPresupuestoMax(), 2) ?>
                                     </td>
@@ -75,26 +73,28 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="row">
-                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <?php echo $requerimiento->getArea() ?>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                            <br/><br/>
+                                            <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
+                                                <b><?php echo $requerimiento->getArea() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <?php echo $requerimiento->getNiveles() ?>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                <b><?php echo $requerimiento->getNiveles() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <?php echo $requerimiento->getCantidadHabitacion() ?>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                <b><?php echo $requerimiento->getCantidadHabitacion() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <?php echo $requerimiento->getCantidadParqueo() ?>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                <b><?php echo $requerimiento->getCantidadParqueo() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                             </div>
                                             <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <?php echo $requerimiento->getCantidadBanio() ?>
-                                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                <b><?php echo $requerimiento->getCantidadBanio() ?>&nbsp;</b>
+                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                             </div>
+                                            <br/><br/>
                                         </div>
                                     </td>
                                 </tr>

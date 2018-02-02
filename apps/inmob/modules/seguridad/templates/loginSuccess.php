@@ -16,7 +16,7 @@
         <div class="container" id="login-block">
             <div class="row">
                 <div class="col-sm-6 col-md-8 hidden-sm hidden-xs">
-                    <video controls class="col-md-12" style="margin-top:10%;">
+                    <video controls class="col-md-12" style="margin-top:15%;">
                         <source src="video.mp4" type="video/mp4">
                         <source src="video.ogg" type="video/ogg">
                         Your browser does not support the video tag.
