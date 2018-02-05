@@ -66,7 +66,8 @@ class Negocio extends BaseNegocio {
         }
 
         $direccion = false;
-        foreach ($Requerimiento->getDireccionRequerimientos() as $dir) {
+        $DireccionRequerimiento = DireccionRequerimientoQuery::create()->findByRequerimientoId($Requerimiento->getId());
+        foreach ($DireccionRequerimiento as $dir) {
             if (($Propiedad->getZona() == $dir->getZona() && $Propiedad->getMunicipio() == $dir->getMunicipio()) || ($Propiedad->getCarreteraId() && $Propiedad->getCarreteraId() == $dir->getCarreteraId())) {
                 $direccion = true;
                 break;
@@ -112,7 +113,70 @@ class Negocio extends BaseNegocio {
             $Negocio->setUsuarioReq($Requerimiento->getUsuarioId());
             $Negocio->setUsuarioProp($Propiedad->getUsuarioId());
             $Negocio->save();
+            $asunto = "Nuevo Negocio";
+            $link = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+            $link = explode("/requerimiento", $link);
+            $link = $link[0];
+            $link = explode("/vender", $link);
+            $link = $link[0];
+            $link = $link . "/negocio/visualizar?id=" . $Negocio->getId();
+            $contenido_correo = Negocio::texto_correo();
+            $contenido_correo = str_replace("%USUARIO%", $Requerimiento->getUsuario()->getEmail(), $contenido_correo);
+            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . $Propiedad->getPrecio(), $contenido_correo);
+            $contenido_correo = str_replace("%LINK%", $link, $contenido_correo);
+            $CorreoPendienteReq = new CorreoPendiente();
+            $CorreoPendienteReq->setEnviado(false);
+            $CorreoPendienteReq->setBeneficiario($Requerimiento->getUsuario()->getEmail());
+            $CorreoPendienteReq->setAsunto($asunto);
+            $CorreoPendienteReq->setContenido($contenido_correo);
+            $CorreoPendienteReq->save();
+
+            $contenido_correo = Negocio::texto_correo();
+            $contenido_correo = str_replace("%USUARIO%", $Propiedad->getUsuario()->getEmail(), $contenido_correo);
+            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . $Propiedad->getPrecio(), $contenido_correo);
+            $contenido_correo = str_replace("%LINK%", $link, $contenido_correo);
+            $CorreoPendienteProp = new CorreoPendiente();
+            $CorreoPendienteProp->setEnviado(false);
+            $CorreoPendienteProp->setBeneficiario($Propiedad->getUsuario()->getEmail());
+            $CorreoPendienteProp->setAsunto($asunto);
+            $CorreoPendienteProp->setContenido($contenido_correo);
+            $CorreoPendienteProp->save();
         }
+    }
+
+    public static function texto_correo() {
+        $string = '<html>
+    <body>
+    <center>
+        <div style="width:60%;background-color:#274C92;">
+            <h1 style="color:white;">
+                <b>BEX</b>
+            </h1>
+        </div>
+        <div style="width:60%;color:#6085C6;">
+            <b style="font-size:15pt;">
+                Hola %USUARIO%
+            </b>
+        </div>
+        <div style="width:60%;">
+            <br/>
+            <b>
+                Tienes un nuevo negocio disponible con una rentabilidad de %RENTA%
+            </b>
+            <br/>
+        </div>
+        <br/>
+        <div style="width:50%;background-color:#274C90;height: 5%;">
+            <a href="%LINK%">
+                <b style=" color:white;">
+                    VER NEGOCIO
+                </b>
+            </a>
+        </div>
+    </center>
+</body>
+</html>';
+        return $string;
     }
 
 }

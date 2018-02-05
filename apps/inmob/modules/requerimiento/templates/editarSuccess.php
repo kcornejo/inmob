@@ -79,62 +79,82 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Agua</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
-                                <div style="text-align: center">
-                                    <?php echo $formulario["tiene_agua"] ?>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Energia Electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
-                                <div style="text-align: center">
-                                    <?php echo $formulario["tiene_luz"] ?>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Comedor</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
-                                <?php echo $formulario["comedor"] ?>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Salas</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
-                                <?php echo $formulario["sala"] ?>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Cocina</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
-                                <?php echo $formulario["cocina"] ?>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de Servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
-                                <div style="text-align: center">
-                                    <?php echo $formulario["dormitorio_servicio"] ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Estudio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
-                                <div style="text-align: center">
-                                    <?php echo $formulario["estudio"] ?>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Cisterna</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
-                                <div style="text-align: center">
-                                    <?php echo $formulario["cisterna"] ?>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Jardin</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
-                                <?php echo $formulario["jardin"] ?>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Patio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
-                                <?php echo $formulario["patio"] ?>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Lavanderia</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
-                                <div style="text-align: center">
-                                    <?php echo $formulario["lavanderia"] ?>
+                            <br/>
+                            <div class="col-md-12">
+                                <div class="panel-group panel-accordion" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="background-color:#ECEDEE">
+                                                    Más características
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Agua</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
+                                                        <div style="text-align: center">
+                                                            <?php echo $formulario["tiene_agua"] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Energia Electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
+                                                        <div style="text-align: center">
+                                                            <?php echo $formulario["tiene_luz"] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Comedor</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
+                                                        <?php echo $formulario["comedor"] ?>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Salas</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
+                                                        <?php echo $formulario["sala"] ?>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Cocina</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
+                                                        <?php echo $formulario["cocina"] ?>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de Servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
+                                                        <div style="text-align: center">
+                                                            <?php echo $formulario["dormitorio_servicio"] ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='row'>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Estudio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
+                                                        <div style="text-align: center">
+                                                            <?php echo $formulario["estudio"] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Cisterna</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
+                                                        <div style="text-align: center">
+                                                            <?php echo $formulario["cisterna"] ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Jardin</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
+                                                        <?php echo $formulario["jardin"] ?>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Patio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
+                                                        <?php echo $formulario["patio"] ?>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Lavanderia</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
+                                                        <div style="text-align: center">
+                                                            <?php echo $formulario["lavanderia"] ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

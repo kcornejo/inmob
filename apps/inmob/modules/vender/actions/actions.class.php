@@ -202,6 +202,7 @@ class venderActions extends sfActions {
             }
             next($archivo);
         }
+        Negocio::buscaRequerimiento($Propiedad);
     }
 
 }

@@ -290,6 +290,7 @@ class requerimientoActions extends sfActions {
             $DireccionRequerimiento->setRequerimientoId($Requerimiento->getId());
             $DireccionRequerimiento->save();
         }
+        Negocio::buscaPropiedad($Requerimiento);
     }
 
 }

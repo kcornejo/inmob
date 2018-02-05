@@ -19,6 +19,10 @@ class soporteActions extends sfActions {
         $this->forward('default', 'module');
     }
 
+    public function executeCorreoNegocio(sfWebRequest $request) {
+        
+    }
+
     public function executeDepartamento(sfWebRequest $request) {
         $valor = $request->getParameter("valor");
         $Municipio = MunicipioQuery::create()->findByDepartamentoId($valor);

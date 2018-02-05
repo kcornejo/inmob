@@ -82,7 +82,11 @@ class seguridadActions extends sfActions {
                 if ($this->form->isValid()) {
                     $user = sfContext::getInstance()->getUser();
                     $user->setAuthenticated(true);
-                    $this->redirect("inicio/index");
+                    if (strpos(sfContext::getInstance()->getRequest()->getReferer(), 'negocio') !== false) {
+                        $this->redirect(sfContext::getInstance()->getRequest()->getReferer(), 'negocio');
+                    } else {
+                        $this->redirect("inicio/index");
+                    }
                 }
             }
         }
