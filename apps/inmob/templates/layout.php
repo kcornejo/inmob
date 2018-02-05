@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta name="description" content="admin-themes-lab">
         <meta name="author" content="themes-lab">
-        <link rel="shortcut icon" href="/assets/global/images/favicon.png" type="image/png">
-        <title></title>
+        <link rel="shortcut icon" href="/assets/img/logo.png" type="image/png">
+        <title>BEX</title>
         <link href="/assets/global/css/style.css" rel="stylesheet">
         <link href="/assets/global/css/theme.css" rel="stylesheet">
         <link href="/assets/global/css/ui.css" rel="stylesheet">
@@ -100,6 +100,9 @@
                                     <span class="username"><?php echo sfContext::getInstance()->getUser()->getAttribute("usuarioNombre", null, "seguridad") ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="<?php echo url_for("seguridad/cambioclave") ?>"><i class="icon-refresh"></i><span>Cambiar Clave</span></a>
+                                    </li>
                                     <li>
                                         <a href="<?php echo url_for("seguridad/logout") ?>"><i class="icon-logout"></i><span>Cerrar Sesión</span></a>
                                     </li>

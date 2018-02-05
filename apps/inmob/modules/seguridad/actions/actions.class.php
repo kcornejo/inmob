@@ -109,7 +109,7 @@ class seguridadActions extends sfActions {
                 $Usuario->setClave(sha1($valores['clave']));
                 $Usuario->save();
                 $this->getUser()->setFlash('exito', 'Cambio de Clave Efectuado Exitosamente');
-                $this->redirect("inicio/index");
+                $this->redirect("vender/index");
             }
         }
     }

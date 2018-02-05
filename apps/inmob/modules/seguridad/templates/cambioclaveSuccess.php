@@ -1,13 +1,16 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="portlet light bordered">
-            <div class="portlet-title">
-                <div class="caption font-green-sharp">
+        <div class="panel">
+            <div class="panel-header" style="background-color:#305da8;color:white;font-size:14pt;">
+                <h3 face="Helvetica">
+                    <a href="<?php echo url_for("inicio/index") ?>" style="color:white;">
+                        <i class="icon icons-arrows-03"></i>
+                    </a>
                     <i class="fa fa-key"></i>
                     Cambio de Clave
-                </div>
+                </h3>
             </div>
-            <div class="portlet-body">
+            <div class="panel-content">
                 <form method="POST" action="<?php echo url_for('seguridad/cambioclave') ?>" class="form">
                     <div class="form-body">
                         <div class="form-group">
@@ -26,12 +29,12 @@
                         </div>
                         <?php echo $form->renderHiddenFields() ?>
                     </div>
-                    <div class="form-actions">
-                        <button class="btn btn-info" type="submit">
-                            <i class="fa fa-refresh"></i>
-                            Cambiar Clave
-                        </button>
-                    </div>
+                    <button type="submit" class="btn col-md-1 col-xs-2 col-sm-2" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;background-color:#305da8;color:white;">
+                        <i class="fa fa-refresh"></i>
+                        <span class="hidden-sm hidden-xs">
+                            Cambiar
+                        </span>
+                    </button>
                 </form>
             </div>
         </div>

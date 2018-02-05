@@ -19,7 +19,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="<?php echo url_for('vender/editar') . "?id=" . $propiedad->getId() ?>'">
+                                    <a href="<?php echo url_for('vender/editar') . "?id=" . $propiedad->getId() ?>">
                                         Editar
                                     </a>
                                 </li>

@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="" name="description" />
         <meta content="themes-lab" name="author" />
-        <link rel="shortcut icon" href="/assets/global/images/favicon.png">
         <link href="/assets/global/css/style.css" rel="stylesheet">
         <link href="/assets/global/css/ui.css" rel="stylesheet">
         <link href="/assets/global/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/assets/img/logo.png" type="image/png">
     </head>
     <body class="sidebar-top account separate-inputs" data-page="login">
         <!-- BEGIN LOGIN BOX -->
