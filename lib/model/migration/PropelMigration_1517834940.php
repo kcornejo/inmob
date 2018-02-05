@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1517543118.
- * Generated on 2018-02-02 03:45:18 
+ * up to version 1517834940.
+ * Generated on 2018-02-05 12:49:00 
  */
-class PropelMigration_1517543118
+class PropelMigration_1517834940
 {
 
     public function preUp($manager)
@@ -42,39 +42,14 @@ class PropelMigration_1517543118
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-CREATE TABLE `token`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `usuario_id` INTEGER NOT NULL,
-    `token` VARCHAR(255),
-    `created_at` DATETIME,
-    `updated_at` DATETIME,
-    `utilizado` TINYINT(1) DEFAULT 0,
-    PRIMARY KEY (`id`),
-    INDEX `token_FI_1` (`usuario_id`),
-    CONSTRAINT `token_FK_1`
-        FOREIGN KEY (`usuario_id`)
-        REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB;
+ALTER TABLE `token`
+    ADD `tipo` VARCHAR(255) AFTER `utilizado`;
 
-CREATE TABLE `correo_pendiente`
+CREATE TABLE `formato_correo`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `asunto` VARCHAR(255),
+    `tipo` VARCHAR(255),
     `contenido` TEXT,
-    `beneficiario` TEXT,
-    `enviado` TINYINT(1) DEFAULT 0,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-CREATE TABLE `configuracion`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `host` VARCHAR(255),
-    `encriptacion` VARCHAR(255),
-    `puerto` VARCHAR(255),
-    `usuario` VARCHAR(255),
-    `clave` VARCHAR(255),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -98,11 +73,9 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `token`;
+DROP TABLE IF EXISTS `formato_correo`;
 
-DROP TABLE IF EXISTS `correo_pendiente`;
-
-DROP TABLE IF EXISTS `configuracion`;
+ALTER TABLE `token` DROP `tipo`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

@@ -189,6 +189,7 @@ propel:
     created_at:                         ~
     updated_at:                         ~
     utilizado:                         { type: boolean, default: false }
+    tipo:                              { type: varchar(255) }
   correo_pendiente:
     id:                                ~
     asunto:                            { type: varchar(255) }
@@ -202,3 +203,7 @@ propel:
     puerto:                            { type: varchar(255) }
     usuario:                           { type: varchar(255) }
     clave:                             { type: varchar(255) }
+  formato_correo:
+    id:                                ~
+    tipo:                              { type: varchar(255) }
+    contenido:                         { type: longvarchar }

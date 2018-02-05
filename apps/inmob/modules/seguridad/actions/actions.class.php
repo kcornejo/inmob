@@ -1,21 +1,5 @@
 <?php
 
-/**
- * seguridad actions.
- *
- * @package    
- * @subpackage seguridad
- * @author     
- * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
- */
-
-/**
- * seguridad actions.
- *
- * @package    
- * @subpackage seguridad
- * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
- */
 class seguridadActions extends sfActions {
 
     public function executeToken(sfWebRequest $request) {
@@ -23,6 +7,7 @@ class seguridadActions extends sfActions {
         $token = TokenQuery::create()
                 ->filterByToken($id)
                 ->filterByUtilizado(false)
+                ->filterByTipo("Registro")
                 ->findOne();
         if ($token) {
             $Usuario = $token->getUsuario();
@@ -63,6 +48,7 @@ class seguridadActions extends sfActions {
                     $Token->setUsuarioId($Usuario->getId());
                     $Token->setToken($token);
                     $Token->setUtilizado(false);
+                    $Token->setTipo("Registro");
                     $Token->save();
                     $link = str_replace("/seguridad/login", "", "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
                     $link = $link . "/seguridad/token?id=" . $token;
@@ -191,32 +177,43 @@ class seguridadActions extends sfActions {
             if ($this->form->isValid()) {
                 $valores = $this->form->getValues();
                 $Usuario = UsuarioQuery::create()
-                        ->filterByCorreo($valores['Correo'])
+                        ->filterByEmail($valores['Correo'])
                         ->findOne();
                 if ($Usuario) {
-                    $Token = TokenUsuarioQuery::create()
+                    $Token = TokenQuery::create()
                             ->filterByUsuarioId($Usuario->getId())
                             ->filterByUtilizado(false)
                             ->filterByTipo('Recuperacion')
                             ->findOne();
                     if (!$Token) {
-                        $Token = new TokenUsuario();
+                        $Token = new Token();
                         $Token->setUsuarioId($Usuario->getId());
-                        $Token->setClave(sha1($Usuario->getId() . date('YmdHis')));
+                        $Token->setToken(sha1($Usuario->getId() . date('YmdHis')));
                         $Token->setTipo('Recuperacion');
                         $Token->save();
                     }
-                    $formato = FormatoCorreoQuery::create()->findOneByTipo('Recuperacion');
-                    if ($formato) {
-                        $url = ParametroPeer::obtenerValor('url');
-                        $Correo = new Correo();
-                        $Correo->setReceptor($valores['Correo']);
-                        $Correo->setAsunto('Recuperacion de clave');
-                        $datos = array('url' => $url, 'token' => $Token->getClave());
-                        $contenido = $formato->getFormatoPlano($datos);
-                        $Correo->setContenido($contenido);
-                        $Correo->save();
-                    }
+//                    $formato = FormatoCorreoQuery::create()->findOneByTipo('Recuperacion');
+//                    if ($formato) {
+//                        $url = ParametroPeer::obtenerValor('url');
+//                        $Correo = new Correo();
+//                        $Correo->setReceptor($valores['Correo']);
+//                        $Correo->setAsunto('Recuperacion de clave');
+//                        $datos = array('url' => $url, 'token' => $Token->getClave());
+//                        $contenido = $formato->getFormatoPlano($datos);
+//                        $Correo->setContenido($contenido);
+//                        $Correo->save();
+//                    }
+                    $link = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+                    $link = explode("/seguridad", $link);
+                    $link = $link[0];
+                    $link = $link . "/seguridad/recupera?token=" . $Token->getToken();
+                    $link = "<a href='$link'>AQUI</a>";
+                    $Correo = new CorreoPendiente();
+                    $Correo->setAsunto("Recuperacion de clave");
+                    $Correo->setBeneficiario($valores['Correo']);
+                    $Correo->setEnviado(false);
+                    $Correo->setContenido("<html>Ingrese al siguiente link para recuperar su clave. $link</html>");
+                    $Correo->save();
                     $this->getUser()->setFlash('exito', 'Correo de recuperacion enviado correctamente');
                     $this->redirect('seguridad/login');
                 } else {
@@ -228,8 +225,8 @@ class seguridadActions extends sfActions {
 
     public function executeRecupera(sfWebRequest $request) {
         $token_consulta = $request->getParameter('token');
-        $Token = TokenUsuarioQuery::create()
-                ->filterByClave($token_consulta)
+        $Token = TokenQuery::create()
+                ->filterByToken($token_consulta)
                 ->filterByTipo('Recuperacion')
                 ->filterByUtilizado(false)
                 ->findOne();
@@ -242,7 +239,7 @@ class seguridadActions extends sfActions {
                     $Token->setUtilizado(true);
                     $Token->save();
                     $Usuario = $Token->getUsuario();
-                    $Usuario->setClave(sha1($valores['Clave']));
+                    $Usuario->setClave(sha1($valores['clave']));
                     $Usuario->save();
                     $this->redirect('seguridad/login');
                 } else {

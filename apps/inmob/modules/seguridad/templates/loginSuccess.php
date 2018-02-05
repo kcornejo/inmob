@@ -66,6 +66,10 @@
                                     <i class="fa fa-sign-in"></i>
                                     Ingreso
                                 </button>
+                                <a href="<?php echo url_for("seguridad/recuperaclave")?>" class="btn btn-lg btn-default btn-block btn-success ladda-button" data-style="expand-left">
+                                    <i class="fa fa-question"></i>
+                                    Olvide mi clave
+                                </a>
                                 <?php echo $form->renderHiddenFields() ?>
                                 <?php echo "</form>"; ?>
                             </div>

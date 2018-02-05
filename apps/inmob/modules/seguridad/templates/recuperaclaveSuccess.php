@@ -1,132 +1,60 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.1
-Version: 3.6
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-    <!--<![endif]-->
-    <!-- BEGIN HEAD -->
+<html>
     <head>
-        <meta charset="utf-8"/>
-        <title>Registro - Anarchivos</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta content="" name="description"/>
-        <meta content="" name="author"/>
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-        <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-        <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="/assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
-        <link href="/assets/admin/pages/css/login-soft.css" rel="stylesheet" type="text/css"/>
-        <!-- END PAGE LEVEL SCRIPTS -->
-        <!-- BEGIN THEME STYLES -->
-        <link href="/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
-        <link href="/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-        <link href="/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-        <link id="style_color" href="/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
-        <link href="/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
-        <link href="/css/kunesStyle.css" rel="stylesheet" type="text/css"/>
-        <!-- END THEME STYLES -->
-        <link rel="shortcut icon" href="favicon.ico"/>
+        <meta charset="utf-8">
+        <title>Acceso</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="" name="description" />
+        <meta content="themes-lab" name="author" />
+        <link rel="shortcut icon" href="/assets/global/images/favicon.png">
+        <link href="/assets/global/css/style.css" rel="stylesheet">
+        <link href="/assets/global/css/ui.css" rel="stylesheet">
+        <link href="/assets/global/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
     </head>
-    <!-- END HEAD -->
-    <!-- BEGIN BODY -->
-    <body class="login">
-        <!-- BEGIN LOGO -->
-        <div class="logo">
-            <a href="#">
-                <img src="/assets/admin/layout/img/logo-big.png" alt="" style="width:15%;"/>
-            </a>
-        </div>
-        <div class="menu-toggler sidebar-toggler">
-        </div>
-        <div class="content">
-            <!-- BEGIN LOGIN FORM -->
-            <form class="login-form" action="<?php echo url_for('seguridad/recuperaclave') ?>" method="post">
-                <?php include_partial('soporte/avisos') ?>
-                <h3 class="form-title">Registro</h3>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Correo</label>
-                    <div class="input-icon">
-                        <i class="fa fa-inbox"></i>
-                        <?php echo $form['Correo'] ?>
+    <body class="sidebar-top account separate-inputs" data-page="login">
+        <!-- BEGIN LOGIN BOX -->
+        <div class="container" id="login-block">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <div class="account-wall">
+                        <center>
+                            <img src="/assets/img/logo_v2.png" width="50%"/>
+                            <br/><br/>
+                        </center>
+                        <?php echo $form->renderFormTag(url_for("seguridad/recuperaclave"), array("class" => "form-signin")) ?>
+                        <?php if ($form['Correo']->hasError()): ?>
+                            <div class="alert alert-danger media fade in">
+                                <p><strong>Error</strong> <?php echo $form['Correo']->getError() ?>.</p>
+                            </div>
+                        <?php endif; ?>
+                        <div class="append-icon">
+                            <?php echo $form["Correo"] ?>
+                            <i class="icon-user"></i>
+                        </div>
+                        <button type="submit" id="submit-form" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left">
+                            <i class="fa fa-refresh"></i>
+                            Recuperar
+                        </button>
+                        <a href="<?php echo url_for("seguridad/login") ?>" class="btn btn-lg btn-default btn-block btn-success ladda-button" data-style="expand-left">
+                            <i class="fa fa-hand-o-left"></i>
+                            Regresar
+                        </a>
+                        <?php echo $form->renderHiddenFields() ?>
+                        <?php echo "</form>"; ?>
                     </div>
-                    <span class="error">
-                        <?php echo $form['Correo']->renderError() ?>
-                    </span>
                 </div>
-                <hr/>
-                <div class="form-actions">
-                    <a class="btn btn-warning" href="<?php echo url_for('seguridad/login') ?>">
-                        <i class="m-icon-swapleft m-icon-white"></i>
-                        Regresar 
-                    </a>
-                    <button type="submit"  style="float:right" class="btn green">
-                        <i class="fa fa-key"></i>
-                        Recuperar Clave
-                    </button>
+            </div>
+            <p class="account-copyright">
+                <span>Copyright © <?php echo date("Y") ?>
+            </p>
 
-                </div>
-                <?php echo $form->renderHiddenFields(); ?>
-            </form>
         </div>
-        <div class="copyright">
-            <?php echo date('Y') ?> &copy; ANARCHIVOS
-        </div>
-        <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="/assets/global/plugins/select2/select2.min.js"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="/assets/global/scripts/metronic.js" type="text/javascript"></script>
-        <script src="/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-        <script src="/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-        <script src="/assets/admin/pages/scripts/login-soft.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL SCRIPTS -->
-        <script>
-            jQuery(document).ready(function () {
-                Metronic.init(); // init metronic core components
-                Layout.init(); // init current layout
-                Login.init();
-                Demo.init();
-                // init background slide images
-                $.backstretch([
-                    "/assets/admin/pages/media/bg/1.jpg",
-                    "/assets/admin/pages/media/bg/2.jpg",
-                    "/assets/admin/pages/media/bg/3.jpg",
-                    "/assets/admin/pages/media/bg/4.jpg"
-                ], {
-                    fade: 1000,
-                    duration: 8000
-                }
-                );
-            });
-        </script>
-        <!-- END JAVASCRIPTS -->
+        <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
+        <script src="/assets/global/plugins/jquery/jquery-migrate-3.0.0.min.js"></script>
+        <script src="/assets/global/plugins/gsap/main-gsap.min.js"></script>
+        <script src="/assets/global/plugins/tether/js/tether.min.js"></script>
+        <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/assets/global/plugins/bootstrap-loading/lada.min.js"></script>
+        <script src="/assets/global/js/pages/login-v1.js"></script>
     </body>
-    <!-- END BODY -->
 </html>
