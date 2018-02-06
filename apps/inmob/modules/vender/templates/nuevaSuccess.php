@@ -244,13 +244,13 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Mi Comisión (%)</span>
+                                <span class="subtitulo_kc">Mi Comisión (%)&nbsp;<span style="color:red;">*</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mi_comision"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Comisión Compartida (%)</span>
+                                <span class="subtitulo_kc">Comisión Compartida (%)&nbsp;<span style="color:red;">*</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["comision_compartida"] ?>
                                 </div>

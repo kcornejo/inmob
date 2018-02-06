@@ -29,11 +29,11 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Operacion</span>
+                                <span class="subtitulo_kc">Tipo de Operacion</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario["tipo_operacion"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Inmueble</span>
+                                <span class="subtitulo_kc">Tipo de Inmueble</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario["tipo_inmueble"]; ?>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
                                 <?php echo $formulario["habitacion"] ?>
                             </div>
                             <div class="col-md-2">
@@ -56,7 +56,7 @@
                                 <?php echo $formulario["banio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Parqueo</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Parqueo&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
                                 <?php echo $formulario["parqueo"] ?>
                             </div>
                             <div class="col-md-2">
@@ -160,7 +160,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Estado del inmueble</span>
+                                <span class="subtitulo_kc">Estado del inmueble&nbsp;<span style="color:red;">*</span></span>
                                 <?php echo $formulario["estado"]; ?>
                             </div>
                             <div class="col-md-6">
@@ -186,7 +186,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-3">
-                                    <span class="subtitulo_kc">Precio</span>
+                                    <span class="subtitulo_kc">Precio&nbsp;<span style="color:red;">*</span></span>
                                     <?php echo $formulario["moneda"] ?>
                                 </div>
                                 <div class="col-md-3">
@@ -487,9 +487,17 @@
                         var Seguro = (0.01 * presupuesto_maximo * 0.04529) / 1.12;
                         var C = parseFloat(cuota_mensual_maxima - Iusi - Seguro);
                         var Monto_Financiar = ((Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (-(Y * 12)))) * (Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12)) - 1) * C) / (TASA_INTERES_ANUAL / 12);
-                        $("#nuevo_requerimiento_monto_financiar_maximo").val(Monto_Financiar.toFixed(2));
+                        if (isNaN(Monto_Financiar)) {
+                            $("#nuevo_requerimiento_monto_financiar_maximo").val(0);
+                        } else {
+                            $("#nuevo_requerimiento_monto_financiar_maximo").val(Monto_Financiar.toFixed(2));
+                        }
                         $("#nuevo_requerimiento_cuota_total_mensual_maxima").val(cuota_mensual_maxima.toFixed(2));
-                        $("#nuevo_requerimiento_presupuesto_max").val(presupuesto_maximo.toFixed(2));
+                        if (isNaN(presupuesto_maximo)) {
+                            $("#nuevo_requerimiento_presupuesto_max").val(0);
+                        } else {
+                            $("#nuevo_requerimiento_presupuesto_max").val(presupuesto_maximo.toFixed(2));
+                        }
 
                     }
                     function mas_direccion() {

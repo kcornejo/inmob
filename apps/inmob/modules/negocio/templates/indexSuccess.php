@@ -42,7 +42,7 @@
                                 <tr>
                                     <td style="text-align:right;">
                                         <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
-                                        <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 2) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 2) ?>
+                                        <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
                                     </td>
                                 </tr>
                             </table>
@@ -82,7 +82,7 @@
                                 <tr>
                                     <td style="text-align:right;">
                                         <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
-                                        <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 2) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 2) ?>
+                                        <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
                                     </td>
                                 </tr>
                             </table>
@@ -125,7 +125,7 @@
                                 <tr>
                                     <td style="text-align:right;">
                                         <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
-                                        <?php echo number_format($fila->getPropiedad()->getPrecio(), 2) ?>
+                                        <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
                                     </td>
                                 </tr>
                             </table>
@@ -168,7 +168,7 @@
                                 <tr>
                                     <td style="text-align:right;">
                                         <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
-                                        <?php echo number_format($fila->getPropiedad()->getPrecio(), 2) ?>
+                                        <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
                                     </td>
                                 </tr>
                             </table>

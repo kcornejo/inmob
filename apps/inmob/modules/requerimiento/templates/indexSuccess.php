@@ -57,7 +57,7 @@
                                 <tr>
                                     <td style="color:#6480AB" colspan="2">
                                         <b><?php echo $requerimiento->getMoneda()->getCodigo() ?></b>
-                                        <?php echo number_format($requerimiento->getPresupuestoMin(), 2) . '-' . number_format($requerimiento->getPresupuestoMax(), 2) ?>
+                                        <?php echo number_format($requerimiento->getPresupuestoMin(), 0) . '-' . number_format($requerimiento->getPresupuestoMax(), 0) ?>
                                     </td>
                                 </tr>
                                 <tr>

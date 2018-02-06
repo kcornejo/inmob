@@ -160,6 +160,7 @@ class requerimientoActions extends sfActions {
         $defaults["ingresos"] = "0";
         $defaults["egresos"] = "0";
         $defaults["enganche"] = "0";
+        $defaults["precalificacion"] = "No";
         $defaults["tasa_interes_anual"] = "0";
         $defaults["plazo_en_anios"] = "0";
         $busqueda_array = array();

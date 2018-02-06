@@ -45,9 +45,10 @@ class RegistroForm extends sfForm {
             throw new sfValidatorErrorSchema($validator, array("correo" => new sfValidatorError($validator, "Sin Perfil asignado")));
         }
         $Usuario = UsuarioQuery::create()
-                ->findOneByEmail($email);
+                ->where("email = '$email' or numero_telefono = '$numero_telefono'")
+                ->findOne();
         if ($Usuario) {
-            throw new sfValidatorErrorSchema($validator, array("correo" => new sfValidatorError($validator, "El correo ya esta utilizado.")));
+            throw new sfValidatorErrorSchema($validator, array("correo" => new sfValidatorError($validator, "Usuario ya registrado")));
         }
         return $values;
     }

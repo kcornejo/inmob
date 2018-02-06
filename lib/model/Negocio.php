@@ -122,7 +122,7 @@ class Negocio extends BaseNegocio {
             $link = $link . "/negocio/visualizar?id=" . $Negocio->getId();
             $contenido_correo = Negocio::texto_correo();
             $contenido_correo = str_replace("%USUARIO%", $Requerimiento->getUsuario()->getEmail(), $contenido_correo);
-            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . $Propiedad->getPrecio(), $contenido_correo);
+            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . number_format($Propiedad->getPrecio(), 0), $contenido_correo);
             $contenido_correo = str_replace("%LINK%", $link, $contenido_correo);
             $CorreoPendienteReq = new CorreoPendiente();
             $CorreoPendienteReq->setEnviado(false);
@@ -133,7 +133,7 @@ class Negocio extends BaseNegocio {
 
             $contenido_correo = Negocio::texto_correo();
             $contenido_correo = str_replace("%USUARIO%", $Propiedad->getUsuario()->getEmail(), $contenido_correo);
-            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . $Propiedad->getPrecio(), $contenido_correo);
+            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . number_format($Propiedad->getPrecio(), 0), $contenido_correo);
             $contenido_correo = str_replace("%LINK%", $link, $contenido_correo);
             $CorreoPendienteProp = new CorreoPendiente();
             $CorreoPendienteProp->setEnviado(false);

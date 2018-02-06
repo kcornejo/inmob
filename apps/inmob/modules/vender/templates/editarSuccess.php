@@ -29,11 +29,11 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Operacion</span>
+                                <span class="subtitulo_kc">Tipo de Operacion</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario_vender["tipo_operacion"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Inmueble</span>
+                                <span class="subtitulo_kc">Tipo de Inmueble</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario_vender["tipo_inmueble"]; ?>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
                                 <?php echo $formulario_vender["habitacion"] ?>
                             </div>
                             <div class="col-md-2">
@@ -56,7 +56,7 @@
                                 <?php echo $formulario_vender["banio"] ?>
                             </div>
                             <div class="col-md-2">
-                                <h3 style="text-align: center;"><span class="subtitulo_kc">Parqueo</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Parqueo&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
                                 <?php echo $formulario_vender["parqueo"] ?>
                             </div>
                             <div class="col-md-2">
@@ -160,7 +160,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Estado del inmueble</span>
+                                <span class="subtitulo_kc">Estado del inmueble&nbsp;<span style="color:red;">*</span></span>
                                 <?php echo $formulario_vender["estado"]; ?>
                             </div>
                             <div class="col-md-6">
@@ -180,7 +180,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="col-md-4">
-                                    <span class="subtitulo_kc">Precio</span>
+                                    <span class="subtitulo_kc">Precio&nbsp;<span style="color:red;">*</span></span>
                                     <?php echo $formulario_vender["moneda"] ?>
                                 </div>
                                 <div class="col-md-6">
@@ -242,13 +242,13 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Mi Comisión (%)</span>
+                                <span class="subtitulo_kc">Mi Comisión (%)&nbsp;<span style="color:red;">*</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mi_comision"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Comisión Compartida (%)</span>
+                                <span class="subtitulo_kc">Comisión Compartida (%)&nbsp;<span style="color:red;">*</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["comision_compartida"] ?>
                                 </div>
@@ -306,19 +306,19 @@
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Departamento</span>
+                                <span class="subtitulo_kc">Departamento&nbsp;<span style="color:red;">*</span></span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["departamento"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Municipio</span>
+                                <span class="subtitulo_kc">Municipio&nbsp;<span style="color:red;">*</span></span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["municipio"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Zona</span>
+                                <span class="subtitulo_kc">Zona&nbsp;<span style="color:red;">*</span></span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["zona"] ?>
                                 </div>

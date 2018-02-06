@@ -62,7 +62,7 @@
                                 <tr>
                                     <td style="color:#6480AB" colspan="2">
                                         <b><?php echo $propiedad->getMoneda()->getCodigo() ?></b>
-                                        <?php echo number_format($propiedad->getPrecio(), 2) ?>
+                                        <?php echo number_format($propiedad->getPrecio(), 0) ?>
                                     </td>
                                 </tr>
                                 <tr>

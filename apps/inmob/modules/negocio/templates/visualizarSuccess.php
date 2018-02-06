@@ -42,7 +42,7 @@
                             <div style="float:left;">
                                 <h3>
                                     <b><?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() ?></b>
-                                    <?php echo number_format($negocio->getPropiedad()->getPrecio(), 2) ?>
+                                    <?php echo number_format($negocio->getPropiedad()->getPrecio(), 0) ?>
                                     <?php if ($negocio->getPropiedad()->getNegociable()):; ?>
                                         &nbsp;Negociable
                                     <?php endif; ?>

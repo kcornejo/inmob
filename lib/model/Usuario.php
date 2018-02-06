@@ -17,6 +17,10 @@
  */
 class Usuario extends BaseUsuario {
 
+    public function delete(\PropelPDO $con = null) {
+        parent::delete($con);
+    }
+
     public function save(\PropelPDO $con = null) {
         if ($this->isNew()) {
             $this->setClave(sha1($this->getClave()));
