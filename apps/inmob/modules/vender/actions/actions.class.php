@@ -35,6 +35,7 @@ class venderActions extends sfActions {
         $defaults["cocina"] = "0";
         $defaults["jardin"] = "0";
         $defaults["patio"] = "0";
+        $defaults["oficina"] = "0";
         $this->formulario_vender = new VenderForm($defaults);
         if ($request->isMethod('POST')) {
             $this->formulario_vender->bind($request->getParameter("vender_form"), $request->getFiles("vender_form"));
@@ -105,6 +106,7 @@ class venderActions extends sfActions {
         $defaults["area"] = $Propiedad->getArea();
         $defaults["area_x"] = $Propiedad->getAreaX();
         $defaults["area_y"] = $Propiedad->getAreaY();
+        $defaults["oficina"] = $Propiedad->getCantidadOficina();
         $this->formulario_vender = new VenderForm($defaults);
         if ($request->isMethod('POST')) {
             $this->formulario_vender->bind($request->getParameter("vender_form"), $request->getFiles("vender_form"));
@@ -185,6 +187,7 @@ class venderActions extends sfActions {
         $Propiedad->setArea($valores["area"]);
         $Propiedad->setAreaX($valores["area_x"]);
         $Propiedad->setAreaY($valores["area_y"]);
+        $Propiedad->setCantidadOficina($valores["oficina"]);
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $Propiedad->setUsuarioId($usuario_id);
         $Propiedad->save();

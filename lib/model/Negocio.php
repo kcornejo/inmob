@@ -97,14 +97,28 @@ class Negocio extends BaseNegocio {
         if (!($Propiedad->getEstado() == $Requerimiento->getEstado() || $Requerimiento->getEstado() == 'Indiferente')) {
             $no_negocio = true;
         }
-        if ($Propiedad->getCantidadHabitacion() < $Requerimiento->getCantidadHabitacion()) {
-            $no_negocio = true;
+        if ($Propiedad->getTipoInmueble() == "Casa") {
+            if ($Propiedad->getCantidadHabitacion() < $Requerimiento->getCantidadHabitacion()) {
+                $no_negocio = true;
+            }
         }
-        if ($Propiedad->getCantidadParqueo() < $Requerimiento->getCantidadParqueo()) {
-            $no_negocio = true;
+        if ($Propiedad->getTipoInmueble() == "Edificio") {
+            if ($Propiedad->getCantidadOficina() < $Requerimiento->getCantidadOficina()) {
+                $no_negocio = true;
+            }
+        }
+        if ($Propiedad->getTipoInmueble() == "Casa" || $Propiedad->getTipoInmueble() == "Edificio") {
+            if ($Propiedad->getCantidadParqueo() < $Requerimiento->getCantidadParqueo()) {
+                $no_negocio = true;
+            }
         }
         if ($Propiedad->getEstatus() != "Disponible" || $Requerimiento->getEstatus() != "Disponible") {
             $no_negocio = true;
+        }
+        if ($Propiedad->getTipoInmueble() == "Terreno" || $Propiedad->getTipoInmueble() == "Oficina" || $Propiedad->getTipoInmueble() == "Local" || $Propiedad->getTipoInmueble() == "Bodega") {
+            if ($Propiedad->getArea() < $Requerimiento->getArea()) {
+                $no_negocio = true;
+            }
         }
         if (!$no_negocio && $Propiedad->getId() && $Requerimiento->getId()) {
             $Negocio = new Negocio();
@@ -121,8 +135,11 @@ class Negocio extends BaseNegocio {
             $link = $link[0];
             $link = $link . "/negocio/visualizar?id=" . $Negocio->getId();
             $contenido_correo = Negocio::texto_correo();
+            $COMISION = $Propiedad->getMiComision() / 100 * $Propiedad->getPrecio();
+            $COMISION_VENTA = $COMISION * (100 - $Propiedad->getComisionCompartida()) / 100;
+            $COMISION_REQ = $COMISION * ($Propiedad->getComisionCompartida()) / 100;
             $contenido_correo = str_replace("%USUARIO%", $Requerimiento->getUsuario()->getEmail(), $contenido_correo);
-            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . number_format($Propiedad->getPrecio(), 0), $contenido_correo);
+            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . number_format($COMISION_REQ, 0), $contenido_correo);
             $contenido_correo = str_replace("%LINK%", $link, $contenido_correo);
             $CorreoPendienteReq = new CorreoPendiente();
             $CorreoPendienteReq->setEnviado(false);
@@ -132,8 +149,8 @@ class Negocio extends BaseNegocio {
             $CorreoPendienteReq->save();
 
             $contenido_correo = Negocio::texto_correo();
-            $contenido_correo = str_replace("%USUARIO%", $Propiedad->getUsuario()->getEmail(), $contenido_correo);
-            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . number_format($Propiedad->getPrecio(), 0), $contenido_correo);
+            $contenido_correo = str_replace("%USUARIO%", $Propiedad->getUsuario()->getUsuario(), $contenido_correo);
+            $contenido_correo = str_replace("%RENTA%", $Propiedad->getMoneda()->getCodigo() . " " . number_format($COMISION_VENTA, 0), $contenido_correo);
             $contenido_correo = str_replace("%LINK%", $link, $contenido_correo);
             $CorreoPendienteProp = new CorreoPendiente();
             $CorreoPendienteProp->setEnviado(false);

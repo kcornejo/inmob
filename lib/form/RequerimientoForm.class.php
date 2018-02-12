@@ -34,6 +34,7 @@ class RequerimientoForm extends sfForm {
         $this->setWidget("tipo_operacion", new sfWidgetFormSelect(array('choices' => $opciones), array("class" => "form-control col-md-10")));
         $this->setWidget("tipo_inmueble", new sfWidgetFormSelect(array('choices' => $opciones_inm), array("class" => "form-control col-md-10")));
         $this->setWidget("habitacion", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
+        $this->setWidget("oficina", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("banio", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", "data-decimals" => "1", 'data-step' => "0.5", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("parqueo", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("niveles", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
@@ -99,6 +100,7 @@ class RequerimientoForm extends sfForm {
         $this->setValidator("tipo_operacion", new sfValidatorString(array('required' => true)));
         $this->setValidator("tipo_inmueble", new sfValidatorString(array('required' => true)));
         $this->setValidator("habitacion", new sfValidatorInteger(array('required' => false)));
+        $this->setValidator("oficina", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("banio", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("parqueo", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("comedor", new sfValidatorInteger(array('required' => false)));

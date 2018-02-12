@@ -65,6 +65,7 @@ propel:
     created_by:                        { type: varchar(32) }
     updated_by:                        { type: varchar(32) }
     usuario_id:                        ~
+    cantidad_oficina:                   { type: integer }
     
   propiedad_imagen:
     id:                                ~
@@ -158,6 +159,7 @@ propel:
     area_y:                             { type: double }
     estatus:                            { type: varchar(25), default: "Disponible" }
     usuario_id:                         ~
+    cantidad_oficina:                   { type: integer }
     
   municipio:
     id:                                ~

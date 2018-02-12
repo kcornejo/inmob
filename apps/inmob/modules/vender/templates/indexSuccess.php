@@ -94,7 +94,14 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><?php echo $propiedad->getDireccion() ?></td>
+                                    <td colspan="2">
+                                        <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
+                                        <?php echo $propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null ?>
+                                        <?php echo $propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null ?>
+                                        <?php echo $propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null ?>
+                                        <?php echo $propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null ?>
+                                        <?php echo $propiedad->getDireccion() ?>
+                                    </td>
                                 </tr>
                             </table>
                         </div>

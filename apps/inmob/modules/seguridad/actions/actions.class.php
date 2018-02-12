@@ -39,6 +39,7 @@ class seguridadActions extends sfActions {
                     $Usuario->setActivo(false);
                     $Usuario->setUsuario($valores['correo']);
                     $Usuario->setEmail($valores['correo']);
+                    $Usuario->setUsuario($valores['usuario']);
                     $Usuario->setClave($valores['contrasenia']);
                     $Usuario->setPerfilId($valores['perfil']);
                     $Usuario->setNumeroTelefono($valores['numero_telefono']);

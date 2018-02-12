@@ -47,27 +47,31 @@
                             CARACTERÍSTICAS DEL INMUEBLE
                         </h4>
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 ocultar casa">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
                                 <?php echo $formulario_vender["habitacion"] ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 ocultar edificio">
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Oficinas&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
+                                <?php echo $formulario_vender["oficina"] ?>
+                            </div>
+                            <div class="col-md-2 ocultar casa oficina edificio">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Baño</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Baños-01.png"/></h3>
                                 <?php echo $formulario_vender["banio"] ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 ocultar casa oficina edificio">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Parqueo&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Parqueos-01.png"/></h3>
                                 <?php echo $formulario_vender["parqueo"] ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 ocultar casa edificio">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Niveles</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Niveles-01.png"/></h3>
                                 <?php echo $formulario_vender["niveles"] ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 ocultar casa terreno edificio bodega">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Área</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Area-01.png"/></h3>
                                 <?php echo $formulario_vender["area"] ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 ocultar casa terreno edificio bodega">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Dimensiones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dimensiones-01.png"/></h3>
                                 <table>
                                     <tr>
@@ -93,31 +97,31 @@
                                         <div id="collapseOne" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 <div class="row">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa terreno bodega">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Agua</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Agua-01.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["tiene_agua"] ?>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa terreno bodega">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Energia Electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["tiene_luz"] ?>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Comedor</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Comedor.png"/></h3>
                                                         <?php echo $formulario_vender["comedor"] ?>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Salas</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Sala.png"/></h3>
                                                         <?php echo $formulario_vender["sala"] ?>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Cocina</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cocina.png"/></h3>
                                                         <?php echo $formulario_vender["cocina"] ?>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de Servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["dormitorio_servicio"] ?>
@@ -125,27 +129,27 @@
                                                     </div>
                                                 </div>
                                                 <div class='row'>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Estudio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["estudio"] ?>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Cisterna</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Cisterna-01.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["cisterna"] ?>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Jardin</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Jardin.png"/></h3>
                                                         <?php echo $formulario_vender["jardin"] ?>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Patio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Patio.png"/></h3>
                                                         <?php echo $formulario_vender["patio"] ?>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2 ocultar casa">
                                                         <h3 style="text-align: center;"><span class="subtitulo_kc">Lavanderia</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Lavanderia.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["lavanderia"] ?>
@@ -243,15 +247,15 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <span class="subtitulo_kc">Mi Comisión (%)&nbsp;<span style="color:red;">*</span>
-                                <div style="text-align: center">
-                                    <?php echo $formulario_vender["mi_comision"] ?>
-                                </div>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario_vender["mi_comision"] ?>
+                                    </div>
                             </div>
                             <div class="col-md-3">
                                 <span class="subtitulo_kc">Comisión Compartida (%)&nbsp;<span style="color:red;">*</span>
-                                <div style="text-align: center">
-                                    <?php echo $formulario_vender["comision_compartida"] ?>
-                                </div>
+                                    <div style="text-align: center">
+                                        <?php echo $formulario_vender["comision_compartida"] ?>
+                                    </div>
                             </div>
                             <div class="col-md-3">
                                 <span class="subtitulo_kc">Mi Comisión</span>
@@ -466,7 +470,37 @@
                         $(".calculo").on("input", function () {
                             calculo();
                         });
+                        $("#vender_form_tipo_inmueble").on('change', function () {
+                            ocultar($("#vender_form_tipo_inmueble").val());
+                        });
+                        ocultar($("#vender_form_tipo_inmueble").val());
                     });
+                    function ocultar(valor) {
+                        $(".ocultar").hide();
+                        switch (valor) {
+                            case "Casa":
+                                $(".casa").show();
+                                break;
+                            case "Apartamento":
+                                $(".casa").show();
+                                break;
+                            case "Terreno":
+                                $(".terreno").show();
+                                break;
+                            case "Oficinas":
+                                $(".oficina").show();
+                                break;
+                            case "Local":
+                                $(".oficina").show();
+                                break;
+                            case "Edificio":
+                                $(".edificio").show();
+                                break;
+                            case "Bodega":
+                                $(".bodega").show();
+                                break;
+                        }
+                    }
                     function calculo() {
                         //valor_comision_compartida
                         //valor_mi_comision

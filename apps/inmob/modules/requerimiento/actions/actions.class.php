@@ -26,6 +26,7 @@ class requerimientoActions extends sfActions {
         $cantidad = 1;
         $Requerimiento = RequerimientoQuery::create()->findOneById($id);
         $defaults = array();
+        $defaults["oficina"] = $Requerimiento->getCantidadOficina();
         $defaults["tipo_operacion"] = $Requerimiento->getTipoOperacion();
         $defaults["tipo_inmueble"] = $Requerimiento->getTipoInmueble();
         $defaults["habitacion"] = $Requerimiento->getCantidadHabitacion();
@@ -155,6 +156,7 @@ class requerimientoActions extends sfActions {
         $defaults["comedor"] = "0";
         $defaults["sala"] = "0";
         $defaults["cocina"] = "0";
+        $defaults["oficina"] = "0";
         $defaults["jardin"] = "0";
         $defaults["patio"] = "0";
         $defaults["ingresos"] = "0";
@@ -253,6 +255,7 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setPlazoEnAnios($valores["plazo_en_anios"]);
         $Requerimiento->setPlazoEnMeses($valores["plazo_en_meses"]);
         $Requerimiento->setMontoFinanciarMaximo($valores["monto_financiar_maximo"]);
+        $Requerimiento->setCantidadOficina($valores['oficina']);
         $Requerimiento->setCuotaTotalMensualMaxima($valores["cuota_total_mensual_maxima"]);
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $Requerimiento->setUsuarioId($usuario_id);

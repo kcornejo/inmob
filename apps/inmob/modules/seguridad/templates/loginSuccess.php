@@ -11,16 +11,29 @@
         <link href="/assets/global/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/img/logo.png" type="image/png">
     </head>
-    <body class="sidebar-top account separate-inputs" data-page="login">
+    <body class="sidebar-top account separate-inputs" data-page="login" style="color:white;">
         <!-- BEGIN LOGIN BOX -->
         <div class="container" id="login-block">
             <div class="row">
                 <div class="col-sm-6 col-md-8 hidden-sm hidden-xs">
-                    <video controls class="col-md-12" style="margin-top:15%;">
+                    <span style="color:black;">
+                        <center>
+                            <h3><b>Conectando asesores inmobiliarios <br/></b></h3>
+                            <h2><b>en toda Guatemala</b></h2>
+                        </center>
+                    </span>
+                    <img src="/assets/img/mac.png" alt="" width="100%" style="display: initial"/>
+                    <video controls class="col-md-12" style="margin-top:-55%;width:80%;margin-left:10%;">
                         <source src="video.mp4" type="video/mp4">
                         <source src="video.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                     </video>
+                    <span style="color:black;">
+                        <br/>
+                        <center>
+                            <h2><b>5512 8282 | info@bex.com.gt</b></h2>
+                        </center>
+                    </span>
                 </div>
                 <div class="col-sm-6 col-md-4 nav-tabs3" style="margin-top:30px;">
                     <ul class="nav nav-tabs">
@@ -40,7 +53,7 @@
                         ?>" id="tab1_1">
                             <div class="account-wall" style="margin-top:15%;">
                                 <center>
-                                    <img src="/assets/img/logo_v2.png" width="50%"/>
+                                    <img src="/assets/img/logo.png" width="50%"/>
                                     <br/><br/>
                                 </center>
                                 <?php echo $form->renderFormTag(url_for("seguridad/login"), array("class" => "form-signin")) ?>
@@ -58,18 +71,18 @@
                                     <?php echo $form["usuario"] ?>
                                     <i class="icon-user"></i>
                                 </div>
-                                <div class="append-icon m-b-20">
+                                <div class="append-icon">
                                     <?php echo $form["clave"] ?>
                                     <i class="icon-lock"></i>
                                 </div>
-                                <button name="btn_login" type="submit" id="btn_login" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left">
+
+                                <a class="m-b-20" href="<?php echo url_for("seguridad/recuperaclave") ?>" style="position:relative;float:right;color:#C5C5C5;">
+                                    <b>Olvidaste tu clave?</b>
+                                </a>
+                                <button style="background:#2E57A7;" name="btn_login" type="submit" id="btn_login" class="btn btn-lg btn-block ladda-button m-b-10" data-style="expand-left">
                                     <i class="fa fa-sign-in"></i>
                                     Ingreso
                                 </button>
-                                <a href="<?php echo url_for("seguridad/recuperaclave")?>" class="btn btn-lg btn-default btn-block btn-success ladda-button" data-style="expand-left">
-                                    <i class="fa fa-question"></i>
-                                    Olvide mi clave
-                                </a>
                                 <?php echo $form->renderHiddenFields() ?>
                                 <?php echo "</form>"; ?>
                             </div>
@@ -84,7 +97,7 @@
                         ?>" id="tab1_2">
                             <div class="account-wall" style="margin-top:15%;">
                                 <center>
-                                    <img src="/assets/img/logo_v2.png" width="50%"/>
+                                    <img src="/assets/img/logo.png" width="50%"/>
                                     <br/><br/>
                                 </center>
                                 <?php echo $form_registro->renderFormTag(url_for("seguridad/login"), array("class" => "form-signin")) ?>
@@ -106,6 +119,10 @@
                                     <i class="fa fa-inbox"></i>
                                 </div>
                                 <div class="append-icon">
+                                    <?php echo $form_registro["usuario"] ?>
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="append-icon">
                                     <?php echo $form_registro["contrasenia"] ?>
                                     <i class="fa fa-key"></i>
                                 </div>
@@ -113,7 +130,7 @@
                                     <?php echo $form_registro["contrasenia_2"] ?>
                                     <i class="fa fa-refresh"></i>
                                 </div>
-                                <button name="btn_registro" type="submit" id="btn_registro" class="btn btn-lg btn-warning btn-block ladda-button" data-style="expand-left">
+                                <button style="background:#2E57A7;"  name="btn_registro" type="submit" id="btn_registro" class="btn btn-lg btn-block ladda-button m-b-10" data-style="expand-left">
                                     <i class="fa fa-user"></i>
                                     Registro
                                 </button>
