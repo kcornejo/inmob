@@ -1,6 +1,4 @@
 /web/upload/
 /web/upload/*
-/config/databases.yml
 web/upload/*
 web/upload
-config/databases.yml
