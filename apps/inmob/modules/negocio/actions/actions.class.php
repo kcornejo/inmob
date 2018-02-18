@@ -14,11 +14,18 @@ class negocioActions extends sfActions {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $negocios = NegocioQuery::create()
                 ->where("usuario_req = $usuario_id or usuario_prop = $usuario_id")
+                ->groupByUsuarioReq()
+                ->groupByUsuarioProp()
                 ->find();
         $requerimiento_compra = new PropelArrayCollection();
         $requerimiento_renta = new PropelArrayCollection();
         $propiedad_venta = new PropelArrayCollection();
         $propiedad_renta = new PropelArrayCollection();
+        $monto_rc = 0;
+        $monto_rr = 0;
+        $monto_pv = 0;
+        $monto_pr = 0;
+        $monto_total = 0;
         foreach ($negocios as $fila) {
             if ($fila->getUsuarioReq() == $usuario_id) {
                 //Guarda en propiedad
@@ -40,6 +47,11 @@ class negocioActions extends sfActions {
         $this->requerimiento_renta = $requerimiento_renta;
         $this->propiedad_venta = $propiedad_venta;
         $this->propiedad_renta = $propiedad_renta;
+        $this->monto_rc = $monto_rc;
+        $this->monto_rr = $monto_rr;
+        $this->monto_pv = $monto_pv;
+        $this->monto_pr = $monto_pr;
+        $this->monto_total = $monto_total;
     }
 
     public function executeVisualizar(sfWebRequest $request) {

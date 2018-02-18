@@ -41,6 +41,34 @@ class Negocio extends BaseNegocio {
         }
     }
 
+    public function getComisionRequerimientoSM() {
+        $Propiedad = $this->getPropiedad();
+        $COMISION = $Propiedad->getMiComision() / 100 * $Propiedad->getPrecio();
+        $COMISION_REQ = $COMISION * ($Propiedad->getComisionCompartida()) / 100;
+        return $Propiedad->getMoneda()->getSimbolo() . " " . number_format($COMISION_REQ, 0);
+    }
+
+    public function getComisionVentaSM() {
+        $Propiedad = $this->getPropiedad();
+        $COMISION = $Propiedad->getMiComision() / 100 * $Propiedad->getPrecio();
+        $COMISION_VENTA = $COMISION * (100 - $Propiedad->getComisionCompartida()) / 100;
+        return $Propiedad->getMoneda()->getSimbolo() . " " . number_format($COMISION_VENTA, 0);
+    }
+
+    public function getComisionRequerimiento() {
+        $Propiedad = $this->getPropiedad();
+        $COMISION = $Propiedad->getMiComision() / 100 * $Propiedad->getPrecio();
+        $COMISION_REQ = $COMISION * ($Propiedad->getComisionCompartida()) / 100;
+        return $Propiedad->getMoneda()->getSimbolo() . " " . number_format($COMISION_REQ, 0);
+    }
+
+    public function getComisionVenta() {
+        $Propiedad = $this->getPropiedad();
+        $COMISION = $Propiedad->getMiComision() / 100 * $Propiedad->getPrecio();
+        $COMISION_VENTA = $COMISION * (100 - $Propiedad->getComisionCompartida()) / 100;
+        return $Propiedad->getMoneda()->getSimbolo() . " " . number_format($COMISION_VENTA, 0);
+    }
+
     static function match(Propiedad $Propiedad, Requerimiento $Requerimiento) {
         $no_negocio = false;
         if ($Propiedad->getMonedaId() == $Requerimiento->getMonedaId()) {

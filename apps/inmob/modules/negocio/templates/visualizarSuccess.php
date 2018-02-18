@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-header" style="background-color:#305da8;color:white;font-size:14pt;">
+                <div class="panel-header"   style="background-color:#305da8;color:white;font-size:14pt;">
                     <h3 face="Helvetica">
-                        <a style="color:white;" href="<?php echo url_for("negocio/index") ?>"><i class="icon icons-arrows-03"></i></a>
+                        <a href="<?php echo url_for("negocio/index") ?>" style="color:white;"><i class="icon icons-arrows-03"></i></a>
                         Casa en <?php
                         switch ($negocio->getPropiedad()->getTipoOperacion()) {
                             case "Vender":
@@ -19,7 +19,7 @@
                 </div>
                 <div class="panel-content">
                     <div class="row">
-                        <div class="col-md-12" style=";background-color:#f1f3f3; text-align: center;">
+                        <div class="col-md-7" style=";background-color:#f1f3f3; text-align: center;">
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
@@ -37,6 +37,45 @@
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
                                 <img style="max-height: 100%" src="/assets/img/caracteristicas/casa.png"/>
                             <?php endif; ?>  
+                        </div>
+                        <div class="col-md-5">
+                            <div class="panel">
+                                <div class="panel-header">
+                                    <h5 style="color:gray;">
+                                        INFORMACION FINANCIERA
+                                    </h5>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tr>
+                                            <td colspan="2">
+                                                Precio: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getPrecio(), 0) ?>
+                                                &nbsp;<?php echo $negocio->getPropiedad()->getNegociable() ? "NEGOCIABLE" : "NO NEGOCIABLE" ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Mantenimiento Mensual: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getMantenimientoMensual(), 0) ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Iusi Trimestral: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getIusiSemestral(), 0) ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <?php echo $negocio->getPropiedad()->getIncluyeGastosEscritura() ? "INCLUYE GASTOS DE ESCRITURA" : "NO INCLUYE GASTOS DE ESCRITURA" ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <div style="float:left;">
@@ -70,6 +109,9 @@
                         </div>
                     </div>
                     <div class="row">
+                        <h5 style="color:gray;">
+                            CARACTERISTICAS DEL INMUEBLE
+                        </h5>
                         <br/>
                         <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
                             <?php echo $negocio->getPropiedad()->getArea() ?>
@@ -162,6 +204,18 @@
                                 <br/><br/>
                             </div>
                         <?php endif; ?>
+                        <div class="col-md-12">
+                            <h5 style="color:gray;">
+                                UBICACION
+                            </h5>
+                            <?php $propiedad = $negocio->getPropiedad(); ?>
+                            <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
+                            <?php echo $propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null ?>
+                            <?php echo $propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null ?>
+                            <?php echo $propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null ?>
+                            <?php echo $propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null ?>
+                            <?php echo $propiedad->getDireccion() ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,8 +228,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-header bg-primary">
-                    <h3>
+                <div class="panel-header"   style="background-color:#305da8;color:white;font-size:14pt;">
+                    <h3 face="Helvetica">
+                        <a href="<?php echo url_for("negocio/index") ?>" style="color:white;"><i class="icon icons-arrows-03"></i></a>
                         Requerimiento en <?php
                         switch ($negocio->getRequerimiento()->getTipoOperacion()) {
                             case "Comprar":
@@ -190,7 +245,7 @@
                 </div>
                 <div class="panel-content">
                     <div class="row">
-                        <div class="col-md-12" style=";background-color:#f1f3f3; text-align: center;">
+                        <div class="col-md-7" style=";background-color:#f1f3f3; text-align: center;">
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
@@ -208,6 +263,45 @@
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
                                 <img style="max-height: 100%" src="/assets/img/caracteristicas/casa.png"/>
                             <?php endif; ?>  
+                        </div>
+                        <div class="col-md-5">
+                            <div class="panel">
+                                <div class="panel-header">
+                                    <h5 style="color:gray;">
+                                        INFORMACION FINANCIERA
+                                    </h5>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tr>
+                                            <td colspan="2">
+                                                Precio: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getPrecio(), 0) ?>
+                                                &nbsp;<?php echo $negocio->getPropiedad()->getNegociable() ? "NEGOCIABLE" : "NO NEGOCIABLE" ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Mantenimiento Mensual: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getMantenimientoMensual(), 0) ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Iusi Trimestral: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getIusiSemestral(), 0) ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <?php echo $negocio->getPropiedad()->getIncluyeGastosEscritura() ? "INCLUYE GASTOS DE ESCRITURA" : "NO INCLUYE GASTOS DE ESCRITURA" ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <div style="float:left;">
@@ -238,6 +332,9 @@
                         </div>
                     </div>
                     <div class="row">
+                        <h5 style="color:gray;">
+                            CARACTERISTICAS DEL INMUEBLE
+                        </h5>
                         <br/>
                         <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
                             <?php echo $negocio->getPropiedad()->getArea() ?>
@@ -330,6 +427,18 @@
                                 <br/><br/>
                             </div>
                         <?php endif; ?>
+                        <div class="col-md-12">
+                            <h5 style="color:gray;">
+                                UBICACION
+                            </h5>
+                            <?php $propiedad = $negocio->getPropiedad(); ?>
+                            <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
+                            <?php echo $propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null ?>
+                            <?php echo $propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null ?>
+                            <?php echo $propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null ?>
+                            <?php echo $propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null ?>
+                            <?php echo $propiedad->getDireccion() ?>
+                        </div>
                     </div>
                 </div>
             </div>

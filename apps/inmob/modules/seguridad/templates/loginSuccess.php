@@ -24,8 +24,8 @@
                     </span>
                     <img src="/assets/img/mac.png" alt="" width="100%" style="display: initial"/>
                     <video controls class="col-md-12" style="margin-top:-55%;width:80%;margin-left:10%;">
-                        <source src="video.mp4" type="video/mp4">
-                        <source src="video.ogg" type="video/ogg">
+                        <source src="/assets/video.mp4" type="video/mp4">
+                        <source src="/assets/video.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                     </video>
                     <span style="color:black;">

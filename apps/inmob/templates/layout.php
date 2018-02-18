@@ -65,6 +65,8 @@
                                     $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
                                     $Negocio = NegocioQuery::create()
                                             ->where("usuario_req = $usuario_id or usuario_prop = $usuario_id")
+                                            ->groupByUsuarioReq()
+                                            ->groupByUsuarioProp()
                                             ->find();
                                     $Usuario = UsuarioQuery::create()->findOneById($usuario_id);
                                     echo sizeof($Negocio);
