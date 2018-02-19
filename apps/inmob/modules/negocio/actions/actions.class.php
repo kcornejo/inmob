@@ -62,4 +62,23 @@ class negocioActions extends sfActions {
         $this->usuario_id = $usuario_id;
     }
 
+    public function executeDetalle(sfWebRequest $request) {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $negocio_id = $request->getParameter("id");
+        $Negocio = NegocioQuery::create()->findOneById($negocio_id);
+        $registros = array();
+        if ($Negocio->getUsuarioReq() == $usuario_id) {
+            $registros = NegocioQuery::create()
+                    ->filterByPropiedadId($Negocio->getPropiedadId())
+                    ->find();
+        } else {
+            $registros = NegocioQuery::create()
+                    ->filterByRequerimientoId($Negocio->getRequerimientoId())
+                    ->find();
+        }
+        $this->registros = $registros;
+        $this->negocio = $Negocio;
+        $this->usuario_id = $usuario_id;
+    }
+
 }

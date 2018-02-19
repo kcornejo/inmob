@@ -80,6 +80,7 @@
                             <li><a href="<?php echo url_for("tasa_cambio/index") ?>"><i class="icon-refresh"></i><span>Tasa de Cambio</span></a></li>
                             <li><a href="<?php echo url_for("usuario/index") ?>"><i class="icon-users"></i><span>Usuarios</span></a></li>
                             <li><a href="<?php echo url_for("perfil/index") ?>"><i class="icon-lock"></i><span>Perfiles</span></a></li>
+                            <li><a href="<?php echo url_for("configuracion/index") ?>"><i class="icon-settings"></i><span>Configuracion</span></a></li>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -175,6 +176,7 @@
         <script src="/assets/admin/layout4/js/layout.js"></script> <!-- Main Application Script -->
         <script src="/js/bootstrap-rating-input.js"></script>
         <script type="text/javascript" src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
+        <script src="/assets/global/plugins/cke-editor/ckeditor.js"></script>
         <script src="/js/kenScript.js"></script>
     </body>
 </html>

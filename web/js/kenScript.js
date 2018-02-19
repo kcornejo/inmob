@@ -9,6 +9,11 @@ function kenStars() {
 function imagen(){
     $(".fancybox").fancybox();
 }
+function kenCkeditor(){
+    $('.ckeditor').each(function(){
+       $(this).ckeditor();
+    });
+}
 function BusquedaLlenaSelect() {
     $(".velLlenaSelect").each(function () {
         var id_origen = "#" + $(this).attr("id");
@@ -44,4 +49,5 @@ $(document).ready(function () {
 //    kenStars();
     BusquedaLlenaSelect();
     imagen();
+    kenCkeditor();
 });

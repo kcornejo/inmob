@@ -11,7 +11,7 @@
 class inicioActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
-       $this->redirect("vender/index");
+        $this->redirect("vender/index");
     }
 
     public function executeDep(sfWebRequest $request) {

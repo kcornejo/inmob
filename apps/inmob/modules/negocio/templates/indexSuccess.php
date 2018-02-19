@@ -36,8 +36,8 @@
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                                 <li>
-                                                    <a href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>">
-                                                        Visualizar
+                                                    <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
+                                                        Detalle
                                                     </a>
                                                 </li>
                                             </ul>
@@ -121,8 +121,8 @@
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                                 <li>
-                                                    <a href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>">
-                                                        Visualizar
+                                                    <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
+                                                        Detalle
                                                     </a>
                                                 </li>
                                             </ul>
@@ -206,8 +206,8 @@
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                                 <li>
-                                                    <a href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>">
-                                                        Visualizar
+                                                    <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
+                                                        Detalle
                                                     </a>
                                                 </li>
                                             </ul>
@@ -297,8 +297,8 @@
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                                 <li>
-                                                    <a href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>">
-                                                        Visualizar
+                                                    <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
+                                                        Detalle
                                                     </a>
                                                 </li>
                                             </ul>
