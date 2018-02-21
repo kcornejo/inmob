@@ -44,9 +44,9 @@
     function createRatingEl($input, options) {
         // Inline option
         if (options.inline) {
-            var $ratingEl = $('<span class="rating-input"></span>');
+            var $ratingEl = $('<span class="rating-input" style="text-align:center"></span>');
         } else {
-            var $ratingEl = $('<div class="rating-input"></div>');
+            var $ratingEl = $('<div class="rating-input" style="text-align:center"></div>');
         }
 
         // Copy original classes but the rating class

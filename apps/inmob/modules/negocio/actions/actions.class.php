@@ -27,7 +27,7 @@ class negocioActions extends sfActions {
         $monto_pr = 0;
         $monto_total = 0;
         foreach ($negocios as $fila) {
-            if ($fila->getUsuarioReq() == $usuario_id) {
+            if ($fila->getUsuarioProp() == $usuario_id) {
                 //Guarda en propiedad
                 if ($fila->getPropiedad()->getTipoOperacion() == "Vender") {
                     $propiedad_venta[] = $fila;
@@ -35,7 +35,7 @@ class negocioActions extends sfActions {
                     $propiedad_renta[] = $fila;
                 }
             }
-            if ($fila->getUsuarioProp() == $usuario_id) {
+            if ($fila->getUsuarioReq() == $usuario_id) {
                 if ($fila->getRequerimiento()->getTipoOperacion() == "Comprar") {
                     $requerimiento_compra[] = $fila;
                 } else {

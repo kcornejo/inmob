@@ -208,8 +208,8 @@ propel:
   formato_correo:
     id:                                ~
     tipo:                              { type: varchar(255) }
-    contenido:                         { type: BLOB }
+    contenido:                         { type: longvarchar }
     
   formato_inicial:
     id:                                ~
-    contenido:                         { type: BLOB }
+    contenido:                         { type: longvarchar }

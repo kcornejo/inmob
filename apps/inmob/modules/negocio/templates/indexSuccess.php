@@ -23,7 +23,7 @@
                             <div class="panel">
                                 <div class="panel-header">
                                     <h5>
-                                        <?php echo $fila->getId() ?>
+                                        <?php echo $fila->getRequerimiento()->getId() ?>
                                         |
                                         Comprar casa
                                         |
@@ -108,7 +108,7 @@
                             <div class="panel">
                                 <div class="panel-header">
                                     <h5>
-                                        <?php echo $fila->getId() ?>
+                                        <?php echo $fila->getRequerimiento()->getId() ?>
                                         |
                                         Rentar casa
                                         |
@@ -193,9 +193,9 @@
                             <div class="panel">
                                 <div class="panel-header">
                                     <h5>
-                                        <?php echo $fila->getId() ?>
+                                        <?php echo $fila->getPropiedad()->getId() ?>
                                         |
-                                        Comprar Casa
+                                        Vender Casa
                                         |
                                         <font style="color:#6480AB">
                                         <b><?php echo $fila->getComisionRequerimiento() ?></b>
@@ -284,7 +284,7 @@
                             <div class="panel">
                                 <div class="panel-header">
                                     <h5>
-                                        <?php echo $fila->getId() ?>
+                                        <?php echo $fila->getPropiedad()->getId() ?>
                                         |
                                         Rentar Casa
                                         |

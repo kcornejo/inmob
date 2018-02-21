@@ -29,7 +29,11 @@ class configuracionActions extends sfActions {
             $objeto = FormatoInicialQuery::create()
                     ->findOne();
         }
-        $this->form = new FormatoForm();
+        $defaults = array();
+        if ($objeto) {
+            $defaults["Formato"] = $objeto->getContenido();
+        }
+        $this->form = new FormatoForm($defaults);
         if ($request->isMethod('POST')) {
             $this->form->bind($request->getParameter("formato"));
             if ($this->form->isValid()) {
@@ -37,11 +41,11 @@ class configuracionActions extends sfActions {
                 if (!$objeto) {
                     if ($tipo != "Principal") {
                         $objeto = new FormatoCorreo();
+                        $objeto->setTipo($tipo);
                     } else {
                         $objeto = new FormatoInicial();
                     }
                 }
-                $objeto->setTipo($tipo);
                 $objeto->setContenido($valores["Formato"]);
                 $objeto->save();
                 $this->redirect("configuracion/index");

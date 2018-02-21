@@ -1,7 +1,4 @@
-<?php
-//Yo subi el requerimiento, quiero ver propiedades
-?>
-<?php if ($negocio->getUsuarioReq() == $usuario_id): ?>
+<?php if ($negocio->getUsuarioProp() == $usuario_id): ?>
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
@@ -33,7 +30,7 @@
                                 <?php endif; ?>
                                 |
                                 <font style="color:#6480AB">
-                                <b><?php echo $negocio->getComisionRequerimiento() ?></b>
+                                <b><?php echo $negocio->getComisionVenta() ?></b>
                                 </font>
                                 <div class="dropdown" style="float:right;">
                                     <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -50,7 +47,7 @@
                                 <br/>
                                 <font style="color:#6480AB">
                                 <br/>
-                                <b><?php echo $negocio->getRequerimiento()->getMoneda()->getCodigo() . ' ' . number_format($negocio->getRequerimiento()->getPresupuestoMin(), 0) . ' - ' . number_format($negocio->getRequerimiento()->getPresupuestoMax(), 0) ?></b>
+                                <b><?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . ' ' . number_format($negocio->getPropiedad()->getPrecio(), 0) ?></b>
                                 </font>
                             </h5>
                             <div class="col-md-6">
@@ -91,10 +88,14 @@
                                             <h5>
                                                 <?php echo $fila->getId() ?>
                                                 |
-                                                Comprar casa
+                                                <?php if ($fila->getRequerimiento()->getTipoOperacion() == "Comprar"): ?>
+                                                    Comprar Casa
+                                                <?php else: ?>
+                                                    Rentar Casa
+                                                <?php endif; ?>
                                                 |
                                                 <font style="color:#6480AB">
-                                                <b><?php echo $fila->getComisionVenta() ?></b>
+                                                <b><?php echo $fila->getComisionRequerimiento() ?></b>
                                                 </font>
                                                 <div class="dropdown" style="float:right;">
                                                     <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -181,14 +182,14 @@
                             <h5>
                                 <?php echo $negocio->getRequerimiento()->getId() ?>
                                 |
-                                <?php if ($negocio->getRequerimiento()->getTipoOperacion() == "Vender"): ?>
-                                    Vender Casa
+                                <?php if ($negocio->getRequerimiento()->getTipoOperacion() == "Comprar"): ?>
+                                    Comprar Casa
                                 <?php else: ?>
                                     Rentar Casa
                                 <?php endif; ?>
                                 |
                                 <font style="color:#6480AB">
-                                <b><?php echo $negocio->getComisionVenta() ?></b>
+                                <b><?php // echo $negocio->getComisionRequerimiento() ?></b>
                                 </font>
                                 <div class="dropdown" style="float:right;">
                                     <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -210,23 +211,23 @@
                             </h5>
                             <div class="col-md-6">
                                 <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
-                                    <b><?php echo $negocio->getPropiedad()->getArea() ?>&nbsp;</b>
+                                    <b><?php echo $negocio->getRequerimiento()->getArea() ?>&nbsp;</b>
                                     <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                    <b><?php echo $negocio->getPropiedad()->getNiveles() ?>&nbsp;</b>
+                                    <b><?php echo $negocio->getRequerimiento()->getNiveles() ?>&nbsp;</b>
                                     <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                    <b><?php echo $negocio->getPropiedad()->getCantidadHabitacion() ?>&nbsp;</b>
+                                    <b><?php echo $negocio->getRequerimiento()->getCantidadHabitacion() ?>&nbsp;</b>
                                     <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                    <b><?php echo $negocio->getPropiedad()->getCantidadParqueo() ?>&nbsp;</b>
+                                    <b><?php echo $negocio->getRequerimiento()->getCantidadParqueo() ?>&nbsp;</b>
                                     <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                    <b><?php echo $negocio->getPropiedad()->getCantidadBanio() ?>&nbsp;</b>
+                                    <b><?php echo $negocio->getRequerimiento()->getCantidadBanio() ?>&nbsp;</b>
                                     <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                 </div>
                             </div>
@@ -246,10 +247,14 @@
                                             <h5>
                                                 <?php echo $fila->getId() ?>
                                                 |
-                                                Comprar casa
+                                                <?php if ($fila->getPropiedad()->getTipoOperacion() == "Vender"): ?>
+                                                    Vender Casa
+                                                <?php else: ?>
+                                                    Rentar Casa
+                                                <?php endif; ?>
                                                 |
                                                 <font style="color:#6480AB">
-                                                <b><?php echo $fila->getComisionVenta() ?></b>
+                                                <b><?php echo $fila->getComisionRequerimiento() ?></b>
                                                 </font>
                                                 <div class="dropdown" style="float:right;">
                                                     <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -269,15 +274,23 @@
                                             <div class="row">
                                                 <div class="col-md-12" style="text-align: center;">
                                                     <div style=";background-color:#f1f3f3; text-align: center;">
-                                                        <img style="max-height: 100px" src="/assets/img/caracteristicas/casa.png"/>
+                                                        <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $fila): ?>
+                                                            <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
+                                                            <?php break; ?>
+                                                        <?php endforeach; ?>
+                                                        <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
+                                                            <div style=";background-color:#f1f3f3; text-align: center;">
+                                                                <img style="max-height: 100px" src="/assets/img/caracteristicas/casa.png"/>
+                                                            </div>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <table style="width:100%;height: 100%">
                                                         <tr>
                                                             <td style="color:#6480AB" colspan="2">
-                                                                <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
-                                                                <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
+                                                                <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
+                                                                <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -285,23 +298,23 @@
                                                                 <div class="row">
                                                                     <br/><br/>
                                                                     <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
-                                                                        <b><?php echo $fila->getRequerimiento()->getArea() ?>&nbsp;</b>
+                                                                        <b><?php echo $fila->getPropiedad()->getArea() ?>&nbsp;</b>
                                                                         <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                                                     </div>
                                                                     <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                        <b><?php echo $fila->getRequerimiento()->getNiveles() ?>&nbsp;</b>
+                                                                        <b><?php echo $fila->getPropiedad()->getNiveles() ?>&nbsp;</b>
                                                                         <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                                     </div>
                                                                     <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                        <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?>&nbsp;</b>
+                                                                        <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?>&nbsp;</b>
                                                                         <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                                     </div>
                                                                     <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                        <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?>&nbsp;</b>
+                                                                        <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?>&nbsp;</b>
                                                                         <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                                     </div>
                                                                     <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                        <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?>&nbsp;</b>
+                                                                        <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?>&nbsp;</b>
                                                                         <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                                                     </div>
                                                                     <br/><br/>

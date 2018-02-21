@@ -11,7 +11,9 @@
 class inicioActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
-        $this->redirect("vender/index");
+        $Formato = FormatoInicialQuery::create()
+                ->findOne();
+        $this->formato = $Formato;
     }
 
     public function executeDep(sfWebRequest $request) {

@@ -299,6 +299,13 @@
                                                 <?php echo $negocio->getPropiedad()->getIncluyeGastosEscritura() ? "INCLUYE GASTOS DE ESCRITURA" : "NO INCLUYE GASTOS DE ESCRITURA" ?>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                        <center>
+                                            Comunidad: <input disabled="true" type="number" class="rating" data-readonly value="<?php echo $negocio->getPropiedad()->getComunidad() ?>"/>
+                                        </center>
+                                        </td>
+                                        </tr>
                                     </table>
                                 </div>
                             </div>

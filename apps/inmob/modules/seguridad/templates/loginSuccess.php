@@ -23,7 +23,7 @@
                         </center>
                     </span>
                     <img src="/assets/img/mac.png" alt="" width="100%" style="display: initial"/>
-                    <video controls class="col-md-12" style="margin-top:-55%;width:80%;margin-left:10%;">
+                    <video controls class="col-md-12" style="margin-top:-49.3%;width:81%;margin-left:9.7%;">
                         <source src="/assets/video.mp4" type="video/mp4">
                         <source src="/assets/video.ogg" type="video/ogg">
                         Your browser does not support the video tag.
@@ -87,7 +87,7 @@
                                 <?php echo "</form>"; ?>
                             </div>
                             <p class="account-copyright">
-                                <span>Copyright © <?php echo date("Y") ?>
+                                <!--<span>Copyright © <?php echo date("Y") ?></span>-->
                             </p>
                         </div>
                         <div class="tab-pane fade <?php
@@ -142,12 +142,8 @@
                             </p>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
         </div>
         <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
         <script src="/assets/global/plugins/jquery/jquery-migrate-3.0.0.min.js"></script>

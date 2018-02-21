@@ -19,4 +19,10 @@ class Propiedad extends BasePropiedad {
         parent::delete($con);
     }
 
+    public function getComunidad() {
+        $valor = $this->getSeguridad() + $this->getAccesos() + $this->getAgua() + $this->getTransportePublico() + $this->getTransitoVehicular() + $this->getComunidadesColidantes() + $this->getAreasRecreacion();
+        $valor = $valor / 7;
+        return round($valor, 0);
+    }
+
 }
