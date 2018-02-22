@@ -1,15 +1,15 @@
 <div class="row">
-    <div class="col-md-12">
-        <?php foreach ($requerimientos as $requerimiento): ?>
+    <?php foreach ($requerimientos as $requerimiento): ?>
+        <div class="col-md-3">
             <div class="panel">
                 <div class="panel-header">
                     <h5>
-                        <?php echo $requerimiento->getId(); ?>
+                        <?php echo $requerimiento->getId() ?>
                         |
                         <?php echo $requerimiento->getTipoInmueble() ?>
                         en <?php
-                        if ($requerimiento->getTipoOperacion() == "Comprar") {
-                            echo "Compra";
+                        if ($requerimiento->getTipoOperacion() == "Vender") {
+                            echo "Venta";
                         } else {
                             echo "Renta";
                         }
@@ -23,8 +23,6 @@
                                     <a href="<?php echo url_for('requerimiento/editar') . "?id=" . $requerimiento->getId() ?>">
                                         Editar
                                     </a>
-                                </li>
-                                <li>
                                     <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
                                                 location.replace('<?php echo url_for('requerimiento/eliminar') . "?id=" . $requerimiento->getId() ?>')
                                             }" href="#">
@@ -42,59 +40,65 @@
                                 </li>
                             </ul>
                         </div>
-
                     </h5>
                 </div>
-                <div class="panel-content">
+                <div class="panel">
                     <div class="row">
-                        <div class="col-md-2" style="text-align: center;">
+                        <div class="col-md-12" style="text-align: center;">
                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                <img style="max-height: 100px" src="/assets/img/caracteristicas/casa.png"/>
+                                <div style=";background-color:#f1f3f3; text-align: center;">
+                                    <img style="max-height: 100px" src="<?php echo $requerimiento->getDireccionImagen()  ?>"/>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <table style="width:100%;height: 100%">
                                 <tr>
                                     <td style="color:#6480AB" colspan="2">
                                         <b><?php echo $requerimiento->getMoneda()->getCodigo() ?></b>
-                                        <?php echo number_format($requerimiento->getPresupuestoMin(), 0) . '-' . number_format($requerimiento->getPresupuestoMax(), 0) ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <?php foreach ($requerimiento->getDireccionRequerimientos() as $fila): ?>
-                                            <?php
-                                            echo $fila->getDireccion();
-                                            break;
-                                            ?>
-                                        <?php endforeach; ?>
+                                        <?php echo number_format($requerimiento->getPresupuestoMin(), 0) . " - " . number_format($requerimiento->getPresupuestoMax(), 0) ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <div class="row">
                                             <br/><br/>
-                                            <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
-                                                <b><?php echo $requerimiento->getArea() ?>&nbsp;</b>
-                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                            <div class="col-md-12">
+                                                <table class="table" style="padding: 0;">
+                                                    <tr>
+                                                        <td style="padding: 0;">
+                                                            <b><?php echo $requerimiento->getArea() ?></b>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <b><?php echo $requerimiento->getNiveles() ?></b>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <b><?php echo $requerimiento->getCantidadHabitacion() ?></b>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <b><?php echo $requerimiento->getCantidadParqueo() ?></b>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <b><?php echo $requerimiento->getCantidadBanio() ?></b>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
-                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $requerimiento->getNiveles() ?>&nbsp;</b>
-                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                            </div>
-                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $requerimiento->getCantidadHabitacion() ?>&nbsp;</b>
-                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                            </div>
-                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $requerimiento->getCantidadParqueo() ?>&nbsp;</b>
-                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                            </div>
-                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                <b><?php echo $requerimiento->getCantidadBanio() ?>&nbsp;</b>
-                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                            </div>
-                                            <br/><br/>
                                         </div>
                                     </td>
                                 </tr>
@@ -103,8 +107,8 @@
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
-    </div>
+        </div>
+    <?php endforeach; ?>
     <hr/>
     <a class="col-md-1 col-xs-3 col-sm-1" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;" href="<?php echo url_for('requerimiento/nueva') ?>">
         <img style="width:100%" src="/assets/img/caracteristicas/Agregar requerimiento.png"/>

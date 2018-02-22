@@ -1,3 +1,9 @@
+<?php
+$requerimiento_compra = $sf_data->getRaw('requerimiento_compra');
+$requerimiento_renta = $sf_data->getRaw('requerimiento_renta');
+$propiedad_renta = $sf_data->getRaw('propiedad_renta');
+$propiedad_venta = $sf_data->getRaw('propiedad_venta');
+?> 
 <div class="row">
     <div class="col-md-12">
         <h5 style="text-align: center;">
@@ -25,7 +31,7 @@
                                     <h5>
                                         <?php echo $fila->getRequerimiento()->getId() ?>
                                         |
-                                        Comprar casa
+                                        Comprar <?php echo $fila->getRequerimiento()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
                                         <b><?php echo $fila->getComisionVenta() ?></b>
@@ -48,40 +54,61 @@
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
                                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                                <img style="max-height: 100px" src="/assets/img/caracteristicas/casa.png"/>
+                                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen()  ?>"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <table style="width:100%;height: 100%">
                                                 <tr>
-                                                    <td style="color:#6480AB" colspan="2">
+                                                    <td style="color:#6480AB;width:80%">
                                                         <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
                                                         <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="pull-right badge badge-default" style="color:black;margin-right:3px;">
+                                                            <?php echo sizeof($fila->getPropiedad()->getNegocios()); ?>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
                                                             <br/><br/>
-                                                            <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getArea() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getNiveles() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                            <div class="col-md-12">
+                                                                <table class="table" style="padding: 0;">
+                                                                    <tr>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
                                                             <br/><br/>
                                                         </div>
@@ -110,7 +137,7 @@
                                     <h5>
                                         <?php echo $fila->getRequerimiento()->getId() ?>
                                         |
-                                        Rentar casa
+                                        Rentar <?php echo $fila->getRequerimiento()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
                                         <b><?php echo $fila->getComisionVenta() ?></b>
@@ -133,40 +160,61 @@
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
                                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                                <img style="max-height: 100px" src="/assets/img/caracteristicas/casa.png"/>
+                                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen()  ?>"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <table style="width:100%;height: 100%">
                                                 <tr>
-                                                    <td style="color:#6480AB" colspan="2">
+                                                    <td style="color:#6480AB;width: 80%">
                                                         <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
                                                         <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="pull-right badge badge-default" style="color:black;margin-right:3px;">
+                                                            <?php echo sizeof($fila->getPropiedad()->getNegocios()); ?>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
                                                             <br/><br/>
-                                                            <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getArea() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getNiveles() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                            <div class="col-md-12">
+                                                                <table class="table" style="padding: 0;">
+                                                                    <tr>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
                                                             <br/><br/>
                                                         </div>
@@ -195,7 +243,7 @@
                                     <h5>
                                         <?php echo $fila->getPropiedad()->getId() ?>
                                         |
-                                        Vender Casa
+                                        Vender <?php echo $fila->getPropiedad()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
                                         <b><?php echo $fila->getComisionRequerimiento() ?></b>
@@ -217,47 +265,68 @@
                                 <div class="panel">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
-                                            <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $fila): ?>
-                                                <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
+                                            <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
+                                                <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                                 <?php break; ?>
                                             <?php endforeach; ?>
                                             <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
                                                 <div style=";background-color:#f1f3f3; text-align: center;">
-                                                    <img style="max-height: 100px" src="/assets/img/caracteristicas/casa.png"/>
+                                                    <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen()  ?>"/>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
                                         <div class="col-md-12">
                                             <table style="width:100%;height: 100%">
                                                 <tr>
-                                                    <td style="color:#6480AB" colspan="2">
+                                                    <td style="color:#6480AB;width: 80%">
                                                         <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
                                                         <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="pull-right badge badge-default" style="color:black;margin-right:3px;">
+                                                            <?php echo sizeof($fila->getRequerimiento()->getNegocios()); ?>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
                                                             <br/><br/>
-                                                            <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getArea() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getNiveles() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                            <div class="col-md-12">
+                                                                <table class="table" style="padding: 0;">
+                                                                    <tr>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getArea() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
                                                             <br/><br/>
                                                         </div>
@@ -286,7 +355,7 @@
                                     <h5>
                                         <?php echo $fila->getPropiedad()->getId() ?>
                                         |
-                                        Rentar Casa
+                                        Rentar <?php echo $fila->getPropiedad()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
                                         <b><?php echo $fila->getComisionRequerimiento() ?></b>
@@ -308,47 +377,68 @@
                                 <div class="panel">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
-                                            <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $fila): ?>
-                                                <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
+                                            <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
+                                                <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                                 <?php break; ?>
                                             <?php endforeach; ?>
                                             <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
                                                 <div style=";background-color:#f1f3f3; text-align: center;">
-                                                    <img style="max-height: 100px" src="/assets/img/caracteristicas/casa.png"/>
+                                                    <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen()  ?>"/>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
                                         <div class="col-md-12">
                                             <table style="width:100%;height: 100%">
                                                 <tr>
-                                                    <td style="color:#6480AB" colspan="2">
+                                                    <td style="color:#6480AB;width:80%;">
                                                         <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
                                                         <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="pull-right badge badge-default" style="color:black;margin-right:3px;">
+                                                            <?php echo sizeof($fila->getRequerimiento()->getNegocios()); ?>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
                                                             <br/><br/>
-                                                            <div class="col-md-2 col-xs-3 col-sm-3" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getArea() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getNiveles() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                            </div>
-                                                            <div class="col-md-2 col-xs-2 col-sm-2" style="text-align: center;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?>&nbsp;</b>
-                                                                <img style="max-width: 30px;position:absolute;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                            <div class="col-md-12">
+                                                                <table class="table" style="padding: 0;">
+                                                                    <tr>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getArea() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
+                                                                        </td>
+                                                                        <td style="padding: 0;">
+                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
                                                             <br/><br/>
                                                         </div>

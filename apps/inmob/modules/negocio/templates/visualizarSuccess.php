@@ -35,7 +35,7 @@
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
-                                <img style="max-height: 100%" src="/assets/img/caracteristicas/casa.png"/>
+                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen()  ?>"/>
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
@@ -72,6 +72,13 @@
                                             <td colspan="2">
                                                 <?php echo $negocio->getPropiedad()->getIncluyeGastosEscritura() ? "INCLUYE GASTOS DE ESCRITURA" : "NO INCLUYE GASTOS DE ESCRITURA" ?>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                        <center>
+                                            Comunidad: <input disabled="true" type="number" class="rating" data-readonly value="<?php echo $negocio->getPropiedad()->getComunidad() ?>"/>
+                                        </center>
+                                        </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -261,7 +268,7 @@
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
-                                <img style="max-height: 100%" src="/assets/img/caracteristicas/casa.png"/>
+                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen()  ?>"/>
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">

@@ -13,6 +13,8 @@ class negocioActions extends sfActions {
     public function executeIndex(sfWebRequest $request) {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $negocios = NegocioQuery::create()
+                ->joinPropiedad()
+                ->joinRequerimiento()
                 ->where("usuario_req = $usuario_id or usuario_prop = $usuario_id")
                 ->groupByUsuarioReq()
                 ->groupByUsuarioProp()
