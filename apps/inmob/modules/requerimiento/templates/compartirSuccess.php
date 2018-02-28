@@ -70,7 +70,7 @@
                             <li class="dropdown" id="user-header">
                                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <img src="/assets/global/images/avatars/avatar12.png" alt="user image">
-                                    <span class="username"><?php echo sfContext::getInstance()->getUser()->getAttribute("usuarioNombre", null, "seguridad") ?></span>
+                                    <span class="username"></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
