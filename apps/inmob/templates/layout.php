@@ -178,6 +178,8 @@
         <script src="/js/bootstrap-rating-input.js"></script>
         <script type="text/javascript" src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
         <script src="/assets/global/plugins/cke-editor/ckeditor.js"></script>
+        <script src="/assets/global/plugins/noty/jquery.noty.packaged.min.js"></script>  <!-- Notifications -->
+        <script src="/assets/global/js/pages/notifications.js"></script>
         <script src="/js/kenScript.js"></script>
     </body>
 </html>

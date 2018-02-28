@@ -122,7 +122,7 @@ function generate(position, container, content, confirm) {
     }
       
     if(container == '') {
-
+        
         var n = noty({
             text        : content,
             type        : type,

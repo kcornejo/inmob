@@ -24,13 +24,7 @@ class seguridadActions extends sfActions {
     }
 
     public function executeLogin(sfWebRequest $request) {
-        $usuario_id = null;
-        try {
-            $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-        } catch (Exception $ex) {
-            
-        }
-        if ($usuario_id > 0) {
+        if (sfContext::getInstance()->getUser()->isAuthenticated()) {
             $this->redirect("inicio/index");
         }
         $this->getUser()->getAttributeHolder()->clear();

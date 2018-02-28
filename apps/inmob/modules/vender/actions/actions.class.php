@@ -33,13 +33,7 @@ class venderActions extends sfActions {
 
     public function executeCompartir(sfWebRequest $request) {
         $id = $request->getParameter("id");
-        $usuario_id = null;
-        try {
-            $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-        } catch (Exception $ex) {
-            
-        }
-        if ($usuario_id > 0) {
+        if (sfContext::getInstance()->getUser()->isAuthenticated()) {
             $this->redirect("vender/visualizar?id=" . $id);
         }
 //        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');

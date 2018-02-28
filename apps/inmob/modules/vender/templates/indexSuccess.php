@@ -40,6 +40,9 @@
                                     <a href="<?php echo url_for('vender/visualizar') . "?id=" . $propiedad->getId() ?>">
                                         Visualizar
                                     </a>
+                                    <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $propiedad->getId() ?>')" href="javascript:void();">
+                                        Compartir
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -133,8 +136,18 @@
         <img style="width:100%" src="/assets/img/caracteristicas/Agregar propiedad.png"/>
     </a>
 </div>
+<input type="text" id="text_copiar" style="display:none;"/>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
+                                    function copiar(texto) {
+                                        $('#text_copiar').val(texto);
+                                        var copyText = document.getElementById("text_copiar");
+                                        $('#text_copiar').show();
+                                        copyText.select();
+                                        document.execCommand("copy");
+                                        $('#text_copiar').hide();
+                                        generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
+                                    }
                                     $(document).ready(function () {
                                         $(".ajusta_propiedad").on('change', function () {
                                             var referencia = $(this).attr("referencia");
