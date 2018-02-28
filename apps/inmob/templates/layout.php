@@ -14,6 +14,7 @@
         <link href="/assets/admin/layout4/css/layout.css" rel="stylesheet">
         <link href="/js/css-stars.css" rel="stylesheet">
         <link rel="stylesheet" href="/js/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/css/chat.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="/css/kenStyle.css" type="text/css" media="screen" />
         <script src="/assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>

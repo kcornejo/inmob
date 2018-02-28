@@ -1,3 +1,5 @@
 correoNegocioSuccess:
   
   has_layout:   false
+mensajeSuccess:
+  has_layout:   false

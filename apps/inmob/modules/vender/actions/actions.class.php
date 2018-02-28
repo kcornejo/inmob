@@ -17,6 +17,34 @@ class venderActions extends sfActions {
                 ->find();
     }
 
+    public function executeVisualizar(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $propiedad = PropiedadQuery::create()
+                ->filterById($id)
+                ->filterByUsuarioId($usuario_id)
+                ->findOne();
+        if (!$propiedad) {
+            $this->getUser()->setFlash('error', "Propiedad no encontrada");
+            $this->redirect("vender/index");
+        }
+        $this->propiedad = $propiedad;
+    }
+
+    public function executeCompartir(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+//        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $propiedad = PropiedadQuery::create()
+                ->filterById($id)
+//                ->filterByUsuarioId($usuario_id)
+                ->findOne();
+        if (!$propiedad) {
+            $this->getUser()->setFlash('error', "Propiedad no encontrada");
+            $this->redirect("vender/index");
+        }
+        $this->propiedad = $propiedad;
+    }
+
     public function executeEliminar(sfWebRequest $request) {
         $id = $request->getParameter("id");
         PropiedadImagenQuery::create()->findByPropiedadId($id)->delete();

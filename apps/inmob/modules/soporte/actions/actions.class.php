@@ -51,4 +51,29 @@ class soporteActions extends sfActions {
         $this->redirect('requerimiento/index');
     }
 
+    public function executeMensaje(sfWebRequest $request) {
+        $negocio_id = $request->getParameter("negocio_id");
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $mensaje = $request->getParameter("mensaje");
+        $Mensaje = new MensajeNegocio();
+        $Mensaje->setMensaje($mensaje);
+        $Mensaje->setUsuarioId($usuario_id);
+        $Mensaje->setNegocioId($negocio_id);
+        $Mensaje->save();
+        $this->mensaje = $mensaje;
+    }
+
+    public function executeAviso(sfWebRequest $request) {
+        $negocio_id = $request->getParameter("negocio_id");
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $MensajeNegocio = MensajeNegocioQuery::create()
+                ->where("negocio_id = $negocio_id and usuario_id <> $usuario_id")
+                ->find();
+        foreach ($MensajeNegocio as $fila) {
+            $fila->setVisto(true);
+            $fila->save();
+        }
+        die();
+    }
+
 }

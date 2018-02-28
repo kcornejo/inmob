@@ -5,7 +5,7 @@
                 <div class="panel-header"   style="background-color:#305da8;color:white;font-size:14pt;">
                     <h3 face="Helvetica">
                         <a href="<?php echo url_for("negocio/index") ?>" style="color:white;"><i class="icon icons-arrows-03"></i></a>
-                        Casa en <?php
+                        <?php echo $negocio->getPropiedad()->getTipoInmueble()?> en <?php
                         switch ($negocio->getPropiedad()->getTipoOperacion()) {
                             case "Vender":
                                 echo "Venta";
@@ -35,7 +35,7 @@
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
-                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen()  ?>"/>
+                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
@@ -228,9 +228,6 @@
             </div>
         </div>
     </div>
-    <a class="col-md-1 col-xs-3 col-sm-1" target="_blank" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;border-radius: 10px" href="tel:<?php echo $negocio->getPropiedad()->getUsuario()->getNumeroTelefono() ?>">
-        <img style="width:100%" src="/assets/img/caracteristicas/Negocios - llamar.png"/>
-    </a>
 <?php else: ?>
     <div class="row">
         <div class="col-md-12">
@@ -268,7 +265,7 @@
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
-                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen()  ?>"/>
+                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
@@ -458,7 +455,63 @@
             </div>
         </div>
     </div>
+<?php endif; ?>
+<div class="row">
+    <a onclick="avisos();" data-toggle="modal" class="col-md-1 col-xs-3 col-sm-1" data-target="#modal-chat" style="position: fixed;bottom: 20px;left: 40%;z-index: 99;border: none;border-radius: 10px;cursor:pointer;">
+        <img style="width:100%" src="/assets/img/caracteristicas/Negocios - chat.png"/>
+    </a>
     <a class="col-md-1 col-xs-3 col-sm-1" target="_blank" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;border-radius: 10px" href="tel:<?php echo $negocio->getRequerimiento()->getUsuario()->getNumeroTelefono() ?>">
         <img style="width:100%" src="/assets/img/caracteristicas/Negocios - llamar.png"/>
     </a>
-<?php endif; ?>
+</div>
+<div class="modal fade" id="modal-chat" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+                <h4 class="modal-title"><strong>Chat</strong></h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body" id="historial">
+                    <?php $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'); ?>
+                    <?php foreach ($negocio->getMensajeNegocios() as $msg): ?>
+                        <?php if ($usuario_id == $msg->getUsuarioId()): ?>
+                            <div class="form-group pull-right pb-chat-labels-right">
+                                <span class="label label-primary pb-chat-labels pb-chat-labels-primary"><?php echo $msg->getMensaje() ?></span><span class="fa fa-lg fa-user pb-chat-fa-user"></span>
+                            </div>
+                            <br/>
+                            <hr>
+                        <?php else: ?>
+                            <div class="form-group">
+                                <span class="fa fa-lg fa-user pb-chat-fa-user"></span><span class="label label-default pb-chat-labels pb-chat-labels-left"><?php echo $msg->getMensaje() ?></span>
+                            </div>
+                            <hr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-11 col-xs-10">
+                            <textarea class="form-control pb-chat-textarea" id="texto_mensaje" placeholder="Ingrese su mensaje aqui..."></textarea>
+                        </div>
+                        <div class="col-md-1 col-xs-2 pb-btn-circle-div">
+                            <button class="btn btn-xs btn-primary btn-circle pb-chat-btn-circle" onclick="mensaje();"><span class="fa fa-chevron-right"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function mensaje() {
+        var mensaje = $("#texto_mensaje").val();
+        $.get("<?php echo url_for('soporte/mensaje') ?>", {negocio_id: "<?php echo $negocio->getId() ?>", mensaje: mensaje}, function (response) {
+            $("#texto_mensaje").val("");
+            $("#historial").append(response);
+        });
+    }
+    function avisos() {
+        $.get("<?php echo url_for('soporte/avisos') ?>", {negocio_id: "<?php echo $negocio->getId() ?>"}, function () {});
+    }
+</script>

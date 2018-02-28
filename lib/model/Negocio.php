@@ -17,6 +17,15 @@
  */
 class Negocio extends BaseNegocio {
 
+    public function getMensajesPendientes() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $negocio_id = $this->getId();
+        $MensajeNegocio = MensajeNegocioQuery::create()
+                ->where("negocio_id = $negocio_id and usuario_id != $usuario_id")
+                ->find();
+        return sizeof($MensajeNegocio);
+    }
+
     static function buscaRequerimiento(Propiedad $Propiedad) {
         NegocioQuery::create()
                 ->filterByPropiedadId($Propiedad->getId())

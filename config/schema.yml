@@ -213,3 +213,11 @@ propel:
   formato_inicial:
     id:                                ~
     contenido:                         { type: longvarchar }
+  mensaje_negocio:
+    id:                                ~
+    negocio_id:                        ~
+    usuario_id:                        ~
+    mensaje:                           { type: longvarchar }
+    created_at:                        ~
+    updated_at:                        ~
+    visto:                             { type: boolean, default: false }

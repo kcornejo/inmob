@@ -31,7 +31,7 @@
                     <span style="color:black;">
                         <br/>
                         <center>
-                            <h2><b>5512 8282 | info@bex.com.gt</b></h2>
+                            <h2><b>5511 8282 | info@bex.com.gt</b></h2>
                         </center>
                     </span>
                 </div>

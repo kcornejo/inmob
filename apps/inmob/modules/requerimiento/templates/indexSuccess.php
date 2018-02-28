@@ -37,6 +37,9 @@
                                             Disponible!
                                         </a>
                                     <?php endif; ?>
+                                    <a href="<?php echo url_for('requerimiento/visualizar') . "?id=" . $requerimiento->getId() ?>">
+                                        Visualizar
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -47,7 +50,7 @@
                         <div class="col-md-12" style="text-align: center;">
                             <div style=";background-color:#f1f3f3; text-align: center;">
                                 <div style=";background-color:#f1f3f3; text-align: center;">
-                                    <img style="max-height: 100px" src="<?php echo $requerimiento->getDireccionImagen()  ?>"/>
+                                    <img style="max-height: 100px" src="<?php echo $requerimiento->getDireccionImagen() ?>"/>
                                 </div>
                             </div>
                         </div>

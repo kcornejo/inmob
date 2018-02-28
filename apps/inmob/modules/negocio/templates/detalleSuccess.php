@@ -130,7 +130,7 @@
                                         <div class="row">
                                             <div class="col-md-12" style="text-align: center;">
                                                 <div style=";background-color:#f1f3f3; text-align: center;">
-                                                    <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen()  ?>"/>
+                                                    <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen() ?>"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -139,7 +139,11 @@
                                                         <td style="color:#6480AB" colspan="2">
                                                             <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
                                                             <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
+                                                            <span class="pull-right badge" style="color:white;margin-right:3px;background-color:#6480AB;">
+                                                                <?php echo $fila->getMensajesPendientes(); ?>
+                                                            </span>
                                                         </td>
+
                                                     </tr>
                                                     <tr>
                                                         <td colspan="2">
@@ -204,7 +208,7 @@
                     <div class="row">
                         <div class="col-md-2" style="text-align: center;">
                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                <img style="max-height: 100px" src="<?php echo $negocio->getRequerimiento()->getDireccionImagen()  ?>"/>
+                                <img style="max-height: 100px" src="<?php echo $negocio->getRequerimiento()->getDireccionImagen() ?>"/>
                             </div>
                         </div>
                         <div class="col-md-10">
@@ -322,7 +326,7 @@
                                                     <?php endforeach; ?>
                                                     <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
                                                         <div style=";background-color:#f1f3f3; text-align: center;">
-                                                            <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen()  ?>"/>
+                                                            <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen() ?>"/>
                                                         </div>
                                                     <?php endif; ?>
                                                 </div>
@@ -333,6 +337,9 @@
                                                         <td style="color:#6480AB" colspan="2">
                                                             <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
                                                             <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
+                                                            <span class="pull-right badge" style="color:white;margin-right:3px;background-color:#6480AB;">
+                                                                <?php echo $fila->getMensajesPendientes(); ?>
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                     <tr>

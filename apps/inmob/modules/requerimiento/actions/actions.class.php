@@ -13,6 +13,34 @@ class requerimientoActions extends sfActions {
         $this->num = $request->getParameter("num");
     }
 
+    public function executeVisualizar(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $requerimiento = RequerimientoQuery::create()
+                ->filterById($id)
+                ->filterByUsuarioId($usuario_id)
+                ->findOne();
+        if (!$requerimiento) {
+            $this->getUser()->setFlash('error', "Requerimiento no encontrado");
+            $this->redirect("requerimiento/index");
+        }
+        $this->requerimiento = $requerimiento;
+    }
+
+    public function executeCompartir(sfWebRequest $request) {
+        $id = $request->getParameter("id");
+//        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $requerimiento = RequerimientoQuery::create()
+                ->filterById($id)
+//                ->filterByUsuarioId($usuario_id)
+                ->findOne();
+        if (!$requerimiento) {
+            $this->getUser()->setFlash('error', "Requerimiento no encontrado");
+            $this->redirect("requerimiento/index");
+        }
+        $this->requerimiento = $requerimiento;
+    }
+
     public function executeEliminar(sfWebRequest $request) {
         $id = $request->getParameter("id");
         DireccionRequerimientoQuery::create()->findByRequerimientoId($id)->delete();

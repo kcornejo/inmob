@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1519183228.
- * Generated on 2018-02-21 03:20:28 
+ * up to version 1519618354.
+ * Generated on 2018-02-26 04:12:34 
  */
-class PropelMigration_1519183228
+class PropelMigration_1519618354
 {
 
     public function preUp($manager)
@@ -42,9 +42,8 @@ class PropelMigration_1519183228
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `formato_correo` CHANGE `contenido` `contenido` TEXT;
-
-ALTER TABLE `formato_inicial` CHANGE `contenido` `contenido` TEXT;
+ALTER TABLE `mensaje_negocio`
+    ADD `visto` TINYINT(1) DEFAULT 0 AFTER `updated_at`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
@@ -66,9 +65,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `formato_correo` CHANGE `contenido` `contenido` LONGBLOB;
-
-ALTER TABLE `formato_inicial` CHANGE `contenido` `contenido` LONGBLOB;
+ALTER TABLE `mensaje_negocio` DROP `visto`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

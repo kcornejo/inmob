@@ -37,6 +37,9 @@
                                             Disponible!
                                         </a>
                                     <?php endif; ?>
+                                    <a href="<?php echo url_for('vender/visualizar') . "?id=" . $propiedad->getId() ?>">
+                                        Visualizar
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -52,7 +55,7 @@
                                 <?php endforeach; ?>
                                 <?php if (sizeof($propiedad->getPropiedadImagens()) == 0): ?>
                                     <div style=";background-color:#f1f3f3; text-align: center;">
-                                        <img style="max-height: 100px" src="<?php echo $propiedad->getDireccionImagen()  ?>"/>
+                                        <img style="max-height: 100px" src="<?php echo $propiedad->getDireccionImagen() ?>"/>
                                     </div>
                                 <?php endif; ?>
                             </div>
