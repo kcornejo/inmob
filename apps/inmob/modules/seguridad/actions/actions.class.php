@@ -59,7 +59,12 @@ class seguridadActions extends sfActions {
                     $Correo = new CorreoPendiente();
                     $Correo->setAsunto("Bienvenido(a)");
                     $Correo->setBeneficiario($valores["correo"]);
-                    $Correo->setContenido("<html>Para ingresar a la aplicacion por favor presione <a href='$link'>Aqui</a></html>");
+                    $comodin = array();
+                    $comodin["%USUARIO%"] = $Usuario->getUsuario();
+                    $comodin["%FECHA%"] = date("d/m/Y");
+                    $comodin["%TELEFONO%"] = $Usuario->getNumeroTelefono();
+                    $comodin["%LINK%"] = $link;
+                    $Correo->setContenido(FormatoCorreo::getFormato("Registro", $comodin));
                     $Correo->save();
                     $this->getUser()->setFlash('exito', 'Por favor, revise su correo para continuar con el registro.');
                     $con->commit();
@@ -196,17 +201,6 @@ class seguridadActions extends sfActions {
                         $Token->setTipo('Recuperacion');
                         $Token->save();
                     }
-//                    $formato = FormatoCorreoQuery::create()->findOneByTipo('Recuperacion');
-//                    if ($formato) {
-//                        $url = ParametroPeer::obtenerValor('url');
-//                        $Correo = new Correo();
-//                        $Correo->setReceptor($valores['Correo']);
-//                        $Correo->setAsunto('Recuperacion de clave');
-//                        $datos = array('url' => $url, 'token' => $Token->getClave());
-//                        $contenido = $formato->getFormatoPlano($datos);
-//                        $Correo->setContenido($contenido);
-//                        $Correo->save();
-//                    }
                     $link = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                     $link = explode("/seguridad", $link);
                     $link = $link[0];
@@ -216,7 +210,12 @@ class seguridadActions extends sfActions {
                     $Correo->setAsunto("Recuperacion de clave");
                     $Correo->setBeneficiario($valores['Correo']);
                     $Correo->setEnviado(false);
-                    $Correo->setContenido("<html>Ingrese al siguiente link para recuperar su clave. $link</html>");
+                    $comodin = array();
+                    $comodin["%USUARIO%"] = $Usuario->getUsuario();
+                    $comodin["%FECHA%"] = date("d/m/Y");
+                    $comodin["%TELEFONO%"] = $Usuario->getNumeroTelefono();
+                    $comodin["%LINK%"] = $link;
+                    $Correo->setContenido(FormatoCorreo::getFormato("Clave", $comodin));
                     $Correo->save();
                     $this->getUser()->setFlash('exito', 'Correo de recuperacion enviado correctamente');
                     $this->redirect('seguridad/login');

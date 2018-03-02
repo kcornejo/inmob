@@ -8,31 +8,36 @@
  * @author     Via
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class configuracionActions extends sfActions {
+class configuracionActions extends sfActions
+{
 
     /**
      * Executes index action
      *
      * @param sfRequest $request A request object
      */
-    public function executeIndex(sfWebRequest $request) {
-        
+    public function executeIndex(sfWebRequest $request)
+    {
+
+
     }
 
-    public function executeEditar(sfWebRequest $request) {
+    public function executeEditar(sfWebRequest $request)
+    {
         $tipo = $request->getParameter("tipo");
         if ($tipo != "Principal") {
             $objeto = FormatoCorreoQuery::create()
-                    ->filterByTipo($tipo)
-                    ->findOne();
+                ->filterByTipo($tipo)
+                ->findOne();
         } else {
             $objeto = FormatoInicialQuery::create()
-                    ->findOne();
+                ->findOne();
         }
         $defaults = array();
         if ($objeto) {
             $defaults["Formato"] = $objeto->getContenido();
         }
+        $comodines = array();
         $this->form = new FormatoForm($defaults);
         if ($request->isMethod('POST')) {
             $this->form->bind($request->getParameter("formato"));
@@ -53,6 +58,7 @@ class configuracionActions extends sfActions {
         }
         $this->objeto = $objeto;
         $this->tipo = $tipo;
+        $this->comodines = FormatoCorreo::comodines($tipo);
     }
 
 }

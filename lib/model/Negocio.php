@@ -171,7 +171,10 @@ class Negocio extends BaseNegocio {
             $link = explode("/vender", $link);
             $link = $link[0];
             $link = $link . "/negocio/visualizar?id=" . $Negocio->getId();
-            $contenido_correo = Negocio::texto_correo();
+            $comodin = array();
+            $comodin["%LINK%"] = $link;
+            $comodin["%FECHA%"] = date("d/m/Y");
+            $contenido_correo = FormatoCorreo::getFormato("Negocio", $comodin);
             $COMISION = $Propiedad->getMiComision() / 100 * $Propiedad->getPrecio();
             $COMISION_VENTA = $COMISION * (100 - $Propiedad->getComisionCompartida()) / 100;
             $COMISION_REQ = $COMISION * ($Propiedad->getComisionCompartida()) / 100;

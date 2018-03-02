@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="panel">
             <div class="panel-header" style="background-color:#305da8;color:white;font-size:14pt;">
                 <h3 face="Helvetica">
@@ -20,6 +20,33 @@
                     </button>
                 </div>
                 <?php echo "</form>"; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-header" style="background-color:#305da8;color:white;font-size:14pt;">
+                <h3 face="Helvetica">
+                    Comodines
+                </h3>
+            </div>
+            <div class="panel-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Comodin</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($comodines as $llave => $fila):?>
+                    <tr>
+                        <td><?php echo $llave?></td>
+                        <td><?php echo $fila?></td>
+                    </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

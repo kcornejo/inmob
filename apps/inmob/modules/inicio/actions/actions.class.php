@@ -11,9 +11,9 @@
 class inicioActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
-        $Formato = FormatoInicialQuery::create()
-                ->findOne();
-        $this->formato = $Formato;
+        $comodin = array();
+        $comodin["%FECHA%"] = date("d/m/Y");
+        $this->contenido = FormatoCorreo::getFormato("Principal" , $comodin);
     }
 
     public function executeDep(sfWebRequest $request) {

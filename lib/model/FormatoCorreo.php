@@ -1,7 +1,6 @@
 <?php
 
 
-
 /**
  * Skeleton subclass for representing a row from the 'formato_correo' table.
  *
@@ -19,4 +18,74 @@
  */
 class FormatoCorreo extends BaseFormatoCorreo
 {
+    public static function getFormato($tipo, $comodines)
+    {
+        $retorno = '';
+        switch ($tipo) {
+            case "Registro":
+                $retorno = "<html>Para ingresar a la aplicacion por favor presione <a href='$link'>Aqui</a></html>";
+                $FormatoCorreo = FormatoCorreoQuery::create()
+                    ->findOneByTipo($tipo);
+                if ($FormatoCorreo) {
+                    $retorno = $FormatoCorreo->getContenido();
+                }
+                break;
+            case "Clave":
+                $retorno = "<html>Ingrese al siguiente link para recuperar su clave. $link</html>";
+                $FormatoCorreo = FormatoCorreoQuery::create()
+                    ->findOneByTipo($tipo);
+                if ($FormatoCorreo) {
+                    $retorno = $FormatoCorreo->getContenido();
+                }
+                break;
+            case "Principal":
+                $retorno = "";
+                $FormatoCorreo = FormatoInicialQuery::create()
+                    ->findOne();
+                if ($FormatoCorreo) {
+                    $retorno = $FormatoCorreo->getContenido();
+                }
+                break;
+            case "Negocio":
+                $retorno = Negocio::texto_correo();
+                $FormatoCorreo = FormatoCorreoQuery::create()
+                    ->findOneByTipo($tipo);
+                if ($FormatoCorreo) {
+                    $retorno = $FormatoCorreo->getContenido();
+                }
+                break;
+        }
+        foreach($comodines as $llave => $fila){
+            $retorno = str_replace($llave, $fila, $retorno);
+        }
+        return $retorno;
+    }
+    public static function comodines($tipo)
+    {
+        $listado = array();
+        switch ($tipo) {
+            case "Registro":
+                $listado["%USUARIO%"] = "Nombre de Usuario";
+                $listado["%FECHA%"] = "Fecha Actual";
+                $listado["%TELEFONO%"] = "Telefono de Usuario";
+                $listado["%LINK%"] = "Link";
+                break;
+            case "Clave":
+                $listado["%USUARIO%"] = "Nombre de Usuario";
+                $listado["%FECHA%"] = "Fecha Actual";
+                $listado["%TELEFONO%"] = "Telefono de Usuario";
+                $listado["%LINK%"] = "Link";
+                break;
+            case "Negocio":
+                $listado["%RENTA%"] = "Renta";
+                $listado["%USUARIO%"] = "Usuario";
+                $listado["%FECHA%"] = "Fecha Actual";
+                $listado["%LINK%"] = "Link";
+                break;
+            case "Principal":
+                $listado["%FECHA%"] = "Fecha Actual";
+                break;
+        }
+        return $listado;
+    }
 }

@@ -15,7 +15,8 @@
                         }
                         ?>
                         <div class="dropdown" style="float:right;">
-                            <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button"
+                               id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <i class="glyphicon glyphicon-option-vertical"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
@@ -24,7 +25,7 @@
                                         Editar
                                     </a>
                                     <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
+                                            location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
                                             }" href="#">
                                         Eliminar
                                     </a>
@@ -40,7 +41,8 @@
                                     <a href="<?php echo url_for('vender/visualizar') . "?id=" . $propiedad->getId() ?>">
                                         Visualizar
                                     </a>
-                                    <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $propiedad->getId() ?>')" href="javascript:void();">
+                                    <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $propiedad->getId() ?>')"
+                                       href="javascript:void();">
                                         Compartir
                                     </a>
                                 </li>
@@ -53,12 +55,14 @@
                         <div class="col-md-12" style="text-align: center;">
                             <div style=";background-color:#f1f3f3; text-align: center;">
                                 <?php foreach ($propiedad->getPropiedadImagens() as $fila): ?>
-                                    <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
+                                    <img style="max-height: 100px"
+                                         src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
                                     <?php break; ?>
                                 <?php endforeach; ?>
                                 <?php if (sizeof($propiedad->getPropiedadImagens()) == 0): ?>
                                     <div style=";background-color:#f1f3f3; text-align: center;">
-                                        <img style="max-height: 100px" src="<?php echo $propiedad->getDireccionImagen() ?>"/>
+                                        <img style="max-height: 100px"
+                                             src="<?php echo $propiedad->getDireccionImagen() ?>"/>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -82,31 +86,36 @@
                                                             <b><?php echo $propiedad->getArea() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                                 src="/assets/img/caracteristicas/Area-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getNiveles() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                                 src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getCantidadHabitacion() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                                 src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getCantidadParqueo() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                                 src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getCantidadBanio() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                                 src="/assets/img/caracteristicas/Baños-01.png"/>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -116,12 +125,21 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
-                                        <?php echo $propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null ?>
-                                        <?php echo $propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null ?>
-                                        <?php echo $propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null ?>
-                                        <?php echo $propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null ?>
-                                        <?php echo $propiedad->getDireccion() ?>
+                                        <?php
+                                        $direccion = ($propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null);
+                                        $direccion .= ($propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null);
+                                        $direccion .= ($propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null);
+                                        $direccion .= ($propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null);
+                                        $direccion .= ($propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null);
+                                        $direccion .= ($propiedad->getDireccion());
+                                        echo substr($direccion, 0, 50);
+                                        if (strlen($direccion) > 50) {
+                                            echo "...";
+                                        }
+                                        ?>
+                                        <a href="<?php echo url_for("vender/visualizar") . "?id=" . $propiedad->getId() ?>">
+                                            Más Detalles...
+                                        </a>
                                     </td>
                                 </tr>
                             </table>
@@ -132,32 +150,35 @@
         </div>
     <?php endforeach; ?>
     <hr/>
-    <a class="col-md-1 col-xs-3 col-sm-1" style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;border-radius: 10px" href="<?php echo url_for('vender/nueva') ?>">
+    <a class="col-md-1 col-xs-3 col-sm-1"
+       style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;border-radius: 10px"
+       href="<?php echo url_for('vender/nueva') ?>">
         <img style="width:100%" src="/assets/img/caracteristicas/Agregar propiedad.png"/>
     </a>
 </div>
 <input type="text" id="text_copiar" style="display:none;"/>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-                                    function copiar(texto) {
-                                        $('#text_copiar').val(texto);
-                                        var copyText = document.getElementById("text_copiar");
-                                        $('#text_copiar').show();
-                                        copyText.select();
-                                        document.execCommand("copy");
-                                        $('#text_copiar').hide();
-                                        generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
-                                    }
-                                    $(document).ready(function () {
-                                        $(".ajusta_propiedad").on('change', function () {
-                                            var referencia = $(this).attr("referencia");
-                                            var valor = $(this).val();
-                                            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
-                                        });
-                                        $(".ajusta_requerimiento").on('change', function () {
-                                            var referencia = $(this).attr("referencia");
-                                            var valor = $(this).val();
-                                            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
-                                        });
-                                    });
+    function copiar(texto) {
+        $('#text_copiar').val(texto);
+        var copyText = document.getElementById("text_copiar");
+        $('#text_copiar').show();
+        copyText.select();
+        document.execCommand("copy");
+        $('#text_copiar').hide();
+        generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
+    }
+
+    $(document).ready(function () {
+        $(".ajusta_propiedad").on('change', function () {
+            var referencia = $(this).attr("referencia");
+            var valor = $(this).val();
+            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
+        });
+        $(".ajusta_requerimiento").on('change', function () {
+            var referencia = $(this).attr("referencia");
+            var valor = $(this).val();
+            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
+        });
+    });
 </script>
