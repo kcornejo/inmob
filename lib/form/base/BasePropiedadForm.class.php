@@ -70,6 +70,7 @@ abstract class BasePropiedadForm extends BaseFormPropel
       'area_y'                   => new sfWidgetFormInputText(),
       'estatus'                  => new sfWidgetFormInputText(),
       'usuario_id'               => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
+      'cantidad_oficina'         => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -129,6 +130,7 @@ abstract class BasePropiedadForm extends BaseFormPropel
       'area_y'                   => new sfValidatorNumber(array('required' => false)),
       'estatus'                  => new sfValidatorString(array('max_length' => 25, 'required' => false)),
       'usuario_id'               => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id', 'required' => false)),
+      'cantidad_oficina'         => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('propiedad[%s]');

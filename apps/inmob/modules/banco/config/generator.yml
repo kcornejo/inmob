@@ -1,0 +1,48 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           Banco
+    theme:                 admin15
+    non_verbose_templates: true
+    with_show:             false
+    singular:              Banco
+    plural:                Bancos
+    route_prefix:          banco
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+          descripcion: 
+              attributes:
+                  class: form-control input-medium
+              label: Descripcion
+          relacion_cuota_interes: 
+              attributes:
+                  class: form-control input-medium
+              label: Relacion Cuota Interes (%)
+          seguro_banco: 
+              attributes:
+                  class: form-control input-medium
+              label: Seguro Banco (%)
+          factor_construccion: 
+              attributes:
+                  class: form-control input-medium
+              label: Factor Construccion (%)
+      list:
+        title:   Listado de Bancos
+        display: [descripcion,relacion_cuota_interes,seguro_banco,factor_construccion]
+        object_actions:
+          _edit: 
+            attributes:  class=btn btn-xs btn-warning
+          _delete: 
+            attributes:  class=btn btn-xs btn-danger
+      filter:
+          display: [descripcion,relacion_cuota_interes,seguro_banco,factor_construccion]
+      form:
+          display: [descripcion,relacion_cuota_interes,seguro_banco,factor_construccion]
+      edit:
+          title:   Edicion de Banco [%%DESCRIPCION%%]
+      new:
+          title:   Nuevo Banco

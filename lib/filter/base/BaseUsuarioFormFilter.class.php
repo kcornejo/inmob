@@ -23,6 +23,8 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterPropel
       'email'           => new sfWidgetFormFilterInput(),
       'numero_telefono' => new sfWidgetFormFilterInput(),
       'perfil_id'       => new sfWidgetFormPropelChoice(array('model' => 'Perfil', 'add_empty' => true)),
+      'administrador'   => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'nombre_completo' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -37,6 +39,8 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterPropel
       'email'           => new sfValidatorPass(array('required' => false)),
       'numero_telefono' => new sfValidatorPass(array('required' => false)),
       'perfil_id'       => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Perfil', 'column' => 'id')),
+      'administrador'   => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'nombre_completo' => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('usuario_filters[%s]');
@@ -66,6 +70,8 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterPropel
       'email'           => 'Text',
       'numero_telefono' => 'Text',
       'perfil_id'       => 'ForeignKey',
+      'administrador'   => 'Boolean',
+      'nombre_completo' => 'Text',
     );
   }
 }

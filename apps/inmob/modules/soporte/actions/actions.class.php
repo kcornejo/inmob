@@ -23,6 +23,18 @@ class soporteActions extends sfActions {
         
     }
 
+    public function executeBanco(sfWebRequest $request) {
+        $respuesta = array();
+        $valor = $request->getParameter("valor");
+        $Banco = BancoQuery::create()->findOneById($valor);
+        if ($Banco) {
+            $respuesta['seguro_banco'] = $Banco->getSeguroBanco() / 100;
+            $respuesta['relacion_cuota_interes'] = $Banco->getRelacionCuotaInteres() / 100;
+            $respuesta['factor_construccion'] = $Banco->getFactorConstruccion() / 100;
+        }
+        return $this->renderText(json_encode($respuesta));
+    }
+
     public function executeDepartamento(sfWebRequest $request) {
         $valor = $request->getParameter("valor");
         $Municipio = MunicipioQuery::create()->findByDepartamentoId($valor);
@@ -60,7 +72,15 @@ class soporteActions extends sfActions {
         $Mensaje->setUsuarioId($usuario_id);
         $Mensaje->setNegocioId($negocio_id);
         $Mensaje->save();
-        $this->mensaje = $mensaje;
+        return $this->renderText("");
+    }
+
+    public function executeListadoMensaje(sfWebRequest $request) {
+        $negocio_id = $request->getParameter("negocio_id");
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Negocio = NegocioQuery::create()->findOneById($negocio_id);
+        $this->negocio = $Negocio;
+        $this->usuario_id = $usuario_id;
     }
 
     public function executeAviso(sfWebRequest $request) {

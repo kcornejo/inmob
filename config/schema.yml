@@ -221,3 +221,11 @@ propel:
     created_at:                        ~
     updated_at:                        ~
     visto:                             { type: boolean, default: false }
+  banco:
+    id:                                ~
+    descripcion:                       { type: varchar(255), primaryString: true}
+    relacion_cuota_interes:            { type: double }
+    seguro_banco:                      { type: double }
+    factor_construccion:               { type: double }
+    created_at:                        ~
+    updated_at:                        ~

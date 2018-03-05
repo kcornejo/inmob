@@ -62,6 +62,8 @@ class negocioActions extends sfActions {
         $this->negocio = $Negocio;
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $this->usuario_id = $usuario_id;
+        $this->monedas = MonedaQuery::create()->find();
+        $this->bancos = BancoQuery::create()->find();
     }
 
     public function executeDetalle(sfWebRequest $request) {

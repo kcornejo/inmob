@@ -60,6 +60,7 @@ abstract class BaseRequerimientoForm extends BaseFormPropel
       'created_by'                 => new sfWidgetFormInputText(),
       'updated_by'                 => new sfWidgetFormInputText(),
       'usuario_id'                 => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
+      'cantidad_oficina'           => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -109,6 +110,7 @@ abstract class BaseRequerimientoForm extends BaseFormPropel
       'created_by'                 => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'updated_by'                 => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'usuario_id'                 => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id', 'required' => false)),
+      'cantidad_oficina'           => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('requerimiento[%s]');

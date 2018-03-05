@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'mensaje_negocio' table.
  *
@@ -17,6 +15,16 @@
  *
  * @package    propel.generator.lib.model
  */
-class MensajeNegocio extends BaseMensajeNegocio
-{
+class MensajeNegocio extends BaseMensajeNegocio {
+
+    public function getFechaMsg() {
+        $retorno = '';
+        if ($this->getCreatedAt('Y-m-d') == date("Y-m-d")) {
+            $retorno = $this->getCreatedAt('H:i');
+        } else {
+            $retorno = $this->getCreatedAt('d/m/Y');
+        }
+        return $retorno;
+    }
+
 }
