@@ -18,16 +18,18 @@
                 <div class="col-sm-6 col-md-8 hidden-sm hidden-xs">
                     <span style="color:black;">
                         <center>
-                            <h3><b>Conectando asesores inmobiliarios <br/></b></h3>
+                            <h2><b>Conectando asesores inmobiliarios <br/></b></h2>
                             <h2><b>en toda Guatemala</b></h2>
                         </center>
                     </span>
-                    <img src="/assets/img/mac.png" alt="" width="100%" style="display: initial"/>
-                    <video controls class="col-md-12" style="margin-top:-49.3%;width:81%;margin-left:9.7%;">
+                    <center>
+                        <img src="/assets/img/mac.png" alt="" width="75%" style="display: initial"/>
+                    <video controls class="col-md-12" style="margin-top:-36%;width:60%;margin-left:20%">
                         <source src="/assets/video.mp4" type="video/mp4">
                         <source src="/assets/video.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                     </video>
+                    </center>
                     <span style="color:black;">
                         <br/>
                         <center>
@@ -67,21 +69,20 @@
                                         <p><strong>Error</strong> <?php echo sfContext::getInstance()->getUser()->getFlash('exito_registro') ?>.</p>
                                     </div>
                                 <?php endif; ?>
-                                <div class="append-icon">
+                                <div class="inside-tooltip">
                                     <?php echo $form["usuario"] ?>
                                     <i class="icon-user"></i>
                                 </div>
-                                <div class="append-icon">
+                                <div class="inside-tooltip">
                                     <?php echo $form["clave"] ?>
                                     <i class="icon-lock"></i>
                                 </div>
 
                                 <a class="m-b-20" href="<?php echo url_for("seguridad/recuperaclave") ?>" style="position:relative;float:right;color:#C5C5C5;">
-                                    <b>Olvidaste tu clave?</b>
+                                    ¿Has olvidado tu clave?
                                 </a>
                                 <button style="background:#2E57A7;" name="btn_login" type="submit" id="btn_login" class="btn btn-lg btn-block ladda-button m-b-10" data-style="expand-left">
-                                    <i class="fa fa-sign-in"></i>
-                                    Ingreso
+                                    INICIAR SESIÓN
                                 </button>
                                 <?php echo $form->renderHiddenFields() ?>
                                 <?php echo "</form>"; ?>
@@ -131,8 +132,7 @@
                                     <i class="fa fa-refresh"></i>
                                 </div>
                                 <button style="background:#2E57A7;"  name="btn_registro" type="submit" id="btn_registro" class="btn btn-lg btn-block ladda-button m-b-10" data-style="expand-left">
-                                    <i class="fa fa-user"></i>
-                                    Registro
+                                    REGISTRO
                                 </button>
                                 <?php echo $form_registro->renderHiddenFields() ?>
                                 <?php echo "</form>"; ?>

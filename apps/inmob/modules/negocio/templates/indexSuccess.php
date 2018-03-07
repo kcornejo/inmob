@@ -20,7 +20,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         <br/>
         <div class="panel panel_ocultar" id="RO">
             <div class="panel-header">
-                <h5>Requerimientos de Compra</h5>
+                <h5>REQUERIMIENTOS DE COMPRA</h5>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -50,15 +50,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         </div>
                                     </h5>
                                 </div>
-                                <div class="panel">
+                                <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
                                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen()  ?>"/>
+                                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen() ?>"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <table style="width:100%;height: 100%">
+                                            <table style="width:100%;height: 100%" class="table">
                                                 <tr>
                                                     <td style="color:#6480AB;width:80%">
                                                         <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
@@ -73,7 +73,6 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
-                                                            <br/><br/>
                                                             <div class="col-md-12">
                                                                 <table class="table" style="padding: 0;">
                                                                     <tr>
@@ -81,37 +80,46 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                                             <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
-                                                            <br/><br/>
                                                         </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <?php
+                                                        echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 50);
+                                                        if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 50) {
+                                                            echo "...";
+                                                        }
+                                                        ?>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -126,7 +134,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         </div>
         <div class="panel panel_ocultar" id="RR">
             <div class="panel-header">
-                <h5>Requerimientos de Renta</h5>
+                <h5>REQUERIMIENTOS DE RENTA</h5>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -156,15 +164,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         </div>
                                     </h5>
                                 </div>
-                                <div class="panel">
+                                <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
                                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen()  ?>"/>
+                                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen() ?>"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <table style="width:100%;height: 100%">
+                                            <table style="width:100%;height: 100%" class="table">
                                                 <tr>
                                                     <td style="color:#6480AB;width: 80%">
                                                         <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
@@ -179,7 +187,6 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
-                                                            <br/><br/>
                                                             <div class="col-md-12">
                                                                 <table class="table" style="padding: 0;">
                                                                     <tr>
@@ -187,37 +194,46 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                                             <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
-                                                            <br/><br/>
                                                         </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <?php
+                                                        echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 50);
+                                                        if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 50) {
+                                                            echo "...";
+                                                        }
+                                                        ?>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -232,7 +248,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         </div>
         <div class="panel panel_ocultar" id="PV">
             <div class="panel-header">
-                <h5>Propiedades en Venta</h5>
+                <h5>PROPIEDADES EN VENTA</h5>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -262,7 +278,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         </div>
                                     </h5>
                                 </div>
-                                <div class="panel">
+                                <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
                                             <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
@@ -271,12 +287,12 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                             <?php endforeach; ?>
                                             <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
                                                 <div style=";background-color:#f1f3f3; text-align: center;">
-                                                    <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen()  ?>"/>
+                                                    <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen() ?>"/>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
                                         <div class="col-md-12">
-                                            <table style="width:100%;height: 100%">
+                                            <table style="width:100%;height: 100%" class="table">
                                                 <tr>
                                                     <td style="color:#6480AB;width: 80%">
                                                         <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
@@ -291,7 +307,6 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
-                                                            <br/><br/>
                                                             <div class="col-md-12">
                                                                 <table class="table" style="padding: 0;">
                                                                     <tr>
@@ -299,37 +314,46 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                                             <b><?php echo $fila->getPropiedad()->getArea() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
-                                                            <br/><br/>
                                                         </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <?php
+                                                        echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 50);
+                                                        if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 50) {
+                                                            echo "...";
+                                                        }
+                                                        ?>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -344,7 +368,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         </div>
         <div class="panel panel_ocultar" id="PR">
             <div class="panel-header">
-                <h5>Propiedades en Renta</h5>
+                <h5>PROPIEDADES EN RENTA</h5>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -374,7 +398,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         </div>
                                     </h5>
                                 </div>
-                                <div class="panel">
+                                <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
                                             <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
@@ -383,12 +407,12 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                             <?php endforeach; ?>
                                             <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
                                                 <div style=";background-color:#f1f3f3; text-align: center;">
-                                                    <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen()  ?>"/>
+                                                    <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen() ?>"/>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
                                         <div class="col-md-12">
-                                            <table style="width:100%;height: 100%">
+                                            <table style="width:100%;height: 100%" class="table">
                                                 <tr>
                                                     <td style="color:#6480AB;width:80%;">
                                                         <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
@@ -403,7 +427,6 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <div class="row">
-                                                            <br/><br/>
                                                             <div class="col-md-12">
                                                                 <table class="table" style="padding: 0;">
                                                                     <tr>
@@ -411,37 +434,46 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                                             <b><?php echo $fila->getPropiedad()->getArea() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                                         </td>
                                                                         <td style="padding: 0;">
                                                                             <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
                                                                         </td>
                                                                         <td style="padding: 0;">
-                                                                            <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
-                                                            <br/><br/>
                                                         </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <?php
+                                                        echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 50);
+                                                        if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 50) {
+                                                            echo "...";
+                                                        }
+                                                        ?>
                                                     </td>
                                                 </tr>
                                             </table>

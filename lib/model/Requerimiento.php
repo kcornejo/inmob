@@ -19,6 +19,21 @@ class Requerimiento extends BaseRequerimiento {
         parent::delete($con);
     }
 
+    public function getDireccionCompleta() {
+        $listado = array();
+        foreach ($this->getDireccionRequerimientos() as $dir) {
+            $listado[] = trim($dir->getZona()) ? "Zona: " . trim($dir->getZona()) : null;
+            $listado[] = trim($dir->getCarretera()) ? "Carretera: " . trim($dir->getCarretera()) : null;
+            $listado[] = trim($dir->getKm()) ? "Km: " . trim($dir->getKm()) : null;
+            $listado[] = trim($dir->getMunicipio()) ? "Municipio: " . trim($dir->getMunicipio()) : null;
+            $listado[] = trim($dir->getDepartamento()) ? "Departamento: " . trim($dir->getDepartamento()) : null;
+            $listado[] = trim($dir->getDireccion()) ? "Dirección: " . trim($dir->getDireccion()) : null;
+            break;
+        }
+        $listado = array_filter($listado);
+        return implode(", ", $listado);
+    }
+
     public function getDireccionImagen() {
         $valor = "/assets/img/caracteristicas/";
         $conc = null;

@@ -126,7 +126,7 @@
                                             </div>
                                         </h5>
                                     </div>
-                                    <div class="panel">
+                                    <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12" style="text-align: center;">
                                                 <div style=";background-color:#f1f3f3; text-align: center;">
@@ -134,7 +134,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <table style="width:100%;height: 100%">
+                                                <table style="width:100%;height: 100%" class="table">
                                                     <tr>
                                                         <td style="color:#6480AB" colspan="2">
                                                             <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
@@ -148,7 +148,6 @@
                                                     <tr>
                                                         <td colspan="2">
                                                             <div class="row">
-                                                                <br/><br/>
                                                                 <div class="col-md-12">
                                                                     <table class="table" style="padding: 0;">
                                                                         <tr>
@@ -156,36 +155,45 @@
                                                                                 <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
                                                                 </div>
                                                             </div>
+                                                        </td>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <?php
+                                                            echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 50);
+                                                            if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 50) {
+                                                                echo "...";
+                                                            }
+                                                            ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -316,7 +324,7 @@
                                             </div>
                                         </h5>
                                     </div>
-                                    <div class="panel">
+                                    <div class="panel-content">
                                         <div class="row">
                                             <div class="col-md-12" style="text-align: center;">
                                                 <div style=";background-color:#f1f3f3; text-align: center;">
@@ -332,7 +340,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <table style="width:100%;height: 100%">
+                                                <table style="width:100%;height: 100%" class="table">
                                                     <tr>
                                                         <td style="color:#6480AB" colspan="2">
                                                             <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
@@ -345,7 +353,6 @@
                                                     <tr>
                                                         <td colspan="2">
                                                             <div class="row">
-                                                                <br/><br/>
                                                                 <div class="col-md-12">
                                                                     <table class="table" style="padding: 0;">
                                                                         <tr>
@@ -353,36 +360,46 @@
                                                                                 <b><?php echo $fila->getPropiedad()->getArea() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                                             </td>
                                                                             <td style="padding: 0;">
                                                                                 <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
                                                                             </td>
                                                                             <td style="padding: 0;">
-                                                                                <img style="max-width: 25px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
+                                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
                                                                 </div>
                                                             </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <?php
+                                                            echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 50);
+                                                            if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 50) {
+                                                                echo "...";
+                                                            }
+                                                            ?>
                                                         </td>
                                                     </tr>
                                                 </table>

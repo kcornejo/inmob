@@ -25,7 +25,7 @@
                                         Editar
                                     </a>
                                     <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                            location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
+                                                location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
                                             }" href="#">
                                         Eliminar
                                     </a>
@@ -50,16 +50,16 @@
                         </div>
                     </h5>
                 </div>
-                <div class="panel">
+                <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12" style="text-align: center;">
                             <div style=";background-color:#f1f3f3; text-align: center;">
                                 <?php foreach ($propiedad->getPropiedadImagens() as $fila): ?>
                                     <img style="max-height: 100px"
                                          src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
-                                    <?php break; ?>
-                                <?php endforeach; ?>
-                                <?php if (sizeof($propiedad->getPropiedadImagens()) == 0): ?>
+                                         <?php break; ?>
+                                     <?php endforeach; ?>
+                                     <?php if (sizeof($propiedad->getPropiedadImagens()) == 0): ?>
                                     <div style=";background-color:#f1f3f3; text-align: center;">
                                         <img style="max-height: 100px"
                                              src="<?php echo $propiedad->getDireccionImagen() ?>"/>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <table style="width:100%;height: 100%">
+                            <table style="width:100%;height: 100%" class="table">
                                 <tr>
                                     <td style="color:#6480AB" colspan="2">
                                         <b><?php echo $propiedad->getMoneda()->getCodigo() ?></b>
@@ -78,7 +78,6 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="row">
-                                            <br/><br/>
                                             <div class="col-md-12">
                                                 <table class="table" style="padding: 0;">
                                                     <tr>
@@ -86,35 +85,35 @@
                                                             <b><?php echo $propiedad->getArea() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                            <img style="max-width: 18px;margin-top:-10px;"
                                                                  src="/assets/img/caracteristicas/Area-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getNiveles() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                            <img style="max-width: 18px;margin-top:-10px;"
                                                                  src="/assets/img/caracteristicas/Niveles-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getCantidadHabitacion() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                            <img style="max-width: 18px;margin-top:-10px;"
                                                                  src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getCantidadParqueo() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                            <img style="max-width: 18px;margin-top:-10px;"
                                                                  src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                                         </td>
                                                         <td style="padding: 0;">
                                                             <b><?php echo $propiedad->getCantidadBanio() ?></b>
                                                         </td>
                                                         <td style="padding: 0;">
-                                                            <img style="max-width: 25px;margin-top:-10px;"
+                                                            <img style="max-width: 18px;margin-top:-10px;"
                                                                  src="/assets/img/caracteristicas/Baños-01.png"/>
                                                         </td>
                                                     </tr>
@@ -126,18 +125,13 @@
                                 <tr>
                                     <td colspan="2">
                                         <?php
-                                        $direccion = ($propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null);
-                                        $direccion .= ($propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null);
-                                        $direccion .= ($propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null);
-                                        $direccion .= ($propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null);
-                                        $direccion .= ($propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null);
-                                        $direccion .= ($propiedad->getDireccion());
-                                        echo substr($direccion, 0, 50);
-                                        if (strlen($direccion) > 50) {
+                                        echo substr($propiedad->getDireccionCompleta(), 0, 50);
+                                        if (strlen($propiedad->getDireccionCompleta()) > 50) {
                                             echo "...";
                                         }
                                         ?>
-                                        <a href="<?php echo url_for("vender/visualizar") . "?id=" . $propiedad->getId() ?>">
+                                        <br/>
+                                        <a style="float:right;" href="<?php echo url_for("vender/visualizar") . "?id=" . $propiedad->getId() ?>">
                                             Más Detalles...
                                         </a>
                                     </td>
@@ -149,7 +143,6 @@
             </div>
         </div>
     <?php endforeach; ?>
-    <hr/>
     <a class="col-md-1 col-xs-3 col-sm-1"
        style="position: fixed;bottom: 20px;right: 30px;z-index: 99;border: none;border-radius: 10px"
        href="<?php echo url_for('vender/nueva') ?>">
@@ -159,26 +152,26 @@
 <input type="text" id="text_copiar" style="display:none;"/>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-    function copiar(texto) {
-        $('#text_copiar').val(texto);
-        var copyText = document.getElementById("text_copiar");
-        $('#text_copiar').show();
-        copyText.select();
-        document.execCommand("copy");
-        $('#text_copiar').hide();
-        generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
-    }
+                                    function copiar(texto) {
+                                        $('#text_copiar').val(texto);
+                                        var copyText = document.getElementById("text_copiar");
+                                        $('#text_copiar').show();
+                                        copyText.select();
+                                        document.execCommand("copy");
+                                        $('#text_copiar').hide();
+                                        generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
+                                    }
 
-    $(document).ready(function () {
-        $(".ajusta_propiedad").on('change', function () {
-            var referencia = $(this).attr("referencia");
-            var valor = $(this).val();
-            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
-        });
-        $(".ajusta_requerimiento").on('change', function () {
-            var referencia = $(this).attr("referencia");
-            var valor = $(this).val();
-            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
-        });
-    });
+                                    $(document).ready(function () {
+                                        $(".ajusta_propiedad").on('change', function () {
+                                            var referencia = $(this).attr("referencia");
+                                            var valor = $(this).val();
+                                            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
+                                        });
+                                        $(".ajusta_requerimiento").on('change', function () {
+                                            var referencia = $(this).attr("referencia");
+                                            var valor = $(this).val();
+                                            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
+                                        });
+                                    });
 </script>

@@ -30,3 +30,28 @@
 .modal-dialog{
     margin-top: 1%;
 }
+.theme-sltd.color-blue .topbar{
+    background-color: #305da7;
+}
+.theme-sltd.color-blue.sidebar-top.fixed-topbar .sidebar .logopanel{
+    background-color: #305da7;
+}
+.letra_blanca{
+    font-family: Helvetica;
+    color: white;
+}
+.letra{
+    font-family: Helvetica;
+}
+.nav-hover > a > span{
+    color:black;
+}
+.nav-hover > a > i{
+    color:black;
+}
+.active_kc{
+    background-color: #488dfc;
+}
+.panel{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.08) !important;
+}

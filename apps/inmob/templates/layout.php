@@ -55,11 +55,11 @@
                                                             <a href="<?php echo url_for("inicio/index") ?>"></a>
                                                         </h1>-->
                 </div>
-                <div class="sidebar-inner no-scrollbar" style="background-color:#4A89DC;">
+                <div class="sidebar-inner no-scrollbar" style="background-color:#305da7;">
                     <ul class="nav nav-sidebar">
-                        <li><a href="<?php echo url_for("vender/index") ?>"><i class="icon-home"></i><span>Propiedades</span></a></li>
-                        <li><a href="<?php echo url_for("requerimiento/index") ?>"><i class="icon-check"></i><span>Requerimientos</span></a></li>
-                        <li>
+                        <li <?php echo $sf_context->getModuleName() == "vender" ? 'class="nav-active active_kc"' : null ?>><a href="<?php echo url_for("vender/index") ?>"><i class="icon-home letra_blanca"></i><span class="letra_blanca">PROPIEDADES</span></a></li>
+                        <li <?php echo $sf_context->getModuleName() == "requerimiento" ? 'class="nav-active active_kc"' : null ?>><a href="<?php echo url_for("requerimiento/index") ?>"><i class="icon-check letra_blanca"></i><span class="letra_blanca">REQUERIMIENTOS</span></a></li>
+                        <li <?php echo $sf_context->getModuleName() == "negocio" ? 'class="nav-active active_kc"' : null ?>>
                             <a href="<?php echo url_for("negocio/index") ?>">
                                 <span class="pull-right badge badge-primary">
                                     <?php
@@ -73,16 +73,16 @@
                                     echo sizeof($Negocio);
                                     ?>
                                 </span>
-                                <i class="icon-diamond"></i>
-                                <span>Negocios</span>
+                                <i class="icon-diamond letra_blanca"></i>
+                                <span class="letra_blanca">NEGOCIOS</span>
                             </a>
                         </li>
                         <?php if ($Usuario->getAdministrador()): ?>
-                            <li><a href="<?php echo url_for("banco/index") ?>"><i class="fa fa-money"></i><span>Bancos</span></a></li>
-                            <li><a href="<?php echo url_for("tasa_cambio/index") ?>"><i class="icon-refresh"></i><span>Tasa de Cambio</span></a></li>
-                            <li><a href="<?php echo url_for("usuario/index") ?>"><i class="icon-users"></i><span>Usuarios</span></a></li>
-                            <li><a href="<?php echo url_for("perfil/index") ?>"><i class="icon-lock"></i><span>Perfiles</span></a></li>
-                            <li><a href="<?php echo url_for("configuracion/index") ?>"><i class="icon-settings"></i><span>Configuracion</span></a></li>
+                            <li <?php echo $sf_context->getModuleName() == "banco" ? 'class="nav-active active_kc"' : null ?>><a href="<?php echo url_for("banco/index") ?>"><i class="icon-wallet letra_blanca"></i><span class="letra_blanca">BANCOS</span></a></li>
+                            <li <?php echo $sf_context->getModuleName() == "tasa_cambio" ? 'class="nav-active active_kc"' : null ?>><a href="<?php echo url_for("tasa_cambio/index") ?>"><i class="icon-refresh letra_blanca"></i><span class="letra_blanca">TASA DE CAMBIO</span></a></li>
+                            <li <?php echo $sf_context->getModuleName() == "usuario" ? 'class="nav-active active_kc"' : null ?>><a href="<?php echo url_for("usuario/index") ?>"><i class="icon-users letra_blanca"></i><span class="letra_blanca">USUARIOS</span></a></li>
+                            <li <?php echo $sf_context->getModuleName() == "perfil" ? 'class="nav-active active_kc"' : null ?>><a href="<?php echo url_for("perfil/index") ?>"><i class="icon-lock letra_blanca"></i><span class="letra_blanca">PERFILES</span></a></li>
+                            <li <?php echo $sf_context->getModuleName() == "configuracion" ? 'class="nav-active active_kc"' : null ?>><a href="<?php echo url_for("configuracion/index") ?>"><i class="icon-settings letra_blanca"></i><span class="letra_blanca">CONFIGURACIÓN</span></a></li>
                         <?php endif; ?>
                     </ul>
                 </div>
