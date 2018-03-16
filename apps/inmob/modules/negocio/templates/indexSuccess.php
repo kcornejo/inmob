@@ -45,6 +45,26 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                     <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
                                                         Detalle
                                                     </a>
+                                                    <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
+                                                                location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
+                                                            }" href="#">
+                                                        Eliminar
+                                                    </a>
+                                                    <?php if ($fila->getRequerimiento()->getEstatus() == "Disponible"): ?>
+                                                        <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Vendido" ?>">
+                                                            Vendido!
+                                                        </a>
+                                                    <?php else: ?>
+                                                        <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Disponible" ?>">
+                                                            Disponible!
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <a href="<?php echo url_for('requerimiento/visualizar') . "?id=" . $fila->getRequerimiento()->getId() ?>">
+                                                        Visualizar
+                                                    </a>
+                                                    <a onclick="copiar('<?php echo url_for('requerimiento/compartir', true) . "?id=" . $fila->getRequerimiento()->getId() ?>')" href="javascript:void();">
+                                                        Compartir
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -115,11 +135,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <?php
-                                                        echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 50);
-                                                        if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 50) {
+                                                        echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 70);
+                                                        if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 70) {
                                                             echo "...";
                                                         }
                                                         ?>
+                                                        <br/>
+                                                        <a style="float:right;" href="<?php echo url_for("negocio/detalle") . "?id=" . $fila->getId() ?>">
+                                                            Más Detalles...
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -158,6 +182,26 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <li>
                                                     <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
                                                         Detalle
+                                                    </a>
+                                                    <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
+                                                                location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
+                                                            }" href="#">
+                                                        Eliminar
+                                                    </a>
+                                                    <?php if ($fila->getRequerimiento()->getEstatus() == "Disponible"): ?>
+                                                        <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Vendido" ?>">
+                                                            Vendido!
+                                                        </a>
+                                                    <?php else: ?>
+                                                        <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Disponible" ?>">
+                                                            Disponible!
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <a href="<?php echo url_for('requerimiento/visualizar') . "?id=" . $fila->getRequerimiento()->getId() ?>">
+                                                        Visualizar
+                                                    </a>
+                                                    <a onclick="copiar('<?php echo url_for('requerimiento/compartir', true) . "?id=" . $fila->getRequerimiento()->getId() ?>')" href="javascript:void();">
+                                                        Compartir
                                                     </a>
                                                 </li>
                                             </ul>
@@ -229,11 +273,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <?php
-                                                        echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 50);
-                                                        if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 50) {
+                                                        echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 70);
+                                                        if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 70) {
                                                             echo "...";
                                                         }
                                                         ?>
+                                                        <br/>
+                                                        <a style="float:right;" href="<?php echo url_for("negocio/detalle") . "?id=" . $fila->getId() ?>">
+                                                            Más Detalles...
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -272,6 +320,30 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <li>
                                                     <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
                                                         Detalle
+                                                    </a>
+                                                    <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                                        Editar
+                                                    </a>
+                                                    <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
+                                                                location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
+                                                            }" href="#">
+                                                        Eliminar
+                                                    </a>
+                                                    <?php if ($fila->getPropiedad()->getEstatus() == "Disponible"): ?>
+                                                        <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Vendido" ?>">
+                                                            Vendido!
+                                                        </a>
+                                                    <?php else: ?>
+                                                        <a href="<?php echo url_for("soporte/estatusPropiedad") . $fila->getPropiedad()->getId() . "&valor=Disponible" ?>">
+                                                            Disponible!
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <a href="<?php echo url_for('vender/visualizar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                                        Visualizar
+                                                    </a>
+                                                    <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $fila->getPropiedad()->getId() ?>')"
+                                                       href="javascript:void();">
+                                                        Compartir
                                                     </a>
                                                 </li>
                                             </ul>
@@ -349,11 +421,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <?php
-                                                        echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 50);
-                                                        if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 50) {
+                                                        echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 70);
+                                                        if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 70) {
                                                             echo "...";
                                                         }
                                                         ?>
+                                                        <br/>
+                                                        <a style="float:right;" href="<?php echo url_for("negocio/detalle") . "?id=" . $fila->getId() ?>">
+                                                            Más Detalles...
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -392,6 +468,30 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <li>
                                                     <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
                                                         Detalle
+                                                    </a>
+                                                    <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                                        Editar
+                                                    </a>
+                                                    <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
+                                                                location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
+                                                            }" href="#">
+                                                        Eliminar
+                                                    </a>
+                                                    <?php if ($fila->getPropiedad()->getEstatus() == "Disponible"): ?>
+                                                        <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Vendido" ?>">
+                                                            Vendido!
+                                                        </a>
+                                                    <?php else: ?>
+                                                        <a href="<?php echo url_for("soporte/estatusPropiedad") . $fila->getPropiedad()->getId() . "&valor=Disponible" ?>">
+                                                            Disponible!
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <a href="<?php echo url_for('vender/visualizar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                                        Visualizar
+                                                    </a>
+                                                    <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $fila->getPropiedad()->getId() ?>')"
+                                                       href="javascript:void();">
+                                                        Compartir
                                                     </a>
                                                 </li>
                                             </ul>
@@ -469,11 +569,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                 <tr>
                                                     <td colspan="2">
                                                         <?php
-                                                        echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 50);
-                                                        if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 50) {
+                                                        echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 70);
+                                                        if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 70) {
                                                             echo "...";
                                                         }
                                                         ?>
+                                                        <br/>
+                                                        <a style="float:right;" href="<?php echo url_for("negocio/detalle") . "?id=" . $fila->getId() ?>">
+                                                            Más Detalles...
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -488,27 +592,38 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         </div>
     </div>
 </div>
+<input type="text" id="text_copiar" style="display:none;"/>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(".ajusta_propiedad").on('change', function () {
-            var referencia = $(this).attr("referencia");
-            var valor = $(this).val();
-            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
-        });
-        $(".ajusta_requerimiento").on('change', function () {
-            var referencia = $(this).attr("referencia");
-            var valor = $(this).val();
-            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
-        });
-        $("#listado_req").on("change", function () {
-            var valor = $("#listado_req").val();
-            if (valor == 'TODO') {
-                $(".panel_ocultar").show();
-            } else {
-                $(".panel_ocultar").hide();
-                $("#" + valor).show();
-            }
-        });
-    });
+                                                    function copiar(texto) {
+                                                        $('#text_copiar').val(texto);
+                                                        var copyText = document.getElementById("text_copiar");
+                                                        $('#text_copiar').show();
+                                                        copyText.select();
+                                                        document.execCommand("copy");
+                                                        $('#text_copiar').hide();
+                                                        generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
+                                                    }
+
+                                                    $(document).ready(function () {
+                                                        $(".ajusta_propiedad").on('change', function () {
+                                                            var referencia = $(this).attr("referencia");
+                                                            var valor = $(this).val();
+                                                            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
+                                                        });
+                                                        $(".ajusta_requerimiento").on('change', function () {
+                                                            var referencia = $(this).attr("referencia");
+                                                            var valor = $(this).val();
+                                                            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
+                                                        });
+                                                        $("#listado_req").on("change", function () {
+                                                            var valor = $("#listado_req").val();
+                                                            if (valor == 'TODO') {
+                                                                $(".panel_ocultar").show();
+                                                            } else {
+                                                                $(".panel_ocultar").hide();
+                                                                $("#" + valor).show();
+                                                            }
+                                                        });
+                                                    });
 </script>

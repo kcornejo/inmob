@@ -51,7 +51,7 @@ class soporteActions extends sfActions {
         $Propiedad = PropiedadQuery::create()->findOneById($id);
         $Propiedad->setEstatus($valor);
         $Propiedad->save();
-        $this->redirect('vender/index');
+        $this->redirect($request->getReferer());
     }
 
     public function executeEstatusRequerimiento(sfWebRequest $request) {
@@ -60,7 +60,7 @@ class soporteActions extends sfActions {
         $Requerimiento = RequerimientoQuery::create()->findOneById($id);
         $Requerimiento->setEstatus($valor);
         $Requerimiento->save();
-        $this->redirect('requerimiento/index');
+        $this->redirect($request->getReferer());
     }
 
     public function executeMensaje(sfWebRequest $request) {

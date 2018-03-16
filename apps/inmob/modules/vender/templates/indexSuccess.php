@@ -25,7 +25,7 @@
                                         Editar
                                     </a>
                                     <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                location.replace('<?php echo url_for('vender/eliminar') . "?id=" . $propiedad->getId() ?>')
+                                                location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $propiedad->getId() . "&valor=Eliminado"?>');
                                             }" href="#">
                                         Eliminar
                                     </a>
@@ -125,8 +125,8 @@
                                 <tr>
                                     <td colspan="2">
                                         <?php
-                                        echo substr($propiedad->getDireccionCompleta(), 0, 50);
-                                        if (strlen($propiedad->getDireccionCompleta()) > 50) {
+                                        echo substr($propiedad->getDireccionCompleta(), 0, 70);
+                                        if (strlen($propiedad->getDireccionCompleta()) > 70) {
                                             echo "...";
                                         }
                                         ?>

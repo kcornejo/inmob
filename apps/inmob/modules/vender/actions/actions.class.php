@@ -14,6 +14,7 @@ class venderActions extends sfActions {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $this->propiedades = PropiedadQuery::create()
                 ->filterByUsuarioId($usuario_id)
+                ->where("estatus !=  'Eliminado'")
                 ->find();
     }
 

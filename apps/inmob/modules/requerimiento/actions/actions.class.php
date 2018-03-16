@@ -6,6 +6,7 @@ class requerimientoActions extends sfActions {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $this->requerimientos = RequerimientoQuery::create()
                 ->filterByUsuarioId($usuario_id)
+                ->where("estatus !=  'Eliminado'")
                 ->find();
     }
 

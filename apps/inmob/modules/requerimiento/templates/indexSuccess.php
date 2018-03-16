@@ -24,7 +24,7 @@
                                         Editar
                                     </a>
                                     <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
-                                                location.replace('<?php echo url_for('requerimiento/eliminar') . "?id=" . $requerimiento->getId() ?>')
+                                                location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $requerimiento->getId() . "&valor=Eliminado" ?>');
                                             }" href="#">
                                         Eliminar
                                     </a>
@@ -110,8 +110,8 @@
                                 <tr>
                                     <td colspan="2">
                                         <?php
-                                        echo substr($requerimiento->getDireccionCompleta(), 0, 50);
-                                        if (strlen($requerimiento->getDireccionCompleta()) > 50) {
+                                        echo substr($requerimiento->getDireccionCompleta(), 0, 70);
+                                        if (strlen($requerimiento->getDireccionCompleta()) > 70) {
                                             echo "...";
                                         }
                                         ?>

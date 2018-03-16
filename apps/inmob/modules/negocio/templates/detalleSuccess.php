@@ -1,8 +1,10 @@
 <?php if ($negocio->getUsuarioProp() == $usuario_id): ?>
     <div class="row">
         <div class="col-md-12">
-            <div class="panel">
+            <div class="panel" style="overflow:hidden;">
                 <div class="panel-content">
+                    <h5>Mi registro</h5>
+                    <hr/>
                     <div class="row">
                         <div class="col-md-2">
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
@@ -86,14 +88,17 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <?php echo $negocio->getPropiedad()->getDireccionCompleta();?>
                             </div>
                         </div>
                     </div>
                     <br/>
                 </div>
             </div>
-            <div class="panel">
+            <div class="panel" style="overflow:auto;">
                 <div class="panel-content">
+                    <h5>Los negocios de mi registro</h5>
+                    <hr/>
                     <div class="row">
                         <?php foreach ($registros as $fila): ?>
                             <div class="col-md-3">
@@ -213,6 +218,8 @@
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-content">
+                    <h5>Mi registro</h5>
+                    <hr/>
                     <div class="row">
                         <div class="col-md-2" style="text-align: center;">
                             <div style=";background-color:#f1f3f3; text-align: center;">
@@ -284,6 +291,7 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <?php echo $negocio->getRequerimiento()->getDireccionCompleta();?>
                             </div>
                         </div>
                     </div>
@@ -292,6 +300,8 @@
             </div>
             <div class="panel">
                 <div class="panel-content">
+                    <h5>Los negocios de mi registro</h5>
+                    <hr/>
                     <div class="row">
                         <?php foreach ($registros as $fila): ?>
                             <div class="col-md-3">
