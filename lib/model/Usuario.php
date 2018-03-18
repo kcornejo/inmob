@@ -18,7 +18,23 @@
 class Usuario extends BaseUsuario {
 
     public function delete(\PropelPDO $con = null) {
-        parent::delete($con);
+        $Requerimientos = RequerimientoQuery::create()
+                ->filterByUsuarioId($this->getId())
+                ->find();
+        foreach ($Requerimientos as $req) {
+            $req->setEstatus("Eliminado");
+            $req->save();
+        }
+        $Propiedades = PropiedadQuery::create()
+                ->filterByUsuarioId($this->getId())
+                ->find();
+        foreach ($Propiedades as $pro) {
+            $pro->setEstatus("Eliminado");
+            $pro->save();
+        }
+        $this->setBorrado(true);
+        $this->setActivo(false);
+        $this->save();
     }
 
     public function save(\PropelPDO $con = null) {

@@ -65,7 +65,7 @@
                                     <?php
                                     $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
                                     $Negocio = NegocioQuery::create()
-                                            ->where("usuario_req = $usuario_id or usuario_prop = $usuario_id")
+                                            ->where("(usuario_req = $usuario_id or usuario_prop = $usuario_id) and negocio.activo = true")
                                             ->groupByUsuarioReq()
                                             ->groupByUsuarioProp()
                                             ->find();

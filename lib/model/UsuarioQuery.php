@@ -17,6 +17,11 @@
  */
 class UsuarioQuery extends BaseUsuarioQuery {
 
+    public function __construct($dbName = 'propel', $modelName = 'Usuario', $modelAlias = null) {
+        parent::__construct($dbName, $modelName, $modelAlias);
+        $this->filterByBorrado(false);
+    }
+
     static public function validaUsuario($u, $c) {
 
         $usuario = UsuarioQuery::create()

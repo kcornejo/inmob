@@ -15,7 +15,7 @@ class negocioActions extends sfActions {
         $negocios = NegocioQuery::create()
                 ->joinPropiedad()
                 ->joinRequerimiento()
-                ->where("usuario_req = $usuario_id or usuario_prop = $usuario_id")
+                ->where("(usuario_req = $usuario_id or usuario_prop = $usuario_id) and negocio.activo = true")
                 ->groupByUsuarioReq()
                 ->groupByUsuarioProp()
                 ->find();
@@ -74,10 +74,12 @@ class negocioActions extends sfActions {
         if ($Negocio->getUsuarioReq() == $usuario_id) {
             $registros = NegocioQuery::create()
                     ->filterByPropiedadId($Negocio->getPropiedadId())
+                    ->filterByActivo(true)
                     ->find();
         } else {
             $registros = NegocioQuery::create()
                     ->filterByRequerimientoId($Negocio->getRequerimientoId())
+                    ->filterByActivo(true)
                     ->find();
         }
         $this->registros = $registros;

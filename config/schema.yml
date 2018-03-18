@@ -6,6 +6,7 @@ propel:
     propiedad_id:                       { type: integer, foreignTable: propiedad, foreignReference: id, required: true  }    
     usuario_req:                        { type: integer, foreignTable: usuario, foreignReference: id, required: true  }    
     usuario_prop:                       { type: integer, foreignTable: usuario, foreignReference: id, required: true  }    
+    activo:                             { type: boolean, default: true }
   direccion_requerimiento:
     id:                                 ~
     requerimiento_id:                   { type: integer, foreignTable: requerimiento, foreignReference: id, required: true  }
@@ -92,7 +93,8 @@ propel:
     perfil_id:                         { type: integer, foreignTable: perfil, foreignReference: id, required: true  }
     administrador:                     { type: boolean, default: false }
     nombre_completo:                   { type: varchar(255) }
-    
+    borrado:                           { type: boolean, default: false }
+        
   perfil:
     id:                                ~
     descripcion:                       { type: varchar(255) , primaryString: true}

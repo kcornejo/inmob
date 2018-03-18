@@ -27,10 +27,13 @@ class Negocio extends BaseNegocio {
     }
 
     static function buscaRequerimiento(Propiedad $Propiedad) {
-        NegocioQuery::create()
+        $negocio = NegocioQuery::create()
                 ->filterByPropiedadId($Propiedad->getId())
-                ->find()
-                ->delete();
+                ->find();
+        foreach ($negocio as $n) {
+            $n->setActivo(false);
+            $n->save();
+        }
         sfContext::getInstance()->getUser()->setAttribute('filtro', false, "Requerimiento");
         $Requerimientos = RequerimientoQuery::create()->find();
         foreach ($Requerimientos as $fila) {
@@ -39,10 +42,13 @@ class Negocio extends BaseNegocio {
     }
 
     static function buscaPropiedad(Requerimiento $Requerimiento) {
-        NegocioQuery::create()
+        $negocio = NegocioQuery::create()
                 ->filterByRequerimientoId($Requerimiento->getId())
-                ->find()
-                ->delete();
+                ->find();
+        foreach ($negocio as $n) {
+            $n->setActivo(false);
+            $n->save();
+        }
         sfContext::getInstance()->getUser()->setAttribute('filtro', false, "Propiedad");
         $Propiedades = PropiedadQuery::create()->find();
         foreach ($Propiedades as $fila) {
@@ -158,11 +164,18 @@ class Negocio extends BaseNegocio {
             }
         }
         if (!$no_negocio && $Propiedad->getId() && $Requerimiento->getId()) {
-            $Negocio = new Negocio();
+            $Negocio = NegocioQuery::create()
+                    ->filterByRequerimientoId($Requerimiento->getId())
+                    ->filterByPropiedadId($Propiedad->getId())
+                    ->findOne();
+            if (!$Negocio) {
+                $Negocio = new Negocio();
+            }
             $Negocio->setRequerimientoId($Requerimiento->getId());
             $Negocio->setPropiedadId($Propiedad->getId());
             $Negocio->setUsuarioReq($Requerimiento->getUsuarioId());
             $Negocio->setUsuarioProp($Propiedad->getUsuarioId());
+            $Negocio->setActivo(true);
             $Negocio->save();
             $asunto = "Nuevo Negocio";
             $link = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
