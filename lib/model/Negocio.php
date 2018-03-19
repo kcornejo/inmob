@@ -56,6 +56,122 @@ class Negocio extends BaseNegocio {
         }
     }
 
+    public function getComision() {
+        $monto = $this->getPropiedad()->getPrecio() * ($this->getPropiedad()->getMiComision() / 100);
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        if ($this->getUsuarioProp() == $usuario_id) {
+            $monto = $monto * ((100 - $this->getPropiedad()->getComisionCompartida()) / 100);
+        } else {
+            $monto = $monto * ($this->getPropiedad()->getComisionCompartida() / 100);
+        }
+        if ($this->getPropiedad()->getMoneda()->getCodigo() != 'GTQ') {
+            $MonedaQuetzal = MonedaQuery::create()->findOneBySimbolo('GTQ');
+            if ($MonedaQuetzal) {
+                $TasaCambio = TasaCambioQuery::create()
+                        ->filterByMonedaOrigen($this->getPropiedad()->getMonedaId())
+                        ->filterByMonedaDestino($MonedaQuetzal->getId())
+                        ->findOne();
+                if ($TasaCambio) {
+                    $monto *= $TasaCambio->getMonto();
+                }
+            }
+        }
+        return $monto;
+    }
+
+    public function getMaximaComision() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $monto_maximo = 0;
+        if ($this->getUsuarioProp() == $usuario_id) {
+            $Negocios = NegocioQuery::create()
+                    ->filterByPropiedadId($this->getPropiedadId())
+                    ->filterByActivo(true)
+                    ->find();
+            foreach ($Negocios as $neg) {
+                $monto = $neg->getComision();
+                if ($monto_maximo <= $monto) {
+                    $monto_maximo = $monto;
+                }
+            }
+        } else {
+            $Negocios = NegocioQuery::create()
+                    ->filterByRequerimientoId($this->getRequerimientoId())
+                    ->filterByActivo(true)
+                    ->find();
+            foreach ($Negocios as $neg) {
+                $monto = $neg->getComision();
+                if ($monto_maximo <= $monto) {
+                    $monto_maximo = $monto;
+                }
+            }
+        }
+        return "GTQ " . number_format($monto_maximo);
+    }
+
+    public static function getComisionRequerimientoCompra() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Negocios = NegocioQuery::create()
+                ->joinPropiedad()
+                ->joinRequerimiento()
+                ->where("negocio.usuario_req = $usuario_id and negocio.activo = true and requerimiento.tipo_operacion = 'Comprar'")
+                ->groupByUsuarioReq()
+                ->groupByUsuarioProp()
+                ->find();
+        $monto = 0;
+        foreach ($Negocios as $n) {
+            $monto += (int) str_replace(",", "", substr($n->getMaximaComision(), 4));
+        }
+        return "GTQ " . number_format($monto);
+    }
+
+    public static function getComisionRequerimientoVenta() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Negocios = NegocioQuery::create()
+                ->joinPropiedad()
+                ->joinRequerimiento()
+                ->where("negocio.usuario_req = $usuario_id and negocio.activo = true and requerimiento.tipo_operacion != 'Comprar'")
+                ->groupByUsuarioReq()
+                ->groupByUsuarioProp()
+                ->find();
+        $monto = 0;
+        foreach ($Negocios as $n) {
+            $monto += (int) str_replace(",", "", substr($n->getMaximaComision(), 4));
+        }
+        return "GTQ " . number_format($monto);
+    }
+
+    public static function getComisionPropiedadVenta() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Negocios = NegocioQuery::create()
+                ->joinPropiedad()
+                ->joinRequerimiento()
+                ->where("negocio.usuario_prop = $usuario_id and negocio.activo = true and propiedad.tipo_operacion = 'Vender'")
+                ->groupByUsuarioReq()
+                ->groupByUsuarioProp()
+                ->find();
+        $monto = 0;
+        foreach ($Negocios as $n) {
+            $monto += (int) str_replace(",", "", substr($n->getMaximaComision(), 4));
+        }
+        return "GTQ " . number_format($monto);
+    }
+
+    public static function getComisionPropiedadRenta() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+         $Negocios = NegocioQuery::create()
+                ->joinPropiedad()
+                ->joinRequerimiento()
+                ->where("negocio.usuario_prop = $usuario_id and negocio.activo = true and propiedad.tipo_operacion != 'Vender'")
+                ->groupByUsuarioReq()
+                ->groupByUsuarioProp()
+                ->find();
+        $monto = 0;
+        foreach ($Negocios as $n) {
+            $monto += (int) str_replace(",", "", substr($n->getMaximaComision(), 4));
+        }
+        return "GTQ " . number_format($monto);
+    }
+
     public function getComisionRequerimientoSM() {
         $Propiedad = $this->getPropiedad();
         $COMISION = $Propiedad->getMiComision() / 100 * $Propiedad->getPrecio();

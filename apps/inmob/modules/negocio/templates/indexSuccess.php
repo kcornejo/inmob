@@ -20,7 +20,16 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         <br/>
         <div class="panel panel_ocultar" id="RO">
             <div class="panel-header">
-                <h5>REQUERIMIENTOS DE COMPRA</h5>
+                <div>
+                    <h5>
+                        REQUERIMIENTOS DE COMPRA
+                        <span style="float:right;color:#6480AB">
+                            <b>
+                                <?php echo Negocio::getComisionRequerimientoCompra() ?>
+                            </b>
+                        </span>
+                    </h5>
+                </div>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -34,7 +43,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         Comprar <?php echo $fila->getRequerimiento()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
-                                        <b><?php echo $fila->getComisionVenta() ?></b>
+                                        <b><?php echo $fila->getMaximaComision() ?></b>
                                         </font>
                                         <div class="dropdown" style="float:right;">
                                             <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -158,7 +167,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         </div>
         <div class="panel panel_ocultar" id="RR">
             <div class="panel-header">
-                <h5>REQUERIMIENTOS DE RENTA</h5>
+                <h5>
+                    REQUERIMIENTOS DE RENTA
+                    <span style="float:right;color:#6480AB">
+                        <b>
+                            <?php echo Negocio::getComisionRequerimientoVenta() ?>
+                        </b>
+                    </span>
+                </h5>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -172,7 +188,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         Rentar <?php echo $fila->getRequerimiento()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
-                                        <b><?php echo $fila->getComisionVenta() ?></b>
+                                        <b><?php echo $fila->getMaximaComision() ?></b>
                                         </font>
                                         <div class="dropdown" style="float:right;">
                                             <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -296,7 +312,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         </div>
         <div class="panel panel_ocultar" id="PV">
             <div class="panel-header">
-                <h5>PROPIEDADES EN VENTA</h5>
+                <h5>
+                    PROPIEDADES EN VENTA
+                    <span style="float:right;color:#6480AB">
+                        <b>
+                            <?php echo Negocio::getComisionPropiedadVenta() ?>
+                        </b>
+                    </span>
+                </h5>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -310,7 +333,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         Vender <?php echo $fila->getPropiedad()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
-                                        <b><?php echo $fila->getComisionRequerimiento() ?></b>
+                                        <b><?php echo $fila->getMaximaComision() ?></b>
                                         </font>
                                         <div class="dropdown" style="float:right;">
                                             <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -444,7 +467,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
         </div>
         <div class="panel panel_ocultar" id="PR">
             <div class="panel-header">
-                <h5>PROPIEDADES EN RENTA</h5>
+                <h5>
+                    PROPIEDADES EN RENTA
+                    <span style="float:right;color:#6480AB">
+                        <b>
+                            <?php echo Negocio::getComisionPropiedadRenta() ?>
+                        </b>
+                    </span>
+                </h5>
             </div>
             <div class="panel-content">
                 <div class="row">
@@ -458,7 +488,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         Rentar <?php echo $fila->getPropiedad()->getTipoInmueble(); ?>
                                         |
                                         <font style="color:#6480AB">
-                                        <b><?php echo $fila->getComisionRequerimiento() ?></b>
+                                        <b><?php echo $fila->getMaximaComision() ?></b>
                                         </font>
                                         <div class="dropdown" style="float:right;">
                                             <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
