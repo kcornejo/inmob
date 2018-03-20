@@ -6,15 +6,33 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
 ?> 
 <div class="row">
     <div class="col-md-12">
-        <h5 style="text-align: center;">
-            <select id="listado_req" style="float:right;">
-                <option value="TODO">TODO</option>
-                <option value="RO">Requerimiento de Compra</option>
-                <option value="RR">Requerimiento de Renta</option>
-                <option value="PV">Propiedades en Venta</option>
-                <option value="PR">Propiedades en Renta</option>
-            </select>
-        </h5>
+        <table  style="width:100%; margin-top: -10px;">
+            <tr>
+                <td style="width:33%">
+                    <h3>
+                        Total en Comisiones
+                    </h3>
+                </td>
+                <td  style="width:33%">
+                    <font style="color:#6480AB;">
+            <center>
+                <b><?php echo Negocio::getTotalComisiones(); ?></b>
+            </center>
+            </font>
+            </td>
+            <td  style="width:33%">
+                <h5 style="text-align: center;">
+                    <select id="listado_req" style="float:right;">
+                        <option value="TODO">TODO</option>
+                        <option value="RO">Requerimiento de Compra</option>
+                        <option value="RR">Requerimiento de Renta</option>
+                        <option value="PV">Propiedades en Venta</option>
+                        <option value="PR">Propiedades en Renta</option>
+                    </select>
+                </h5>
+            </td>
+            </tr>
+        </table>
     </div>
     <div class="panel-content">
         <br/>
@@ -55,8 +73,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                         Detalle
                                                     </a>
                                                     <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
-                                                                location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
-                                                            }" href="#">
+                                                                    location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
+                                                                }" href="#">
                                                         Eliminar
                                                     </a>
                                                     <?php if ($fila->getRequerimiento()->getEstatus() == "Disponible"): ?>
@@ -200,8 +218,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                         Detalle
                                                     </a>
                                                     <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
-                                                                location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
-                                                            }" href="#">
+                                                                    location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
+                                                                }" href="#">
                                                         Eliminar
                                                     </a>
                                                     <?php if ($fila->getRequerimiento()->getEstatus() == "Disponible"): ?>
@@ -348,8 +366,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                         Editar
                                                     </a>
                                                     <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                                location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
-                                                            }" href="#">
+                                                                    location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
+                                                                }" href="#">
                                                         Eliminar
                                                     </a>
                                                     <?php if ($fila->getPropiedad()->getEstatus() == "Disponible"): ?>
@@ -503,8 +521,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                                         Editar
                                                     </a>
                                                     <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                                location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
-                                                            }" href="#">
+                                                                    location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
+                                                                }" href="#">
                                                         Eliminar
                                                     </a>
                                                     <?php if ($fila->getPropiedad()->getEstatus() == "Disponible"): ?>
@@ -625,35 +643,35 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
 <input type="text" id="text_copiar" style="display:none;"/>
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
-                                                    function copiar(texto) {
-                                                        $('#text_copiar').val(texto);
-                                                        var copyText = document.getElementById("text_copiar");
-                                                        $('#text_copiar').show();
-                                                        copyText.select();
-                                                        document.execCommand("copy");
-                                                        $('#text_copiar').hide();
-                                                        generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
-                                                    }
+                                                        function copiar(texto) {
+                                                            $('#text_copiar').val(texto);
+                                                            var copyText = document.getElementById("text_copiar");
+                                                            $('#text_copiar').show();
+                                                            copyText.select();
+                                                            document.execCommand("copy");
+                                                            $('#text_copiar').hide();
+                                                            generate("topRight", "", '<div class="alert alert-success media fade in"><p><strong>Exito!</strong> Link puesto en el portapapeles.</p></div>');
+                                                        }
 
-                                                    $(document).ready(function () {
-                                                        $(".ajusta_propiedad").on('change', function () {
-                                                            var referencia = $(this).attr("referencia");
-                                                            var valor = $(this).val();
-                                                            $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
+                                                        $(document).ready(function () {
+                                                            $(".ajusta_propiedad").on('change', function () {
+                                                                var referencia = $(this).attr("referencia");
+                                                                var valor = $(this).val();
+                                                                $.get("<?php echo url_for("soporte/estatusPropiedad") ?>", {"id": referencia, "valor": valor});
+                                                            });
+                                                            $(".ajusta_requerimiento").on('change', function () {
+                                                                var referencia = $(this).attr("referencia");
+                                                                var valor = $(this).val();
+                                                                $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
+                                                            });
+                                                            $("#listado_req").on("change", function () {
+                                                                var valor = $("#listado_req").val();
+                                                                if (valor == 'TODO') {
+                                                                    $(".panel_ocultar").show();
+                                                                } else {
+                                                                    $(".panel_ocultar").hide();
+                                                                    $("#" + valor).show();
+                                                                }
+                                                            });
                                                         });
-                                                        $(".ajusta_requerimiento").on('change', function () {
-                                                            var referencia = $(this).attr("referencia");
-                                                            var valor = $(this).val();
-                                                            $.get("<?php echo url_for("soporte/estatusRequerimiento") ?>", {"id": referencia, "valor": valor});
-                                                        });
-                                                        $("#listado_req").on("change", function () {
-                                                            var valor = $("#listado_req").val();
-                                                            if (valor == 'TODO') {
-                                                                $(".panel_ocultar").show();
-                                                            } else {
-                                                                $(".panel_ocultar").hide();
-                                                                $("#" + valor).show();
-                                                            }
-                                                        });
-                                                    });
 </script>

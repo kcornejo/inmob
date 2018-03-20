@@ -158,7 +158,7 @@ class Negocio extends BaseNegocio {
 
     public static function getComisionPropiedadRenta() {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-         $Negocios = NegocioQuery::create()
+        $Negocios = NegocioQuery::create()
                 ->joinPropiedad()
                 ->joinRequerimiento()
                 ->where("negocio.usuario_prop = $usuario_id and negocio.activo = true and propiedad.tipo_operacion != 'Vender'")
@@ -169,6 +169,14 @@ class Negocio extends BaseNegocio {
         foreach ($Negocios as $n) {
             $monto += (int) str_replace(",", "", substr($n->getMaximaComision(), 4));
         }
+        return "GTQ " . number_format($monto);
+    }
+
+    public function getTotalComisiones() {
+        $monto = (int) str_replace(",", "", substr(self::getComisionRequerimientoCompra(), 4));
+        $monto += (int) str_replace(",", "", substr(self::getComisionRequerimientoVenta(), 4));
+        $monto += (int) str_replace(",", "", substr(self::getComisionPropiedadVenta(), 4));
+        $monto += (int) str_replace(",", "", substr(self::getComisionPropiedadRenta(), 4));
         return "GTQ " . number_format($monto);
     }
 
