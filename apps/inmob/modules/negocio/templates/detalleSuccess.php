@@ -113,10 +113,6 @@
                                                 Rentar
                                             <?php endif; ?>
                                             &nbsp;<?php echo $fila->getRequerimiento()->getTipoInmueble(); ?>
-                                            |
-                                            <font style="color:#6480AB">
-                                            <b><?php echo $fila->getComisionRequerimiento() ?></b>
-                                            </font>
                                             <div class="dropdown" style="float:right;">
                                                 <a style="text-decoration: none;cursor:pointer;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                     <i class="glyphicon glyphicon-option-vertical"></i>
