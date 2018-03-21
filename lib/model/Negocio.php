@@ -172,6 +172,15 @@ class Negocio extends BaseNegocio {
         return "GTQ " . number_format($monto);
     }
 
+    public function getCantidadMensajesSinLeer() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $negocio_id = $this->getId();
+        $MensajeNegocio = MensajeNegocioQuery::create()
+                ->where("negocio_id = $negocio_id and usuario_id != $usuario_id and visto = 0")
+                ->find();
+        return sizeof($MensajeNegocio);
+    }
+
     public function getTotalComisiones() {
         $monto = (int) str_replace(",", "", substr(self::getComisionRequerimientoCompra(), 4));
         $monto += (int) str_replace(",", "", substr(self::getComisionRequerimientoVenta(), 4));
