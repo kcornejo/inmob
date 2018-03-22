@@ -19,6 +19,38 @@ class Requerimiento extends BaseRequerimiento {
         parent::delete($con);
     }
 
+    public function getMaximaComision() {
+        $monto = "GTQ 0";
+        $Negocio = NegocioQuery::create()
+                ->filterByRequerimientoId($this->getId())
+                ->filterByActivo(true)
+                ->findOne();
+        if ($Negocio) {
+            $monto = $Negocio->getMaximaComision();
+        }
+        return $monto;
+    }
+
+    public function getCantidadMensajesSinLeer() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $MensajeNegocio = MensajeNegocioQuery::create()
+                ->useNegocioQuery()
+                ->filterByRequerimientoId($this->getId())
+                ->filterByActivo(true)
+                ->endUse()
+                ->where("usuario_id != $usuario_id and visto = 0")
+                ->find();
+        return ($MensajeNegocio);
+    }
+
+    public function getNegociosDisponibles() {
+        $cantidad = NegocioQuery::create()
+                ->filterByRequerimientoId($this->getId())
+                ->filterByActivo(true)
+                ->find();
+        return ($cantidad);
+    }
+
     public function getDireccionCompleta() {
         $listado = array();
         foreach ($this->getDireccionRequerimientos() as $dir) {

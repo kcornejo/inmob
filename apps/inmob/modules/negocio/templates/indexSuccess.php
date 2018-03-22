@@ -54,17 +54,17 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                     <?php foreach ($requerimiento_compra as $fila): ?>
                         <div class="col-md-2">
                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen() ?>"/>
+                                <img style="max-height: 100px" src="<?php echo $fila->getDireccionImagen() ?>"/>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getRequerimiento()->getId() ?>
+                            <?php echo $fila->getId() ?>
                             |
-                            Comprar <?php echo $fila->getRequerimiento()->getTipoInmueble(); ?>
+                            Comprar <?php echo $fila->getTipoInmueble(); ?>
                             |
                             Presupuesto: 
-                            <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
-                            <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
+                            <b><?php echo $fila->getMoneda()->getCodigo() ?></b>
+                            <?php echo number_format($fila->getPresupuestoMin(), 0) . '-' . number_format($fila->getPresupuestoMax(), 0) ?>
                             |
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
@@ -72,31 +72,31 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <table class="" style="padding: 0;width:100%">
                                     <tr>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
+                                            <b><?php echo $fila->getArea() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
+                                            <b><?php echo $fila->getNiveles() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
+                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
+                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
+                                            <b><?php echo $fila->getCantidadBanio() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
@@ -106,8 +106,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                             <br/><br/>
                             <?php
-                            echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 70);
-                            if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 70) {
+                            echo substr($fila->getDireccionCompleta(), 0, 70);
+                            if (strlen($fila->getDireccionCompleta()) > 70) {
                                 echo "...";
                             }
                             ?>
@@ -123,23 +123,23 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                             Detalle
                                         </a>
                                         <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
-                                                        location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
+                                                        location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Eliminado" ?>');
                                                     }" href="#">
                                             Eliminar
                                         </a>
-                                        <?php if ($fila->getRequerimiento()->getEstatus() == "Disponible"): ?>
-                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Vendido" ?>">
+                                        <?php if ($fila->getEstatus() == "Disponible"): ?>
+                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Vendido" ?>">
                                                 Vendido!
                                             </a>
                                         <?php else: ?>
-                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Disponible" ?>">
+                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Disponible" ?>">
                                                 Disponible!
                                             </a>
                                         <?php endif; ?>
-                                        <a href="<?php echo url_for('requerimiento/visualizar') . "?id=" . $fila->getRequerimiento()->getId() ?>">
+                                        <a href="<?php echo url_for('requerimiento/visualizar') . "?id=" . $fila->getId() ?>">
                                             Visualizar
                                         </a>
-                                        <a onclick="copiar('<?php echo url_for('requerimiento/compartir', true) . "?id=" . $fila->getRequerimiento()->getId() ?>')" href="javascript:void();">
+                                        <a onclick="copiar('<?php echo url_for('requerimiento/compartir', true) . "?id=" . $fila->getId() ?>')" href="javascript:void();">
                                             Compartir
                                         </a>
                                     </li>
@@ -149,15 +149,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
-                            Negocios Disponibles: <?php echo sizeof($fila->getPropiedad()->getNegocios()); ?> 
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $fila->getId() ?>" >
+                            Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?> 
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
                                 (Ver...)
                             </a>
                             </font>
                         </div>
-                        <div id="collapse<?php echo $fila->getId() ?>" class="panel-collapse collapse">
+                        <div id="rc<?php echo $fila->getId() ?>" class="panel-collapse collapse">
                             <div class="panel-body" style="max-height:500px; overflow-x: hidden">
-                                <?php include_partial('negocio/detalle', array('negocio_id' => $fila->getId())) ?>
+                                <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -180,17 +180,17 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                     <?php foreach ($requerimiento_renta as $fila): ?>
                         <div class="col-md-2">
                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen() ?>"/>
+                                <img style="max-height: 100px" src="<?php echo $fila->getDireccionImagen() ?>"/>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getRequerimiento()->getId() ?>
+                            <?php echo $fila->getId() ?>
                             |
-                            Rentar <?php echo $fila->getRequerimiento()->getTipoInmueble(); ?>
+                            Rentar <?php echo $fila->getTipoInmueble(); ?>
                             |
                             Presupuesto: 
-                            <b><?php echo $fila->getRequerimiento()->getMoneda()->getCodigo() ?></b>
-                            <?php echo number_format($fila->getRequerimiento()->getPresupuestoMin(), 0) . '-' . number_format($fila->getRequerimiento()->getPresupuestoMax(), 0) ?>
+                            <b><?php echo $fila->getMoneda()->getCodigo() ?></b>
+                            <?php echo number_format($fila->getPresupuestoMin(), 0) . '-' . number_format($fila->getPresupuestoMax(), 0) ?>
                             |
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
@@ -198,31 +198,31 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <table class="" style="padding: 0;width:100%">
                                     <tr>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
+                                            <b><?php echo $fila->getArea() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
+                                            <b><?php echo $fila->getNiveles() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
+                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
+                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
+                                            <b><?php echo $fila->getCantidadBanio() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
@@ -232,8 +232,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                             <br/><br/>
                             <?php
-                            echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 70);
-                            if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 70) {
+                            echo substr($fila->getDireccionCompleta(), 0, 70);
+                            if (strlen($fila->getDireccionCompleta()) > 70) {
                                 echo "...";
                             }
                             ?>
@@ -249,23 +249,23 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                             Detalle
                                         </a>
                                         <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
-                                                        location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Eliminado" ?>');
+                                                        location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Eliminado" ?>');
                                                     }" href="#">
                                             Eliminar
                                         </a>
-                                        <?php if ($fila->getRequerimiento()->getEstatus() == "Disponible"): ?>
-                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Vendido" ?>">
+                                        <?php if ($fila->getEstatus() == "Disponible"): ?>
+                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Vendido" ?>">
                                                 Vendido!
                                             </a>
                                         <?php else: ?>
-                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getRequerimiento()->getId() . "&valor=Disponible" ?>">
+                                            <a href="<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Disponible" ?>">
                                                 Disponible!
                                             </a>
                                         <?php endif; ?>
-                                        <a href="<?php echo url_for('requerimiento/visualizar') . "?id=" . $fila->getRequerimiento()->getId() ?>">
+                                        <a href="<?php echo url_for('requerimiento/visualizar') . "?id=" . $fila->getId() ?>">
                                             Visualizar
                                         </a>
-                                        <a onclick="copiar('<?php echo url_for('requerimiento/compartir', true) . "?id=" . $fila->getRequerimiento()->getId() ?>')" href="javascript:void();">
+                                        <a onclick="copiar('<?php echo url_for('requerimiento/compartir', true) . "?id=" . $fila->getId() ?>')" href="javascript:void();">
                                             Compartir
                                         </a>
                                     </li>
@@ -275,15 +275,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
-                            Negocios Disponibles: <?php echo sizeof($fila->getPropiedad()->getNegocios()); ?>
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $fila->getId() ?>" >
+                            Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
                                 (Ver...)
                             </a>
                             </font>
                         </div>
-                        <div id="collapse<?php echo $fila->getId() ?>" class="panel-collapse collapse">
+                        <div id="rr<?php echo $fila->getId() ?>" class="panel-collapse collapse">
                             <div class="panel-body" style="max-height:500px; overflow-x: hidden">
-                                <?php include_partial('negocio/detalle', array('negocio_id' => $fila->getId())) ?>
+                                <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -306,25 +306,25 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                     <?php foreach ($propiedad_venta as $fila): ?>
                         <div class="col-md-2">
                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
+                                <?php foreach ($fila->getPropiedadImagens() as $img): ?>
                                     <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                     <?php break; ?>
                                 <?php endforeach; ?>
-                                <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
+                                <?php if (sizeof($fila->getPropiedadImagens()) == 0): ?>
                                     <div style=";background-color:#f1f3f3; text-align: center;">
-                                        <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen() ?>"/>
+                                        <img style="max-height: 100px" src="<?php echo $fila->getDireccionImagen() ?>"/>
                                     </div>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getPropiedad()->getId() ?>
+                            <?php echo $fila->getId() ?>
                             |
-                            Vender <?php echo $fila->getPropiedad()->getTipoInmueble(); ?>
+                            Vender <?php echo $fila->getTipoInmueble(); ?>
                             |
                             Precio: 
-                            <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
-                            <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
+                            <b><?php echo $fila->getMoneda()->getCodigo() ?></b>
+                            <?php echo number_format($fila->getPrecio(), 0) ?>
                             |
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
@@ -332,31 +332,31 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <table class="" style="padding: 0;width:100%">
                                     <tr>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getArea() ?></b>
+                                            <b><?php echo $fila->getArea() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
+                                            <b><?php echo $fila->getNiveles() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
+                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
+                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
+                                            <b><?php echo $fila->getCantidadBanio() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
@@ -366,8 +366,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                             <br/><br/>
                             <?php
-                            echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 70);
-                            if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 70) {
+                            echo substr($fila->getDireccionCompleta(), 0, 70);
+                            if (strlen($fila->getDireccionCompleta()) > 70) {
                                 echo "...";
                             }
                             ?>
@@ -382,27 +382,27 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
                                             Detalle
                                         </a>
-                                        <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                        <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getId() ?>">
                                             Editar
                                         </a>
                                         <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                        location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
+                                                        location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getId() . "&valor=Eliminado" ?>');
                                                     }" href="#">
                                             Eliminar
                                         </a>
-                                        <?php if ($fila->getPropiedad()->getEstatus() == "Disponible"): ?>
-                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Vendido" ?>">
+                                        <?php if ($fila->getEstatus() == "Disponible"): ?>
+                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getId() . "&valor=Vendido" ?>">
                                                 Vendido!
                                             </a>
                                         <?php else: ?>
-                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . $fila->getPropiedad()->getId() . "&valor=Disponible" ?>">
+                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . $fila->getId() . "&valor=Disponible" ?>">
                                                 Disponible!
                                             </a>
                                         <?php endif; ?>
-                                        <a href="<?php echo url_for('vender/visualizar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                        <a href="<?php echo url_for('vender/visualizar') . "?id=" . $fila->getId() ?>">
                                             Visualizar
                                         </a>
-                                        <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $fila->getPropiedad()->getId() ?>')"
+                                        <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $fila->getId() ?>')"
                                            href="javascript:void();">
                                             Compartir
                                         </a>
@@ -413,15 +413,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
-                            Negocios Disponibles: <?php echo sizeof($fila->getRequerimiento()->getNegocios()); ?>
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $fila->getId() ?>" >
+                            Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
                                 (Ver...)
                             </a>
                             </font>
                         </div>
-                        <div id="collapse<?php echo $fila->getId() ?>" class="panel-collapse collapse">
+                        <div id="pv<?php echo $fila->getId() ?>" class="panel-collapse collapse">
                             <div class="panel-body" style="max-height:500px; overflow-x: hidden">
-                                <?php include_partial('negocio/detalle', array('negocio_id' => $fila->getId())) ?>
+                                <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -444,25 +444,25 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                     <?php foreach ($propiedad_renta as $fila): ?>
                         <div class="col-md-2">
                             <div style=";background-color:#f1f3f3; text-align: center;">
-                                <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
+                                <?php foreach ($fila->getPropiedadImagens() as $img): ?>
                                     <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                     <?php break; ?>
                                 <?php endforeach; ?>
-                                <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
+                                <?php if (sizeof($fila->getPropiedadImagens()) == 0): ?>
                                     <div style=";background-color:#f1f3f3; text-align: center;">
-                                        <img style="max-height: 100px" src="<?php echo $fila->getPropiedad()->getDireccionImagen() ?>"/>
+                                        <img style="max-height: 100px" src="<?php echo $fila->getDireccionImagen() ?>"/>
                                     </div>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getPropiedad()->getId() ?>
+                            <?php echo $fila->getId() ?>
                             |
-                            Rentar <?php echo $fila->getPropiedad()->getTipoInmueble(); ?>
+                            Rentar <?php echo $fila->getTipoInmueble(); ?>
                             |
                             Precio: 
-                            <b><?php echo $fila->getPropiedad()->getMoneda()->getCodigo() ?></b>
-                            <?php echo number_format($fila->getPropiedad()->getPrecio(), 0) ?>
+                            <b><?php echo $fila->getMoneda()->getCodigo() ?></b>
+                            <?php echo number_format($fila->getPrecio(), 0) ?>
                             |
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
@@ -470,31 +470,31 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <table class="" style="padding: 0;width:100%">
                                     <tr>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getArea() ?></b>
+                                            <b><?php echo $fila->getArea() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
+                                            <b><?php echo $fila->getNiveles() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
+                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
+                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
                                         </td>
                                         <td style="padding: 0;">
-                                            <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
+                                            <b><?php echo $fila->getCantidadBanio() ?></b>
                                         </td>
                                         <td style="padding: 0;">
                                             <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
@@ -504,8 +504,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                             <br/><br/>
                             <?php
-                            echo substr($fila->getPropiedad()->getDireccionCompleta(), 0, 70);
-                            if (strlen($fila->getPropiedad()->getDireccionCompleta()) > 70) {
+                            echo substr($fila->getDireccionCompleta(), 0, 70);
+                            if (strlen($fila->getDireccionCompleta()) > 70) {
                                 echo "...";
                             }
                             ?>
@@ -520,27 +520,27 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                         <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
                                             Detalle
                                         </a>
-                                        <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                        <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getId() ?>">
                                             Editar
                                         </a>
                                         <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                        location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Eliminado" ?>');
+                                                        location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getId() . "&valor=Eliminado" ?>');
                                                     }" href="#">
                                             Eliminar
                                         </a>
-                                        <?php if ($fila->getPropiedad()->getEstatus() == "Disponible"): ?>
-                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getPropiedad()->getId() . "&valor=Vendido" ?>">
+                                        <?php if ($fila->getEstatus() == "Disponible"): ?>
+                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $fila->getId() . "&valor=Vendido" ?>">
                                                 Vendido!
                                             </a>
                                         <?php else: ?>
-                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . $fila->getPropiedad()->getId() . "&valor=Disponible" ?>">
+                                            <a href="<?php echo url_for("soporte/estatusPropiedad") . $fila->getId() . "&valor=Disponible" ?>">
                                                 Disponible!
                                             </a>
                                         <?php endif; ?>
-                                        <a href="<?php echo url_for('vender/visualizar') . "?id=" . $fila->getPropiedad()->getId() ?>">
+                                        <a href="<?php echo url_for('vender/visualizar') . "?id=" . $fila->getId() ?>">
                                             Visualizar
                                         </a>
-                                        <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $fila->getPropiedad()->getId() ?>')"
+                                        <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $fila->getId() ?>')"
                                            href="javascript:void();">
                                             Compartir
                                         </a>
@@ -551,15 +551,15 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
-                            Negocios Disponibles: <?php echo sizeof($fila->getRequerimiento()->getNegocios()); ?>
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $fila->getId() ?>" >
+                            Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
                                 (Ver...)
                             </a>
                             </font>
                         </div>
-                        <div id="collapse<?php echo $fila->getId() ?>" class="panel-collapse collapse">
+                        <div id="pr<?php echo $fila->getId() ?>" class="panel-collapse collapse">
                             <div class="panel-body" style="max-height:500px; overflow-x: hidden">
-                                <?php include_partial('negocio/detalle', array('negocio_id' => $fila->getId())) ?>
+                                <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
                     <?php endforeach; ?>

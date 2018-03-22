@@ -8,8 +8,8 @@
                         |
                         <?php echo $requerimiento->getTipoInmueble() ?>
                         en <?php
-                        if ($requerimiento->getTipoOperacion() == "Vender") {
-                            echo "Venta";
+                        if ($requerimiento->getTipoOperacion() == "Comprar") {
+                            echo "Compra";
                         } else {
                             echo "Renta";
                         }

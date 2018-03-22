@@ -19,6 +19,49 @@ class Propiedad extends BasePropiedad {
         parent::delete($con);
     }
 
+    public function getMaximaComision() {
+        $monto = "GTQ " . number_format($this->getComision());
+        return $monto;
+    }
+
+    public function getCantidadMensajesSinLeer() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $MensajeNegocio = MensajeNegocioQuery::create()
+                ->useNegocioQuery()
+                ->filterByPropiedadId($this->getId())
+                ->filterByActivo(true)
+                ->endUse()
+                ->where("usuario_id != $usuario_id and visto = 0")
+                ->find();
+        return ($MensajeNegocio);
+    }
+
+    public function getNegociosDisponibles() {
+        $cantidad = NegocioQuery::create()
+                ->filterByPropiedadId($this->getId())
+                ->filterByActivo(true)
+                ->find();
+        return ($cantidad);
+    }
+
+    public function getComision() {
+        $monto = $this->getPrecio() * ($this->getMiComision() / 100);
+        $monto = $monto * ((100 - $this->getComisionCompartida()) / 100);
+        if ($this->getMoneda()->getCodigo() != 'GTQ') {
+            $MonedaQuetzal = MonedaQuery::create()->findOneBySimbolo('GTQ');
+            if ($MonedaQuetzal) {
+                $TasaCambio = TasaCambioQuery::create()
+                        ->filterByMonedaOrigen($this->getMonedaId())
+                        ->filterByMonedaDestino($MonedaQuetzal->getId())
+                        ->findOne();
+                if ($TasaCambio) {
+                    $monto *= $TasaCambio->getMonto();
+                }
+            }
+        }
+        return $monto;
+    }
+
     public function getDireccionCompleta() {
         $listado = array();
         $listado[] = trim($this->getZona()) ? "Zona: " . trim($this->getZona()) : null;
@@ -27,7 +70,7 @@ class Propiedad extends BasePropiedad {
         $listado[] = trim($this->getMunicipio()) ? "Municipio: " . trim($this->getMunicipio()) : null;
         $listado[] = trim($this->getDepartamento()) ? "Departamento: " . trim($this->getDepartamento()) : null;
         $listado[] = trim($this->getDireccion()) ? "Dirección: " . trim($this->getDireccion()) : null;
-        $listado  = array_filter($listado);
+        $listado = array_filter($listado);
         return implode(", ", $listado);
     }
 

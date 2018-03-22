@@ -1,27 +1,25 @@
 <?php
 $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-$negocio = NegocioQuery::create()->findOneById($negocio_id);
-$registros = array();
-if ($negocio->getUsuarioReq() == $usuario_id) {
+if ($propiedad_id) {
     $registros = NegocioQuery::create()
-            ->filterByPropiedadId($negocio->getPropiedadId())
+            ->filterByPropiedadId($propiedad_id)
             ->filterByActivo(true)
             ->find();
 } else {
     $registros = NegocioQuery::create()
-            ->filterByRequerimientoId($negocio->getRequerimientoId())
+            ->filterByRequerimientoId($requerimiento_id)
             ->filterByActivo(true)
             ->find();
 }
 ?>
-<?php if ($negocio->getUsuarioProp() == $usuario_id): ?>
+<?php if ($propiedad_id): ?>
     <div class="row">
         <?php foreach ($registros as $fila): ?>
             <div class="col-md-3">
                 <div class="panel">
                     <div class="panel-header">
                         <h5>
-                            <?php echo $fila->getId() ?>
+                            <?php echo $fila->getRequerimiento()->getId() ?>
                             |
                             <?php if ($fila->getRequerimiento()->getTipoOperacion() == "Comprar"): ?>
                                 Comprar
@@ -128,7 +126,7 @@ if ($negocio->getUsuarioReq() == $usuario_id) {
                 <div class="panel">
                     <div class="panel-header">
                         <h5>
-                            <?php echo $fila->getId() ?>
+                            <?php echo $fila->getPropiedad()->getId() ?>
                             |
                             <?php if ($fila->getPropiedad()->getTipoOperacion() == "Vender"): ?>
                                 Vender
@@ -240,4 +238,9 @@ if ($negocio->getUsuarioReq() == $usuario_id) {
             </div>
         <?php endforeach; ?>
     </div>
+<?php endif; ?>
+<?php if(sizeof($registros) == 0):?>
+<center>
+    <b>[SIN REGISTROS]</b>
+</center>
 <?php endif; ?>
