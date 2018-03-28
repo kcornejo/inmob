@@ -57,8 +57,8 @@ class Requerimiento extends BaseRequerimiento {
             $listado[] = trim($dir->getZona()) ? "Zona: " . trim($dir->getZona()) : null;
             $listado[] = trim($dir->getCarretera()) ? "Carretera: " . trim($dir->getCarretera()) : null;
             $listado[] = trim($dir->getKm()) ? "Km: " . trim($dir->getKm()) : null;
-            $listado[] = trim($dir->getMunicipio()) ? "Municipio: " . trim($dir->getMunicipio()) : null;
-            $listado[] = trim($dir->getDepartamento()) ? "Departamento: " . trim($dir->getDepartamento()) : null;
+            $listado[] = trim($dir->getMunicipio()) ? "Muni: " . trim($dir->getMunicipio()) : null;
+            $listado[] = trim($dir->getDepartamento()) ? "Dpto: " . trim($dir->getDepartamento()) : null;
             $listado[] = trim($dir->getDireccion()) ? "Dirección: " . trim($dir->getDireccion()) : null;
             break;
         }

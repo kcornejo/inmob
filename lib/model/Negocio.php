@@ -26,6 +26,30 @@ class Negocio extends BaseNegocio {
         return sizeof($MensajeNegocio);
     }
 
+    public function getDireccionCompleta() {
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Propiedad = $this->getPropiedad();
+        if ($this->getUsuarioProp() == $usuario_id) {
+            $DireccionRequerimiento = DireccionRequerimientoQuery::create()->findByRequerimientoId($this->getRequerimientoId());
+            $listado = array();
+            foreach ($DireccionRequerimiento as $dir) {
+                if (($Propiedad->getZona() == $dir->getZona() && $Propiedad->getMunicipio() == $dir->getMunicipio()) || ($Propiedad->getCarreteraId() && $Propiedad->getCarreteraId() == $dir->getCarreteraId())) {
+                    $listado[] = trim($dir->getZona()) ? "Zona: " . trim($dir->getZona()) : null;
+                    $listado[] = trim($dir->getCarretera()) ? "Carretera: " . trim($dir->getCarretera()) : null;
+                    $listado[] = trim($dir->getKm()) ? "Km: " . trim($dir->getKm()) : null;
+                    $listado[] = trim($dir->getMunicipio()) ? "Muni: " . trim($dir->getMunicipio()) : null;
+                    $listado[] = trim($dir->getDepartamento()) ? "Dpto: " . trim($dir->getDepartamento()) : null;
+                    $listado[] = trim($dir->getDireccion()) ? "Dirección: " . trim($dir->getDireccion()) : null;
+                    break;
+                }
+            }
+            $listado = array_filter($listado);
+            return implode(", ", $listado);
+        } else {
+            return $this->getPropiedad()->getDireccionCompleta();
+        }
+    }
+
     static function buscaRequerimiento(Propiedad $Propiedad) {
         $negocio = NegocioQuery::create()
                 ->filterByPropiedadId($Propiedad->getId())

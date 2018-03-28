@@ -104,8 +104,8 @@ if ($propiedad_id) {
                                     <tr>
                                         <td colspan="2">
                                             <?php
-                                            echo substr($fila->getRequerimiento()->getDireccionCompleta(), 0, 50);
-                                            if (strlen($fila->getRequerimiento()->getDireccionCompleta()) > 50) {
+                                            echo substr($fila->getDireccionCompleta(), 0, 50);
+                                            if (strlen($fila->getDireccionCompleta()) > 50) {
                                                 echo "...";
                                             }
                                             ?>

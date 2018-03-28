@@ -19,27 +19,46 @@
                 </div>
                 <div class="panel-content">
                     <div class="row">
-                        <div class="col-md-7" style=";background-color:#f1f3f3; text-align: center;">
+                        <div class="col-md-7 visible-md-block visible-lg-block" style=";background-color:#f1f3f3; text-align: center;height: 375px;">
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
                                     <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%"/>
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
                                     </a>
                                     <br/><br/>
                                 <?php else: ?>
                                     <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%"/>
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
                                     </a>
                                 <?php endif; ?>
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
-                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
+                                <img style="max-height: 100%;height: 100%;" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
+                            <?php endif; ?>  
+                        </div>
+                        <div class="col-md-7 visible-sm-block visible-xs-block" style=";background-color:#f1f3f3; text-align: center; ">
+                            <?php $contador = false; ?>
+                            <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
+                                <?php if (!$contador): ?>
+                                    <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
+                                    </a>
+                                    <br/><br/>
+                                <?php else: ?>
+                                    <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
+                                    </a>
+                                <?php endif; ?>
+                                <?php $contador = true ?>
+                            <?php endforeach; ?>
+                            <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
+                                <img style="max-height: 100%;height: 100%;" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="panel">
+                            <div class="panel panel-sombra-completa">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -87,19 +106,18 @@
                         </div>
                         <div class="col-md-12">
                             <div style="float:left;">
-                                <h3>
-                                    <b><?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() ?></b>
-                                    <?php echo number_format($negocio->getPropiedad()->getPrecio(), 0) ?>
-                                    <?php if ($negocio->getPropiedad()->getNegociable()):; ?>
-                                        &nbsp;Negociable
-                                    <?php endif; ?>
-                                </h3>
+                                <h5 style="color:gray;">
+                                    INFORMACION DE CONTACTO
+                                </h5>
                             </div>
                             <div style="float:right;">
-                                <h5>
+                                <h5 style="color:gray;">
                                     <?php echo $negocio->getPropiedad()->getCreatedAt("d/m/Y") ?>
                                 </h5>
                             </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr/>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 bg-gray-light">
                             <br/>
@@ -117,114 +135,20 @@
                         </div>
                     </div>
                     <div class="row">
-                        <h5 style="color:gray;">
-                            CARACTERISTICAS DEL INMUEBLE
-                            <hr/>
-                        </h5>
-                        <br/>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getArea() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                            <br/><br/>
+                        <div class="col-md-12">
+                            <h5 style="color:gray;">
+                                CARACTERISTICAS DEL INMUEBLE
+                                <hr/>
+                            </h5>
+                            <br/>
+                            <?php include_partial("soporte/caracteristicas", array("negocio" => $negocio)); ?>
                         </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getNiveles() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadHabitacion() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadParqueo() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadBanio() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getAreaX() . "x" . $negocio->getPropiedad()->getAreaY() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dimensiones-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <?php if ($negocio->getPropiedad()->getTieneAgua()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Agua-01.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($negocio->getPropiedad()->getTieneLuz()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Energia electrica-01.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadComedor() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Comedor.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadSala() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Sala.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadCocina() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cocina.png"/>
-                            <br/><br/>
-                        </div>
-                        <?php if ($negocio->getPropiedad()->getDormitorioServicio()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($negocio->getPropiedad()->getEstudio()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Estudio.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($negocio->getPropiedad()->getCisterna()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cisterna-01.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadJardin() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Jardin.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadPatio() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Patio.png"/>
-                            <br/><br/>
-                        </div>
-                        <?php if ($negocio->getPropiedad()->getLavanderia()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Lavanderia.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
                         <div class="col-md-12">
                             <h5 style="color:gray;">
                                 UBICACION
                                 <hr/>
                             </h5>
-                            <?php $propiedad = $negocio->getPropiedad(); ?>
-                            <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
-                            <?php echo $propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null ?>
-                            <?php echo $propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null ?>
-                            <?php echo $propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null ?>
-                            <?php echo $propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null ?>
-                            <?php echo $propiedad->getDireccion() ?>
+                            <?php echo $negocio->getDireccionCompleta(); ?>
                         </div>
                     </div>
                 </div>
@@ -252,27 +176,46 @@
                 </div>
                 <div class="panel-content">
                     <div class="row">
-                        <div class="col-md-7" style=";background-color:#f1f3f3; text-align: center;">
+                        <div class="col-md-7 visible-md-block visible-lg-block" style=";background-color:#f1f3f3; text-align: center;height: 375px;">
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
                                     <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%"/>
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
                                     </a>
                                     <br/><br/>
                                 <?php else: ?>
                                     <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%"/>
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
                                     </a>
                                 <?php endif; ?>
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
                             <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
-                                <img style="max-height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
+                                <img style="max-height: 100%;height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
+                            <?php endif; ?>  
+                        </div>
+                        <div class="col-md-7 visible-xs-block visible-sm-block" style=";background-color:#f1f3f3; text-align: center;">
+                            <?php $contador = false; ?>
+                            <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
+                                <?php if (!$contador): ?>
+                                    <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
+                                    </a>
+                                    <br/><br/>
+                                <?php else: ?>
+                                    <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
+                                    </a>
+                                <?php endif; ?>
+                                <?php $contador = true ?>
+                            <?php endforeach; ?>
+                            <?php if (sizeof($negocio->getPropiedad()->getPropiedadImagens()) == 0): ?>
+                                <img style="max-height: 100%;height: 100%" src="<?php echo $negocio->getPropiedad()->getDireccionImagen() ?>"/>
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="panel">
+                            <div class="panel panel-sombra-completa">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -283,28 +226,13 @@
                                     <table class="table">
                                         <tr>
                                             <td colspan="2">
-                                                Precio: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getPrecio(), 0) ?>
-                                                &nbsp;<?php echo $negocio->getPropiedad()->getNegociable() ? "NEGOCIABLE" : "NO NEGOCIABLE" ?>
+                                                Precio: <?php echo $negocio->getRequerimiento()->getMoneda()->getCodigo() . " " . number_format($negocio->getRequerimiento()->getPresupuestoMin(), 0) . "-" . number_format($negocio->getRequerimiento()->getPresupuestoMax(), 0) ?>
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
                                                 Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                Mantenimiento Mensual: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getMantenimientoMensual(), 0) ?>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                Iusi Trimestral: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getIusiSemestral(), 0) ?>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <?php echo $negocio->getPropiedad()->getIncluyeGastosEscritura() ? "INCLUYE GASTOS DE ESCRITURA" : "NO INCLUYE GASTOS DE ESCRITURA" ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -320,16 +248,18 @@
                         </div>
                         <div class="col-md-12">
                             <div style="float:left;">
-                                <h3>
-                                    <b><?php echo $negocio->getRequerimiento()->getMoneda()->getCodigo() ?></b>
-                                    <?php echo number_format($negocio->getRequerimiento()->getPresupuestoMin(), 2) ?> - <?php echo number_format($negocio->getRequerimiento()->getPresupuestoMax(), 2) ?>
-                                </h3>
-                            </div>
-                            <div style="float:right;">
-                                <h5>
-                                    <?php echo $negocio->getRequerimiento()->getCreatedAt("d/m/Y") ?>
+                                <h5 style="color:gray;">
+                                    INFORMACION DE CONTACTO
                                 </h5>
                             </div>
+                            <div style="float:right;">
+                                <h5 style="color:gray;">
+                                    <?php echo $negocio->getPropiedad()->getCreatedAt("d/m/Y") ?>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr/>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 bg-gray-light">
                             <br/>
@@ -352,109 +282,13 @@
                             <hr/>
                         </h5>
                         <br/>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getArea() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getNiveles() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadHabitacion() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadParqueo() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadBanio() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getAreaX() . "x" . $negocio->getPropiedad()->getAreaY() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dimensiones-01.png"/>
-                            <br/><br/>
-                        </div>
-                        <?php if ($negocio->getPropiedad()->getTieneAgua()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Agua-01.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($negocio->getPropiedad()->getTieneLuz()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Energia electrica-01.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadComedor() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Comedor.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadSala() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Sala.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadCocina() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cocina.png"/>
-                            <br/><br/>
-                        </div>
-                        <?php if ($negocio->getPropiedad()->getDormitorioServicio()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($negocio->getPropiedad()->getEstudio()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Estudio.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($negocio->getPropiedad()->getCisterna()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cisterna-01.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadJardin() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Jardin.png"/>
-                            <br/><br/>
-                        </div>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <?php echo $negocio->getPropiedad()->getCantidadPatio() ?>
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Patio.png"/>
-                            <br/><br/>
-                        </div>
-                        <?php if ($negocio->getPropiedad()->getLavanderia()): ?>
-                            <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                                <img style="max-width: 30px;" src="/assets/img/caracteristicas/Lavanderia.png"/>
-                                <br/><br/>
-                            </div>
-                        <?php endif; ?>
+                        <?php include_partial("soporte/caracteristicas", array("negocio" => $negocio)); ?>
                         <div class="col-md-12">
                             <h5 style="color:gray;">
                                 UBICACION
                                 <hr/>
                             </h5>
-                            <?php $propiedad = $negocio->getPropiedad(); ?>
-                            <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
-                            <?php echo $propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null ?>
-                            <?php echo $propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null ?>
-                            <?php echo $propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null ?>
-                            <?php echo $propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null ?>
-                            <?php echo $propiedad->getDireccion() ?>
+                            <?php echo $negocio->getDireccionCompleta(); ?>
                         </div>
                     </div>
                 </div>
@@ -699,7 +533,7 @@
                                     $("#monto_financiar").val(monto_financiar.toFixed(2));
                                     var cuota_nivelada = ((monto_financiar * (interes_anual / 12)) * Math.pow((1 + (interes_anual / 12)), (plazo_anio * 12))) / (Math.pow((1 + (interes_anual / 12)), (plazo_anio * 12)) - 1);
                                     $("#cuota_nivelada").val(cuota_nivelada.toFixed(2));
-                                    var precio_venta  =$("#precio_venta").val();
+                                    var precio_venta = $("#precio_venta").val();
                                     var iusi = (((((precio_venta / 1.12)) * 0.009) / 12));
                                     var factor_construccion = $("#factor_construccion").val();
                                     var seguro_banco = $("#seguro_banco").val();
@@ -710,7 +544,7 @@
                                     $("#cuota_total").val(cuota_total.toFixed(2));
                                     var nucleo_familiar = cuota_total / $("#relacion_cuota_interes").val();
                                     $("#nucleo_familiar").val(nucleo_familiar.toFixed(2));
-                                    
+
                                 }
                                 function mensaje() {
                                     var mensaje = $("#texto_mensaje").val();
