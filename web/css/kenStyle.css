@@ -55,3 +55,6 @@
 .panel{
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.08) !important;
 }
+.panel-sombra-completa{
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.08) !important;
+}
