@@ -163,8 +163,8 @@ if ($propiedad_id) {
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
                                 <div style=";background-color:#f1f3f3; text-align: center;">
-                                    <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $fila): ?>
-                                        <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>"/>
+                                    <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
+                                        <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                         <?php break; ?>
                                     <?php endforeach; ?>
                                     <?php if (sizeof($fila->getPropiedad()->getPropiedadImagens()) == 0): ?>
