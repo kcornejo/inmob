@@ -20,7 +20,14 @@ class Propiedad extends BasePropiedad {
     }
 
     public function getMaximaComision() {
-        $monto = "GTQ " . number_format($this->getComision());
+        $monto = 'GTQ 0';
+        $negocio = NegocioQuery::create()
+                ->filterByActivo(true)
+                ->filterByPropiedadId($this->getId())
+                ->findOne();
+        if ($negocio) {
+            $monto = "GTQ " . number_format($this->getComision());
+        }
         return $monto;
     }
 

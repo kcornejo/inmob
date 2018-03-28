@@ -719,6 +719,6 @@
                                     });
                                 }
                                 function avisos() {
-                                    $.get("<?php echo url_for('soporte/avisos') ?>", {negocio_id: "<?php echo $negocio->getId() ?>"}, function () {});
+                                    $.get("<?php echo url_for('soporte/aviso') ?>", {negocio_id: "<?php echo $negocio->getId() ?>"}, function () {});
                                 }
 </script>

@@ -160,6 +160,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
+                        <div class="col-md-12"><br/></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -286,6 +287,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
+                        <div class="col-md-12"><br/></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -424,6 +426,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
+                        <div class="col-md-12"><br/></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -562,6 +565,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
+                        <div class="col-md-12"><br/></div>
                     <?php endforeach; ?>
                 </div>
             </div>

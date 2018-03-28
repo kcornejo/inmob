@@ -21,7 +21,7 @@ class Negocio extends BaseNegocio {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $negocio_id = $this->getId();
         $MensajeNegocio = MensajeNegocioQuery::create()
-                ->where("negocio_id = $negocio_id and usuario_id != $usuario_id")
+                ->where("negocio_id = $negocio_id and usuario_id != $usuario_id and visto = 0")
                 ->find();
         return sizeof($MensajeNegocio);
     }
