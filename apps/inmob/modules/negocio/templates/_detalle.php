@@ -16,7 +16,7 @@ if ($propiedad_id) {
     <div class="row">
         <?php foreach ($registros as $fila): ?>
             <div class="col-md-3">
-                <div class="panel">
+                <div class="panel panel-sombra-completa" style="border-left: #000">
                     <div class="panel-header">
                         <h5>
                             <?php echo $fila->getRequerimiento()->getId() ?>
@@ -111,6 +111,13 @@ if ($propiedad_id) {
                                             ?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
+                                                Ver Negocio
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -123,7 +130,7 @@ if ($propiedad_id) {
     <div class="row">
         <?php foreach ($registros as $fila): ?>
             <div class="col-md-3">
-                <div class="panel">
+                <div class="panel panel-sombra-completa">
                     <div class="panel-header">
                         <h5>
                             <?php echo $fila->getPropiedad()->getId() ?>
@@ -230,6 +237,13 @@ if ($propiedad_id) {
                                             ?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
+                                                Ver Negocio
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -239,8 +253,8 @@ if ($propiedad_id) {
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
-<?php if(sizeof($registros) == 0):?>
-<center>
-    <b>[SIN REGISTROS]</b>
-</center>
+<?php if (sizeof($registros) == 0): ?>
+    <center>
+        <b>[SIN REGISTROS]</b>
+    </center>
 <?php endif; ?>

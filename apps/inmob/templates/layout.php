@@ -64,13 +64,8 @@
                                 <span class="pull-right badge badge-primary">
                                     <?php
                                     $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-                                    $Negocio = NegocioQuery::create()
-                                            ->where("(usuario_req = $usuario_id or usuario_prop = $usuario_id) and negocio.activo = true")
-                                            ->groupByUsuarioReq()
-                                            ->groupByUsuarioProp()
-                                            ->find();
                                     $Usuario = UsuarioQuery::create()->findOneById($usuario_id);
-                                    echo sizeof($Negocio);
+                                    echo $Usuario->getCantidadRegistros();
                                     ?>
                                 </span>
                                 <i class="icon-diamond letra_blanca"></i>

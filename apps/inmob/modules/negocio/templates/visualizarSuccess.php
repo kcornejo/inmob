@@ -43,6 +43,7 @@
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
+                                        <hr/>
                                     </h5>
                                 </div>
                                 <div class="panel-body">
@@ -118,6 +119,7 @@
                     <div class="row">
                         <h5 style="color:gray;">
                             CARACTERISTICAS DEL INMUEBLE
+                            <hr/>
                         </h5>
                         <br/>
                         <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
@@ -214,6 +216,7 @@
                         <div class="col-md-12">
                             <h5 style="color:gray;">
                                 UBICACION
+                                <hr/>
                             </h5>
                             <?php $propiedad = $negocio->getPropiedad(); ?>
                             <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
@@ -273,6 +276,7 @@
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
+                                        <hr/>
                                     </h5>
                                 </div>
                                 <div class="panel-body">
@@ -345,6 +349,7 @@
                     <div class="row">
                         <h5 style="color:gray;">
                             CARACTERISTICAS DEL INMUEBLE
+                            <hr/>
                         </h5>
                         <br/>
                         <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
@@ -441,6 +446,7 @@
                         <div class="col-md-12">
                             <h5 style="color:gray;">
                                 UBICACION
+                                <hr/>
                             </h5>
                             <?php $propiedad = $negocio->getPropiedad(); ?>
                             <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>

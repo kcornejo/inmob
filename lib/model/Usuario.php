@@ -59,4 +59,18 @@ class Usuario extends BaseUsuario {
         return $retorno;
     }
 
+    public function getCantidadRegistros() {
+        $usuario_id = $this->getId();
+        $contador = 0;
+        $contador += RequerimientoQuery::create()
+                        ->filterByUsuarioId($usuario_id)
+                        ->where("estatus !=  'Eliminado'")
+                        ->find()->count();
+        $contador += PropiedadQuery::create()
+                        ->filterByUsuarioId($usuario_id)
+                        ->where("estatus !=  'Eliminado'")
+                        ->find()->count();
+        return $contador;
+    }
+
 }

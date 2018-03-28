@@ -150,13 +150,13 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?> 
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
-                                (Ver...)
+                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
+                                Ver Negocios
                             </a>
                             </font>
                         </div>
                         <div id="rc<?php echo $fila->getId() ?>" class="panel-collapse collapse">
-                            <div class="panel-body" style="max-height:500px; overflow-x: hidden">
+                            <div class="panel-body" style="max-height:500px; overflow-x: hidden;background:#F7F7F7;">
                                 <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
@@ -277,13 +277,13 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
-                                (Ver...)
+                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
+                                Ver Negocios
                             </a>
                             </font>
                         </div>
                         <div id="rr<?php echo $fila->getId() ?>" class="panel-collapse collapse">
-                            <div class="panel-body" style="max-height:500px; overflow-x: hidden">
+                            <div class="panel-body" style="max-height:500px; overflow-x: hidden;background:#F7F7F7;">
                                 <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
@@ -416,13 +416,13 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
-                                (Ver...)
+                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
+                                Ver Negocios
                             </a>
                             </font>
                         </div>
                         <div id="pv<?php echo $fila->getId() ?>" class="panel-collapse collapse">
-                            <div class="panel-body" style="max-height:500px; overflow-x: hidden">
+                            <div class="panel-body" style="max-height:500px; overflow-x: hidden;background:#F7F7F7;">
                                 <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
@@ -555,13 +555,13 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
-                                (Ver...)
+                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
+                                Ver Negocios
                             </a>
                             </font>
                         </div>
                         <div id="pr<?php echo $fila->getId() ?>" class="panel-collapse collapse">
-                            <div class="panel-body" style="max-height:500px; overflow-x: hidden">
+                            <div class="panel-body" style="max-height:500px; overflow-x: hidden;background:#F7F7F7;">
                                 <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
