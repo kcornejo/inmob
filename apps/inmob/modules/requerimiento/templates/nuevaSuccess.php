@@ -26,14 +26,15 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             OPERACIÓN E INMUEBLE
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Operacion</span>&nbsp;<span style="color:red;">*</span>
+                                <span class="subtitulo_kc">Tipo de operacion</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario["tipo_operacion"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Inmueble</span>&nbsp;<span style="color:red;">*</span>
+                                <span class="subtitulo_kc">Tipo de inmueble</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario["tipo_inmueble"]; ?>
                             </div>
                         </div>
@@ -45,6 +46,7 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             CARACTERÍSTICAS DEL INMUEBLE
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-2 ocultar casa">
@@ -104,7 +106,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 ocultar casa terreno bodega">
-                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Energia Electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Energia electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario["tiene_luz"] ?>
                                                         </div>
@@ -122,7 +124,7 @@
                                                         <?php echo $formulario["cocina"] ?>
                                                     </div>
                                                     <div class="col-md-2 ocultar casa">
-                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de Servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario["dormitorio_servicio"] ?>
                                                         </div>
@@ -168,7 +170,7 @@
                                 <?php echo $formulario["estado"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Amenidades / Extras</span>
+                                <span class="subtitulo_kc">Amenidades / extras</span>
                                 <?php echo $formulario["amenidades"]; ?>
                             </div>
                         </div>
@@ -180,6 +182,7 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             INFORMACIÓN FINANCIERA
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-3">
@@ -215,10 +218,11 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             PRECALIFICACIÓN
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Nucleo Familiar</span>
+                                <span class="subtitulo_kc">Nucleo familiar</span>
                                 <?php echo $formulario["nucleo_familiar"]; ?>
                             </div>
                             <div class="col-md-3">
@@ -230,7 +234,7 @@
                                 <?php echo $formulario["egresos"]; ?>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Tasa de Interes Anual</span>
+                                <span class="subtitulo_kc">Tasa de interes anual</span>
                                 <?php echo $formulario["tasa_interes_anual"]; ?>
                             </div>
                         </div>
@@ -240,19 +244,19 @@
                                 <?php echo $formulario["enganche"]; ?>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Plazo en Años</span>
+                                <span class="subtitulo_kc">Plazo en años</span>
                                 <?php echo $formulario["plazo_en_anios"]; ?>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Plazo en Meses</span>
+                                <span class="subtitulo_kc">Plazo en meses</span>
                                 <?php echo $formulario["plazo_en_meses"]; ?>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Monto a Financiar Maximo</span>
+                                <span class="subtitulo_kc">Monto a financiar maximo</span>
                                 <?php echo $formulario["monto_financiar_maximo"]; ?>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Cuota Total Maxima Mensual</span>
+                                <span class="subtitulo_kc">Cuota total maxima mensual</span>
                                 <?php echo $formulario["cuota_total_mensual_maxima"]; ?>
                             </div>
                         </div>
@@ -264,22 +268,23 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             INFORMACIÓN DE CONTACTO
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-4">
-                                <span class="subtitulo_kc">Nombre del Cliente</span>
+                                <span class="subtitulo_kc">Nombre del cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["nombre_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <span class="subtitulo_kc">Correo del Cliente</span>
+                                <span class="subtitulo_kc">Correo del cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["correo_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <span class="subtitulo_kc">Telefono del Cliente</span>
+                                <span class="subtitulo_kc">Telefono del cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario["telefono_cliente"] ?>
                                 </div>
@@ -467,12 +472,12 @@
                         $("#nuevo_requerimiento_plazo_en_meses").val(plazo_anios * 12);
                     }
                     function monto_financiar() {
-                        var X = parseFloat($("#nuevo_requerimiento_tasa_interes_anual").val());
-                        var Y = parseFloat($("#nuevo_requerimiento_plazo_en_anios").val());
-                        var ingreso_neto = parseFloat($("#nuevo_requerimiento_ingresos").val() - $("#nuevo_requerimiento_egresos").val());
+                        var X = parseFloat(limpieza_coma($("#nuevo_requerimiento_tasa_interes_anual").val()));
+                        var Y = parseFloat(limpieza_coma($("#nuevo_requerimiento_plazo_en_anios").val()));
+                        var ingreso_neto = parseFloat(limpieza_coma($("#nuevo_requerimiento_ingresos").val()) - limpieza_coma($("#nuevo_requerimiento_egresos").val()));
                         var cuota_mensual_maxima = parseFloat(ingreso_neto * 0.3636363636363636);
                         var W = ingreso_neto;
-                        var Z = parseFloat($("#nuevo_requerimiento_enganche").val());
+                        var Z = parseFloat(limpieza_coma($("#nuevo_requerimiento_enganche").val()));
                         var TASA_INTERES_ANUAL = X / 100;
                         var presupuesto_maximo = (-(((Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12))) * ((TASA_INTERES_ANUAL / 12)) * Z) / (Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12)) - 1)) - cuota_mensual_maxima) / (-(((TASA_INTERES_ANUAL / 12) * (Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12)))) / ((Math.pow(((TASA_INTERES_ANUAL / 12) + 1), (Y * 12))) - 1)) - (12029 / 11200000));
                         var Iusi = (0.009 * (presupuesto_maximo)) / (1.12 * 12);
@@ -490,6 +495,8 @@
                         } else {
                             $("#nuevo_requerimiento_presupuesto_max").val(presupuesto_maximo.toFixed(2));
                         }
-
+                        numero($("#nuevo_requerimiento_presupuesto_max"));
+                        numero($("#nuevo_requerimiento_cuota_total_mensual_maxima"));
+                        numero($("#nuevo_requerimiento_monto_financiar_maximo"));
                     }
 </script>

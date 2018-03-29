@@ -26,14 +26,15 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             OPERACIÓN E INMUEBLE
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Operacion</span>&nbsp;<span style="color:red;">*</span>
+                                <span class="subtitulo_kc">Tipo de operacion</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario_vender["tipo_operacion"]; ?>
                             </div>
                             <div class="col-md-6">
-                                <span class="subtitulo_kc">Tipo de Inmueble</span>&nbsp;<span style="color:red;">*</span>
+                                <span class="subtitulo_kc">Tipo de inmueble</span>&nbsp;<span style="color:red;">*</span>
                                 <?php echo $formulario_vender["tipo_inmueble"]; ?>
                             </div>
                         </div>
@@ -45,6 +46,7 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             CARACTERÍSTICAS DEL INMUEBLE
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-2 ocultar casa">
@@ -89,7 +91,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4>
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="background-color:#ECEDEE">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="background-color:#f7f7f7">
                                                     Más características
                                                 </a>
                                             </h4>
@@ -104,7 +106,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 ocultar casa terreno bodega">
-                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Energia Electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Energia electrica</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Energia electrica-01.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["tiene_luz"] ?>
                                                         </div>
@@ -122,7 +124,7 @@
                                                         <?php echo $formulario_vender["cocina"] ?>
                                                     </div>
                                                     <div class="col-md-2 ocultar casa">
-                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de Servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
+                                                        <h3 style="text-align: center;"><span class="subtitulo_kc">Dormitorio de servicio</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/></h3>
                                                         <div style="text-align: center">
                                                             <?php echo $formulario_vender["dormitorio_servicio"] ?>
                                                         </div>
@@ -180,6 +182,7 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             INFORMACIÓN FINANCIERA
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-5">
@@ -197,19 +200,19 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Forma de Pago</span>
+                                <span class="subtitulo_kc">Forma de pago</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["forma_pago"]; ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Gastos Escritura</span>
+                                <span class="subtitulo_kc">Gastos escritura</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["gastos_escritura"]; ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Años de Construcción</span>
+                                <span class="subtitulo_kc">Años de construcción</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["anios_construccion"] ?>
                                 </div>
@@ -217,19 +220,19 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Mantenimiento Mensual</span>
+                                <span class="subtitulo_kc">Mantenimiento mensual</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mantenimiento_mensual"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Iusi Trimestral</span>
+                                <span class="subtitulo_kc">Iusi trimestral</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["iusi_trimestral"] ?>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Valor Avaluo</span>
+                                <span class="subtitulo_kc">Valor avaluo</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["valor_avaluo"] ?>
                                 </div>
@@ -243,30 +246,31 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             TÉRMINOS DE NEGOCIACIÓN
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Mi Comisión (%)&nbsp;<span style="color:red;">*</span>
+                                <span class="subtitulo_kc">Mi comisión (%)&nbsp;<span style="color:red;">*</span>
                                     <div style="text-align: center">
                                         <?php echo $formulario_vender["mi_comision"] ?>
                                     </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Comisión Compartida (%)&nbsp;<span style="color:red;">*</span>
+                                <span class="subtitulo_kc">Comisión compartida (%)&nbsp;<span style="color:red;">*</span>
                                     <div style="text-align: center">
                                         <?php echo $formulario_vender["comision_compartida"] ?>
                                     </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Mi Comisión</span>
+                                <span class="subtitulo_kc">Mi comisión</span>
                                 <div style="text-align: center">
-                                    <input type="text" class="form-control" readonly="true" id="valor_mi_comision"/>
+                                    <input type="text" class="form-control ken_number" readonly="true" id="valor_mi_comision"/>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <span class="subtitulo_kc">Comisión Compartida</span>
+                                <span class="subtitulo_kc">Comisión compartida</span>
                                 <div style="text-align: center">
-                                    <input type="text" class="form-control" readonly="true" id="valor_comision_compartida"/>
+                                    <input type="text" class="form-control ken_number" readonly="true" id="valor_comision_compartida"/>
                                 </div>
                             </div>
                         </div>
@@ -278,22 +282,23 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             INFORMACIÓN DE CONTACTO
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-4">
-                                <span class="subtitulo_kc">Nombre del Cliente</span>
+                                <span class="subtitulo_kc">Nombre del cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["nombre_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <span class="subtitulo_kc">Correo del Cliente</span>
+                                <span class="subtitulo_kc">Correo del cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["correo_cliente"] ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <span class="subtitulo_kc">Telefono del Cliente</span>
+                                <span class="subtitulo_kc">Telefono del cliente</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["telefono_cliente"] ?>
                                 </div>
@@ -307,6 +312,7 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             UBICACIÓN
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
@@ -356,6 +362,7 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             COMUNIDAD
+                            <hr/>
                         </h4>
                         <div class="row">
                             <div class="col-md-2">
@@ -377,25 +384,25 @@
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Transporte Publico</span>
+                                <span class="subtitulo_kc">Transporte publico</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["transporte_publico"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Transito Vehicular</span>
+                                <span class="subtitulo_kc">Transito vehicular</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["transito_vehicular"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Comunidades Colidantes</span>
+                                <span class="subtitulo_kc">Comunidades colidantes</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["comunidades_colidantes"] ?>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <span class="subtitulo_kc">Areas de Recreación</span>
+                                <span class="subtitulo_kc">Areas de recreación</span>
                                 <div style="text-align: center;color:#4a89dc;">
                                     <?php echo $formulario_vender["areas_recreacion"] ?>
                                 </div>
@@ -409,6 +416,7 @@
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             IMÁGENES
+                            <hr/>
                         </h4>
                         <div class="row">
                             <?php foreach ($Propiedad->getPropiedadImagens() as $imagen): ?>
@@ -502,13 +510,13 @@
                         }
                     }
                     function calculo() {
-                        //valor_comision_compartida
-                        //valor_mi_comision
-                        var mi_comision = $("#vender_form_mi_comision").val();
-                        var comision_compartida = $("#vender_form_comision_compartida").val();
-                        var precio = $("#vender_form_precio").val();
+                        var mi_comision = limpieza_coma($("#vender_form_mi_comision").val());
+                        var comision_compartida = limpieza_coma($("#vender_form_comision_compartida").val());
+                        var precio = limpieza_coma($("#vender_form_precio").val());
                         $("#valor_mi_comision").val(parseFloat(precio * mi_comision / 100).toFixed(2));
-                        $("#valor_comision_compartida").val(parseFloat($("#valor_mi_comision").val() * comision_compartida / 100).toFixed(2));
+                        $("#valor_comision_compartida").val(parseFloat(limpieza_coma($("#valor_mi_comision").val()) * comision_compartida / 100).toFixed(2));
+                        numero($("#valor_mi_comision"));
+                        numero($("#valor_comision_compartida"));
                     }
 
 </script>

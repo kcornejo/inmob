@@ -6,12 +6,12 @@ function kenStars() {
         });
     });
 }
-function imagen(){
+function imagen() {
     $(".fancybox").fancybox();
 }
-function kenCkeditor(){
-    $('.ckeditor').each(function(){
-       $(this).ckeditor();
+function kenCkeditor() {
+    $('.ckeditor').each(function () {
+        $(this).ckeditor();
     });
 }
 function BusquedaLlenaSelect() {
@@ -24,6 +24,33 @@ function BusquedaLlenaSelect() {
             llenaSelect(id_origen, id_destino, url);
         });
     });
+}
+function numero(objeto) {
+    var valor = objeto.val();
+    valor = limpieza_coma(valor);
+    decimal = valor.split('.');
+    valor = decimal[0];
+    var nuevo_valor = '';
+    var contador = 0;
+    for (var i = valor.length; i >= 0; i--) {
+        nuevo_valor = valor.substring(i, i + 1) + nuevo_valor;
+        if (contador == 3 && i != 0) {
+            contador = 0;
+            nuevo_valor = ',' + nuevo_valor;
+        }
+        contador++;
+    }
+    if (1 in decimal) {
+        nuevo_valor = nuevo_valor + '.' + decimal[1];
+    }
+    objeto.val(nuevo_valor);
+}
+function limpieza_coma(valor) {
+    valor = String(valor);
+    do {
+        valor = valor.replace(",", "");
+    } while (valor.includes(','));
+    return valor;
 }
 function llenaSelect(id_origen, id_destino, url) {
     var valor_origen = $(id_origen).val();
@@ -46,8 +73,21 @@ function llenaSelect(id_origen, id_destino, url) {
 }
 
 $(document).ready(function () {
-//    kenStars();
+    $("form").each(function () {
+        $(this).on('submit', function () {
+            $(".ken_number").each(function () {
+                var objeto = $(this);
+                objeto.val(limpieza_coma(objeto.val()));
+            });
+        });
+    });
     BusquedaLlenaSelect();
     imagen();
     kenCkeditor();
+    $(".ken_number").each(function () {
+        numero($(this));
+    });
+    $(".ken_number").on('input', function () {
+        numero($(this));
+    });
 });

@@ -13,10 +13,10 @@
     background-color:white;
     font-size:11pt;
     text-align:center;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
 }
 .subtitulo_kc:first-letter{
-    /*text-transform: lowercase;*/
+    /*text-transform: uppercase;*/
 }
 .numeric-stepper{
     text-align: center;
@@ -71,4 +71,7 @@
   height: 40%;
   background: #25d366;
   top: 30%;
+}
+.badge{
+    border-radius: 10px
 }

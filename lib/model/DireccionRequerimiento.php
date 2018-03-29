@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'direccion_requerimiento' table.
  *
@@ -17,6 +15,18 @@
  *
  * @package    propel.generator.lib.model
  */
-class DireccionRequerimiento extends BaseDireccionRequerimiento
-{
+class DireccionRequerimiento extends BaseDireccionRequerimiento {
+
+    public function getDireccionCompleta() {
+        $listado = array();
+        $listado[] = trim($this->getZona()) ? "Zona: " . trim($this->getZona()) : null;
+        $listado[] = trim($this->getCarretera()) ? "Carretera: " . trim($this->getCarretera()) : null;
+        $listado[] = trim($this->getKm()) ? "Km: " . trim($this->getKm()) : null;
+        $listado[] = trim($this->getMunicipio()) ? "Muni: " . trim($this->getMunicipio()) : null;
+        $listado[] = trim($this->getDepartamento()) ? "Depto: " . trim($this->getDepartamento()) : null;
+        $listado[] = trim($this->getDireccion()) ? "Dirección: " . trim($this->getDireccion()) : null;
+        $listado = array_filter($listado);
+        return implode(", ", $listado);
+    }
+
 }

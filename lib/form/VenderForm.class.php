@@ -55,14 +55,14 @@ class VenderForm extends sfForm {
         $this->setWidget("estado", new sfWidgetFormSelect(array('choices' => $estado), array("class" => "form-control col-md-10")));
         $this->setWidget("moneda", new sfWidgetFormSelect(array('choices' => $monedas), array("class" => "form-control col-md-10")));
         $this->setWidget("amenidades", new sfWidgetFormInputText(array(), array("class" => "form-control ")));
-        $this->setWidget("precio", new sfWidgetFormInputText(array("label" => "Precio (Q)"), array("class" => "calculo form-control")));
+        $this->setWidget("precio", new sfWidgetFormInputText(array("label" => "Precio (Q)"), array("class" => "calculo form-control ken_number")));
         $this->setWidget("precio_negociable", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
         $this->setWidget("forma_pago", new sfWidgetFormSelect(array('choices' => $opciones_pago), array("class" => "form-control col-md-10")));
         $this->setWidget("gastos_escritura", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
         $this->setWidget("anios_construccion", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
-        $this->setWidget("mantenimiento_mensual", new sfWidgetFormInputText(array("label" => "Mantenimiento Mensual"), array("class" => "form-control")));
-        $this->setWidget("iusi_trimestral", new sfWidgetFormInputText(array("label" => "Iusi Trimestral"), array("class" => "form-control")));
-        $this->setWidget("valor_avaluo", new sfWidgetFormInputText(array("label" => "Valor Avaluo"), array("class" => "form-control")));
+        $this->setWidget("mantenimiento_mensual", new sfWidgetFormInputText(array("label" => "Mantenimiento Mensual"), array("class" => "form-control ken_number")));
+        $this->setWidget("iusi_trimestral", new sfWidgetFormInputText(array("label" => "Iusi Trimestral"), array("class" => "form-control ken_number")));
+        $this->setWidget("valor_avaluo", new sfWidgetFormInputText(array("label" => "Valor Avaluo"), array("class" => "form-control ken_number")));
         $this->setWidget("mi_comision", new sfWidgetFormInputText(array("label" => "Comisión"), array("class" => "calculo form-control")));
         $this->setWidget("comision_compartida", new sfWidgetFormInputText(array("label" => "Comisión Compartida"), array("class" => "calculo form-control")));
         $this->setWidget("nombre_cliente", new sfWidgetFormInputText(array("label" => "Nombre del Cliente"), array("class" => "form-control")));

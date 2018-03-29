@@ -398,7 +398,7 @@
                                 </select>
                             </td>
                             <td style="width:70%">
-                                <input type="number"  id="precio_venta" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text"  value="<?php echo $negocio->getPropiedad()->getPrecio() ?>" id="precio_venta" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                         </tr>
                     </table>
@@ -409,7 +409,7 @@
 
                             </td>
                             <td>
-                                <input type="number"  id="enganche" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text" value="<?php echo $negocio->getPropiedad()->getPrecio() / 10 ?>"  id="enganche" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                             <td>
 
@@ -420,7 +420,7 @@
                     <table class="table">
                         <tr>
                             <td>
-                                <input type="number"  id="plazo_anios" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="number" value="25"  id="plazo_anios" class="form-control actualizar_input" style="text-align: right"/>
                             </td>
                             <td id="plazo_meses">
 
@@ -445,7 +445,7 @@
                     <table class="table">
                         <tr>
                             <td>
-                                <input type="number"  id="tasa_interes_anual" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="number" value="8"  id="tasa_interes_anual" class="form-control actualizar_input" style="text-align: right"/>
                             </td>
                             <td>
                                 %
@@ -460,7 +460,7 @@
 
                             </td>
                             <td>
-                                <input type="number" readonly="readonly"  id="monto_financiar" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text" readonly="readonly"  id="monto_financiar" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                         </tr>
                     </table>
@@ -471,7 +471,7 @@
 
                             </td>
                             <td>
-                                <input type="number" readonly="readonly"  id="cuota_nivelada" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text" readonly="readonly"  id="cuota_nivelada" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                         </tr>
                     </table>
@@ -482,7 +482,7 @@
 
                             </td>
                             <td>
-                                <input type="number"  readonly="readonly" id="iusi" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text"  readonly="readonly" id="iusi" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                         </tr>
                     </table>
@@ -493,7 +493,7 @@
 
                             </td>
                             <td>
-                                <input type="number" readonly="readonly" id="seguro_contra_siniestros" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text" readonly="readonly" id="seguro_contra_siniestros" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                         </tr>
                     </table>
@@ -505,7 +505,7 @@
 
                             </td>
                             <td>
-                                <input type="number" readonly="readonly" id="cuota_total" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text" readonly="readonly" id="cuota_total" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                         </tr>
                     </table>
@@ -516,7 +516,7 @@
 
                             </td>
                             <td>
-                                <input type="number" readonly="readonly" id="nucleo_familiar" class="form-control actualizar_input" style="text-align: right"/>
+                                <input type="text" readonly="readonly" id="nucleo_familiar" class="form-control actualizar_input ken_number" style="text-align: right"/>
                             </td>
                         </tr>
                     </table>
@@ -537,8 +537,6 @@
 <?php endif; ?>
                                     listadoMensaje();
                                     setInterval(listadoMensaje, 5000);
-                                    banco();
-                                    actualizar();
                                     $(".actualizar_select").on('change', function () {
                                         banco();
                                         actualizar();
@@ -548,6 +546,9 @@
                                         actualizar();
                                     });
 
+                                    banco();
+                                    actualizar();
+
                                 });
                                 function banco() {
                                     var valor = $("#banco").val();
@@ -555,6 +556,7 @@
                                         $("#seguro_banco").val(response.seguro_banco);
                                         $("#relacion_cuota_interes").val(response.relacion_cuota_interes);
                                         $("#factor_construccion").val(response.factor_construccion);
+                                        actualizar();
                                     }, 'json');
                                 }
                                 function actualizar() {
@@ -562,12 +564,12 @@
                                     $(".moneda_contenido").html(valor);
                                     var plazo_anio = $("#plazo_anios").val();
                                     $("#plazo_meses").html(plazo_anio * 12);
-                                    var monto_financiar = $("#precio_venta").val() - $("#enganche").val();
+                                    var monto_financiar = limpieza_coma($("#precio_venta").val()) - limpieza_coma($("#enganche").val());
                                     var interes_anual = $("#tasa_interes_anual").val() / 100;
                                     $("#monto_financiar").val(monto_financiar.toFixed(2));
                                     var cuota_nivelada = ((monto_financiar * (interes_anual / 12)) * Math.pow((1 + (interes_anual / 12)), (plazo_anio * 12))) / (Math.pow((1 + (interes_anual / 12)), (plazo_anio * 12)) - 1);
                                     $("#cuota_nivelada").val(cuota_nivelada.toFixed(2));
-                                    var precio_venta = $("#precio_venta").val();
+                                    var precio_venta = limpieza_coma($("#precio_venta").val());
                                     var iusi = (((((precio_venta / 1.12)) * 0.009) / 12));
                                     var factor_construccion = $("#factor_construccion").val();
                                     var seguro_banco = $("#seguro_banco").val();
@@ -578,7 +580,12 @@
                                     $("#cuota_total").val(cuota_total.toFixed(2));
                                     var nucleo_familiar = cuota_total / $("#relacion_cuota_interes").val();
                                     $("#nucleo_familiar").val(nucleo_familiar.toFixed(2));
-
+                                    numero($("#nucleo_familiar"));
+                                    numero($("#cuota_total"));
+                                    numero($("#seguro_contra_siniestros"));
+                                    numero($("#iusi"));
+                                    numero($("#cuota_nivelada"));
+                                    numero($("#monto_financiar"));
                                 }
                                 function mensaje() {
                                     var mensaje = $("#texto_mensaje").val();

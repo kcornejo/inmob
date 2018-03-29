@@ -1,9 +1,11 @@
 <?php
 $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-if ($negocio->getUsuarioProp() == $usuario_id) {
-    $objeto = $negocio->getRequerimiento();
-} else {
-    $objeto = $negocio->getPropiedad();
+if ($negocio) {
+    if ($negocio->getUsuarioProp() == $usuario_id) {
+        $objeto = $negocio->getRequerimiento();
+    } else {
+        $objeto = $negocio->getPropiedad();
+    }
 }
 ?>
 <?php if ($objeto->getTipoInmueble() != "Oficinas" && $objeto->getTipoInmueble() != "Local"): ?>

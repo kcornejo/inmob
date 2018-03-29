@@ -4,7 +4,7 @@
             <div class="panel-header"   style="background-color:#305da8;color:white;font-size:14pt;">
                 <h3 face="Helvetica">
                     <a href="<?php echo url_for("vender/index") ?>" style="color:white;"><i class="icon icons-arrows-03"></i></a>
-                    <?php echo $propiedad->getTipoInmueble()?> en <?php
+                    <?php echo $propiedad->getTipoInmueble() ?> en <?php
                     switch ($propiedad->getTipoOperacion()) {
                         case "Vender":
                             echo "Venta";
@@ -42,6 +42,7 @@
                             <div class="panel-header">
                                 <h5 style="color:gray;">
                                     INFORMACION FINANCIERA
+                                    <hr/>
                                 </h5>
                             </div>
                             <div class="panel-body">
@@ -54,17 +55,17 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            Forma de Pago: <?php echo $propiedad->getFormaPago() ?>
+                                            Forma de pago: <?php echo $propiedad->getFormaPago() ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            Mantenimiento Mensual: <?php echo $propiedad->getMoneda()->getCodigo() . " " . number_format($propiedad->getMantenimientoMensual(), 0) ?>
+                                            Mantenimiento mensual: <?php echo $propiedad->getMoneda()->getCodigo() . " " . number_format($propiedad->getMantenimientoMensual(), 0) ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            Iusi Trimestral: <?php echo $propiedad->getMoneda()->getCodigo() . " " . number_format($propiedad->getIusiSemestral(), 0) ?>
+                                            Iusi trimestral: <?php echo $propiedad->getMoneda()->getCodigo() . " " . number_format($propiedad->getIusiSemestral(), 0) ?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -117,102 +118,14 @@
                 <div class="row">
                     <h5 style="color:gray;">
                         CARACTERISTICAS DEL INMUEBLE
+                        <hr/>
                     </h5>
                     <br/>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getArea() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getNiveles() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadHabitacion() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadParqueo() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadBanio() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getAreaX() . "x" . $propiedad->getAreaY() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dimensiones-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <?php if ($propiedad->getTieneAgua()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Agua-01.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($propiedad->getTieneLuz()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Energia electrica-01.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadComedor() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Comedor.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadSala() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Sala.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadCocina() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cocina.png"/>
-                        <br/><br/>
-                    </div>
-                    <?php if ($propiedad->getDormitorioServicio()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($propiedad->getEstudio()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Estudio.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($propiedad->getCisterna()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cisterna-01.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadJardin() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Jardin.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $propiedad->getCantidadPatio() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Patio.png"/>
-                        <br/><br/>
-                    </div>
-                    <?php if ($propiedad->getLavanderia()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Lavanderia.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
+                    <?php include_partial('soporte/caracteristicas', array('objeto' => $propiedad)) ?>
                     <div class="col-md-12">
                         <h5 style="color:gray;">
                             UBICACION
+                            <hr/>
                         </h5>
                         <?php $propiedad = $propiedad; ?>
                         <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>

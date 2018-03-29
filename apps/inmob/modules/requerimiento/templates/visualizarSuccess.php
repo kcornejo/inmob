@@ -26,6 +26,7 @@
                             <div class="panel-header">
                                 <h5 style="color:gray;">
                                     INFORMACION FINANCIERA
+                                    <hr/>
                                 </h5>
                             </div>
                             <div class="panel-body">
@@ -37,7 +38,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            Forma de Pago: <?php echo $requerimiento->getFormaPago() ?>
+                                            Forma de pago: <?php echo $requerimiento->getFormaPago() ?>
                                         </td>
                                     </tr>
                                 </table>
@@ -75,112 +76,18 @@
                 <div class="row">
                     <h5 style="color:gray;">
                         CARACTERISTICAS DEL INMUEBLE
+                        <hr/>
                     </h5>
                     <br/>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getArea() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getNiveles() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadHabitacion() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadParqueo() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadBanio() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getAreaX() . "x" . $requerimiento->getAreaY() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dimensiones-01.png"/>
-                        <br/><br/>
-                    </div>
-                    <?php if ($requerimiento->getTieneAgua()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Agua-01.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($requerimiento->getTieneLuz()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Energia electrica-01.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadComedor() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Comedor.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadSala() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Sala.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadCocina() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cocina.png"/>
-                        <br/><br/>
-                    </div>
-                    <?php if ($requerimiento->getDormitorioServicio()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Dormitorio de servicio.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($requerimiento->getEstudio()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Estudio.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($requerimiento->getCisterna()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Cisterna-01.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadJardin() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Jardin.png"/>
-                        <br/><br/>
-                    </div>
-                    <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                        <?php echo $requerimiento->getCantidadPatio() ?>
-                        <img style="max-width: 30px;" src="/assets/img/caracteristicas/Patio.png"/>
-                        <br/><br/>
-                    </div>
-                    <?php if ($requerimiento->getLavanderia()): ?>
-                        <div class="col-md-2 col-xs-4 col-sm-4" style="text-align: center;">
-                            <img style="max-width: 30px;" src="/assets/img/caracteristicas/Lavanderia.png"/>
-                            <br/><br/>
-                        </div>
-                    <?php endif; ?>
+                    <?php include_partial('soporte/caracteristicas', array('objeto' => $requerimiento)) ?>
                     <div class="col-md-12">
                         <?php $contador = 1 ?>
                         <?php foreach ($requerimiento->getDireccionRequerimientos() as $dir): ?>
                             <h5 style="color:gray;">
                                 UBICACION <?php echo $contador ?>
+                                <hr/>
                             </h5>
-                            <?php $propiedad = $dir; ?>
-                            <?php echo $propiedad->getZona() ? "Zona " . $propiedad->getZona() . ", " : null ?>
-                            <?php echo $propiedad->getCarretera() ? "Carretera " . $propiedad->getCarretera() . ", " : null ?>
-                            <?php echo $propiedad->getKm() ? "Km " . $propiedad->getKm() . ", " : null ?>
-                            <?php echo $propiedad->getMunicipio() ? $propiedad->getMunicipio() . ", " : null ?>
-                            <?php echo $propiedad->getDepartamento() ? $propiedad->getDepartamento() . ", " : null ?>
-                            <?php echo $propiedad->getDireccion() ?>
+                            <?php echo $dir->getDireccionCompleta()  ?>
                             <?php $contador ++ ?>
                         <?php endforeach; ?>
                     </div>
