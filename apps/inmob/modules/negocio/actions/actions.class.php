@@ -15,19 +15,23 @@ class negocioActions extends sfActions {
         $this->requerimiento_compra = RequerimientoQuery::create()
                 ->filterByUsuarioId($usuario_id)
                 ->where("estatus !=  'Eliminado' and tipo_operacion = 'Comprar'")
+                ->orderById('DESC')
                 ->find();
         $this->requerimiento_renta = RequerimientoQuery::create()
                 ->filterByUsuarioId($usuario_id)
                 ->where("estatus !=  'Eliminado' and tipo_operacion != 'Comprar'")
+                ->orderById('DESC')
                 ->find();
         $this->propiedad_venta = PropiedadQuery::create()
                 ->filterByUsuarioId($usuario_id)
                 ->where("estatus !=  'Eliminado' and tipo_operacion = 'Vender'")
+                ->orderById('DESC')
                 ->find();
         $this->propiedad_renta = PropiedadQuery::create()
                 ->filterByUsuarioId($usuario_id)
                 ->where("estatus !=  'Eliminado' and tipo_operacion != 'Vender'")
-                ->find();;
+                ->orderById('DESC')
+                ->find();
     }
 
     public function executeVisualizar(sfWebRequest $request) {
@@ -35,9 +39,16 @@ class negocioActions extends sfActions {
         $Negocio = NegocioQuery::create()->findOneById($id);
         $this->negocio = $Negocio;
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        if ($Negocio->getUsuarioReq() == $usuario_id) {
+            $Negocio->setUsuarioReqVisto(true);
+        } else {
+            $Negocio->setUsuarioPropVisto(true);
+        }
+        $Negocio->save();
         $this->usuario_id = $usuario_id;
         $this->monedas = MonedaQuery::create()->find();
         $this->bancos = BancoQuery::create()->find();
+        $this->mensaje_abrir = $request->getParameter("mensaje");
     }
 
     public function executeDetalle(sfWebRequest $request) {

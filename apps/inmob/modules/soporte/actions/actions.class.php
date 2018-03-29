@@ -72,6 +72,20 @@ class soporteActions extends sfActions {
         $Mensaje->setUsuarioId($usuario_id);
         $Mensaje->setNegocioId($negocio_id);
         $Mensaje->save();
+        $Negocio = NegocioQuery::create()->findOneById($negocio_id);
+        $correo_envio = null;
+        if ($Negocio->getUsuarioProp() == $usuario_id) {
+            $correo_envio = $Negocio->getUsuarioRelatedByUsuarioReq()->getCorreo();
+        } else {
+            $correo_envio = $Negocio->getUsuarioRelatedByUsuarioProp()->getCorreo();
+        }
+        $Usuario = UsuarioQuery::create()->findOneById($usuario_id);
+        $CorreoPendienteReq = new CorreoPendiente();
+        $CorreoPendienteReq->setEnviado(false);
+        $CorreoPendienteReq->setBeneficiario($correo_envio);
+        $CorreoPendienteReq->setAsunto("Conversacion con " . $Usuario->getNombreCompleto());
+        $CorreoPendienteReq->setContenido($mensaje);
+        $CorreoPendienteReq->save();
         return $this->renderText("");
     }
 

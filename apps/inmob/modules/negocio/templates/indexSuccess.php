@@ -53,7 +53,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                 <div class="row">
                     <?php foreach ($requerimiento_compra as $fila): ?>
                         <div class="col-md-2">
-                            <div style=";background-color:#f1f3f3; text-align: center;">
+                            <div style=";background-color:#f1f3f3; text-align: center;<?php if (!$fila->getVisto()): ?>border-left: 6px solid #25d366;<?php endif; ?>">
                                 <img style="max-height: 100px" src="<?php echo $fila->getDireccionImagen() ?>"/>
                             </div>
                         </div>
@@ -148,11 +148,18 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <font style="color:#8f9195;">
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
+                            <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
+                                    Ver Mensajes
+                                </a>
+                            <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?> 
-                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
-                                Ver Negocios
-                            </a>
+                            <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
+                                    Ver Negocios
+                                </a>
+                            <?php endif; ?>
                             </font>
                         </div>
                         <div id="rc<?php echo $fila->getId() ?>" class="panel-collapse collapse">
@@ -160,7 +167,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
-                        <div class="col-md-12"><br/></div>
+                        <div class="col-md-12"><hr/></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -180,7 +187,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                 <div class="row">
                     <?php foreach ($requerimiento_renta as $fila): ?>
                         <div class="col-md-2">
-                            <div style=";background-color:#f1f3f3; text-align: center;">
+                            <div style=";background-color:#f1f3f3; text-align: center;<?php if (!$fila->getVisto()): ?>border-left: 6px solid #25d366;<?php endif; ?>">
                                 <img style="max-height: 100px" src="<?php echo $fila->getDireccionImagen() ?>"/>
                             </div>
                         </div>
@@ -275,11 +282,18 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <font style="color:#8f9195;">
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
+                            <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
+                                    Ver Mensajes
+                                </a>
+                            <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
-                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
-                                Ver Negocios
-                            </a>
+                            <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
+                                    Ver Negocios
+                                </a>
+                            <?php endif; ?>
                             </font>
                         </div>
                         <div id="rr<?php echo $fila->getId() ?>" class="panel-collapse collapse">
@@ -287,7 +301,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('requerimiento_id' => $fila->getId())) ?>
                             </div>
                         </div>
-                        <div class="col-md-12"><br/></div>
+                        <div class="col-md-12"><hr/></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -307,7 +321,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                 <div class="row">
                     <?php foreach ($propiedad_venta as $fila): ?>
                         <div class="col-md-2">
-                            <div style=";background-color:#f1f3f3; text-align: center;">
+                            <div style=";background-color:#f1f3f3; text-align: center;<?php if (!$fila->getVisto()): ?>border-left: 6px solid #25d366;<?php endif; ?>">
                                 <?php foreach ($fila->getPropiedadImagens() as $img): ?>
                                     <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                     <?php break; ?>
@@ -414,11 +428,18 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <font style="color:#8f9195;">
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
+                            <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
+                                    Ver Mensajes
+                                </a>
+                            <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
-                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
-                                Ver Negocios
-                            </a>
+                            <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
+                                    Ver Negocios
+                                </a>
+                            <?php endif; ?>
                             </font>
                         </div>
                         <div id="pv<?php echo $fila->getId() ?>" class="panel-collapse collapse">
@@ -426,7 +447,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
-                        <div class="col-md-12"><br/></div>
+                        <div class="col-md-12"><hr/></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -446,7 +467,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                 <div class="row">
                     <?php foreach ($propiedad_renta as $fila): ?>
                         <div class="col-md-2">
-                            <div style=";background-color:#f1f3f3; text-align: center;">
+                            <div style=";background-color:#f1f3f3; text-align: center;<?php if (!$fila->getVisto()): ?>border-left: 6px solid #25d366;<?php endif; ?>">
                                 <?php foreach ($fila->getPropiedadImagens() as $img): ?>
                                     <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                     <?php break; ?>
@@ -553,11 +574,18 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <font style="color:#8f9195;">
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
+                            <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
+                                    Ver Mensajes
+                                </a>
+                            <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
-                            <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
-                                Ver Negocios
-                            </a>
+                            <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
+                                    Ver Negocios
+                                </a>
+                            <?php endif; ?>
                             </font>
                         </div>
                         <div id="pr<?php echo $fila->getId() ?>" class="panel-collapse collapse">
@@ -565,7 +593,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php include_partial('negocio/detalle', array('propiedad_id' => $fila->getId())) ?>
                             </div>
                         </div>
-                        <div class="col-md-12"><br/></div>
+                        <div class="col-md-12"><hr/></div>
                     <?php endforeach; ?>
                 </div>
             </div>

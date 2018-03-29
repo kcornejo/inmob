@@ -2,6 +2,17 @@
 
 class Requerimiento extends BaseRequerimiento {
 
+    public function getVisto() {
+        $visto = true;
+        foreach ($this->getNegociosDisponibles() as $neg) {
+            if (!$neg->getVisto()) {
+                $visto = false;
+                break;
+            }
+        }
+        return $visto;
+    }
+
     public function save(PropelPDO $con = null) {
         parent::save($con);
     }

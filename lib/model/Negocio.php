@@ -26,6 +26,17 @@ class Negocio extends BaseNegocio {
         return sizeof($MensajeNegocio);
     }
 
+    public function getVisto() {
+        $visto = false;
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        if ($this->getUsuarioReq() == $usuario_id) {
+            $visto = $this->getUsuarioReqVisto();
+        } else {
+            $visto = $this->getUsuarioPropVisto();
+        }
+        return $visto;
+    }
+
     public function getDireccionCompleta() {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $Propiedad = $this->getPropiedad();
@@ -328,6 +339,8 @@ class Negocio extends BaseNegocio {
             if (!$Negocio) {
                 $Negocio = new Negocio();
             }
+            $Negocio->setUsuarioReqVisto(false);
+            $Negocio->setUsuarioPropVisto(false);
             $Negocio->setRequerimientoId($Requerimiento->getId());
             $Negocio->setPropiedadId($Propiedad->getId());
             $Negocio->setUsuarioReq($Requerimiento->getUsuarioId());

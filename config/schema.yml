@@ -7,6 +7,9 @@ propel:
     usuario_req:                        { type: integer, foreignTable: usuario, foreignReference: id, required: true  }    
     usuario_prop:                       { type: integer, foreignTable: usuario, foreignReference: id, required: true  }    
     activo:                             { type: boolean, default: true }
+    usuario_req_visto:                  { type: boolean, default: false }
+    usuario_prop_visto:                 { type: boolean, default: false }
+    
   direccion_requerimiento:
     id:                                 ~
     requerimiento_id:                   { type: integer, foreignTable: requerimiento, foreignReference: id, required: true  }

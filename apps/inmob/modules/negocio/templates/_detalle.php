@@ -44,7 +44,7 @@ if ($propiedad_id) {
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
-                                <div style=";background-color:#f1f3f3; text-align: center;">
+                                <div style=";background-color:#f1f3f3; text-align: center;<?php if (!$fila->getVisto()): ?>border-left: 6px solid #25d366;<?php endif; ?>">
                                     <img style="max-height: 100px" src="<?php echo $fila->getRequerimiento()->getDireccionImagen() ?>"/>
                                 </div>
                             </div>
@@ -112,7 +112,14 @@ if ($propiedad_id) {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <?php if ($fila->getMensajesPendientes() > 0): ?>
+                                            <td>
+                                                <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
+                                                    Ver Mensajes
+                                                </a>
+                                            </td>
+                                        <?php endif; ?>
+                                        <td>
                                             <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
                                                 Ver Negocio
                                             </a>
@@ -162,7 +169,7 @@ if ($propiedad_id) {
                     <div class="panel-content">
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
-                                <div style=";background-color:#f1f3f3; text-align: center;">
+                                <div style=";background-color:#f1f3f3; text-align: center;<?php if (!$fila->getVisto()): ?>border-left: 6px solid #25d366;<?php endif; ?>">
                                     <?php foreach ($fila->getPropiedad()->getPropiedadImagens() as $img): ?>
                                         <img style="max-height: 100px" src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $img->getNombreActual() ?>"/>
                                         <?php break; ?>
@@ -238,7 +245,14 @@ if ($propiedad_id) {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <?php if ($fila->getMensajesPendientes() > 0): ?>
+                                            <td>
+                                                <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
+                                                    Ver Mensajes
+                                                </a>
+                                            </td>
+                                        <?php endif; ?>
+                                        <td>
                                             <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
                                                 Ver Negocio
                                             </a>

@@ -23,14 +23,10 @@
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
-                                    <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                    <a class="fancybox" rel="group_max" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
                                         <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
                                     </a>
                                     <br/><br/>
-                                <?php else: ?>
-                                    <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
-                                    </a>
                                 <?php endif; ?>
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
@@ -42,13 +38,8 @@
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
-                                    <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
-                                    </a>
-                                    <br/><br/>
-                                <?php else: ?>
-                                    <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 100%;"/>
+                                    <a class="fancybox" rel="group_min" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width: 100%;"/>
                                     </a>
                                 <?php endif; ?>
                                 <?php $contador = true ?>
@@ -104,6 +95,29 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12 visible-md-block visible-lg-block">
+                            <?php $paso = false; ?>
+                            <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
+                                <?php if ($paso): ?>
+                                    <a class="fancybox" rel="group_min" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 30px;"/>
+                                    </a>
+                                <?php endif; ?>
+                                <?php $paso = true; ?>
+                            <?php endforeach; ?>
+
+                        </div>
+                        <div style="display:none;">
+                            <?php $paso = false; ?>
+                            <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
+                                <?php if ($paso): ?>
+                                    <a class="fancybox" rel="group_max" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 30px;"/>
+                                    </a>
+                                <?php endif; ?>
+                                <?php $paso = true; ?>
+                            <?php endforeach; ?>
+                        </div>
                         <div class="col-md-12">
                             <div style="float:left;">
                                 <h5 style="color:gray;">
@@ -121,10 +135,10 @@
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 bg-gray-light">
                             <br/>
-                            <div class="col-md-2 col-sm-4 col-xs-4" style="float:left">
+                            <div class="col-md-1 col-sm-4 col-xs-4" style="float:left">
                                 <img style="max-height: 60px;" src="/assets/img/caracteristicas/usuario.png"/>
                             </div>
-                            <div class="col-md-10 col-sm-8 col-xs-8" >
+                            <div class="col-md-11 col-sm-8 col-xs-8" style="hyphens: auto" >
                                 <?php echo $negocio->getPropiedad()->getUsuario()->getNombreCompleto() ?><br/>
                                 <?php echo $negocio->getPropiedad()->getUsuario()->getEmail() ?><br/>
                                 <?php echo $negocio->getPropiedad()->getUsuario()->getNumeroTelefono() ?><br/>    
@@ -135,19 +149,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <h5 style="color:gray;">
                                 CARACTERISTICAS DEL INMUEBLE
                                 <hr/>
                             </h5>
-                            <br/>
                             <?php include_partial("soporte/caracteristicas", array("negocio" => $negocio)); ?>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <h5 style="color:gray;">
                                 UBICACION
-                                <hr/>
                             </h5>
+                            <hr/>
                             <?php echo $negocio->getDireccionCompleta(); ?>
                         </div>
                     </div>
@@ -215,7 +228,7 @@
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="panel panel-sombra-completa">
+                            <div class="panel panel-sombra-completa visible-md-block visible-lg-block" style="height: 375px;">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -235,12 +248,28 @@
                                                 Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
                                             </td>
                                         </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel panel-sombra-completa visible-xs-block visible-sm-block">
+                                <div class="panel-header">
+                                    <h5 style="color:gray;">
+                                        INFORMACION FINANCIERA
+                                        <hr/>
+                                    </h5>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
                                         <tr>
-                                            <td colspan="2" align="center">
-                                        <center>
-                                            Comunidad: <input disabled="true" type="number" class="rating" data-readonly value="<?php echo $negocio->getPropiedad()->getComunidad() ?>"/>
-                                        </center>
-                                        </td>
+                                            <td colspan="2">
+                                                Precio: <?php echo $negocio->getRequerimiento()->getMoneda()->getCodigo() . " " . number_format($negocio->getRequerimiento()->getPresupuestoMin(), 0) . "-" . number_format($negocio->getRequerimiento()->getPresupuestoMax(), 0) ?>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -263,10 +292,10 @@
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 bg-gray-light">
                             <br/>
-                            <div class="col-md-2 col-sm-4 col-xs-4" style="float:left">
+                            <div class="col-md-1 col-sm-4 col-xs-4" style="float:left">
                                 <img style="max-height: 60px;" src="/assets/img/caracteristicas/usuario.png"/>
                             </div>
-                            <div class="col-md-10 col-sm-8 col-xs-8" >
+                            <div class="col-md-11 col-sm-8 col-xs-8"  style="hyphens: auto">
                                 <?php echo $negocio->getRequerimiento()->getUsuario()->getNombreCompleto() ?><br/>
                                 <?php echo $negocio->getRequerimiento()->getUsuario()->getEmail() ?><br/>
                                 <?php echo $negocio->getRequerimiento()->getUsuario()->getNumeroTelefono() ?><br/>    
@@ -277,17 +306,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <h5 style="color:gray;">
-                            CARACTERISTICAS DEL INMUEBLE
-                            <hr/>
-                        </h5>
-                        <br/>
-                        <?php include_partial("soporte/caracteristicas", array("negocio" => $negocio)); ?>
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <h5 style="color:gray;">
-                                UBICACION
+                                CARACTERISTICAS DEL INMUEBLE
                                 <hr/>
                             </h5>
+                            <?php include_partial("soporte/caracteristicas", array("negocio" => $negocio)); ?>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <h5 style="color:gray;">
+                                UBICACION
+                            </h5>
+                            <hr/>
                             <?php echo $negocio->getDireccionCompleta(); ?>
                         </div>
                     </div>
@@ -297,7 +327,7 @@
     </div>
 <?php endif; ?>
 <div class="row">
-    <a onclick="avisos();" data-toggle="modal" class="col-md-1 col-xs-3 col-sm-1" data-target="#modal-cotizador" style="position: fixed;bottom: 20px;left: 30px;z-index: 99;border: none;border-radius: 10px;cursor:pointer;">
+    <a data-toggle="modal" class="col-md-1 col-xs-3 col-sm-1" data-target="#modal-cotizador" style="position: fixed;bottom: 20px;left: 30px;z-index: 99;border: none;border-radius: 10px;cursor:pointer;">
         <img style="width:100%" src="/assets/img/caracteristicas/Negocios - cotizador.png"/>
     </a>
     <a onclick="avisos();" data-toggle="modal" class="col-md-1 col-xs-3 col-sm-1" data-target="#modal-chat" style="position: fixed;bottom: 20px;left: 40%;z-index: 99;border: none;border-radius: 10px;cursor:pointer;">
@@ -501,6 +531,9 @@
 <script src="/assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
                                 $(document).ready(function () {
+<?php if ($mensaje_abrir): ?>
+                                        $("#modal-chat").modal();
+<?php endif; ?>
                                     listadoMensaje();
                                     setInterval(listadoMensaje, 5000);
                                     banco();
