@@ -4,7 +4,7 @@
             <div class="panel">
                 <div class="panel-header">
                     <h5>
-                        <?php echo $requerimiento->getId() ?>
+                        REQ<?php echo $requerimiento->getId() ?>
                         |
                         <?php echo $requerimiento->getTipoInmueble() ?>
                         en <?php

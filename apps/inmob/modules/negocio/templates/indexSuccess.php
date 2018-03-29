@@ -58,7 +58,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getId() ?>
+                            REQ<?php echo $fila->getId() ?>
                             |
                             Comprar <?php echo $fila->getTipoInmueble(); ?>
                             |
@@ -119,8 +119,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                     <li>
-                                        <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
-                                            Detalle
+                                        <a href="<?php echo url_for('requerimiento/editar') . "?id=" . $fila->getId() ?>">
+                                            Editar
                                         </a>
                                         <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
                                                         location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Eliminado" ?>');
@@ -149,14 +149,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?> 
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>
@@ -192,7 +192,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getId() ?>
+                            REQ<?php echo $fila->getId() ?>
                             |
                             Rentar <?php echo $fila->getTipoInmueble(); ?>
                             |
@@ -253,8 +253,8 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                     <li>
-                                        <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
-                                            Detalle
+                                        <a href="<?php echo url_for('requerimiento/editar') . "?id=" . $fila->getId() ?>">
+                                            Editar
                                         </a>
                                         <a onclick="if (confirm('Esta seguro de querer eliminar este requerimiento?') == true) {
                                                         location.replace('<?php echo url_for("soporte/estatusRequerimiento") . "?id=" . $fila->getId() . "&valor=Eliminado" ?>');
@@ -283,14 +283,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>
@@ -334,7 +334,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getId() ?>
+                            PROP<?php echo $fila->getId() ?>
                             |
                             Vender <?php echo $fila->getTipoInmueble(); ?>
                             |
@@ -395,9 +395,6 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                     <li>
-                                        <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
-                                            Detalle
-                                        </a>
                                         <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getId() ?>">
                                             Editar
                                         </a>
@@ -429,14 +426,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>
@@ -480,7 +477,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <?php echo $fila->getId() ?>
+                            PROP<?php echo $fila->getId() ?>
                             |
                             Rentar <?php echo $fila->getTipoInmueble(); ?>
                             |
@@ -541,9 +538,6 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                     <li>
-                                        <a href="<?php echo url_for('negocio/detalle') . "?id=" . $fila->getId() ?>">
-                                            Detalle
-                                        </a>
                                         <a href="<?php echo url_for('vender/editar') . "?id=" . $fila->getId() ?>">
                                             Editar
                                         </a>
@@ -575,14 +569,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>

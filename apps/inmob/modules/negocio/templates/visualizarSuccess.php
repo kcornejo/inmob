@@ -49,7 +49,7 @@
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="panel panel-sombra-completa">
+                            <div class="panel">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -228,7 +228,7 @@
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="panel panel-sombra-completa visible-md-block visible-lg-block" style="height: 375px;">
+                            <div class="panel visible-md-block visible-lg-block" style="height: 375px;">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -251,7 +251,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="panel panel-sombra-completa visible-xs-block visible-sm-block">
+                            <div class="panel visible-xs-block visible-sm-block">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -533,6 +533,7 @@
                                 $(document).ready(function () {
 <?php if ($mensaje_abrir): ?>
                                         $("#modal-chat").modal();
+                                        avisos();
 <?php endif; ?>
                                     listadoMensaje();
                                     setInterval(listadoMensaje, 5000);

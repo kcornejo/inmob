@@ -4,7 +4,7 @@
             <div class="panel">
                 <div class="panel-header">
                     <h5>
-                        <?php echo $propiedad->getId() ?>
+                        PROP<?php echo $propiedad->getId() ?>
                         |
                         <?php echo $propiedad->getTipoInmueble() ?>
                         en <?php

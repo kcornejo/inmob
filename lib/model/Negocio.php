@@ -49,7 +49,7 @@ class Negocio extends BaseNegocio {
                     $listado[] = trim($dir->getCarretera()) ? "Carretera: " . trim($dir->getCarretera()) : null;
                     $listado[] = trim($dir->getKm()) ? "Km: " . trim($dir->getKm()) : null;
                     $listado[] = trim($dir->getMunicipio()) ? "Muni: " . trim($dir->getMunicipio()) : null;
-                    $listado[] = trim($dir->getDepartamento()) ? "Dpto: " . trim($dir->getDepartamento()) : null;
+                    $listado[] = trim($dir->getDepartamento()) ? "Depto: " . trim($dir->getDepartamento()) : null;
                     $listado[] = trim($dir->getDireccion()) ? "Dirección: " . trim($dir->getDireccion()) : null;
                     break;
                 }
@@ -94,10 +94,10 @@ class Negocio extends BaseNegocio {
     public function getComision() {
         $monto = $this->getPropiedad()->getPrecio() * ($this->getPropiedad()->getMiComision() / 100);
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-        if ($this->getUsuarioProp() == $usuario_id) {
-            $monto = $monto * ((100 - $this->getPropiedad()->getComisionCompartida()) / 100);
-        } else {
+        if ($this->getUsuarioReq() == $usuario_id) {
             $monto = $monto * ($this->getPropiedad()->getComisionCompartida() / 100);
+        } else {
+            $monto = $monto * ((100 - $this->getPropiedad()->getComisionCompartida()) / 100);
         }
         if ($this->getPropiedad()->getMoneda()->getCodigo() != 'GTQ') {
             $MonedaQuetzal = MonedaQuery::create()->findOneBySimbolo('GTQ');

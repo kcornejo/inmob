@@ -9,6 +9,10 @@ if ($propiedad_id) {
     $registros = NegocioQuery::create()
             ->filterByRequerimientoId($requerimiento_id)
             ->filterByActivo(true)
+            ->joinPropiedad("propiedad")
+            ->withColumn("propiedad.mi_comision / 100 * propiedad.precio * propiedad.comision_compartida /100", "comision_requerimiento")
+            ->orderBy("comision_requerimiento", 'desc')
+            ->groupById()
             ->find();
 }
 ?>
@@ -19,7 +23,7 @@ if ($propiedad_id) {
                 <div class="panel panel-sombra-completa" style="border-left: #000">
                     <div class="panel-header">
                         <h5>
-                            <?php echo $fila->getRequerimiento()->getId() ?>
+                            REQ<?php echo $fila->getRequerimiento()->getId() ?>
                             |
                             <?php if ($fila->getRequerimiento()->getTipoOperacion() == "Comprar"): ?>
                                 Comprar
@@ -33,8 +37,8 @@ if ($propiedad_id) {
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                     <li>
-                                        <a href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>">
-                                            Visualizar
+                                        <a onclick="copiar('<?php echo url_for('requerimiento/compartir', true) . "?id=" . $fila->getRequerimiento()->getId() ?>')" href="javascript:void();">
+                                            Compartir
                                         </a>
                                     </li>
                                 </ul>
@@ -114,13 +118,13 @@ if ($propiedad_id) {
                                     <tr>
                                         <?php if ($fila->getMensajesPendientes() > 0): ?>
                                             <td>
-                                                <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
+                                                <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
                                                     Ver Mensajes
                                                 </a>
                                             </td>
                                         <?php endif; ?>
                                         <td>
-                                            <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
+                                            <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
                                                 Ver Negocio
                                             </a>
                                         </td>
@@ -140,7 +144,7 @@ if ($propiedad_id) {
                 <div class="panel panel-sombra-completa">
                     <div class="panel-header">
                         <h5>
-                            <?php echo $fila->getPropiedad()->getId() ?>
+                            PROP<?php echo $fila->getPropiedad()->getId() ?>
                             |
                             <?php if ($fila->getPropiedad()->getTipoOperacion() == "Vender"): ?>
                                 Vender
@@ -158,8 +162,8 @@ if ($propiedad_id) {
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                     <li>
-                                        <a href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>">
-                                            Visualizar
+                                        <a onclick="copiar('<?php echo url_for('vender/compartir', true) . "?id=" . $fila->getPropiedad()->getId() ?>')" href="javascript:void();">
+                                            Compartir
                                         </a>
                                     </li>
                                 </ul>
@@ -247,13 +251,13 @@ if ($propiedad_id) {
                                     <tr>
                                         <?php if ($fila->getMensajesPendientes() > 0): ?>
                                             <td>
-                                                <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
+                                                <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
                                                     Ver Mensajes
                                                 </a>
                                             </td>
                                         <?php endif; ?>
                                         <td>
-                                            <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
+                                            <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
                                                 Ver Negocio
                                             </a>
                                         </td>
