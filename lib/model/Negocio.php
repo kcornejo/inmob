@@ -145,15 +145,13 @@ class Negocio extends BaseNegocio {
 
     public static function getComisionRequerimientoCompra() {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-        $Negocios = NegocioQuery::create()
-                ->joinPropiedad()
-                ->joinRequerimiento()
-                ->where("negocio.usuario_req = $usuario_id and negocio.activo = true and requerimiento.tipo_operacion = 'Comprar'")
-                ->groupByUsuarioReq()
-                ->groupByUsuarioProp()
+        $requerimiento = RequerimientoQuery::create()
+                ->filterByUsuarioId($usuario_id)
+                ->where("estatus !=  'Eliminado' and tipo_operacion = 'Comprar'")
+                ->orderById('DESC')
                 ->find();
         $monto = 0;
-        foreach ($Negocios as $n) {
+        foreach ($requerimiento as $n) {
             $monto += (int) str_replace(",", "", substr($n->getMaximaComision(), 4));
         }
         return "GTQ " . number_format($monto);
@@ -161,15 +159,13 @@ class Negocio extends BaseNegocio {
 
     public static function getComisionRequerimientoVenta() {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-        $Negocios = NegocioQuery::create()
-                ->joinPropiedad()
-                ->joinRequerimiento()
-                ->where("negocio.usuario_req = $usuario_id and negocio.activo = true and requerimiento.tipo_operacion != 'Comprar'")
-                ->groupByUsuarioReq()
-                ->groupByUsuarioProp()
+        $requerimiento = RequerimientoQuery::create()
+                ->filterByUsuarioId($usuario_id)
+                ->where("estatus !=  'Eliminado' and tipo_operacion != 'Comprar'")
+                ->orderById('DESC')
                 ->find();
         $monto = 0;
-        foreach ($Negocios as $n) {
+        foreach ($requerimiento as $n) {
             $monto += (int) str_replace(",", "", substr($n->getMaximaComision(), 4));
         }
         return "GTQ " . number_format($monto);
@@ -177,12 +173,10 @@ class Negocio extends BaseNegocio {
 
     public static function getComisionPropiedadVenta() {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-        $Negocios = NegocioQuery::create()
-                ->joinPropiedad()
-                ->joinRequerimiento()
-                ->where("negocio.usuario_prop = $usuario_id and negocio.activo = true and propiedad.tipo_operacion = 'Vender'")
-                ->groupByUsuarioReq()
-                ->groupByUsuarioProp()
+        $Negocios = PropiedadQuery::create()
+                ->filterByUsuarioId($usuario_id)
+                ->where("estatus !=  'Eliminado' and tipo_operacion = 'Vender'")
+                ->orderById('DESC')
                 ->find();
         $monto = 0;
         foreach ($Negocios as $n) {
@@ -193,12 +187,10 @@ class Negocio extends BaseNegocio {
 
     public static function getComisionPropiedadRenta() {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
-        $Negocios = NegocioQuery::create()
-                ->joinPropiedad()
-                ->joinRequerimiento()
-                ->where("negocio.usuario_prop = $usuario_id and negocio.activo = true and propiedad.tipo_operacion != 'Vender'")
-                ->groupByUsuarioReq()
-                ->groupByUsuarioProp()
+        $Negocios = PropiedadQuery::create()
+                ->filterByUsuarioId($usuario_id)
+                ->where("estatus !=  'Eliminado' and tipo_operacion != 'Vender'")
+                ->orderById('DESC')
                 ->find();
         $monto = 0;
         foreach ($Negocios as $n) {
