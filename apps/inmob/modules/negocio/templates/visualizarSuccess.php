@@ -49,7 +49,7 @@
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="panel">
+                            <div class="">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -66,17 +66,17 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
+                                                Forma de pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                Mantenimiento Mensual: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getMantenimientoMensual(), 0) ?>
+                                                Mantenimiento mensual: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getMantenimientoMensual(), 0) ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                Iusi Trimestral: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getIusiSemestral(), 0) ?>
+                                                Iusi trimestral: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getIusiSemestral(), 0) ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -245,13 +245,13 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
+                                                Forma de pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
-                            <div class="panel visible-xs-block visible-sm-block">
+                            <div class=" visible-xs-block visible-sm-block">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -268,7 +268,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                Forma de Pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
+                                                Forma de pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
                                             </td>
                                         </tr>
                                     </table>
