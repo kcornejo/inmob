@@ -22,7 +22,7 @@
                         <img style="max-height: 100%" src="<?php echo $requerimiento->getDireccionImagen() ?>"/>
                     </div>
                     <div class="col-md-5">
-                        <div class="panel">
+                        <div class="">
                             <div class="panel-header">
                                 <h5 style="color:gray;">
                                     INFORMACION FINANCIERA

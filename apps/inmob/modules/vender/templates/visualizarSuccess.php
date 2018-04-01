@@ -38,7 +38,7 @@
                         <?php endif; ?>  
                     </div>
                     <div class="col-md-5">
-                        <div class="panel">
+                        <div class="">
                             <div class="panel-header">
                                 <h5 style="color:gray;">
                                     INFORMACION FINANCIERA

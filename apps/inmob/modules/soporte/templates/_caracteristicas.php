@@ -149,4 +149,3 @@ if ($negocio) {
         </div>
     <?php endif; ?>
 <?php endif; ?>
-</div>
