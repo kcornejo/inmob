@@ -46,6 +46,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                                 <?php echo Negocio::getComisionRequerimientoCompra() ?>
                             </b>
                         </span>
+                        <hr/>
                     </h5>
                 </div>
             </div>
@@ -69,45 +70,12 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
                             <div class="col-md-5 col-xs-12 col-sm-12">
-                                <table class="" style="padding: 0;width:100%">
-                                    <tr>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getArea() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getNiveles() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadBanio() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                        </td>
-                                    </tr>
-                                </table>
+                                 <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $fila)) ?>
                             </div>
                             <br/><br/>
                             <?php
-                            echo substr($fila->getDireccionCompleta(), 0, 70);
-                            if (strlen($fila->getDireccionCompleta()) > 70) {
+                            echo substr($fila->getDireccionCompletaMax(), 0, 70);
+                            if (strlen($fila->getDireccionCompletaMax()) > 70) {
                                 echo "...";
                             }
                             ?>
@@ -149,14 +117,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?> 
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#rc<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>
@@ -181,6 +149,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <?php echo Negocio::getComisionRequerimientoVenta() ?>
                         </b>
                     </span>
+                    <hr/>
                 </h5>
             </div>
             <div class="panel-content">
@@ -203,45 +172,12 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
                             <div class="col-md-5 col-xs-12 col-sm-12">
-                                <table class="" style="padding: 0;width:100%">
-                                    <tr>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getArea() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getNiveles() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadBanio() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                        </td>
-                                    </tr>
-                                </table>
+                                 <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $fila)) ?>
                             </div>
                             <br/><br/>
                             <?php
-                            echo substr($fila->getDireccionCompleta(), 0, 70);
-                            if (strlen($fila->getDireccionCompleta()) > 70) {
+                            echo substr($fila->getDireccionCompletaMax(), 0, 70);
+                            if (strlen($fila->getDireccionCompletaMax()) > 70) {
                                 echo "...";
                             }
                             ?>
@@ -283,14 +219,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#rr<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>
@@ -315,6 +251,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <?php echo Negocio::getComisionPropiedadVenta() ?>
                         </b>
                     </span>
+                    <hr/>
                 </h5>
             </div>
             <div class="panel-content">
@@ -334,7 +271,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                         </div>
                         <div class="col-md-7">
-                            PROP<?php echo $fila->getId() ?>
+                            PRO<?php echo $fila->getId() ?>
                             |
                             Vender <?php echo $fila->getTipoInmueble(); ?>
                             |
@@ -345,40 +282,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
                             <div class="col-md-5 col-xs-12 col-sm-12">
-                                <table class="" style="padding: 0;width:100%">
-                                    <tr>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getArea() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getNiveles() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadBanio() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                        </td>
-                                    </tr>
-                                </table>
+                                 <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $fila)) ?>
                             </div>
                             <br/><br/>
                             <?php
@@ -426,14 +330,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#pv<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>
@@ -458,6 +362,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <?php echo Negocio::getComisionPropiedadRenta() ?>
                         </b>
                     </span>
+                    <hr/>
                 </h5>
             </div>
             <div class="panel-content">
@@ -477,7 +382,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             </div>
                         </div>
                         <div class="col-md-7">
-                            PROP<?php echo $fila->getId() ?>
+                            PRO<?php echo $fila->getId() ?>
                             |
                             Rentar <?php echo $fila->getTipoInmueble(); ?>
                             |
@@ -488,40 +393,7 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             Comisión máx: <b><?php echo $fila->getMaximaComision() ?></b>
                             <br/><br/>
                             <div class="col-md-5 col-xs-12 col-sm-12">
-                                <table class="" style="padding: 0;width:100%">
-                                    <tr>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getArea() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getNiveles() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadHabitacion() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadParqueo() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <b><?php echo $fila->getCantidadBanio() ?></b>
-                                        </td>
-                                        <td style="padding: 0;">
-                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                        </td>
-                                    </tr>
-                                </table>
+                                 <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $fila)) ?>
                             </div>
                             <br/><br/>
                             <?php
@@ -569,14 +441,14 @@ $propiedad_venta = $sf_data->getRaw('propiedad_venta');
                             <br/><br/>
                             Mensajes sin Leer: <?php echo sizeof($fila->getCantidadMensajesSinLeer()) ?>
                             <?php if (sizeof($fila->getCantidadMensajesSinLeer()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#305da7;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
                                     Ver Mensajes
                                 </a>
                             <?php endif; ?>
                             <br/><br/>
                             Negocios Disponibles: <?php echo sizeof($fila->getNegociosDisponibles()); ?>
                             <?php if (sizeof($fila->getNegociosDisponibles()) > 0): ?>
-                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
+                                <a class="collapsed btn btn-xs" style="color:white;background-color:#25d366;border-radius: 20px;" data-toggle="collapse" data-parent="#accordion" href="#pr<?php echo $fila->getId() ?>" >
                                     Ver Negocios
                                 </a>
                             <?php endif; ?>

@@ -69,40 +69,7 @@
                                     <td colspan="2">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <table class="table" style="padding: 0;">
-                                                    <tr>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $requerimiento->getArea() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $requerimiento->getNiveles() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $requerimiento->getCantidadHabitacion() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $requerimiento->getCantidadParqueo() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $requerimiento->getCantidadBanio() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $requerimiento)) ?>
                                             </div>
                                         </div>
                                     </td>

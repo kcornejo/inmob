@@ -24,7 +24,7 @@
         <?php echo $formulario_vender->renderFormTag(url_for("vender/nueva")); ?>
         <div class="row">
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             OPERACIÓN E INMUEBLE
@@ -44,13 +44,17 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             CARACTERÍSTICAS DEL INMUEBLE
                             <hr/>
                         </h4>
                         <div class="row">
+                            <div class="col-md-2 ocultar oficina">
+                                <h3 style="text-align: center;"><span class="subtitulo_kc">Cubículos</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Estudio.png"/></h3>
+                                <?php echo $formulario_vender["cubiculo"] ?>
+                            </div>
                             <div class="col-md-2 ocultar casa">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Habitaciones&nbsp;<span style="color:red;">*</span></span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Habitaciones-01.png"/></h3>
                                 <?php echo $formulario_vender["habitacion"] ?>
@@ -71,11 +75,11 @@
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Niveles</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Niveles-01.png"/></h3>
                                 <?php echo $formulario_vender["niveles"] ?>
                             </div>
-                            <div class="col-md-2 ocultar casa terreno edificio bodega">
+                            <div class="col-md-2 ocultar casa oficina terreno edificio bodega">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Área</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Area-01.png"/></h3>
                                 <?php echo $formulario_vender["area"] ?>
                             </div>
-                            <div class="col-md-2 ocultar casa terreno edificio bodega">
+                            <div class="col-md-2 ocultar casa oficina terreno edificio bodega">
                                 <h3 style="text-align: center;"><span class="subtitulo_kc">Dimensiones</span><br/><br/><img width="25%" src="/assets/img/caracteristicas/Dimensiones-01.png"/></h3>
                                 <table>
                                     <tr>
@@ -93,7 +97,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4>
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="background-color:#f7f7f7">
+                                                <a class="collapsed titulo_kc" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="background-color:#f7f7f7">
                                                     Más características
                                                 </a>
                                             </h4>
@@ -180,7 +184,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             INFORMACIÓN FINANCIERA
@@ -244,7 +248,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             TÉRMINOS DE NEGOCIACIÓN
@@ -280,7 +284,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             INFORMACIÓN DE CONTACTO
@@ -310,7 +314,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             UBICACIÓN
@@ -360,7 +364,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             COMUNIDAD
@@ -414,7 +418,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="panel">
+                <div class="">
                     <div class="panel-content">
                         <h4 class="titulo_kc">
                             IMÁGENES

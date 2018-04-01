@@ -68,40 +68,7 @@ if ($propiedad_id) {
                                         <td colspan="2">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <table class="table" style="padding: 0;">
-                                                        <tr>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getRequerimiento()->getArea() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getRequerimiento()->getNiveles() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadHabitacion() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadParqueo() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getRequerimiento()->getCantidadBanio() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+                                                    <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $fila->getRequerimiento())) ?>
                                                 </div>
                                             </div>
                                         </td>
@@ -118,13 +85,13 @@ if ($propiedad_id) {
                                     <tr>
                                         <?php if ($fila->getMensajesPendientes() > 0): ?>
                                             <td>
-                                                <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
+                                                <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 20px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
                                                     Ver Mensajes
                                                 </a>
                                             </td>
                                         <?php endif; ?>
                                         <td>
-                                            <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
+                                            <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 20px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
                                                 Ver Negocio
                                             </a>
                                         </td>
@@ -144,7 +111,7 @@ if ($propiedad_id) {
                 <div class="panel panel-sombra-completa">
                     <div class="panel-header">
                         <h5>
-                            PROP<?php echo $fila->getPropiedad()->getId() ?>
+                            PRO<?php echo $fila->getPropiedad()->getId() ?>
                             |
                             <?php if ($fila->getPropiedad()->getTipoOperacion() == "Vender"): ?>
                                 Vender
@@ -200,40 +167,7 @@ if ($propiedad_id) {
                                         <td colspan="2">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <table class="table" style="padding: 0;">
-                                                        <tr>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getPropiedad()->getArea() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Area-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getPropiedad()->getNiveles() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadHabitacion() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadParqueo() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <b><?php echo $fila->getPropiedad()->getCantidadBanio() ?></b>
-                                                            </td>
-                                                            <td style="padding: 0;">
-                                                                <img style="max-width: 18px;margin-top:-10px;" src="/assets/img/caracteristicas/Baños-01.png"/>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+                                                    <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $fila->getPropiedad())) ?>
                                                 </div>
                                             </div>
                                         </td>
@@ -251,13 +185,13 @@ if ($propiedad_id) {
                                     <tr>
                                         <?php if ($fila->getMensajesPendientes() > 0): ?>
                                             <td>
-                                                <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 10px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
+                                                <a class="btn btn-xs" style="color:white;background-color:#305da7;border-radius: 20px;float:left" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() . "&mensaje=1" ?>" >
                                                     Ver Mensajes
                                                 </a>
                                             </td>
                                         <?php endif; ?>
                                         <td>
-                                            <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 10px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
+                                            <a class="btn btn-xs" style="color:white;background-color:#25d366;border-radius: 20px;float:right" href="<?php echo url_for('negocio/visualizar') . "?id=" . $fila->getId() ?>" >
                                                 Ver Negocio
                                             </a>
                                         </td>

@@ -70,6 +70,7 @@ propel:
     updated_by:                        { type: varchar(32) }
     usuario_id:                        ~
     cantidad_oficina:                   { type: integer }
+    cantidad_cubiculo:                  { type: integer }
     
   propiedad_imagen:
     id:                                ~
@@ -165,6 +166,7 @@ propel:
     estatus:                            { type: varchar(25), default: "Disponible" }
     usuario_id:                         ~
     cantidad_oficina:                   { type: integer }
+    cantidad_cubiculo:                  { type: integer }
     
   municipio:
     id:                                ~

@@ -41,6 +41,7 @@ class RequerimientoForm extends sfForm {
         $this->setWidget("area", new sfWidgetFormInputText(array(), array("class" => "form-control")));
         $this->setWidget("area_x", new sfWidgetFormInputText(array(), array("class" => "form-control col-md-2")));
         $this->setWidget("area_y", new sfWidgetFormInputText(array(), array("class" => "form-control col-md-2")));
+        $this->setWidget("cubiculo", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("comedor", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("sala", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("cocina", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
@@ -100,6 +101,7 @@ class RequerimientoForm extends sfForm {
         $this->setValidator("tipo_operacion", new sfValidatorString(array('required' => true)));
         $this->setValidator("tipo_inmueble", new sfValidatorString(array('required' => true)));
         $this->setValidator("habitacion", new sfValidatorInteger(array('required' => false)));
+        $this->setValidator("cubiculo", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("oficina", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("banio", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("parqueo", new sfValidatorInteger(array('required' => false)));

@@ -77,6 +77,22 @@ class Requerimiento extends BaseRequerimiento {
         return implode(", ", $listado);
     }
 
+    public function getDireccionCompletaMax() {
+        $registro = NegocioQuery::create()
+                ->filterByRequerimientoId($this->getId())
+                ->filterByActivo(true)
+                ->joinPropiedad("propiedad")
+                ->withColumn("propiedad.mi_comision / 100 * propiedad.precio * propiedad.comision_compartida /100", "comision_requerimiento")
+                ->orderBy("comision_requerimiento", 'desc')
+                ->groupById()
+                ->findOne();
+        if ($registro) {
+            return $registro->getDireccionCompleta();
+        } else {
+            return $this->getDireccionCompleta();
+        }
+    }
+
     public function getDireccionImagen() {
         $valor = "/assets/img/caracteristicas/";
         $conc = null;

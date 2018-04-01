@@ -49,7 +49,52 @@
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="">
+                            <div class=" visible-xs-block visible-sm-block">
+                                <div class="panel-header">
+                                    <h5 style="color:gray;">
+                                        INFORMACION FINANCIERA
+                                        <hr/>
+                                    </h5>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tr>
+                                            <td colspan="2">
+                                                Precio: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getPrecio(), 0) ?>
+                                                &nbsp;<?php echo $negocio->getPropiedad()->getNegociable() ? "NEGOCIABLE" : "NO NEGOCIABLE" ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Forma de pago: <?php echo $negocio->getPropiedad()->getFormaPago() ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Mantenimiento mensual: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getMantenimientoMensual(), 0) ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Iusi trimestral: <?php echo $negocio->getPropiedad()->getMoneda()->getCodigo() . " " . number_format($negocio->getPropiedad()->getIusiSemestral(), 0) ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <?php echo $negocio->getPropiedad()->getIncluyeGastosEscritura() ? "INCLUYE GASTOS DE ESCRITURA" : "NO INCLUYE GASTOS DE ESCRITURA" ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                        <center>
+                                            Comunidad: <input disabled="true" type="number" class="rating" data-readonly value="<?php echo $negocio->getPropiedad()->getComunidad() ?>"/>
+                                        </center>
+                                        </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class=" visible-md-block visible-lg-block" style="height: 375px;">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -193,14 +238,10 @@
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
-                                    <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                    <a class="fancybox" rel="group_max" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
                                         <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
                                     </a>
                                     <br/><br/>
-                                <?php else: ?>
-                                    <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
-                                    </a>
                                 <?php endif; ?>
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
@@ -212,14 +253,10 @@
                             <?php $contador = false; ?>
                             <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
                                 <?php if (!$contador): ?>
-                                    <a class="fancybox" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                    <a class="fancybox" rel="group_min" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
                                         <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
                                     </a>
                                     <br/><br/>
-                                <?php else: ?>
-                                    <a class="fancybox col-xs-4 col-md-2" rel="group" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
-                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="width:100%;height: 100%"/>
-                                    </a>
                                 <?php endif; ?>
                                 <?php $contador = true ?>
                             <?php endforeach; ?>
@@ -228,7 +265,7 @@
                             <?php endif; ?>  
                         </div>
                         <div class="col-md-5">
-                            <div class="panel visible-md-block visible-lg-block" style="height: 375px;">
+                            <div class=" visible-md-block visible-lg-block" style="height: 375px;">
                                 <div class="panel-header">
                                     <h5 style="color:gray;">
                                         INFORMACION FINANCIERA
@@ -274,6 +311,29 @@
                                     </table>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-12 visible-md-block visible-lg-block">
+                            <?php $paso = false; ?>
+                            <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
+                                <?php if ($paso): ?>
+                                    <a class="fancybox" rel="group_min" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 30px;"/>
+                                    </a>
+                                <?php endif; ?>
+                                <?php $paso = true; ?>
+                            <?php endforeach; ?>
+
+                        </div>
+                        <div style="display:none;">
+                            <?php $paso = false; ?>
+                            <?php foreach ($negocio->getPropiedad()->getPropiedadImagens() as $fila): ?>
+                                <?php if ($paso): ?>
+                                    <a class="fancybox" rel="group_max" href="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>">
+                                        <img  src="<?php echo DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . $fila->getNombreActual() ?>" alt="" style="max-height: 100%;height: 30px;"/>
+                                    </a>
+                                <?php endif; ?>
+                                <?php $paso = true; ?>
+                            <?php endforeach; ?>
                         </div>
                         <div class="col-md-12">
                             <div style="float:left;">
@@ -342,7 +402,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
-                <h4 class="modal-title"><strong>Chat</strong></h4>
+                <h4 class="titulo_kc">Chat<hr/></h4>
             </div>
             <div class="modal-body">
                 <div class="panel-body" id="historial">
@@ -381,7 +441,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
-                <h4 class="modal-title"><strong>Cotizador</strong></h4>
+                <h4 class="titulo_kc">Cotizador<hr/></h4>
             </div>
             <div class="modal-body">
                 <div class="panel-body">
@@ -422,8 +482,11 @@
                             <td>
                                 <input type="number" value="25"  id="plazo_anios" class="form-control actualizar_input" style="text-align: right"/>
                             </td>
-                            <td id="plazo_meses">
+                            <td id="plazo_meses" style="text-align: right;">
 
+                            </td>
+                            <td>
+                                Meses
                             </td>
                         </tr>
                     </table>

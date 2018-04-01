@@ -37,6 +37,7 @@ class VenderForm extends sfForm {
         $this->setWidget("oficina", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("banio", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", "data-decimals" => "1", 'data-step' => "0.5", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("parqueo", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
+        $this->setWidget("cubiculo", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("niveles", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
         $this->setWidget("area", new sfWidgetFormInputText(array(), array("class" => "form-control")));
         $this->setWidget("area_x", new sfWidgetFormInputText(array(), array("class" => "form-control col-md-2")));
@@ -95,6 +96,7 @@ class VenderForm extends sfForm {
         $this->setValidator("parqueo", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("comedor", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("sala", new sfValidatorInteger(array('required' => false)));
+        $this->setValidator("cubiculo", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("cocina", new sfValidatorInteger(array('required' => false)));
         $this->setValidator("dormitorio_servicio", new sfValidatorString(array('required' => false)));
         $this->setValidator("estudio", new sfValidatorString(array('required' => false)));

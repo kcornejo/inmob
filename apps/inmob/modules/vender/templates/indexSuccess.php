@@ -4,7 +4,7 @@
             <div class="panel">
                 <div class="panel-header">
                     <h5>
-                        PROP<?php echo $propiedad->getId() ?>
+                        PRO<?php echo $propiedad->getId() ?>
                         |
                         <?php echo $propiedad->getTipoInmueble() ?>
                         en <?php
@@ -25,7 +25,7 @@
                                         Editar
                                     </a>
                                     <a onclick="if (confirm('Esta seguro de querer eliminar esta propiedad?') == true) {
-                                                location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $propiedad->getId() . "&valor=Eliminado"?>');
+                                                location.replace('<?php echo url_for("soporte/estatusPropiedad") . "?id=" . $propiedad->getId() . "&valor=Eliminado" ?>');
                                             }" href="#">
                                         Eliminar
                                     </a>
@@ -79,45 +79,7 @@
                                     <td colspan="2">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <table class="table" style="padding: 0;">
-                                                    <tr>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $propiedad->getArea() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;"
-                                                                 src="/assets/img/caracteristicas/Area-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $propiedad->getNiveles() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;"
-                                                                 src="/assets/img/caracteristicas/Niveles-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $propiedad->getCantidadHabitacion() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;"
-                                                                 src="/assets/img/caracteristicas/Habitaciones-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $propiedad->getCantidadParqueo() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;"
-                                                                 src="/assets/img/caracteristicas/Parqueos-01.png"/>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <b><?php echo $propiedad->getCantidadBanio() ?></b>
-                                                        </td>
-                                                        <td style="padding: 0;">
-                                                            <img style="max-width: 18px;margin-top:-10px;"
-                                                                 src="/assets/img/caracteristicas/Baños-01.png"/>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                <?php include_partial("soporte/caracteristicas_pequenio", array('objeto' => $propiedad)) ?>
                                             </div>
                                         </div>
                                     </td>

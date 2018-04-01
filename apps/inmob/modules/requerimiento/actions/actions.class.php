@@ -89,6 +89,7 @@ class requerimientoActions extends sfActions {
         $defaults["area"] = $Requerimiento->getArea();
         $defaults["area_x"] = $Requerimiento->getAreaX();
         $defaults["area_y"] = $Requerimiento->getAreaY();
+        $defaults["cubiculo"] = $Requerimiento->getCantidadCubiculo();
         if ($Requerimiento->getPrecalificacion()) {
             $defaults["precalificacion"] = "Si";
         } else {
@@ -292,6 +293,7 @@ class requerimientoActions extends sfActions {
         $Requerimiento->setCuotaTotalMensualMaxima($valores["cuota_total_mensual_maxima"]);
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $Requerimiento->setUsuarioId($usuario_id);
+        $Requerimiento->setCantidadCubiculo($valores['cubiculo']);
         $Requerimiento->save();
         DireccionRequerimientoQuery::create()->findByRequerimientoId($Requerimiento->getId())->delete();
         $DireccionRequerimiento = new DireccionRequerimiento();

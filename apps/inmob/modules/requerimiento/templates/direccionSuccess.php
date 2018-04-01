@@ -1,5 +1,5 @@
 
-<div class="panel" id="direccion_<?php echo $num; ?>">
+<div class="" id="direccion_<?php echo $num; ?>">
     <div class="panel-content">
         <div class="row">
             <div style="float:left;">
