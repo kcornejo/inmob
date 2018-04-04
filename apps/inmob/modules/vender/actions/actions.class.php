@@ -23,7 +23,7 @@ class venderActions extends sfActions {
         $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
         $propiedad = PropiedadQuery::create()
                 ->filterById($id)
-                ->filterByUsuarioId($usuario_id)
+//                ->filterByUsuarioId($usuario_id)
                 ->findOne();
         if (!$propiedad) {
             $this->getUser()->setFlash('error', "Propiedad no encontrada");
@@ -51,10 +51,20 @@ class venderActions extends sfActions {
 
     public function executeEliminar(sfWebRequest $request) {
         $id = $request->getParameter("id");
-        PropiedadImagenQuery::create()->findByPropiedadId($id)->delete();
-        PropiedadQuery::create()->findById($id)->delete();
-        $this->getUser()->setFlash("exito", "Propiedad eliminado con exito.");
-        $this->redirect("inicio/index");
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $propiedad = PropiedadQuery::create()
+                ->filterById($id)
+                ->filterByUsuarioId($usuario_id)
+                ->findOne();
+        if ($propiedad) {
+            PropiedadImagenQuery::create()->findByPropiedadId($id)->delete();
+            PropiedadQuery::create()->findById($id)->delete();
+            $this->getUser()->setFlash("exito", "Propiedad eliminado con exito.");
+        } else {
+            $this->getUser()->setFlash('error', "Propiedad no encontrada");
+        }
+
+        $this->redirect("vender/index");
     }
 
     public function executeNueva(sfWebRequest $request) {
@@ -90,7 +100,15 @@ class venderActions extends sfActions {
 
     public function executeEditar(sfWebRequest $request) {
         $id = $request->getParameter("id");
-        $Propiedad = PropiedadQuery::create()->findOneById($id);
+        $usuario_id = sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad');
+        $Propiedad = PropiedadQuery::create()
+                ->filterByUsuarioId($usuario_id)
+                ->filterById($id)
+                ->findOne();
+        if (!$Propiedad) {
+            $this->getUser()->setFlash("error", "Propiedad no encontrada");
+            $this->redirect("vender/index");
+        }
         $defaults = array();
         $defaults["tipo_operacion"] = $Propiedad->getTipoOperacion();
         $defaults["tipo_inmueble"] = $Propiedad->getTipoInmueble();

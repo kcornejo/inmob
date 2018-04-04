@@ -75,9 +75,9 @@ class soporteActions extends sfActions {
         $Negocio = NegocioQuery::create()->findOneById($negocio_id);
         $correo_envio = null;
         if ($Negocio->getUsuarioProp() == $usuario_id) {
-            $correo_envio = $Negocio->getUsuarioRelatedByUsuarioReq()->getCorreo();
+            $correo_envio = $Negocio->getUsuarioRelatedByUsuarioReq()->getEmail();
         } else {
-            $correo_envio = $Negocio->getUsuarioRelatedByUsuarioProp()->getCorreo();
+            $correo_envio = $Negocio->getUsuarioRelatedByUsuarioProp()->getEmail();
         }
         $Usuario = UsuarioQuery::create()->findOneById($usuario_id);
         $CorreoPendienteReq = new CorreoPendiente();

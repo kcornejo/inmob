@@ -27,12 +27,14 @@ class CorreoPendientePeer extends BaseCorreoPendientePeer {
             sfContext::getInstance()->getMailer()->getRealtimeTransport()->setUsername($Configuracion->getUsuario());
             sfContext::getInstance()->getMailer()->getRealtimeTransport()->setPassword($Configuracion->getClave());
             foreach ($listado as $correo) {
-                $message = sfContext::getInstance()->getMailer()->compose(
-                        array($Configuracion->getUsuario() => $Configuracion->getUsuario()), array($correo->getBeneficiario()), $correo->getAsunto(), $correo->getContenido()
-                );
-                $message->setContentType("text/html");
-                $message->setBody($correo->getContenido(), "text/html");
-                sfContext::getInstance()->getMailer()->send($message);
+                if ($correo->getBeneficiario()) {
+                    $message = sfContext::getInstance()->getMailer()->compose(
+                            array($Configuracion->getUsuario() => $Configuracion->getUsuario()), array($correo->getBeneficiario()), $correo->getAsunto(), $correo->getContenido()
+                    );
+                    $message->setContentType("text/html");
+                    $message->setBody($correo->getContenido(), "text/html");
+                    sfContext::getInstance()->getMailer()->send($message);
+                }
                 $correo->setEnviado(true);
                 $correo->save();
             }

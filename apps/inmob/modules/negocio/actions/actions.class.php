@@ -61,11 +61,14 @@ class negocioActions extends sfActions {
                     ->filterByPropiedadId($Negocio->getPropiedadId())
                     ->filterByActivo(true)
                     ->find();
-        } else {
+        } elseif ($Negocio->getUsuarioProp() == $usuario_id) {
             $registros = NegocioQuery::create()
                     ->filterByRequerimientoId($Negocio->getRequerimientoId())
                     ->filterByActivo(true)
                     ->find();
+        } else {
+            $this->getUser()->setFlash('error', 'Negocio no encontrado');
+            $this->redirect('negocio/index');
         }
         $this->registros = $registros;
         $this->negocio = $Negocio;
