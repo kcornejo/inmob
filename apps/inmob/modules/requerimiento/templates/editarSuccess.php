@@ -197,7 +197,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-3">
-                                    <span class="subtitulo_kc">Precio&nbsp;<span style="color:red;">*</span></span>
+                                    <span class="subtitulo_kc">Presupuesto&nbsp;<span style="color:red;">*</span></span>
                                     <?php echo $formulario["moneda"] ?>
                                 </div>
                                 <div class="col-md-3">

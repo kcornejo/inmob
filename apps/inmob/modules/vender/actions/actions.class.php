@@ -161,6 +161,8 @@ class venderActions extends sfActions {
         $defaults["area_y"] = $Propiedad->getAreaY();
         $defaults["oficina"] = $Propiedad->getCantidadOficina();
         $defaults["cubiculo"] = $Propiedad->getCantidadCubiculo();
+        $defaults["contrato"] = $Propiedad->getContrato();
+        $defaults["mantenimiento_renta"] = $Propiedad->getMantenimientoRenta();
         $this->formulario_vender = new VenderForm($defaults);
         if ($request->isMethod('POST')) {
             $this->formulario_vender->bind($request->getParameter("vender_form"), $request->getFiles("vender_form"));
@@ -200,6 +202,8 @@ class venderActions extends sfActions {
         $Propiedad->setCantidadPatio($valores["patio"]);
         $Propiedad->setEstado($valores["estado"]);
         $Propiedad->setAmenidades($valores["amenidades"]);
+        $Propiedad->setContrato($valores["contrato"]);
+        $Propiedad->setMantenimientoRenta($valores["mantenimiento_renta"]);
         $Propiedad->setPrecio($valores["precio"]);
         $Propiedad->setAnioConstruccion($valores["anios_construccion"]);
         $Propiedad->setMantenimientoMensual($valores["mantenimiento_mensual"]);

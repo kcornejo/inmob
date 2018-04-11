@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1522612998.
- * Generated on 2018-04-01 20:03:18 
+ * up to version 1523449208.
+ * Generated on 2018-04-11 12:20:08 
  */
-class PropelMigration_1522612998
+class PropelMigration_1523449208
 {
 
     public function preUp($manager)
@@ -43,10 +43,7 @@ class PropelMigration_1522612998
 SET FOREIGN_KEY_CHECKS = 0;
 
 ALTER TABLE `propiedad`
-    ADD `cantidad_cubiculo` INTEGER AFTER `cantidad_oficina`;
-
-ALTER TABLE `requerimiento`
-    ADD `cantidad_cubiculo` INTEGER AFTER `cantidad_oficina`;
+    ADD `mantenimiento_renta` DOUBLE AFTER `contrato`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
@@ -68,9 +65,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `propiedad` DROP `cantidad_cubiculo`;
-
-ALTER TABLE `requerimiento` DROP `cantidad_cubiculo`;
+ALTER TABLE `propiedad` DROP `mantenimiento_renta`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

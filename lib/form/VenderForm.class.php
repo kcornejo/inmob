@@ -58,6 +58,8 @@ class VenderForm extends sfForm {
         $this->setWidget("amenidades", new sfWidgetFormInputText(array(), array("class" => "form-control ")));
         $this->setWidget("precio", new sfWidgetFormInputText(array("label" => "Precio (Q)"), array("class" => "calculo form-control ken_number")));
         $this->setWidget("precio_negociable", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
+        $this->setWidget("contrato", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
+        $this->setWidget("mantenimiento_renta", new sfWidgetFormInputText(array("label" => "Precio (Q)"), array("class" => " form-control ken_number")));
         $this->setWidget("forma_pago", new sfWidgetFormSelect(array('choices' => $opciones_pago), array("class" => "form-control col-md-10")));
         $this->setWidget("gastos_escritura", new sfWidgetFormInputCheckbox(array(), array("class" => "js-switch")));
         $this->setWidget("anios_construccion", new sfWidgetFormInputText(array(), array("class" => "form-control numeric-stepper", 'data-step' => "1", "data-btn-before" => "default  btn-rounded", "data-btn-after" => "default  btn-rounded")));
@@ -108,11 +110,14 @@ class VenderForm extends sfForm {
         $this->setValidator("amenidades", new sfValidatorString(array('required' => false)));
         $this->setValidator("precio", new sfValidatorNumber(array('required' => true)));
         $this->setValidator("precio_negociable", new sfValidatorString(array('required' => false)));
+        $this->setValidator("contrato", new sfValidatorString(array('required' => false)));
+        $this->setValidator("mantenimiento_renta", new sfValidatorString(array('required' => false)));
         $this->setValidator("forma_pago", new sfValidatorString(array('required' => false)));
         $this->setValidator("gastos_escritura", new sfValidatorString(array('required' => false)));
         $this->setValidator("anios_construccion", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("iusi_trimestral", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("mantenimiento_mensual", new sfValidatorNumber(array('required' => false)));
+        $this->setValidator("mantenimiento_renta", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("valor_avaluo", new sfValidatorNumber(array('required' => false)));
         $this->setValidator("mi_comision", new sfValidatorNumber(array('required' => true)));
         $this->setValidator("comision_compartida", new sfValidatorNumber(array('required' => true)));

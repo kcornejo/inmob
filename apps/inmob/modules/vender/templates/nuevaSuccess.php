@@ -193,7 +193,8 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="col-md-4">
-                                    <span class="subtitulo_kc">Precio&nbsp;<span style="color:red;">*</span></span>
+                                    <span class="subtitulo_kc oculta_compra">Precio&nbsp;<span style="color:red;">*</span></span>
+                                    <span class="subtitulo_kc oculta_renta">Mensualidad&nbsp;<span style="color:red;">*</span></span>
                                     <?php echo $formulario_vender["moneda"] ?>
                                 </div>
                                 <div class="col-md-6">
@@ -205,19 +206,31 @@
                                     <?php echo $formulario_vender["precio_negociable"] ?>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-1 oculta_renta">
+                                <span class="subtitulo_kc">Contrato</span>
+                                <div style="text-align: center">
+                                    <?php echo $formulario_vender["contrato"]; ?>
+                                </div>
+                            </div>
+                            <div class="col-md-3 oculta_renta">
+                                <span class="subtitulo_kc">Mantenimiento mensual</span>
+                                <div style="text-align: center">
+                                    <?php echo $formulario_vender["mantenimiento_renta"] ?>
+                                </div>
+                            </div>
+                            <div class="col-md-3 oculta_compra">
                                 <span class="subtitulo_kc">Forma de pago</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["forma_pago"]; ?>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 oculta_compra">
                                 <span class="subtitulo_kc">Gastos escritura</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["gastos_escritura"]; ?>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 oculta_compra">
                                 <span class="subtitulo_kc">Años de construcción</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["anios_construccion"] ?>
@@ -225,19 +238,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 oculta_compra">
                                 <span class="subtitulo_kc">Mantenimiento mensual</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["mantenimiento_mensual"] ?>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 oculta_compra">
                                 <span class="subtitulo_kc">Iusi trimestral</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["iusi_trimestral"] ?>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 oculta_compra">
                                 <span class="subtitulo_kc">Valor avaluo</span>
                                 <div style="text-align: center">
                                     <?php echo $formulario_vender["valor_avaluo"] ?>
@@ -477,7 +490,21 @@
                             ocultar($("#vender_form_tipo_inmueble").val());
                         });
                         ocultar($("#vender_form_tipo_inmueble").val());
+                        renta_venta();
+                        $("#vender_form_tipo_operacion").on('change', function () {
+                            renta_venta();
+                        });
                     });
+                    function renta_venta() {
+                        $(".oculta_renta").hide();
+                        $(".oculta_compra").hide();
+                        var valor = $("#vender_form_tipo_operacion").val();
+                        if (valor == "Rentar") {
+                            $(".oculta_renta").show();
+                        } else {
+                            $(".oculta_compra").show();
+                        }
+                    }
                     function ocultar(valor) {
                         $(".ocultar").hide();
                         switch (valor) {

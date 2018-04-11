@@ -167,6 +167,8 @@ propel:
     usuario_id:                         ~
     cantidad_oficina:                   { type: integer }
     cantidad_cubiculo:                  { type: integer }
+    contrato:                           { type: boolean, default: false}
+    mantenimiento_renta:                { type: double}
     
   municipio:
     id:                                ~
